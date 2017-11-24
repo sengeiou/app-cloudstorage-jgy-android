@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="app_color">#ff572e</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="line_color">#EEEEEE</color>
+    <color name="tab_color_true">#FA632D</color>
+    <color name="tab_color_false">#9b9b9b</color>
+    <color name="color_f7">#f7f7f7</color>
+    <color name="color_f1">#f1f1f1</color>
+    <color name="color_f2">#f2f2f2</color>
+    <color name="color_4d">#4d4d4d</color>
+    <color name="color_53">#53575e</color>
+    <color name="color_3f7">#fff7f7</color>
+    <color name="color_6">#666666</color>
+    <color name="color_61">#111111</color>
+    <color name="color_hui">#919191</color>
+    <color name="color_70">#707070</color>
+    <color name="color_cf">#cfcfcf</color>
+    <color name="color_f9">#f9f9f9</color>
+    <color name="title_line">#ECECEC</color>
+    <color name="binding_bg">#798FFB</color>
+    <color name="color_d6">#d6d6d6</color>
+    <color name="color_7c">#7c7c7c</color>
+    <color name="color_572d">#FE572D</color>
+    <color name="color_ed9">#FFEDE9</color>
+    <color name="color_f3b">#FDCF3B</color>
+    <color name="color_527c">#527cff</color>
+    <!--色卡-->
+    <color name="app_color_blue">#5273ff</color>
+    <color name="app_button_blue">#3e5cda</color>
+    <color name="app_button_red">#ff4012</color>
+    <color name="app_color_7039">#7039fe</color>
+    <color name="app_color_582e">#ff582e</color>
+    <color name="color_3f3">#f3f3f3</color>
+    <color name="app_layout_bg">#eeeeef</color>
+    <color name="app_rea_color">#fc5838</color>
+    <color name="app_color_63">#333333</color>
+    <color name="app_color_5e">#5e5e5e</color>
+    <color name="login_color_blue">#3557d9</color>
+    <color name="tab_layout_bg">#dce3ff</color>
 </resources>

@@ -1,7 +1,8 @@
-package www.guoyie.com.delivery.easy;
-
-import android.support.v7.app.AppCompatActivity;
+package www.guoyie.com.delivery.easy.activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import www.guoyie.com.delivery.easy.R;
 
 public class MainActivity extends AppCompatActivity {
 
