@@ -14,9 +14,6 @@ import okio.Buffer;
 
 /**
  * Retrofit2 Cookie拦截器。用于保存和设置Cookies
- *
- * @author yuyh.
- * @date 16/8/6.
  */
 public final class HeaderInterceptor implements Interceptor {
 

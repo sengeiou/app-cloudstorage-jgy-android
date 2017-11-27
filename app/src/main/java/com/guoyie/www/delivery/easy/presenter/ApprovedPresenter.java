@@ -8,10 +8,9 @@ import rx.Subscription;
 
 /**
  * author：柯军
- * project：CloudManager
  * package：com.chinayie.cloudmanager.presenter
  * email：774169396@qq.com
- * data：2017/1/24
+ * data：2017/11/24
  */
 public class ApprovedPresenter extends ApprovedContract.Presenster {
     @Override
