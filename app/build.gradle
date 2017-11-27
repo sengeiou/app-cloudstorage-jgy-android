@@ -7,7 +7,7 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
     defaultConfig {
-        applicationId "www.guoyie.com.delivery.easy"
+        applicationId "com.guoyie.www.delivery.easy"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
