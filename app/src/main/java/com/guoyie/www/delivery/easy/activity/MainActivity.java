@@ -1,10 +1,7 @@
 package com.guoyie.www.delivery.easy.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.guoyie.www.delivery.easy.R;
-
+import com.guoyie.www.delivery.easy.base.BaseActivity;
 /**
  * author：柯军
  * project：app-cloudstorage-jgy-android
@@ -13,11 +10,20 @@ import com.guoyie.www.delivery.easy.R;
  * data：2017/11/27 
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    public void initView() {
+
     }
 }

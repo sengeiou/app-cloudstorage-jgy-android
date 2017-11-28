@@ -4,6 +4,8 @@ import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
 
+import rx.Observable;
+
 /**
  * author：柯军
  * project：CloudManager
@@ -15,7 +17,7 @@ import com.guoyie.www.delivery.easy.base.BaseView;
 
    public  interface  ApprovedContract {
     interface  Model extends BaseModel {
-        rx.Observable<Object> getApprovedData(String params);
+        Observable<Object> getApprovedData(String params);
     }
 
 

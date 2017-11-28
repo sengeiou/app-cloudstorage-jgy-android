@@ -14,7 +14,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.entity.UserInfo;
@@ -145,9 +144,9 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      * @author luck
      */
     protected void startAct(Class clz) {
-        /*if (isFastDoubleClick()) {
+        if (isFastDoubleClick()) {
             return;
-        }*/
+        }
         Intent intent = new Intent(mContext, clz);
         startActivity(intent);
     }
