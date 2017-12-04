@@ -21,7 +21,7 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
@@ -91,8 +91,8 @@ public class ApiManager {
         retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.BASE_HOST)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 添加Rx适配器
-              //  .addConverterFactory(FastJsonConverterFactory.create()) // 添加Fastjson转换器
-                .addConverterFactory(GsonConverterFactory.create())  //添加gson的转换器
+               .addConverterFactory(FastJsonConverterFactory.create()) // 添加Fastjson转换器
+               // .addConverterFactory(GsonConverterFactory.create())  //添加gson的转换器
                 .client(httpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
