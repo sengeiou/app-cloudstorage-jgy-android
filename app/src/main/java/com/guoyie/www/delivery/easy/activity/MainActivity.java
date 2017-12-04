@@ -103,15 +103,12 @@ public class MainActivity extends BaseActivity {
         currentTabIndex=position;
     }
 
-
-
     private void obtainFragmentTransaction(int index ,FragmentTransaction ft) {
         // 设置切换动画,如果当前项不是选中项就启动动画切换
         if (index > currentTabIndex) {
             ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out);
         } else {
-            ft.setCustomAnimations(R.anim.slide_right_in,
-                    R.anim.slide_right_out);
+            ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_right_out);
         }
     }
 
