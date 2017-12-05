@@ -4,9 +4,13 @@ import android.databinding.DataBindingUtil;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.databinding.ActivityGuideBinding;
+
 
 public class GuideActivity extends BaseActivity {
 
+
+    private ActivityGuideBinding mBinding;
 
     @Override
     public int getLayoutId() {
@@ -20,7 +24,7 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     public void initView() {
-      ActivityGuideBinding binding =  DataBindingUtil.setContentView(this,getLayoutId());
+        mBinding = DataBindingUtil.setContentView(this,getLayoutId());
 
     }
 }
