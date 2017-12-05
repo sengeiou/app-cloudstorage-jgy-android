@@ -50,6 +50,7 @@ public class RxUtil {
                 String json = ACache.get(GApp.getInstance()).getAsString(key);
                 if (!TextUtils.isEmpty(json)) {
                     subscriber.onNext(json);
+
                 }
                 subscriber.onCompleted();
             }

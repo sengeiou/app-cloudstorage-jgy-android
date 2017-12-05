@@ -15,6 +15,7 @@ public class BusinessFragment extends BaseFragment {
     @Override
     protected int getLayoutResource() {
         return R.layout.fc_business;
+
     }
 
     @Override

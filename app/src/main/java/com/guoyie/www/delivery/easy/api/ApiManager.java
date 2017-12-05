@@ -2,15 +2,14 @@ package com.guoyie.www.delivery.easy.api;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.intercept.LoggingInterceptor;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.NetWorkUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -23,13 +22,6 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-/**
- * author：柯军
- * project：New_GuoYieAndroid
- * package：easyfoodbatch.luck.com.rxjavaproject.api
- * email：774169396@qq.com
- * data：16/11/2
- */
 public class ApiManager {
 
     //读超时长，单位：毫秒
@@ -90,7 +82,8 @@ public class ApiManager {
         retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.BASE_HOST)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 添加Rx适配器
-                .addConverterFactory(FastJsonConverterFactory.create()) // 添加Gson转换器
+               .addConverterFactory(FastJsonConverterFactory.create()) // 添加Fastjson转换器
+               // .addConverterFactory(GsonConverterFactory.create())  //添加gson的转换器
                 .client(httpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();

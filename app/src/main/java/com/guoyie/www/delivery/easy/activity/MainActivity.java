@@ -1,8 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
-
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentTransaction;
-
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.guoyie.www.delivery.easy.R;
@@ -12,7 +10,6 @@ import com.guoyie.www.delivery.easy.entity.TabEntity;
 import com.guoyie.www.delivery.easy.fragment.BusinessFragment;
 import com.guoyie.www.delivery.easy.fragment.StoreHouseFragment;
 import com.guoyie.www.delivery.easy.fragment.UserCenterFragment;
-
 import java.util.ArrayList;
 
 /**
@@ -28,9 +25,7 @@ public class MainActivity extends BaseActivity {
     private int[]  mIconUnselectIds = {R.mipmap.home,  R.mipmap.comment, R.mipmap.user};
     private int[]  mIconSelectIds   = {R.mipmap.home_passed,  R.mipmap.comment_press, R.mipmap.user_pressed};
     private ArrayList<CustomTabEntity> mTabEntities     = new ArrayList<>();
-
     private ActivityMainBinding mMainBinding;
-
     private BusinessFragment bsinessFragment;//我的业务的fragment
     private StoreHouseFragment houseFragment;//我的仓储
     private UserCenterFragment userFragment;//用户中心
@@ -103,15 +98,12 @@ public class MainActivity extends BaseActivity {
         currentTabIndex=position;
     }
 
-
-
     private void obtainFragmentTransaction(int index ,FragmentTransaction ft) {
         // 设置切换动画,如果当前项不是选中项就启动动画切换
         if (index > currentTabIndex) {
             ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out);
         } else {
-            ft.setCustomAnimations(R.anim.slide_right_in,
-                    R.anim.slide_right_out);
+            ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_right_out);
         }
     }
 
