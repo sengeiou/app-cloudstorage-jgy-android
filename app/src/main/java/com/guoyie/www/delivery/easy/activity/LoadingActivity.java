@@ -35,7 +35,7 @@ public class LoadingActivity extends BaseActivity {
     public void initView() {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
 
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this,GuideActivity.class));
         finish();
         overridePendingTransition(R.anim.enter,R.anim.exit);
     }

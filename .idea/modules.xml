@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-cloudstorage-jgy-android.iml" filepath="$PROJECT_DIR$/app-cloudstorage-jgy-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://F:\Android\project\app-cloudstorage-jgy-android\library\library.iml" filepath="F:\Android\project\app-cloudstorage-jgy-android\library\library.iml" />
     </modules>
   </component>
 </project>
