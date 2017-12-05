@@ -24,13 +24,6 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-/**
- * author：柯军
- * project：New_GuoYieAndroid
- * package：easyfoodbatch.luck.com.rxjavaproject.api
- * email：774169396@qq.com
- * data：16/11/2
- */
 public class ApiManager {
 
     //读超时长，单位：毫秒

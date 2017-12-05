@@ -28,9 +28,7 @@ public class MainActivity extends BaseActivity {
     private int[]  mIconUnselectIds = {R.mipmap.home,  R.mipmap.comment, R.mipmap.user};
     private int[]  mIconSelectIds   = {R.mipmap.home_passed,  R.mipmap.comment_press, R.mipmap.user_pressed};
     private ArrayList<CustomTabEntity> mTabEntities     = new ArrayList<>();
-
     private ActivityMainBinding mMainBinding;
-
     private BusinessFragment bsinessFragment;//我的业务的fragment
     private StoreHouseFragment houseFragment;//我的仓储
     private UserCenterFragment userFragment;//用户中心
