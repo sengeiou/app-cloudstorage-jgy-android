@@ -1,7 +1,5 @@
 package com.guoyie.www.delivery.easy.activity;
 
-
-
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 
@@ -42,41 +40,25 @@ public class LoadingActivity extends BaseActivity {
         SpUtils sp = SpUtils.getInstance(this);
         Boolean isGuide = sp.getBoolean("isGuide", false);
         if (isGuide){
-            skipMain(MainActivity.class);
+            skip(MainActivity.class);
         }else {
-            skipGuide(GuideActivity.class);
+            //skipGuide(GuideActivity.class);
+            skip(GuideActivity.class);
         }
-
-
     }
 
-    private void skipGuide(final Class<GuideActivity> guideActivityClass) {
+    private void skip(final Class<? extends BaseActivity> activityClass) {
         //执行淡入淡出动画
         Observable.timer(2000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread()).
                 subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        startActivity(new Intent(LoadingActivity.this, guideActivityClass));
+                        startActivity(new Intent(LoadingActivity.this, activityClass));
                         overridePendingTransition(R.anim.enter, R.anim.exit);
                         finish();
                     }
                 });
     }
-
-    private void skipMain(final Class<MainActivity> mainActivityClass) {
-        //执行淡入淡出动画
-        Observable.timer(2000, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread()).
-                subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        startActivity(new Intent(LoadingActivity.this, mainActivityClass));
-                        overridePendingTransition(R.anim.enter, R.anim.exit);
-                        finish();
-                    }
-                });
-    }
-
-
 
 
 }
