@@ -4,9 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.guoyie.www.delivery.easy.activity.GuideActivity">
     
-    <cn.bingoogolapple.bgabanner.BGABanner
-        android:id="@+id/bga_guide"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:banner_pointAutoPlayAble="false"/>
+        android:layout_height="match_parent">
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/bga_guide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:banner_pointAutoPlayAble="false"/>
+        <Button
+            android:id="@+id/bt_gotologin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:onClick="goToLogin"
+            android:text="去登陆"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:textSize="22sp"
+            android:textColor="#fff"
+            />
+    </RelativeLayout>
 </layout>
