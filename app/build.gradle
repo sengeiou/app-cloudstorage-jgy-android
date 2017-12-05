@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion 26
 
     packagingOptions {
@@ -36,7 +37,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0'
     //fastgson的转换
     compile 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
-   // compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    // compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.apkfuns.logutils:library:1.4.2.2'
@@ -50,7 +51,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.bm.photoview:library:1.4.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
     // testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     // releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
@@ -61,4 +61,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation project(':library')
 }

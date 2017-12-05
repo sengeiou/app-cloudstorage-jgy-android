@@ -7,11 +7,9 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.intercept.LoggingInterceptor;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.NetWorkUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;

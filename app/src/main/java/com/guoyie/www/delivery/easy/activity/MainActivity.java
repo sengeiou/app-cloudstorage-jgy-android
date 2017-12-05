@@ -1,8 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
-
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentTransaction;
-
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.guoyie.www.delivery.easy.R;
@@ -12,7 +10,6 @@ import com.guoyie.www.delivery.easy.entity.TabEntity;
 import com.guoyie.www.delivery.easy.fragment.BusinessFragment;
 import com.guoyie.www.delivery.easy.fragment.StoreHouseFragment;
 import com.guoyie.www.delivery.easy.fragment.UserCenterFragment;
-
 import java.util.ArrayList;
 
 /**
