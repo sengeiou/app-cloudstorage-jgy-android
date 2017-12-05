@@ -43,5 +43,12 @@ public class BusinessFragment extends BaseFragment {
         mTv_title = (TextView) getView(R.id.tv_title);
         mTv_title.setText("我的业务");
 
+        initRecylceview();
+
+    }
+
+    private void initRecylceview() {
+
+
     }
 }
