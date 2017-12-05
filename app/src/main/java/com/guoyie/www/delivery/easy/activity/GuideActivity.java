@@ -8,6 +8,7 @@ import android.view.View;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityGuideBinding;
+import com.guoyie.www.delivery.easy.download.SpUtils;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import cn.bingoogolapple.bgabanner.BGABannerUtil;
 
 public class GuideActivity extends BaseActivity {
 
-
+    public static final String IS_GUIDE = "isGuide";  //引导页标记，true表示执行过引导页，false反之
     private ActivityGuideBinding mBinding;
 
     @Override
@@ -33,6 +34,10 @@ public class GuideActivity extends BaseActivity {
     public void initView() {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
 
+        //设置引导页标记
+        SpUtils sp = SpUtils.getInstance(this);
+        sp.putBoolean(IS_GUIDE,true);
+
         final ArrayList<View> views = new ArrayList<>();
 
         views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide_1));
@@ -40,6 +45,7 @@ public class GuideActivity extends BaseActivity {
         views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide_3));
 
         mBinding.bgaGuide.setData(views);
+        //滑动状态监听，判断是否该显示“去登陆”按钮
         mBinding.bgaGuide.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -61,11 +67,11 @@ public class GuideActivity extends BaseActivity {
             }
         });
 
-
     }
 
     //跳转到登录页面
     public void goToLogin(View view) {
         startAct(MainActivity.class);
+        finish();
     }
 }
