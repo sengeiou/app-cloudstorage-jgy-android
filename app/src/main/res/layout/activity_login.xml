@@ -24,7 +24,7 @@
             android:layout_below="@id/iv_logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"/>
-        <EditText
+        <com.guoyie.www.delivery.easy.widget.CustomEditText
             android:id="@+id/et_username"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -37,9 +37,8 @@
             android:textSize="15sp"
             android:layout_below="@id/tv_name"
             android:layout_marginTop="72dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableRight="@mipmap/success"/>
-        <EditText
+            android:background="@drawable/edittext_bg"/>
+        <com.guoyie.www.delivery.easy.widget.CustomEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +75,8 @@
             android:layout_marginTop="18dp"
             android:text="登录"
             android:textSize="15sp"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            android:enabled="false"/>
         <Button
             android:id="@+id/bt_register"
             android:layout_width="match_parent"
