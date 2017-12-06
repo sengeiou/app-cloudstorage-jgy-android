@@ -36,7 +36,8 @@ public class GuideActivity extends BaseActivity {
 
         //设置引导页标记
         SpUtils sp = SpUtils.getInstance(this);
-        sp.putBoolean(IS_GUIDE,true);
+        // TODO: 2017/12/6 记得改回false
+        sp.putBoolean(IS_GUIDE,false);
 
         final ArrayList<View> views = new ArrayList<>();
 
@@ -71,7 +72,7 @@ public class GuideActivity extends BaseActivity {
 
     //跳转到登录页面
     public void goToLogin(View view) {
-        startAct(MainActivity.class);
+        startAct(LoginActivity.class);
         finish();
     }
 }

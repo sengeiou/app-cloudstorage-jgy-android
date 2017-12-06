@@ -53,4 +53,6 @@
     <color name="colorNomal">#333333</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorLight">#6D6D6D</color>
+    <!--登录页蓝色背景-->
+    <color name="blue_bg">#497AF8</color>
 </resources>
