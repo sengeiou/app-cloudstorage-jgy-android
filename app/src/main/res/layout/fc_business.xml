@@ -2,6 +2,7 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+
     >
 
     <LinearLayout
@@ -39,8 +40,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/BannerDefaultStyle"
-                        android:layout_margin="25dp"
-                        app:banner_contentBottomMargin="40dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="25dp"
+                        app:banner_contentBottomMargin="20dp"
                         app:banner_indicatorGravity="bottom|center_horizontal"
                         app:banner_isNeedShowIndicatorOnOnlyOnePage="true"
                         app:banner_isNumberIndicator="false"
@@ -82,7 +85,9 @@
                             app:cardCornerRadius="8dp"
                             app:cardElevation="5dp"
                             android:layout_width="match_parent"
-                            android:layout_margin="16dp"
+                           android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginBottom="16dp"
                             android:layout_height="match_parent">
 
                             <LinearLayout
@@ -91,12 +96,15 @@
                                 android:orientation="horizontal"
                                 android:layout_height="match_parent">
 
-                                <ImageView
-                                    android:layout_gravity="center"
-                                    android:src="@mipmap/ic_launcher"
-                                    android:layout_width="60dp"
+
+                                <com.guoyie.www.delivery.easy.widget.MyImageView
+                                    android:id="@+id/imageview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:src="@mipmap/guide_1"
                                     android:scaleType="centerCrop"
-                                    android:layout_height="60dp"/>
+                                    app:ratio="1"
+                                    />
 
 
                                 <LinearLayout
@@ -135,6 +143,8 @@
                 android:layout_weight="1"
                 android:layout_height="0dp">
 
+
+
                 <android.support.v7.widget.CardView
                     android:elevation="100dp"
                     app:cardBackgroundColor="@color/white"
@@ -145,12 +155,148 @@
                     android:layout_marginBottom="32dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-
-                    <com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView
-                        android:id="@+id/recycler"
+                    
+                    <LinearLayout
+                        android:padding="20dp"
+                        android:weightSum="2"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent">
+
+
+
+
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:weightSum="2"
+                            android:layout_height="0dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_inorder"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:background="@drawable/inorder_bg"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:src="@mipmap/home"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:text="入库单管理"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_outorder"
+                                android:layout_marginLeft="20dp"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:background="@drawable/outorder_bg"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:src="@mipmap/home_passed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:text="出库单管理"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+
+
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:weightSum="2"
+                            android:layout_height="0dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_transformorder"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:background="@drawable/transformorder_bg"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:src="@mipmap/home"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:text="货转单管理"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_infoorder"
+                                android:padding="10dp"
+                                android:layout_marginLeft="20dp"
+                                android:gravity="center"
+                                android:background="@drawable/infoorder_bg"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:src="@mipmap/home_passed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:text="意向单管理"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+
+
 
                 </android.support.v7.widget.CardView>
             </LinearLayout>

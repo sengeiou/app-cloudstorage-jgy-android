@@ -2,6 +2,9 @@ package com.guoyie.www.delivery.easy.application;
 
 import android.app.Application;
 import android.util.DisplayMetrics;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.guoyie.www.delivery.easy.entity.Engine;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
 
 import java.io.File;
@@ -13,6 +16,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * author：柯军
  * project：CloudManager
@@ -22,10 +28,10 @@ import java.io.Serializable;
  */
 
 public class GApp extends Application {
-    public static GApp app;
-    public static int screenWidth;
-    public static int screenHeight;
-
+    public static GApp   app;
+    public static int    screenWidth;
+    public static int    screenHeight;
+    private       Engine mEngine;
     public static GApp getInstance() {
         return app;
     }
@@ -44,6 +50,13 @@ public class GApp extends Application {
         }
         LeakCanary.install(this);
         // Normal app init code...*/
+
+        mEngine = new Retrofit.Builder()
+                .baseUrl("http://7xk9dj.com1.z0.glb.clouddn.com/banner/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(Engine.class);
+
+        Fresco.initialize(this);
 
     }
 
@@ -144,5 +157,10 @@ public class GApp extends Application {
         if (data.exists())
             exist = true;
         return exist;
+    }
+
+
+    public Engine getEngine() {
+        return mEngine;
     }
 }
