@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.activity.InfoOrderActivity;
+import com.guoyie.www.delivery.easy.activity.InterOrderActivity;
+import com.guoyie.www.delivery.easy.activity.OuterOrderActivity;
+import com.guoyie.www.delivery.easy.activity.TransTormorderActivity;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcBusinessBinding;
@@ -112,16 +116,16 @@ public class BusinessFragment extends BaseFragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ll_inorder:
-                showToast("1");
+                startAct(InterOrderActivity.class);
                 break;
             case R.id.ll_outorder:
-                showToast("2");
+               startAct(OuterOrderActivity.class);
                 break;
             case R.id.ll_transformorder:
-                showToast("3");
+                startAct(TransTormorderActivity.class);
                 break;
                 case R.id.ll_infoorder:
-                    showToast("4");
+                 startAct(InfoOrderActivity.class);
                 break;
 
         }

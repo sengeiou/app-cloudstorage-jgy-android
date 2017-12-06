@@ -37,6 +37,10 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.GuideActivity" />
         <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.InterOrderActivity"/>
+        <activity android:name=".activity.InfoOrderActivity"/>
+        <activity android:name=".activity.TransTormorderActivity"/>
+        <activity android:name=".activity.OuterOrderActivity"/>
     </application>
 
 </manifest>
