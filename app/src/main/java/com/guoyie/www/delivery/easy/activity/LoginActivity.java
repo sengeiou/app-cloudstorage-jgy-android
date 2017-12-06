@@ -28,6 +28,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private CustomEditText mEtPassword;
     private Button mBtLogin;
     private Button mLogin;
+    private Button mRegister;
 
 
     @Override
@@ -48,6 +49,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mEtPassword = mBinding.etPassword;
         mBtLogin = mBinding.btLogin;
         mLogin = mBinding.btLogin;
+        mRegister = mBinding.btRegister;
 
         mEtUsername.addTextChangedListener(mUserNameWatcher);
         mEtPassword.addTextChangedListener(mPassWordWatcher);
@@ -55,6 +57,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mEtPassword.setDrawableRightClickListenner(mDrawableRightClickListenner);
 
         mLogin.setOnClickListener(this);
+        mRegister.setOnClickListener(this);
     }
 
     private String mUserName;
@@ -154,6 +157,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.bt_login:
                 // TODO: 2017/12/6 判断是否有账号，有就登录，否则申请入驻
                 startAct(MainActivity.class);
+                finish();
+                break;
+            case R.id.bt_register:
+                startAct(RegisterActivity.class);
+                finish();
         }
     }
 }
