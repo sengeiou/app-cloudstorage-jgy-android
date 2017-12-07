@@ -1,7 +1,16 @@
 package com.guoyie.www.delivery.easy.activity;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,12 +19,15 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoginBinding;
 import com.guoyie.www.delivery.easy.util.InputUtils;
 import com.guoyie.www.delivery.easy.widget.CustomEditText;
+import com.guoyie.www.delivery.easy.widget.LoginOrRegisterProblemPopupWindow;
 
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
@@ -23,12 +35,15 @@ import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
 
+    private static final int REQUSET_CODE = 1;//打电话权限请求码
     private ActivityLoginBinding mBinding;
     private CustomEditText mEtUsername;
     private CustomEditText mEtPassword;
     private Button mBtLogin;
     private Button mLogin;
     private Button mRegister;
+    private TextView mTvProblem;
+    private LoginOrRegisterProblemPopupWindow mProblemPopupWindow;
 
 
     @Override
@@ -50,6 +65,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mBtLogin = mBinding.btLogin;
         mLogin = mBinding.btLogin;
         mRegister = mBinding.btRegister;
+        mTvProblem = mBinding.tvProblem;
 
         mEtUsername.addTextChangedListener(mUserNameWatcher);
         mEtPassword.addTextChangedListener(mPassWordWatcher);
@@ -58,6 +74,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         mLogin.setOnClickListener(this);
         mRegister.setOnClickListener(this);
+        mTvProblem.setOnClickListener(this);
     }
 
     private String mUserName;
@@ -162,6 +179,64 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.bt_register:
                 startAct(RegisterActivity.class);
                 finish();
+                break;
+            case R.id.tv_problem:
+                if (mProblemPopupWindow==null){
+                    View view = getLayoutInflater().inflate(R.layout.lrp_popupwindow_layout, null);
+                    mProblemPopupWindow = new LoginOrRegisterProblemPopupWindow(this,mOnClickListener,view);
+                }
+                if (mProblemPopupWindow.isShowing()){
+                    mProblemPopupWindow.dismiss();
+                }
+                mProblemPopupWindow.show();
+
         }
+    }
+
+    LoginOrRegisterProblemPopupWindow.OnClickListener mOnClickListener = new LoginOrRegisterProblemPopupWindow.OnClickListener() {
+        @Override
+        public void call() {
+            
+            //检查是否获得了权限
+            if (ContextCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+  
+                //Toast.makeText(LoginActivity.this,"没有打电话权限，请去设置界面授权",Toast.LENGTH_SHORT).show();
+                // TODO: 2017/12/7  当权限被拒绝后的处理
+                if (ActivityCompat.shouldShowRequestPermissionRationale(LoginActivity.this,Manifest.permission.READ_CONTACTS)){
+
+                }else {
+                    ActivityCompat.requestPermissions(LoginActivity.this,new String[]{Manifest.permission.CALL_PHONE},REQUSET_CODE);
+                }
+
+            }else {
+                //已授权
+                call();
+            }
+      
+        }
+
+        @Override
+        public void cancel() {
+            mProblemPopupWindow.dismiss();
+        }
+    };
+
+    private void call() {
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        Uri data = Uri.parse("tel:" + "13248171603");
+        intent.setData(data);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode==REQUSET_CODE){
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                call();
+            }else {
+                Toast.makeText(LoginActivity.this,"权限不足",Toast.LENGTH_SHORT).show();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
