@@ -55,4 +55,6 @@
     <color name="colorLight">#6D6D6D</color>
     <!--登录页蓝色背景-->
     <color name="blue_bg">#497AF8</color>
+    <color name="blue">#0066FF</color>
+    <color name="gray">#C0C0C0</color>
 </resources>

@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.application.GApp;
@@ -127,6 +128,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         @Override
         public void afterTextChanged(Editable s) {
 
+            String companyName = mEtCompanyname.getText().toString().trim();
+            String contacts = mEtContacts.getText().toString().trim();
+            String mobilePhone = mEtContactway.getText().toString().trim();
+            boolean canCommit = !TextUtils.isEmpty(companyName)&&!TextUtils.isEmpty(contacts)&&!TextUtils.isEmpty(mobilePhone);
+
+            mBtCommit.setEnabled(canCommit);
+
         }
     };
 
@@ -147,7 +155,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 }
 
                 String companyName = mEtCompanyname.getText().toString().trim();
-                String contacts = mEtCompanyname.getText().toString().trim();
+                String contacts = mEtContacts.getText().toString().trim();
                 String mobilePhone = mEtContactway.getText().toString().trim();
                 String qq = mEtQq.getText().toString().trim();
                 String email = mEtEmail.getText().toString().trim();
@@ -195,6 +203,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 finish();
                 break;
             case R.id.tv_toolbarcommit:
+                String company = mEtCompanyname.getText().toString().trim();
+                String contact = mEtContacts.getText().toString().trim();
+                String mobile = mEtContactway.getText().toString().trim();
+
+                boolean cannotCommit = TextUtils.isEmpty(company)||TextUtils.isEmpty(contact)||TextUtils.isEmpty(mobile);
+
+                if (cannotCommit){
+                    Toast.makeText(this,"请注意，红色星号处为必填项！",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // TODO: 2017/12/8  提交入驻信息
         }
 
