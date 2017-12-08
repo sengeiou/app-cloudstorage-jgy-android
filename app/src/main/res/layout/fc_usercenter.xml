@@ -26,7 +26,7 @@
                 android:background="@mipmap/background">
 
                 <com.guoyie.www.delivery.easy.widget.MyImageView
-                    android:id="@+id/icon"
+                    android:id="@+id/uer_icon"
                     android:layout_height="wrap_content"
                     android:layout_width="70dp"
                     android:layout_marginTop="28dp"
@@ -38,7 +38,7 @@
                     android:id="@+id/ll_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/icon"
+                    android:layout_below="@id/uer_icon"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="28dp"
                     android:orientation="horizontal">
@@ -76,6 +76,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/ll_about"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#fff">

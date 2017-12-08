@@ -3,11 +3,15 @@ package com.guoyie.www.delivery.easy.fragment;
 import android.databinding.DataBindingUtil;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.activity.UserBasicInfoActivity;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcUsercenterBinding;
+import com.guoyie.www.delivery.easy.widget.MyImageView;
 
 /**
  * author：柯军
@@ -17,10 +21,13 @@ import com.guoyie.www.delivery.easy.databinding.FcUsercenterBinding;
  * data：2017/12/4
  * 我的业务的fragment
  */
-public class UserCenterFragment extends BaseFragment {
+public class UserCenterFragment extends BaseFragment implements View.OnClickListener {
     private ImageView           mLeft_back;
     private TextView            mTv_title;
     private FcUsercenterBinding mBinding;
+    private MyImageView mIcon;
+    private RelativeLayout mLlAbout;
+
     @Override
     protected int getLayoutResource() {
         return R.layout.fc_usercenter;
@@ -39,5 +46,23 @@ public class UserCenterFragment extends BaseFragment {
         mLeft_back.setVisibility(View.GONE);
         mTv_title = (TextView) getView(R.id.tv_title);
         mTv_title.setText("用户中心");
+
+        mIcon = mBinding.uerIcon;
+        mLlAbout = mBinding.llAbout;
+
+
+        mIcon.setOnClickListener(this);
+        mLlAbout.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.uer_icon:
+                startAct(UserBasicInfoActivity.class);
+                break;
+            case R.id.ll_about:
+                Toast.makeText(getContext(),"收款方靠觉得你放假",Toast.LENGTH_SHORT).show();
+        }
     }
 }
