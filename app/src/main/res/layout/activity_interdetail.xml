@@ -121,6 +121,9 @@
 
            </LinearLayout>
 
+
+           <!--商品明细-->
+
            <TextView
                android:text="商品明细"
                style="@style/tv_title_itmes"/>
@@ -204,7 +207,7 @@
            </LinearLayout>
 
 
-
+           <!--入库单详细信息-->
            <TextView
                android:text="入库单详细信息"
                style="@style/tv_title_itmes"/>
@@ -269,7 +272,7 @@
            </LinearLayout>
 
 
-
+           <!--车辆明细-->
 
            <TextView
                android:text="车辆明细"
@@ -342,6 +345,191 @@
            </LinearLayout>
 
 
+           <!--入库确认单-->
+
+           <TextView
+               android:text="入库确认单"
+               style="@style/tv_title_itmes"/>
+
+           <LinearLayout
+               android:paddingRight="16dp"
+               android:paddingLeft="16dp"
+               android:layout_width="match_parent"
+               android:orientation="vertical"
+               android:layout_height="wrap_content">
+
+               <!--1-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="苯乙烯"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="车入库"
+                       style="@style/tv_content_inter"/>
+               </LinearLayout>
+               <!-- 2-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="实际入库数量"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="200吨"
+                       style="@style/tv_content_inter"/>
+               </LinearLayout>
+
+               <!-- 3-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="仓库联系人"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="找师傅"
+                       style="@style/tv_content_inter"/>
+
+               </LinearLayout>
+
+
+               <!-- 4-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="是否具备CA"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="查看CA合同"
+                       style="@style/tv_content_inter"/>
+
+                   <ImageView
+                       android:src="@mipmap/search"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+               </LinearLayout>
+
+
+               <!-- 5-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="备注"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="CA签章以汉办好，请等....."
+                       style="@style/tv_content_inter"/>
+               </LinearLayout>
+
+           </LinearLayout>
+
+           <!--入库明细-->
+
+           <TextView
+               android:text="入库明细"
+               style="@style/tv_title_itmes"/>
+
+
+           <RelativeLayout
+               android:padding="16dp"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <TextView
+                   android:textSize="14sp"
+                   android:textColor="#111111"
+                   android:layout_width="wrap_content"
+                   android:text="丙乙烯 | 1000.00吨"
+                   android:layout_height="wrap_content"/>
+
+               <TextView
+                   android:textSize="14sp"
+                   android:textColor="#111111"
+                   android:layout_alignParentRight="true"
+                   android:text="内贸内销"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+
+           </RelativeLayout>
+
+
+
+
+           <LinearLayout
+               android:paddingRight="16dp"
+               android:paddingLeft="16dp"
+               android:layout_width="match_parent"
+               android:orientation="vertical"
+               android:layout_height="wrap_content">
+
+               <!--1-->
+               <LinearLayout
+                   android:paddingTop="0dp"
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="入库单号"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="10000"
+                       style="@style/tv_content_inter"/>
+               </LinearLayout>
+               <!-- 2-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="进货罐号"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="T-101"
+                       style="@style/tv_content_inter"/>
+               </LinearLayout>
+
+               <!-- 3-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="车牌号"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="沪A999999"
+                       style="@style/tv_content_inter"/>
+
+               </LinearLayout>
+
+
+               <!-- 4-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="入库时间"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="2018/1/1"
+                       style="@style/tv_content_inter"/>
+
+                   <ImageView
+                       android:src="@mipmap/search"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+               </LinearLayout>
+
+
+               <!-- 5-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="备注"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:text="CA签章以汉办好，请等....."
+                       style="@style/tv_content_inter"/>
+               </LinearLayout>
+
+           </LinearLayout>
+
+
+
+
+
            <TextView
                android:background="@color/color_f7"
                android:layout_width="match_parent"
@@ -360,6 +548,7 @@
             android:layout_height="48dp">
 
             <TextView
+                android:id="@+id/tv_refused"
                 android:gravity="center"
                 android:text="拒绝"
                 android:background="@drawable/interstuts_bg"
@@ -370,6 +559,7 @@
                 android:layout_height="match_parent"/>
 
             <TextView
+                android:id="@+id/tv_agree"
                 android:gravity="center"
                 android:background="@color/app_color_blue"
                 android:text="通过"

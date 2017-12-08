@@ -148,8 +148,6 @@ public class InterOrderActivity extends BaseActivity implements View.OnClickList
                             adapter.setData(list5);
                         }
                         break;
-
-
             }
 
 
