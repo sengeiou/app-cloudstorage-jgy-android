@@ -178,7 +178,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.bt_register:
                 startAct(RegisterActivity.class);
-                finish();
                 break;
             case R.id.tv_problem:
                 if (mProblemPopupWindow==null){
@@ -196,23 +195,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     LoginOrRegisterProblemPopupWindow.OnClickListener mOnClickListener = new LoginOrRegisterProblemPopupWindow.OnClickListener() {
         @Override
         public void call() {
-            
-            //检查是否获得了权限
-            if (ContextCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
-  
-                //Toast.makeText(LoginActivity.this,"没有打电话权限，请去设置界面授权",Toast.LENGTH_SHORT).show();
-                // TODO: 2017/12/7  当权限被拒绝后的处理
-                if (ActivityCompat.shouldShowRequestPermissionRationale(LoginActivity.this,Manifest.permission.READ_CONTACTS)){
 
-                }else {
-                    ActivityCompat.requestPermissions(LoginActivity.this,new String[]{Manifest.permission.CALL_PHONE},REQUSET_CODE);
-                }
-
-            }else {
-                //已授权
-                call();
-            }
-      
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            Uri data = Uri.parse("tel:" + "13155096502");
+            intent.setData(data);
+            startActivity(intent);
         }
 
         @Override
@@ -221,22 +208,4 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     };
 
-    private void call() {
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        Uri data = Uri.parse("tel:" + "13248171603");
-        intent.setData(data);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode==REQUSET_CODE){
-            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                call();
-            }else {
-                Toast.makeText(LoginActivity.this,"权限不足",Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
 }
