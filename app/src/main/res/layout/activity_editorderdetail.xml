@@ -3,7 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
    >
 
+
+
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:background="@color/white"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -14,6 +18,25 @@
             layout="@layout/public_title_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ScrollView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
         <TextView
@@ -29,15 +52,216 @@
 
 
      <RelativeLayout
+         android:paddingTop="16dp"
+         android:paddingBottom="16dp"
+         android:paddingLeft="20dp"
+         android:paddingRight="16dp"
          android:layout_width="match_parent"
          android:layout_height="wrap_content">
 
+         <TextView
+             android:id="@+id/tv_title_name"
+             android:textColor="#919191"
+             android:textSize="14sp"
+             android:text="商品名称"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
+
+         <TextView
+             android:id="@+id/tv_title_num"
+             android:layout_alignParentRight="true"
+             android:textColor="#919191"
+             android:textSize="14sp"
+             android:text="预约入库数量/单位"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
+
+         <TextView
+             android:layout_marginTop="10dp"
+             android:text="苯乙烯"
+             android:layout_below="@+id/tv_title_name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
+
+         <TextView
+             android:layout_marginTop="10dp"
+             android:layout_alignParentRight="true"
+             android:text="5000吨"
+             android:layout_below="@+id/tv_title_name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"/>
+
      </RelativeLayout>
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+              <!--1-->
+
+            <LinearLayout
+                android:id="@+id/ll_intertime"
+                android:layout_marginTop="0dp"
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="入库时间"
+                    style="@style/tv_editdetail_title"/>
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:text="2018-12-2"
+                    style="@style/tv_editdetail_cotent"/>
+
+                <ImageView
+                    android:src="@mipmap/right"
+                    style="@style/iv_editdetail_end"/>
+
+            </LinearLayout>
+
+            <!--2-->
+
+
+            <LinearLayout
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="入库单号"
+                    style="@style/tv_editdetail_title"/>
+
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:background="@null"
+                    android:text="2018-12-2"
+                    style="@style/tv_editdetail_cotent"/>
+
+
+            </LinearLayout>
 
 
 
+            <!--3-->
 
+            <LinearLayout
+                android:id="@+id/ll_googsxingzhi"
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="物质性质"
+                    style="@style/tv_editdetail_title"/>
+
+                <TextView
+                    android:id="@+id/tv_goonsxinzhi"
+                    android:text="进口"
+                    style="@style/tv_editdetail_cotent"/>
+
+                <ImageView
+                    android:src="@mipmap/right"
+                    style="@style/iv_editdetail_end"/>
+
+            </LinearLayout>
+
+
+            <!--4-->
+
+            <LinearLayout
+                 android:id="@+id/ll_guan_num"
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="进货罐号"
+                    style="@style/tv_editdetail_title"/>
+
+                <TextView
+                    android:id="@+id/tv_guannum"
+                    android:text="T-11000"
+                    style="@style/tv_editdetail_cotent"/>
+
+                <ImageView
+                    android:src="@mipmap/right"
+                    style="@style/iv_editdetail_end"/>
+
+            </LinearLayout>
+
+            <!--5-->
+
+
+            <LinearLayout
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="入库数量"
+                    style="@style/tv_editdetail_title"/>
+
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:background="@null"
+                    android:text="2018-12-2"
+                    style="@style/tv_editdetail_cotent"/>
+
+
+            </LinearLayout>
+
+
+
+            <!--6-->
+
+
+            <LinearLayout
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="车牌号/船舶编号"
+                    style="@style/tv_editdetail_title"/>
+
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:background="@null"
+                    android:text="2018-12-2"
+                    style="@style/tv_editdetail_cotent"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                 android:layout_height="120dp"
+                style="@style/ll_editdetail">
+
+               <TextView
+                   android:textColor="#999999"
+                   android:textSize="14sp"
+                   android:text="备注："
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:textColor="#999999"
+                    android:textSize="14sp"
+                    android:background="@null"
+                    android:text="项目好久好久还积极的肯德基看风景代理费考虑到积分领导就"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <TextView
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="提交"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@color/app_color_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
     </LinearLayout>
 

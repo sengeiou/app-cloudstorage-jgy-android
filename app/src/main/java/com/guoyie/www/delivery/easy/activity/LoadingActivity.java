@@ -2,13 +2,14 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.WindowManager;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoadingBinding;
 import com.guoyie.www.delivery.easy.download.SpUtils;
-import com.guoyie.www.delivery.easy.toast.T;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +21,13 @@ import io.reactivex.functions.Consumer;
 public class LoadingActivity extends BaseActivity {
 
     private ActivityLoadingBinding mBinding;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        super.onCreate(savedInstanceState);
+    }
 
 
     @Override

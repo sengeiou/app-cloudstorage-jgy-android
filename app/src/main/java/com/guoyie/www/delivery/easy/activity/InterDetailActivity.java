@@ -51,10 +51,12 @@ public class InterDetailActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.tv_refused:
-
-
+            //调到编辑详情页面
+             startAct(EditOrderDetailActivity.class);
                 break;
             case R.id.tv_agree:
+                //调到订单编辑页面
+                startAct(EditOrderActivity.class);
                 break;
 
         }
