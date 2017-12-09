@@ -79,14 +79,15 @@
                 android:id="@+id/ll_about"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#fff">
+                android:background="#fff"
+                android:layout_marginTop="10dp">
                 <ImageView
                     android:id="@+id/iv_about"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/about"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="18dp"/>
+                    android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,7 +96,7 @@
                     android:textSize="15sp"
                     android:textColor="#333333"
                     android:layout_toRightOf="@id/iv_about"
-                    android:layout_marginLeft="28dp" />
+                    android:layout_marginLeft="20dp" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,11 +104,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="50dp"
+                    android:background="#F1F4FE"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
-            <View
-                android:layout_width="310dp"
-                android:layout_height="2dp"
-                android:layout_gravity="right"/>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -119,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/contact"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="18dp"/>
+                    android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +133,7 @@
                     android:textSize="15sp"
                     android:textColor="#333333"
                     android:layout_toRightOf="@id/iv_contact"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,11 +141,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#F1F4FE"
+                    android:layout_marginLeft="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"/>
             </RelativeLayout>
-            <View
-                android:layout_width="310dp"
-                android:layout_height="2dp"
-                android:layout_gravity="right"/>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -152,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/pull_out"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="18dp"/>
+                    android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -161,7 +170,7 @@
                     android:textSize="15sp"
                     android:textColor="#333333"
                     android:layout_toRightOf="@id/iv_pull_out"
-                    android:layout_marginLeft="28dp"/>
+                    android:layout_marginLeft="20dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

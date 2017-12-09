@@ -2,8 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.guoyie.www.delivery.easy.activity.UserBasicInfoActivity">
-
+    tools:context="com.guoyie.www.delivery.easy.activity.StoreDetailActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,170 +13,158 @@
             layout="@layout/public_title_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="如需添加和修改储罐请前往PC端操作"
+            android:textSize="15sp"
+            android:textColor="#ff5722"
+            android:layout_marginLeft="20dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="51dp"
             android:background="#fff">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="头像"
+                android:text="储罐号"
                 android:textColor="#919191"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
-            <com.guoyie.www.delivery.easy.widget.MyImageView
-                android:id="@+id/uer_icon"
-                android:layout_height="wrap_content"
-                android:layout_width="70dp"
-                android:src="@mipmap/guide_1"
-                android:scaleType="centerCrop"
-                app:ratio="1"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#F1F4FE"
+                android:textSize="11sp"
                 android:layout_marginLeft="20dp"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="#fff">
+                android:layout_centerVertical="true"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="账户"
-                android:textColor="#919191"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="账户名称"
+                android:text="12344556"
                 android:textColor="#111111"
                 android:textSize="15sp"
-                android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#F1F4FE"
                 android:layout_marginLeft="20dp"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="#fff">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名"
-                android:textColor="#919191"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="羊宝宝"
-                android:textColor="#111111"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#F1F4FE"
-                android:layout_marginLeft="20dp"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="#fff">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="手机号"
-                android:textColor="#919191"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12345678901"
-                android:textColor="#111111"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#F1F4FE"
-                android:layout_marginLeft="20dp"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="#fff">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="座机号"
-                android:textColor="#919191"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0521-8888888"
-                android:textColor="#111111"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#F1F4FE"
-                android:layout_marginLeft="20dp"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="51dp"
             android:background="#fff">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="服务商"
+                android:text="商品名称"
                 android:textColor="#919191"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
+                android:textSize="11sp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="上海国烨跨境电子商务有限公司"
+                android:text="12344556"
                 android:textColor="#111111"
                 android:textSize="15sp"
-                android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"/>
-
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F1F4FE"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="#fff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="罐容"
+                android:textColor="#919191"
+                android:textSize="11sp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12344556"
+                android:textColor="#111111"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F1F4FE"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="#fff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="储罐性质"
+                android:textColor="#919191"
+                android:textSize="11sp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12344556"
+                android:textColor="#111111"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F1F4FE"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="#fff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="储罐材质"
+                android:textColor="#919191"
+                android:textSize="11sp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12344556"
+                android:textColor="#111111"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F1F4FE"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </LinearLayout>
 </layout>

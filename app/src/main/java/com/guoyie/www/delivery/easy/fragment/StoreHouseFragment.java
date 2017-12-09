@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.activity.StoreDetailActivity;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcStorehouseBinding;
@@ -80,7 +81,7 @@ public class StoreHouseFragment extends BaseFragment implements StoreManagerAdap
 
     @Override
     public void onItemClick(View itemView, int position) {
-
+        startAct(StoreDetailActivity.class);
     }
 
     @Override
