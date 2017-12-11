@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:background="@color/white"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/public_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+
+
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_f7"
+            />
+
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="14sp"
+                android:text="商品品名"
+                android:textColor="#919191"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="苯乙烯"
+                android:textSize="14sp"
+                android:textColor="#111111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--1-->
+
+            <LinearLayout
+                android:id="@+id/ll_intertype"
+                android:layout_marginTop="0dp"
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="入库类型"
+                    style="@style/tv_editdetail_title"/>
+
+
+                <TextView
+                    android:id="@+id/tv_intertype"
+                    android:text="车入库"
+                    android:textColor="#111111"
+                    style="@style/tv_editdetail_cotent"/>
+
+                <ImageView
+                    android:src="@mipmap/right"
+                    style="@style/iv_editdetail_end"/>
+
+            </LinearLayout>
+
+            <!--2-->
+
+
+            <LinearLayout
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="仓库联系人"
+                    style="@style/tv_editdetail_title"/>
+
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:background="@null"
+                    android:text="柯军"
+                    android:textColor="#111111"
+                    style="@style/tv_editdetail_cotent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:text="仓库联系方式"
+                    style="@style/tv_editdetail_title"/>
+
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:background="@null"
+                    android:textColor="#111111"
+                    android:text="13248171603"
+                    style="@style/tv_editdetail_cotent"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="80dp"
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:textColor="#999999"
+                    android:textSize="14sp"
+                    android:text="备注："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:textColor="#111111"
+                    android:textSize="14sp"
+                    android:background="@null"
+                    android:text="项目好久好久还积极的肯德基看风景代理费考虑到积分领导就"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:text="上传附件"
+            style="@style/tv_title_itmes"/>
+
+
+        <TextView
+           android:padding="16dp"
+            android:textColor="#919191"
+            android:textSize="14sp"
+            android:text="仅支持XX格式的，单个文件不超过XXM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+
+        <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
+            android:id="@+id/snpl_moment_add_photos"
+            style="@style/WrapWrap"
+            android:layout_margin="10dp"
+            app:bga_snpl_deleteDrawable="@mipmap/bga_pp_ic_delete"
+            app:bga_snpl_deleteDrawableOverlapQuarter="false"
+            app:bga_snpl_editable="true"
+            app:bga_snpl_itemCornerRadius="0dp"
+            app:bga_snpl_itemSpanCount="3"
+            app:bga_snpl_itemWhiteSpacing="4dp"
+            app:bga_snpl_itemWidth="0dp"
+            app:bga_snpl_maxItemCount="90"
+            app:bga_snpl_otherWhiteSpacing="100dp"
+            app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_light"
+            app:bga_snpl_plusDrawable="@mipmap/bga_pp_ic_plus"
+            app:bga_snpl_plusEnable="true"
+            app:bga_snpl_sortable="true" />
+
+        </LinearLayout>
+
+            </ScrollView>
+            <TextView
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="提交"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@color/app_color_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</layout>

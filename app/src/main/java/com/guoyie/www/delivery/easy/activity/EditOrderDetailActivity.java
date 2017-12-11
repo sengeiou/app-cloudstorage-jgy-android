@@ -85,7 +85,6 @@ public class EditOrderDetailActivity extends BaseActivity implements View.OnClic
                 break;
             case R.id.ll_intertime:
                 dateHelper.show(view);
-
                 break;
 
             case R.id.ll_googsxingzhi:
@@ -94,7 +93,7 @@ public class EditOrderDetailActivity extends BaseActivity implements View.OnClic
                 oneHelper.show(view);
               break;
             case R.id.ll_guan_num:
-                type = 1;
+                type = 2;
                 oneHelper.setListData(nums);
                 oneHelper.show(view);
                 break;
