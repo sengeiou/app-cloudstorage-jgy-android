@@ -1,17 +1,19 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
-import com.guoyie.www.delivery.easy.adapter.FilterListAdapter;
+import com.guoyie.www.delivery.easy.adapter.FilterAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityFilterBinding;
+import com.guoyie.www.delivery.easy.widget.RecycleViewDivider;
+import com.guoyie.www.delivery.easy.widget.recyclerview.SpaceItemDecoration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +24,9 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
     private ActivityFilterBinding mBinding;
     private TextView mTV_title;
     private ImageView mIv_back;
-    private ExpandableListView mExpandableListView;
+    private RecyclerView mRvGoodsName;
+    private RecyclerView mRvStoreClass;
+    private RecyclerView mRvStoreNumber;
 
     @Override
     public int getLayoutId() {
@@ -39,31 +43,33 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         mTV_title = (TextView) getView(R.id.tv_title);
         mIv_back = (ImageView) getView(R.id.left_back);
-        mExpandableListView = mBinding.elvList;
         mTV_title.setText("储罐筛选");
         mIv_back.setOnClickListener(this);
 
+        initRecyclerView();
         initData();
     }
 
+    private void initRecyclerView() {
+        mRvGoodsName = mBinding.rvGoodsName;
+        mRvStoreClass = mBinding.rvStoreClass;
+        mRvStoreNumber = mBinding.rvStoreNumber;
+
+        mRvGoodsName.setLayoutManager(new GridLayoutManager(this,3));
+        mRvStoreClass.setLayoutManager(new GridLayoutManager(this,3));
+        mRvStoreNumber.setLayoutManager(new GridLayoutManager(this,3));
+        SpaceItemDecoration itemDecoration = new SpaceItemDecoration(42,42,42,42);
+        //new RecycleViewDivider(this,)
+        mRvGoodsName.addItemDecoration(itemDecoration);
+    }
+
     private void initData() {
-
-
-        ArrayList<String> group1 = new ArrayList<>();
-        TextView textView = new TextView(this);
-
-        group1.add("第一组大儿子");
-        group1.add("第一组二儿子");
-        group1.add("第一组三儿子");
-        ArrayList<String> group2 = new ArrayList<>();
-        group2.add("第二组大儿子");
-        group2.add("第二组大儿子");
-        group2.add("第二组大儿子");
-        HashMap<String, List<String>> groupList = new HashMap<>();
-        groupList.put("第一组",group1);
-        groupList.put("第二组",group2);
-        FilterListAdapter filterListAdapter = new FilterListAdapter(this, groupList);
-        mExpandableListView.setAdapter(filterListAdapter);
+        ArrayList<String> strings = new ArrayList<>();
+        for (int i = 0;i<6;i++){
+            strings.add("AAA"+i);
+        }
+        FilterAdapter filterAdapter = new FilterAdapter(strings);
+        mRvGoodsName.setAdapter(filterAdapter);
 
     }
 
