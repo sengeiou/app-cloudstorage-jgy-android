@@ -60,10 +60,6 @@
             android:src="@mipmap/search"
             android:visibility="gone"
              />
-
-
     </RelativeLayout>
-
-
 
 </LinearLayout>

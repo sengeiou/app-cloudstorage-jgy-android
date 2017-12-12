@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.activity.FilterActivity;
 import com.guoyie.www.delivery.easy.activity.StoreDetailActivity;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
@@ -26,7 +27,7 @@ import java.util.List;
  * data：2017/12/4
  * 我的业务的fragment
  */
-public class StoreHouseFragment extends BaseFragment implements StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener {
+public class StoreHouseFragment extends BaseFragment implements StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, View.OnClickListener {
     private ImageView           mLeft_back;
     private TextView            mTv_title;
     private FcStorehouseBinding mBinding;
@@ -58,6 +59,9 @@ public class StoreHouseFragment extends BaseFragment implements StoreManagerAdap
 
         mRecyclerView = mBinding.nrecycler;
         initRecycleView();
+
+        mTV_right.setOnClickListener(this);
+
     }
 
     private void initRecycleView() {
@@ -92,5 +96,14 @@ public class StoreHouseFragment extends BaseFragment implements StoreManagerAdap
     @Override
     public void onLoadMore() {
         mBinding.nrecycler.stopLoadMore();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_right:
+                startAct(FilterActivity.class);
+                break;
+        }
     }
 }
