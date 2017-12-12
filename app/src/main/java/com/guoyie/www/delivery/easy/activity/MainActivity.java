@@ -5,11 +5,16 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.MainContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityMainBinding;
+import com.guoyie.www.delivery.easy.entity.GetTime;
 import com.guoyie.www.delivery.easy.entity.TabEntity;
 import com.guoyie.www.delivery.easy.fragment.BusinessFragment;
 import com.guoyie.www.delivery.easy.fragment.StoreHouseFragment;
 import com.guoyie.www.delivery.easy.fragment.UserCenterFragment;
+import com.guoyie.www.delivery.easy.model.MainModel;
+import com.guoyie.www.delivery.easy.presenter.MainPresenter;
+
 import java.util.ArrayList;
 
 /**
@@ -20,7 +25,7 @@ import java.util.ArrayList;
  * data：2017/11/27 
  */
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity<MainPresenter,MainModel> implements MainContract.View {
     private String[]  mTitles = {"我的业务", "我的仓储", "用户中心"};
     private int[]  mIconUnselectIds = {R.mipmap.home,  R.mipmap.comment, R.mipmap.user};
     private int[]  mIconSelectIds   = {R.mipmap.home_passed,  R.mipmap.comment_press, R.mipmap.user_pressed};
@@ -38,6 +43,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
+        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -124,5 +130,15 @@ public class MainActivity extends BaseActivity {
             public void onTabReselect(int position) {
             }
         });
+    }
+
+    @Override
+    public void returnTime(GetTime time) {
+
+    }
+
+    @Override
+    public void error(String msg) {
+
     }
 }

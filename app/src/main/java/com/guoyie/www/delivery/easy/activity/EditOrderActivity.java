@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityEditorderBinding;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.PopOneHelper;
 
 import java.io.File;
@@ -67,6 +68,8 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
         //图片选择的逻辑
         binding.snplMomentAddPhotos.setOnClickListener(this);
 
+        binding.tvCommit.setOnClickListener(this);
+
         mTv_title = (TextView) getView(R.id.tv_title);
         mTv_title.setText("编辑入库确认单");
 
@@ -96,7 +99,15 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
                 oneHelper.show(view);
                 break;
 
+            case R.id.tv_commit:
+                // TODO: 2017/12/12 这里处理图片提交的问题
+                ArrayList<String> data = binding.snplMomentAddPhotos.getData();
+                for (int i = 0; i < data.size(); i++) {
+                    DebugUtil.debug(data.get(i));
+                }
 
+
+                break;
 
 
         }
