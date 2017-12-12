@@ -116,11 +116,6 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onClickOk(String birthday, int position) {
         binding.tvIntertype.setText(birthday);
-
-
-
-
-
     }
 
 
