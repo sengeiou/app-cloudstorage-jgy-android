@@ -184,12 +184,12 @@
                                 android:orientation="vertical"
                                 android:layout_height="match_parent">
                                 <ImageView
-                                    android:src="@mipmap/home"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:src="@mipmap/inter"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"/>
                                 <TextView
                                     android:textColor="@color/white"
-                                    android:textSize="16sp"
+                                    android:textSize="13sp"
                                     android:text="入库单管理"
                                     android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
@@ -209,20 +209,18 @@
                                 android:orientation="vertical"
                                 android:layout_height="match_parent">
                                 <ImageView
-                                    android:src="@mipmap/home_passed"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:src="@mipmap/out"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"/>
                                 <TextView
                                     android:textColor="@color/white"
-                                    android:textSize="16sp"
+                                    android:textSize="13sp"
                                     android:text="出库单管理"
                                     android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
 
                             </LinearLayout>
-
-
 
 
                         </LinearLayout>
@@ -247,12 +245,12 @@
                                 android:orientation="vertical"
                                 android:layout_height="match_parent">
                                 <ImageView
-                                    android:src="@mipmap/home"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:src="@mipmap/tranom"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"/>
                                 <TextView
                                     android:textColor="@color/white"
-                                    android:textSize="16sp"
+                                    android:textSize="13sp"
                                     android:text="货转单管理"
                                     android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
@@ -272,12 +270,12 @@
                                 android:orientation="vertical"
                                 android:layout_height="match_parent">
                                 <ImageView
-                                    android:src="@mipmap/home_passed"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:src="@mipmap/info"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"/>
                                 <TextView
                                     android:textColor="@color/white"
-                                    android:textSize="16sp"
+                                    android:textSize="13sp"
                                     android:text="意向单管理"
                                     android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"

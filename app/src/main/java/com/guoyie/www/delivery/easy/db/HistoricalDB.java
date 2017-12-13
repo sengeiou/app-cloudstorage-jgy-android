@@ -14,7 +14,7 @@ import java.util.List;
  * project：New_GuoYieAndroid
  * package：com.guoyie.www.gyapp.db
  * email：774169396@qq.com
- * data：17/03/26
+ * data：17/11/26
  */
 public class HistoricalDB extends SQLiteOpenHelper {
     protected SQLiteDatabase database;
@@ -44,21 +44,12 @@ public class HistoricalDB extends SQLiteOpenHelper {
     String NAME_TABLE_CREATE4 = "create table gy4(" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," + "gy_name TEXT," + "gy_createTm TEXT);";
     @Override
     public void onCreate(SQLiteDatabase db) {
-        switch (type){
-            case 1:
                 db.execSQL(NAME_TABLE_CREATE1);
-                break;
-            case 2:
                 db.execSQL(NAME_TABLE_CREATE2);
-                break;
-            case 3:
                 db.execSQL(NAME_TABLE_CREATE3);
-                break;
-            case 4:
                 db.execSQL(NAME_TABLE_CREATE4);
-                break;
 
-        }
+
 
     }
 
@@ -141,7 +132,7 @@ public class HistoricalDB extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put("gy_name", tag);
             values.put("gy_createTm", create_time);
-            database.insert("gy", null, values);
+            database.insert("gy"+type, null, values);
             database.close();
         }
     }

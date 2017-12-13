@@ -94,7 +94,6 @@ public class InterOrderActivity extends BaseActivity implements View.OnClickList
         binding.nrecycler.setAdapter(adapter);
         binding.nrecycler.setErrorMessage("暂无消息提醒");
 
-
     }
 
 
@@ -171,6 +170,7 @@ public class InterOrderActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.iv_search:
+                startAct(SeachActivity.class);
                 break;
         }
 

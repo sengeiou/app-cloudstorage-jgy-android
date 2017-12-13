@@ -28,7 +28,7 @@
                 tl:tl_iconHeight="22dp"
                 tl:tl_iconWidth="22dp"
                 tl:tl_indicator_height="0dp"
-                tl:tl_textSelectColor="@color/colorMain"
+                tl:tl_textSelectColor="@color/app_color_blue"
                 tl:tl_textUnselectColor="@color/colorNomal"
                 tl:tl_textsize="13sp"
                 tl:tl_underline_height="0dp" />

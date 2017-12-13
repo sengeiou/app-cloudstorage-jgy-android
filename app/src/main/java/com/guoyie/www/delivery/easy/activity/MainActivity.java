@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity<MainPresenter,MainModel> implements MainContract.View {
     private String[]  mTitles = {"我的业务", "我的仓储", "用户中心"};
-    private int[]  mIconUnselectIds = {R.mipmap.home,  R.mipmap.comment, R.mipmap.user};
-    private int[]  mIconSelectIds   = {R.mipmap.home_passed,  R.mipmap.comment_press, R.mipmap.user_pressed};
+    private int[]  mIconUnselectIds = {R.mipmap.business_normal,  R.mipmap.warehousing_normal, R.mipmap.mine_normal};
+    private int[]  mIconSelectIds   = {R.mipmap.business_select,  R.mipmap.warehousing_select, R.mipmap.mine_select};
     private ArrayList<CustomTabEntity> mTabEntities     = new ArrayList<>();
     private ActivityMainBinding mMainBinding;
     private BusinessFragment bsinessFragment;//我的业务的fragment

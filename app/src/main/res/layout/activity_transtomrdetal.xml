@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/public_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:background="#F7F7F7"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <LinearLayout
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <!--1-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="状态"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="待审核"
+                            android:textColor="@color/app_color_blue"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+                    <!-- 2-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="创建时间"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="2018/12/31"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                    <!-- 3-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="货转单号"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="123314566"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+
+                    <!-- 4-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="转让方"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="上海国烨跨境电子商务有限公司"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                    <!-- 5-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="企业联系人"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="方庆阳"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                    <!-- 6-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="联系方式"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="1101191201212"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                    <!-- 7-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="受让方"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="上海中烨跨境电子商务有限公司"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+
+                    <!-- 5-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="企业联系人"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="方庆阳"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                    <!-- 6-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="联系方式"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="1101191201212"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+                <!--商品明细-->
+
+                <TextView
+                    android:text="货转明细单"
+                    style="@style/tv_title_itmes"/>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:background="#F7F7F7"
+                        android:layout_height="1dp"/>
+
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:textSize="14sp"
+                            android:textColor="#111111"
+                            android:id="@+id/tv_name1"
+                            android:layout_width="wrap_content"
+                            android:text="丙乙烯 | 1000.00吨"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:textSize="14sp"
+                            android:textColor="#111111"
+                            android:layout_alignParentRight="true"
+                            android:text="内贸内销"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
+                        <TextView
+                            android:layout_marginTop="12dp"
+                            android:textSize="14sp"
+                            android:textColor="#919191"
+                            android:text="备注 ：今天是2017年12月7日，距离项目开发时间还有一个月了"
+                            android:layout_below="@+id/tv_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <!--入库单详细信息-->
+                <TextView
+                    android:text="货转单详细信息"
+                    style="@style/tv_title_itmes"/>
+
+                <LinearLayout
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <!--1-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="免仓期"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="2017-12-31至2018-01-01"
+
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                    <!-- 3-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="单据"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="查看附件"
+                            style="@style/tv_content_inter"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/right"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+
+                    <!-- 4-->
+                    <LinearLayout
+                        style="@style/ll_interorder">
+                        <TextView
+                            android:text="备注"
+                            style="@style/tv_title_inter"/>
+                        <TextView
+                            android:text="今晚打老虎，老虎在哪里"
+                            style="@style/tv_content_inter"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                  <TextView
+                    android:background="@color/color_f7"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"/>
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="48dp">
+
+            <TextView
+                android:id="@+id/tv_refused"
+                android:gravity="center"
+                android:text="拒绝"
+                android:background="@drawable/interstuts_bg"
+                android:textSize="16sp"
+                android:textColor="@color/app_color_blue"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_agree"
+                android:gravity="center"
+                android:background="@color/app_color_blue"
+                android:text="通过"
+                android:layout_marginLeft="1dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</layout>

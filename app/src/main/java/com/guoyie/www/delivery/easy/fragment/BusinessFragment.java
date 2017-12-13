@@ -12,7 +12,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.InfoOrderActivity;
 import com.guoyie.www.delivery.easy.activity.InterOrderActivity;
-import com.guoyie.www.delivery.easy.activity.OuterOrderActivity;
 import com.guoyie.www.delivery.easy.activity.TransTormorderActivity;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
@@ -119,7 +118,7 @@ public class BusinessFragment extends BaseFragment implements View.OnClickListen
                 startAct(InterOrderActivity.class);
                 break;
             case R.id.ll_outorder:
-               startAct(OuterOrderActivity.class);
+               startAct(InterOrderActivity.class);
                 break;
             case R.id.ll_transformorder:
                 startAct(TransTormorderActivity.class);

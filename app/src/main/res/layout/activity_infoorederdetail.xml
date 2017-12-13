@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/public_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/color_f7"
+            android:layout_height="10dp"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+           android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:id="@+id/ll_tab1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_tag_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="产品名称"
+                    android:textColor="@color/tab_color_false"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_tag1_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="苯乙烯"
+                    android:textColor="@color/color_61"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="30dp"
+                android:background="@color/line_color" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_tag_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="数量"
+                    android:textColor="@color/tab_color_false"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_tag2_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="100吨"
+                    android:textColor="@color/color_61"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+                style="@style/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="状态"
+                    android:textColor="@color/tab_color_false"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="进行中"
+                    android:textColor="@color/color_61"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="30dp"
+                android:background="@color/line_color" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="合同类型"
+                    android:textColor="@color/tab_color_false"
+                    android:textSize="12sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="短租"
+                    android:textColor="@color/color_61"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+            <View
+                style="@style/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="企业联系人"
+                    android:textColor="@color/tab_color_false"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="柯军"
+                    android:textColor="@color/color_61"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="30dp"
+                android:background="@color/line_color" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系方式"
+                    android:textColor="@color/tab_color_false"
+                    android:textSize="12sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="1101191201212"
+                    android:textColor="@color/color_61"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <View
+                style="@style/line"/>
+
+
+         <!--   1-->
+
+            <RelativeLayout
+                style="@style/rl_inforder">
+
+                <TextView
+                    android:text="企业名称"
+                    style="@style/rl_tv_title"/>
+
+                <TextView
+                    android:text="上海国烨跨境电子商务有限公司"
+                    style="@style/rl_tv_content"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/line"/>
+
+
+            <!--   2-->
+
+            <RelativeLayout
+                style="@style/rl_inforder">
+
+                <TextView
+                    android:text="意向单号"
+                    style="@style/rl_tv_title"/>
+
+                <TextView
+                    android:text="071958789"
+                    style="@style/rl_tv_content"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/line"/>
+
+
+            <!--  3-->
+
+            <RelativeLayout
+                style="@style/rl_inforder">
+
+                <TextView
+                    android:text="创建账号"
+                    style="@style/rl_tv_title"/>
+
+                <TextView
+                    android:text="15021114785"
+                    style="@style/rl_tv_content"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/line"/>
+
+            <!--   4-->
+
+            <RelativeLayout
+                style="@style/rl_inforder">
+
+                <TextView
+                    android:text="创建时间"
+                    style="@style/rl_tv_title"/>
+
+                <TextView
+                    android:text="2017-12-30"
+                    style="@style/rl_tv_content"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/line"/>
+
+
+            <!--   5-->
+
+            <RelativeLayout
+                style="@style/rl_inforder">
+
+                <TextView
+                    android:text="需求地区"
+                    style="@style/rl_tv_title"/>
+
+                <TextView
+                    android:text="上海市虹口区吴淞路130"
+                    style="@style/rl_tv_content"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/line"/>
+
+
+
+
+            <!--6-->
+
+            <RelativeLayout
+                style="@style/rl_inforder">
+
+                <TextView
+                    android:text="备注信息"
+                    style="@style/rl_tv_title"/>
+
+                <TextView
+                    android:text="上海国烨跨境电子商务有限公司"
+                    style="@style/rl_tv_content"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    </ScrollView>
+</layout>

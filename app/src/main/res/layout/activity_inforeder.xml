@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tl="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/public_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.flyco.tablayout.CommonTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/app_color_blue"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_color="@color/white"
+            tl:tl_indicator_height="2dp"
+            tl:tl_textSelectColor="@color/white"
+            tl:tl_textUnselectColor="@color/selector_main_tab_color"
+            tl:tl_textsize="14sp" />
+
+
+        <com.guoyie.www.delivery.easy.widget.SwipeRefreshLayoutt
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView
+                    android:id="@+id/nrecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+        </com.guoyie.www.delivery.easy.widget.SwipeRefreshLayoutt>
+    </LinearLayout>
+</layout>

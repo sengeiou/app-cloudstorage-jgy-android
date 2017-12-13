@@ -42,7 +42,7 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
     private HistoricalDB   historicalDB;
     private RetrievalAdapter  adapt;
     private ActivitySearchBinding binding;
-    private int type;
+    private int type=2;
 
     @Override
     public int getLayoutId() {
@@ -73,7 +73,7 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                 et_content.setSelection(item.length());
                 Bundle bundle = new Bundle();
                 bundle.putString("ProductName", item);
-                startAct(SeachActivity.class, bundle);
+                startAct(SeachRusltActivity.class, bundle);
                 historicalDB.saveHistorical(item);
             }
         });
@@ -97,7 +97,7 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                     hideKeyboard(et_content);
                     Bundle bundle = new Bundle();
                     bundle.putString("ProductName", keywords);
-                    startAct(SeachActivity.class, bundle);
+                    startAct(SeachRusltActivity.class, bundle);
                 } else {
                     showToast("请输入搜索关键字~");
                 }
@@ -114,7 +114,7 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                         hideKeyboard(et_content);
                         Bundle bundle = new Bundle();
                         bundle.putString("ProductName", keywords);
-                        startAct(SeachActivity.class, bundle);
+                        startAct(SeachRusltActivity.class, bundle);
                         historicalDB.saveHistorical(keywords);
                     } else {
                         showToast("请输入搜索关键字~");
