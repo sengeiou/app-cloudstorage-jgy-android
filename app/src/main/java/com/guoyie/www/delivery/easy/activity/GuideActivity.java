@@ -36,8 +36,7 @@ public class GuideActivity extends BaseActivity {
 
         //设置引导页标记
         SpUtils sp = SpUtils.getInstance(this);
-        // TODO: 2017/12/6 记得改回false
-        sp.putBoolean(IS_GUIDE,false);
+        sp.putBoolean(IS_GUIDE,true);
 
         final ArrayList<View> views = new ArrayList<>();
 

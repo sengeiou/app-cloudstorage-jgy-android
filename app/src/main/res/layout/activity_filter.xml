@@ -3,89 +3,101 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.guoyie.www.delivery.easy.activity.FilterActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#fff">
         <include
             android:id="@+id/title_bar"
             layout="@layout/public_title_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <LinearLayout
-            android:layout_marginTop="14dp"
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:id="@+id/rl_goods_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="商品品名"
-                    android:textSize="13sp"
-                    android:textColor="#666666"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/less"
-                    android:layout_alignParentRight="true"/>
-            </RelativeLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_goods_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            android:layout_weight="10">
 
-            <RelativeLayout
-                android:id="@+id/rl_store_class"
+            <LinearLayout
+                android:layout_marginTop="14dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/rl_goods_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="储罐性质"
-                    android:textSize="13sp"
-                    android:textColor="#666666"/>
-                <ImageView
-                    android:layout_width="wrap_content"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="商品品名"
+                        android:textSize="13sp"
+                        android:textColor="#666666"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/less"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_goods_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/less"
-                    android:layout_alignParentRight="true"/>
-            </RelativeLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_store_class"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    android:nestedScrollingEnabled="false"/>
 
-            <RelativeLayout
-                android:id="@+id/rl_store_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rl_store_class"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="储罐号"
-                    android:textSize="13sp"
-                    android:textColor="#666666"/>
-                <ImageView
-                    android:layout_width="wrap_content"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="储罐性质"
+                        android:textSize="13sp"
+                        android:textColor="#666666"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/less"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_store_class"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/less"
-                    android:layout_alignParentRight="true"/>
-            </RelativeLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_store_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                    android:nestedScrollingEnabled="false"/>
+
+                <RelativeLayout
+                    android:id="@+id/rl_store_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="储罐号"
+                        android:textSize="13sp"
+                        android:textColor="#666666"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/less"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_store_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -100,6 +112,7 @@
                 android:textColor="#497AF8"
                 android:background="@drawable/button_nocornor_bg"/>
             <Button
+                android:id="@+id/bt_sure"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"

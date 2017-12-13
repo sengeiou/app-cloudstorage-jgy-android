@@ -1,22 +1,35 @@
 package com.guoyie.www.delivery.easy.fragment;
 
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.FilterActivity;
 import com.guoyie.www.delivery.easy.activity.StoreDetailActivity;
+import com.guoyie.www.delivery.easy.activity.StoreManagerActivity;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcStorehouseBinding;
+import com.guoyie.www.delivery.easy.entity.BannerModel;
 import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bingoogolapple.bgabanner.BGABanner;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -27,7 +40,7 @@ import java.util.List;
  * data：2017/12/4
  * 我的业务的fragment
  */
-public class StoreHouseFragment extends BaseFragment implements StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, View.OnClickListener {
+public class StoreHouseFragment extends BaseFragment implements View.OnClickListener {
     private ImageView           mLeft_back;
     private TextView            mTv_title;
     private FcStorehouseBinding mBinding;
@@ -35,6 +48,7 @@ public class StoreHouseFragment extends BaseFragment implements StoreManagerAdap
     private NRecyclerView mRecyclerView;
     private List<StoreManagerBean> mStoreManagerList;
     private StoreManagerAdapter mAdapter;
+    private RelativeLayout mRlStoreManager;
 
     @Override
     protected int getLayoutResource() {
@@ -54,55 +68,52 @@ public class StoreHouseFragment extends BaseFragment implements StoreManagerAdap
         mLeft_back.setVisibility(View.GONE);
         mTv_title = (TextView) getView(R.id.tv_title);
         mTV_right = (TextView) getView(R.id.tv_right);
-        mTv_title.setText("储罐管理");
-        mTV_right.setText("筛选");
+        mTV_right.setVisibility(View.GONE);
+        mTv_title.setText("我的仓储");
 
-        mRecyclerView = mBinding.nrecycler;
-        initRecycleView();
+        mRlStoreManager = mBinding.rlStoreManager;
 
-        mTV_right.setOnClickListener(this);
+        mRlStoreManager.setOnClickListener(this);
 
+        initBanner();
     }
 
-    private void initRecycleView() {
+    private void initBanner() {
+        mBinding.banner.setDelegate(new BGABanner.Delegate<CardView, String>() {
+            @Override
+            public void onBannerItemClick(BGABanner banner, CardView itemView, String model, int position) {
+                Toast.makeText(banner.getContext(), "点击了第" + (position + 1) + "页", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mBinding.banner.setAdapter(new BGABanner.Adapter<CardView, String>() {
+            @Override
+            public void fillBannerItem(BGABanner banner, CardView itemView, String model, int position) {
+                SimpleDraweeView simpleDraweeView = itemView.findViewById(R.id.sdv_item_fresco_content);
+                simpleDraweeView.setImageURI(Uri.parse(model));
+            }
+        });
 
-        mStoreManagerList = new ArrayList<>();
+        GApp.getInstance().getEngine().fetchItemsWithItemCount(3).enqueue(new Callback<BannerModel>() {
+            @Override
+            public void onResponse(Call<BannerModel> call, Response<BannerModel> response) {
+                BannerModel bannerModel = response.body();
+                //                mContentBanner.setData(R.layout.item_fresco, bannerModel.imgs, bannerModel.tips);
+                mBinding.banner.setData(R.layout.item_fresco, bannerModel.imgs, null);
+            }
 
-        for (int i = 0;i < 10;i++){
-            mStoreManagerList.add(new StoreManagerBean("4155411441","原子弹","1000吨","偷来的"));
-        }
+            @Override
+            public void onFailure(Call<BannerModel> call, Throwable t) {
+                Toast.makeText(GApp.getInstance(), "网络数据加载失败", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        mAdapter = new StoreManagerAdapter(getContext());
-
-        mAdapter.setData(mStoreManagerList);
-        mAdapter.setOnItemClickListener(this);
-        mBinding.swipeRefresh.setOnRefreshListener(this);
-        mBinding.nrecycler.setOnLoadMoreListener(this);
-        mBinding.nrecycler.setLoadMoreEnable(true);
-        mBinding.nrecycler.setAdapter(mAdapter);
-        mBinding.nrecycler.setErrorMessage("暂无消息提醒");
-    }
-
-    @Override
-    public void onItemClick(View itemView, int position) {
-        startAct(StoreDetailActivity.class);
-    }
-
-    @Override
-    public void onRefresh() {
-        mBinding.swipeRefresh.setRefreshing(false);
-    }
-
-    @Override
-    public void onLoadMore() {
-        mBinding.nrecycler.stopLoadMore();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.tv_right:
-                startAct(FilterActivity.class);
+            case R.id.rl_store_manager:
+                startAct(StoreManagerActivity.class);
                 break;
         }
     }

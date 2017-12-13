@@ -35,21 +35,26 @@
         <!-- 主界面 -->
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.GuideActivity" />
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.InterOrderActivity"/>
-        <activity android:name=".activity.InfoOrderActivity"/>
-        <activity android:name=".activity.TransTormorderActivity"/>
-        <activity android:name=".activity.OuterOrderActivity"/>
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.InterDetailActivity"/>
-        <activity android:name=".activity.EditOrderActivity"
-                  android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.EditOrderDetailActivity"
-                  android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.UserBasicInfoActivity"/>
-        <!--获取进行搜索的-->
-        <activity android:name=".activity.SeachActivity"/>
-        <activity android:name=".activity.SeachRusltActivity"/>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.InterOrderActivity" />
+        <activity android:name=".activity.InfoOrderActivity" />
+        <activity android:name=".activity.TransTormorderActivity" />
+        <activity android:name=".activity.OuterOrderActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.InterDetailActivity" />
+        <activity
+            android:name=".activity.EditOrderActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.EditOrderDetailActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.UserBasicInfoActivity" />
+        <activity android:name=".activity.FilterActivity" />
+        <activity android:name=".activity.StoreDetailActivity" />
+        <!-- 获取进行搜索的 -->
+        <activity android:name=".activity.SeachActivity" />
+        <activity android:name=".activity.SeachRusltActivity" />
+        <activity android:name=".activity.StoreManagerActivity"></activity>
     </application>
 
 </manifest>
