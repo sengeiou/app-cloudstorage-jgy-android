@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.FilterActivity;
+import com.guoyie.www.delivery.easy.activity.StoreCapacityManagerActivity;
 import com.guoyie.www.delivery.easy.activity.StoreDetailActivity;
 import com.guoyie.www.delivery.easy.activity.StoreManagerActivity;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
@@ -49,6 +50,7 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
     private List<StoreManagerBean> mStoreManagerList;
     private StoreManagerAdapter mAdapter;
     private RelativeLayout mRlStoreManager;
+    private RelativeLayout mRlStoreCapacityManager;
 
     @Override
     protected int getLayoutResource() {
@@ -72,8 +74,10 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
         mTv_title.setText("我的仓储");
 
         mRlStoreManager = mBinding.rlStoreManager;
+        mRlStoreCapacityManager = mBinding.rlStoreCapacityManager;
 
         mRlStoreManager.setOnClickListener(this);
+        mRlStoreCapacityManager.setOnClickListener(this);
 
         initBanner();
     }
@@ -114,6 +118,10 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
         switch (v.getId()){
             case R.id.rl_store_manager:
                 startAct(StoreManagerActivity.class);
+                break;
+            case R.id.rl_store_capacity_manager:
+                startAct(StoreCapacityManagerActivity.class);
+                Toast.makeText(getContext(),"别点我，好疼",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

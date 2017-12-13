@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#fff">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp">
+        <TextView
+            android:id="@+id/tv_store_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="储罐号 :"
+            android:textColor="#919191"
+            android:textSize="11sp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12344556"
+            android:textColor="#111111"
+            android:textSize="11sp"
+            android:layout_toRightOf="@id/tv_store_number"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/tv_empty_capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="空容数量 ："
+            android:textColor="#111111"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12344556"
+            android:textColor="#111111"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/tv_empty_capacity"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品品名 ："
+            android:textColor="#919191"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="和氏璧"
+            android:textColor="#919191"
+            android:textSize="13sp"
+            android:layout_toRightOf="@id/tv_store_name"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="14dp"
+        android:background="#F1F4FE"
+        android:layout_alignParentBottom="true"/>
+</LinearLayout>
