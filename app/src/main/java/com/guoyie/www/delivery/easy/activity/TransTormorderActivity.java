@@ -62,7 +62,7 @@ public class TransTormorderActivity extends BaseActivity implements View.OnClick
         mLeft_back = (ImageView) getView(R.id.left_back);
         mLeft_back.setOnClickListener(this);
         mTv_title = (TextView) getView(R.id.tv_title);
-        mTv_title.setText("意向单管理");
+        mTv_title.setText("货权转移单管理");
         mIv_search = (ImageView) getView(R.id.iv_search);
         mIv_search.setVisibility(View.VISIBLE);
         mIv_search.setOnClickListener(this);
