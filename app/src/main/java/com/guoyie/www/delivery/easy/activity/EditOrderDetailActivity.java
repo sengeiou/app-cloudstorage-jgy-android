@@ -30,6 +30,7 @@ public class EditOrderDetailActivity extends BaseActivity implements View.OnClic
     List<String>nums=new ArrayList<>();
     List<String>goods=new ArrayList<>();
 
+
     private int type;
 
     @Override
