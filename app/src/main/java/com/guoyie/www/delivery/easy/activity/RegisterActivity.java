@@ -1,25 +1,20 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -160,22 +155,25 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 String qq = mEtQq.getText().toString().trim();
                 String email = mEtEmail.getText().toString().trim();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                View view = LayoutInflater.from(this).inflate(R.layout.commit_dialog, null);
-                builder.setView(view);
-                final AlertDialog alertDialog = builder.create();
-                //设置弹框布局参数
-                Window window = alertDialog.getWindow();
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                View view = LayoutInflater.from(this).inflate(R.layout.commit_dialog, null);
+//                builder.setView(view);
+//                final AlertDialog alertDialog = builder.create();
+//                //alertDialog.setView(view);
+//                //设置弹框背景
+//                Window window = alertDialog.getWindow();
+//                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
+                        GApp.screenHeight *8/15 , R.layout.commit_dialog, R.style.Theme_dialog);
 
-                TextView tvCompany = view.findViewById(R.id.tv_companyname);
-                TextView tvContacts = view.findViewById(R.id.tv_contacts_value);
-                TextView tvContactWay = view.findViewById(R.id.tv_contactway_value);
-                TextView tvTelephone = view.findViewById(R.id.tv_telephone_value);
-                TextView tvQQ = view.findViewById(R.id.tv_qq_value);
-                TextView tvEmail = view.findViewById(R.id.tv_email_value);
-                TextView tvCancel = view.findViewById(R.id.tv_cancel);
-                TextView tvSure = view.findViewById(R.id.tv_sure);
+                TextView tvCompany = dialog.findViewById(R.id.tv_companyname);
+                TextView tvContacts = dialog.findViewById(R.id.tv_contacts_value);
+                TextView tvContactWay = dialog.findViewById(R.id.tv_contactway_value);
+                TextView tvTelephone = dialog.findViewById(R.id.tv_telephone_value);
+                TextView tvQQ = dialog.findViewById(R.id.tv_qq_value);
+                TextView tvEmail = dialog.findViewById(R.id.tv_email_value);
+                TextView tvCancel = dialog.findViewById(R.id.tv_cancel);
+                TextView tvSure = dialog.findViewById(R.id.tv_sure);
 
                 tvCompany.setText(companyName);
                 tvContacts.setText(contacts);
@@ -187,7 +185,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 tvCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        alertDialog.dismiss();
+                        dialog.dismiss();
                     }
                 });
 
@@ -197,7 +195,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         // TODO: 2017/12/8 提交入驻信息
                     }
                 });
-                alertDialog.show();
+                dialog.show();
+                //设置dialog宽高及位置及居中显示
+//                WindowManager m = getWindowManager();
+//                Display d = m.getDefaultDisplay();
+//                WindowManager.LayoutParams p = dialog.getWindow().getAttributes();
+//                p.width = (int)(d.getWidth()*0.6);
+//                p.height = (int)(d.getHeight()*0.8);
+//                p.gravity = Gravity.CENTER_VERTICAL;
+//                dialog.getWindow().setAttributes(p);
                 break;
             case R.id.tv_toolbarcancel:
                 finish();

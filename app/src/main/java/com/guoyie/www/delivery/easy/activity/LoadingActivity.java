@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.guoyie.www.delivery.easy.R;
@@ -46,16 +47,13 @@ public class LoadingActivity extends BaseActivity {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         //判断是否进入过引导页，查看过引导页则直接进入主页
         SpUtils sp = SpUtils.getInstance(this);
-        Boolean isGuide = sp.getBoolean("isGuide", true);
-         isGuide=true;
+        Boolean isGuide = sp.getBoolean("isGuide", false);
         if (isGuide){
             skip(MainActivity.class);
         }else {
             skip(GuideActivity.class);
         }
 
-
-        skip(MainActivity.class);
     }
 
     private void skip(final Class<? extends BaseActivity> activityClass) {

@@ -94,8 +94,6 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
                 break;
         }
 
-
-
         //切换的的动画
         obtainFragmentTransaction(position ,fragmentTransaction);
         fragmentTransaction.commit();
