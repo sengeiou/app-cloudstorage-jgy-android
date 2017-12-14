@@ -34,11 +34,6 @@ public class GuideActivity extends BaseActivity {
     public void initView() {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
 
-        //设置引导页标记
-        SpUtils sp = SpUtils.getInstance(this);
-        sp.putBoolean(IS_GUIDE,false);
-
-
         final ArrayList<View> views = new ArrayList<>();
 
         views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide_1));
@@ -72,6 +67,11 @@ public class GuideActivity extends BaseActivity {
 
     //跳转到登录页面
     public void goToLogin(View view) {
+
+        //设置引导页标记
+        SpUtils sp = SpUtils.getInstance(this);
+        sp.putBoolean(IS_GUIDE,false);
+
         startAct(LoginActivity.class);
         finish();
     }
