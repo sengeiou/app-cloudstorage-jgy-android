@@ -44,7 +44,6 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         //处理左侧的箭头
         mLeft_back = (ImageView) getView(R.id.left_back);
-        mLeft_back.setVisibility(View.GONE);
         mTv_title = (TextView) getView(R.id.tv_title);
         mTV_right = (TextView) getView(R.id.tv_right);
         mTv_title.setText("储罐管理");
@@ -54,6 +53,7 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
         initRecycleView();
 
         mTV_right.setOnClickListener(this);
+        mLeft_back.setOnClickListener(this);
     }
 
     private void initRecycleView() {
@@ -79,6 +79,9 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
         switch (v.getId()){
             case R.id.tv_right:
                 startAct(FilterActivity.class);
+                break;
+            case R.id.left_back:
+                finish();
                 break;
         }
     }

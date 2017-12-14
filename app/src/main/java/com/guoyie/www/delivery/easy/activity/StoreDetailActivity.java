@@ -11,7 +11,7 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreDetailBinding;
 
-public class StoreDetailActivity extends BaseActivity {
+public class StoreDetailActivity extends BaseActivity implements View.OnClickListener {
 
 
     private ActivityStoreDetailBinding mBinding;
@@ -37,5 +37,17 @@ public class StoreDetailActivity extends BaseActivity {
         mTv_title.setText("储罐详情");
         mIv_back.setImageResource(R.mipmap.left_arrow);
 
+        mIv_back.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.left_back:
+                finish();
+                break;
+
+        }
     }
 }

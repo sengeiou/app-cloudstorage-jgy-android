@@ -11,7 +11,7 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityUserBasicInfoBinding;
 
-public class UserBasicInfoActivity extends BaseActivity {
+public class UserBasicInfoActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView           mLeft_back;
     private TextView            mTv_title;
@@ -32,8 +32,18 @@ public class UserBasicInfoActivity extends BaseActivity {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         //处理左侧的箭头
         mLeft_back = (ImageView) getView(R.id.left_back);
-        mLeft_back.setVisibility(View.GONE);
         mTv_title = (TextView) getView(R.id.tv_title);
         mTv_title.setText("基本信息");
+
+        mLeft_back.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.left_back:
+                finish();
+                break;
+        }
     }
 }
