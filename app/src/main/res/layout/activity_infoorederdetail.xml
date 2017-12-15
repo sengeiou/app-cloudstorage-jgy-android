@@ -57,7 +57,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_tag1_title"
+                    android:id="@+id/tv_deseription_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -88,7 +88,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_tag2_title"
+                    android:id="@+id/tv_deseription_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -122,6 +122,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -151,7 +152,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-
+                    android:id="@+id/tv_contract_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -185,6 +186,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_contact_person"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -214,7 +216,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-
+                    android:id="@+id/tv_contact_way"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -239,6 +241,7 @@
                     style="@style/rl_tv_title"/>
 
                 <TextView
+                    android:id="@+id/tv_companyname"
                     android:text="上海国烨跨境电子商务有限公司"
                     style="@style/rl_tv_content"/>
 
@@ -258,6 +261,7 @@
                     style="@style/rl_tv_title"/>
 
                 <TextView
+                    android:id="@+id/tv_whit_list"
                     android:text="071958789"
                     style="@style/rl_tv_content"/>
 
@@ -277,6 +281,7 @@
                     style="@style/rl_tv_title"/>
 
                 <TextView
+                    android:id="@+id/tv_set_acconut"
                     android:text="15021114785"
                     style="@style/rl_tv_content"/>
 
@@ -295,6 +300,7 @@
                     style="@style/rl_tv_title"/>
 
                 <TextView
+                    android:id="@+id/tv_set_time"
                     android:text="2017-12-30"
                     style="@style/rl_tv_content"/>
 
@@ -314,6 +320,7 @@
                     style="@style/rl_tv_title"/>
 
                 <TextView
+                    android:id="@+id/tv_apply_area"
                     android:text="上海市虹口区吴淞路130"
                     style="@style/rl_tv_content"/>
 
@@ -335,6 +342,7 @@
                     style="@style/rl_tv_title"/>
 
                 <TextView
+                    android:id="@+id/et_remark"
                     android:text="上海国烨跨境电子商务有限公司"
                     style="@style/rl_tv_content"/>
 

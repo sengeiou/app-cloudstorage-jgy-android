@@ -45,6 +45,7 @@
                             android:text="状态"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_state"
                             android:text="待审核"
                             android:textColor="@color/app_color_blue"
                             style="@style/tv_content_inter"/>
@@ -56,6 +57,7 @@
                             android:text="创建时间"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_set_time"
                             android:text="2018/12/31"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -67,6 +69,7 @@
                             android:text="货转单号"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_troms_list"
                             android:text="123314566"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -79,6 +82,7 @@
                             android:text="转让方"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_seller"
                             android:text="上海国烨跨境电子商务有限公司"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -90,6 +94,7 @@
                             android:text="企业联系人"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_company_cotract"
                             android:text="方庆阳"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -101,6 +106,7 @@
                             android:text="联系方式"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_contact_way"
                             android:text="1101191201212"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -112,6 +118,7 @@
                             android:text="受让方"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_buyer"
                             android:text="上海中烨跨境电子商务有限公司"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -124,6 +131,7 @@
                             android:text="企业联系人"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_buyer_person"
                             android:text="方庆阳"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -135,6 +143,7 @@
                             android:text="联系方式"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_buyer_phone"
                             android:text="1101191201212"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -249,6 +258,7 @@
                             android:text="备注"
                             style="@style/tv_title_inter"/>
                         <TextView
+                            android:id="@+id/tv_rmark"
                             android:text="今晚打老虎，老虎在哪里"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>

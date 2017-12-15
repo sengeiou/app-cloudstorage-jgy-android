@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/tv_deseription_name"
                 android:text="苯乙烯"
                 android:textSize="14sp"
                 android:textColor="#111111"
@@ -113,6 +114,7 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:id="@+id/et_contact_name"
                     android:background="@null"
                     android:text="柯军"
                     android:textColor="#111111"
@@ -130,6 +132,7 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:id="@+id/et_contact_phone"
                     android:background="@null"
                     android:textColor="#111111"
                     android:text="13248171603"
@@ -149,6 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:id="@+id/et_remark"
                     android:textColor="#111111"
                     android:textSize="14sp"
                     android:background="@null"

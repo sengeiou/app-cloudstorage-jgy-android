@@ -45,6 +45,7 @@
                        android:text="状态"
                        style="@style/tv_title_inter"/>
                   <TextView
+                      android:id="@+id/tv_state"
                       android:text="待审核"
                       android:textColor="@color/app_color_blue"
                       style="@style/tv_content_inter"/>
@@ -53,6 +54,7 @@
                <LinearLayout
                    style="@style/ll_interorder">
                    <TextView
+                       android:id="@+id/tv_input_time"
                        android:text="预计入库时间"
                        style="@style/tv_title_inter"/>
                    <TextView
@@ -67,6 +69,7 @@
                        android:text="入库单号"
                        style="@style/tv_title_inter"/>
                    <TextView
+                       android:id="@+id/tv_input_num"
                        android:text="123314566"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
@@ -79,6 +82,7 @@
                        android:text="订单来源"
                        style="@style/tv_title_inter"/>
                    <TextView
+                       android:id="@+id/tv_list_from"
                        android:text="交易平台"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
@@ -90,6 +94,7 @@
                        android:text="企业联系人"
                        style="@style/tv_title_inter"/>
                    <TextView
+                       android:id="@+id/tv_company_cotract"
                        android:text="方庆阳"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
@@ -101,6 +106,7 @@
                        android:text="联系电话"
                        style="@style/tv_title_inter"/>
                    <TextView
+                       android:id="@+id/tv_contact_phone"
                        android:text="1101191201212"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
@@ -112,6 +118,7 @@
                        android:text="企业名称"
                        style="@style/tv_title_inter"/>
                    <TextView
+                       android:id="@+id/tv_companyname"
                        android:text="上海国烨跨境电子商务有限公司"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
@@ -157,6 +164,7 @@
 
 
                    <TextView
+                       android:id="@+id/tv_rmark"
                        android:layout_marginTop="12dp"
                        android:textSize="14sp"
                        android:textColor="#919191"
