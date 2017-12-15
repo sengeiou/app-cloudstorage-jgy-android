@@ -297,9 +297,12 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
                 // TODO: 2017/12/13 确定选择，筛选结果
                 break;
             case R.id.bt_reset:
-                currentGoodNameTextView.setSelected(false);
-                currentStoreNumberView.setSelected(false);
-                currentStoreClassTextView.setSelected(false);
+                if (currentGoodNameTextView!=null)
+                    currentGoodNameTextView.setSelected(false);
+                if (currentStoreNumberView!=null)
+                    currentStoreNumberView.setSelected(false);
+                if (currentStoreClassTextView!=null)
+                    currentStoreClassTextView.setSelected(false);
         }
     }
 }
