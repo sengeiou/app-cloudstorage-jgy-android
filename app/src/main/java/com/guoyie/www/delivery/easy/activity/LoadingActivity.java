@@ -47,7 +47,8 @@ public class LoadingActivity extends BaseActivity {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         //判断是否进入过引导页，查看过引导页则直接进入主页
         SpUtils sp = SpUtils.getInstance(this);
-        Boolean isGuide = sp.getBoolean("isGuide", false);
+        //Boolean isGuide = sp.getBoolean("isGuide", false);
+        Boolean isGuide = true;
         if (isGuide){
             skip(MainActivity.class);
         }else {
