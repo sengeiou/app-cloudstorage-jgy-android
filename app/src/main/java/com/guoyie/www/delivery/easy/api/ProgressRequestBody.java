@@ -85,4 +85,16 @@ public class ProgressRequestBody extends RequestBody {
             }
         };
     }
+
+
+    /**
+     * 处理图片和String参数一起上传 字符串转换问题
+     *
+     * @param value
+     * @return
+     */
+    public static ProgressRequestBody toRequestBody(String value) {
+        ProgressRequestBody body = (ProgressRequestBody) ProgressRequestBody.create(MediaType.parse("text/plain"), value);
+        return body;
+    }
 }

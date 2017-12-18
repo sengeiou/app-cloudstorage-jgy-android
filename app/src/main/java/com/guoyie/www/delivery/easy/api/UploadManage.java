@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 /**
  * author：柯军
@@ -25,8 +24,8 @@ public class UploadManage {
      * @param maps   File集合
      * @return
      */
-    public static Map<String, RequestBody> HandleImg(String params, HashMap<String, File> maps) {
-        Map<String, RequestBody> bodyMap = new HashMap<>();
+    public static Map<String, ProgressRequestBody> HandleImg(String params, HashMap<String, File> maps) {
+        Map<String, ProgressRequestBody> bodyMap = new HashMap<>();
         Set set = maps.keySet();
         for (Iterator iterator = set.iterator(); iterator.hasNext(); ) {
             String key = (String) iterator.next();
@@ -35,9 +34,9 @@ public class UploadManage {
                 continue;
             }
             // key 上传指定key,filename 文件名, 指定图片类型,file 上传文件
-            bodyMap.put(key + "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
+            bodyMap.put(key + "\"; filename=\"" + file.getName(), (ProgressRequestBody) ProgressRequestBody.create(MediaType.parse("image/png"), file));
         }
-        bodyMap.put("params", ApiConstants.toRequestBody(params));
+        bodyMap.put("params", ProgressRequestBody.toRequestBody(params));
         return bodyMap;
     }
 }

@@ -67,10 +67,12 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.5.0'
 
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    //图片选择器
+    compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.7'
 
     //处理图片的上传
-    implementation 'pub.devrel:easypermissions:1.0.1'
+    /*implementation 'pub.devrel:easypermissions:1.0.1'
     implementation 'cn.bingoogolapple:bga-photopicker:1.2.7@aar'
-    implementation 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+    implementation 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'*/
 
 }

@@ -3,28 +3,32 @@ package com.guoyie.www.delivery.easy.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Environment;
-import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.adapter.FullyGridLayoutManager;
+import com.guoyie.www.delivery.easy.adapter.GridImageAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityEditorderBinding;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.PopOneHelper;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.permissions.RxPermissions;
+import com.luck.picture.lib.tools.PictureFileUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
-import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerPreviewActivity;
-import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.EasyPermissions;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * author：柯军
@@ -33,20 +37,17 @@ import pub.devrel.easypermissions.EasyPermissions;
  * email：774169396@qq.com
  * data：2017/12/8
  */
-public class EditOrderActivity extends BaseActivity implements View.OnClickListener, PopOneHelper.OnClickOkListener,EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate {
+public class EditOrderActivity extends BaseActivity implements View.OnClickListener, PopOneHelper.OnClickOkListener {
     private ImageView mLeft_back;
     private TextView  mTv_title;
     ActivityEditorderBinding binding;
     private PopOneHelper oneHelper;
     List<String> goods = new ArrayList<>();
 
-    private static final int PRC_PHOTO_PICKER = 1;
-
-    private static final int RC_CHOOSE_PHOTO = 1;
-    private static final int RC_PHOTO_PREVIEW = 2;
-
-    private static final String EXTRA_MOMENT = "EXTRA_MOMENT";
-
+    private List<LocalMedia> selectList = new ArrayList<>();
+    private RecyclerView     recyclerView;
+    private GridImageAdapter adapter;
+    private int maxSelectNum = 9;
     @Override
     public int getLayoutId() {
         return R.layout.activity_editorder;
@@ -62,12 +63,10 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         mLeft_back = (ImageView) getView(R.id.left_back);
+        recyclerView =  findViewById(R.id.recycler);
 
         mLeft_back.setOnClickListener(this);
         binding.llIntertype.setOnClickListener(this);
-        //图片选择的逻辑
-        binding.snplMomentAddPhotos.setOnClickListener(this);
-
         binding.tvCommit.setOnClickListener(this);
 
         mTv_title = (TextView) getView(R.id.tv_title);
@@ -80,9 +79,115 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
         goods.add("好货");
         goods.add("垃圾");
 
-        binding.snplMomentAddPhotos.setDelegate(this);
+        initRecycleView();
+
+    }
+
+    private void initRecycleView() {
+
+        FullyGridLayoutManager manager = new FullyGridLayoutManager(this, 4, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
+        adapter = new GridImageAdapter(this, onAddPicClickListener);
+        adapter.setList(selectList);
+        adapter.setSelectMax(10000);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                if (selectList.size() > 0) {
+                    LocalMedia media = selectList.get(position);
+                    String pictureType = media.getPictureType();
+                    int mediaType = PictureMimeType.pictureToVideo(pictureType);
+                    switch (mediaType) {
+                        case 1:
+                            // 预览图片 可自定长按保存路径
+                            //PictureSelector.create(MainActivity.this).externalPicturePreview(position, "/custom_file", selectList);
+                            PictureSelector.create(EditOrderActivity.this).externalPicturePreview(position, selectList);
+                            break;
+                    }
+                }
+            }
+        });
+
+        // 清空图片缓存，包括裁剪、压缩后的图片 注意:必须要在上传完成后调用 必须要获取权限
+        RxPermissions permissions = new RxPermissions(this);
+        permissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(Boolean aBoolean) {
+                if (aBoolean) {
+                    PictureFileUtils.deleteCacheDirFile(EditOrderActivity.this);
+                } else {
+                    Toast.makeText(EditOrderActivity.this,
+                            getString(R.string.picture_jurisdiction), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onComplete() {
+            }
+        });
+
+    }
 
 
+    private GridImageAdapter.onAddPicClickListener onAddPicClickListener = new GridImageAdapter.onAddPicClickListener() {
+        @Override
+        public void onAddPicClick() {
+                // 进入相册 以下是例子：不需要的api可以不写
+                PictureSelector.create(EditOrderActivity.this)
+                        .openGallery(PictureMimeType.ofImage())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                        .theme(R.style.picture_default_style)// 主题样式设置 具体参考 values/styles   用法：R.style.picture.white.style
+                        .maxSelectNum(100000)// 最大图片选择数量
+                        .minSelectNum(1)// 最小选择数量
+                        .imageSpanCount(4)// 每行显示个数
+                        .selectionMode(PictureConfig.MULTIPLE )// 多选 or 单选
+                        .previewImage(true)// 是否可预览图片
+                        .isCamera(true)// 是否显示拍照按钮
+                        .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
+                        .compress(true)// 是否压缩
+                        .synOrAsy(true)//同步true或异步false 压缩 默认同步
+                        .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
+                        .selectionMedia(selectList)// 是否传入已选图片
+                        .minimumCompressSize(100)// 小于100kb的图片不压缩
+                        .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
+
+        }
+
+    };
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case PictureConfig.CHOOSE_REQUEST:
+                    // 图片选择结果回调
+                    selectList = PictureSelector.obtainMultipleResult(data);
+                    // 例如 LocalMedia 里面返回三种path
+                    // 1.media.getPath(); 为原图path
+                    // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true
+                    // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
+                    // 如果裁剪并压缩了，已取压缩路径为准，因为是先裁剪后压缩的
+                    for (LocalMedia media : selectList) {
+                        Log.i("图片-----》", media.getPath());
+                        Log.i("图片--》", media.getCompressPath());
+
+                    }
+                    adapter.setList(selectList);
+                    adapter.notifyDataSetChanged();
+                    break;
+            }
+        }
     }
 
     @Override
@@ -100,12 +205,6 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
                 break;
 
             case R.id.tv_commit:
-                // TODO: 2017/12/12 这里处理图片提交的问题
-                ArrayList<String> data = binding.snplMomentAddPhotos.getData();
-                for (int i = 0; i < data.size(); i++) {
-                    DebugUtil.debug(data.get(i));
-                }
-
 
                 break;
 
@@ -118,83 +217,5 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
         binding.tvIntertype.setText(birthday);
     }
 
-
-
-    @AfterPermissionGranted(PRC_PHOTO_PICKER)
-    private void choicePhotoWrapper() {
-        String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
-        if (EasyPermissions.hasPermissions(this, perms)) {
-            // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话就没有拍照功能
-            File takePhotoDir = new File(Environment.getExternalStorageDirectory(), "BGAPhotoPickerTakePhoto");
-
-            Intent photoPickerIntent = new BGAPhotoPickerActivity.IntentBuilder(this)
-                    .cameraFileDir(takePhotoDir) // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话则不开启图库里的拍照功能
-                    .maxChooseCount(binding.snplMomentAddPhotos.getMaxItemCount() - binding.snplMomentAddPhotos.getItemCount()) // 图片选择张数的最大值
-                    .selectedPhotos(null) // 当前已选中的图片路径集合
-                    .pauseOnScroll(false) // 滚动列表时是否暂停加载图片
-                    .build();
-            startActivityForResult(photoPickerIntent, RC_CHOOSE_PHOTO);
-        } else {
-            EasyPermissions.requestPermissions(this, "图片选择需要以下权限:\n\n1.访问设备上的照片\n\n2.拍照", PRC_PHOTO_PICKER, perms);
-        }
-    }
-
-
-
-    @Override
-    public void onClickAddNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, ArrayList<String> models) {
-        choicePhotoWrapper();
-    }
-
-    @Override
-    public void onClickDeleteNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
-        binding.snplMomentAddPhotos.removeItem(position);
-    }
-
-    @Override
-    public void onClickNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
-        Intent photoPickerPreviewIntent = new BGAPhotoPickerPreviewActivity.IntentBuilder(this)
-                .previewPhotos(models) // 当前预览的图片路径集合
-                .selectedPhotos(models) // 当前已选中的图片路径集合
-                .maxChooseCount(binding.snplMomentAddPhotos.getMaxItemCount()) // 图片选择张数的最大值
-                .currentPosition(position) // 当前预览图片的索引
-                .isFromTakePhoto(false) // 是否是拍完照后跳转过来
-                .build();
-        startActivityForResult(photoPickerPreviewIntent, RC_PHOTO_PREVIEW);
-    }
-
-    @Override
-    public void onNinePhotoItemExchanged(BGASortableNinePhotoLayout sortableNinePhotoLayout, int fromPosition, int toPosition, ArrayList<String> models) {
-        Toast.makeText(this, "排序发生变化", Toast.LENGTH_SHORT).show();
-    }
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
-    @Override
-    public void onPermissionsGranted(int requestCode, List<String> perms) {
-    }
-
-    @Override
-    public void onPermissionsDenied(int requestCode, List<String> perms) {
-        if (requestCode == PRC_PHOTO_PICKER) {
-            Toast.makeText(this, "您拒绝了「图片选择」所需要的相关权限!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == RC_CHOOSE_PHOTO) {
-            binding.snplMomentAddPhotos.addMoreData(BGAPhotoPickerActivity.getSelectedPhotos(data));
-        } else if (requestCode == RC_PHOTO_PREVIEW) {
-            binding.snplMomentAddPhotos.setData(BGAPhotoPickerPreviewActivity.getSelectedPhotos(data));
-        }
-    }
-
 }
+
