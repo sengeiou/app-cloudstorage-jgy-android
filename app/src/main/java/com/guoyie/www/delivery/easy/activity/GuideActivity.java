@@ -70,7 +70,7 @@ public class GuideActivity extends BaseActivity {
 
         //设置引导页标记
         SpUtils sp = SpUtils.getInstance(this);
-        sp.putBoolean(IS_GUIDE,false);
+        sp.putBoolean(IS_GUIDE,true);
 
         startAct(LoginActivity.class);
         finish();

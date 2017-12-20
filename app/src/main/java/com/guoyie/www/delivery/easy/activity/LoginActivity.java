@@ -13,13 +13,18 @@ import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.LoginContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoginBinding;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.LoginModel;
 import com.guoyie.www.delivery.easy.presenter.LoginPresenter;
+import com.guoyie.www.delivery.easy.toast.T;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
+import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
+import com.guoyie.www.delivery.easy.util.TUtil;
 import com.guoyie.www.delivery.easy.widget.CustomEditText;
 import com.guoyie.www.delivery.easy.widget.LoginOrRegisterProblemPopupWindow;
 
@@ -167,11 +172,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt_login:
-                // TODO: 2017/12/6 判断是否有账号，有就登录，否则申请入驻
-                String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.LOG_IN+"&username=sss&password=111111");
+                String userName = mEtUsername.getText().toString().trim();
+                String passWord = mEtPassword.getText().toString().trim();
+                String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.LOG_IN+"&username="+userName+"&password="+passWord);
                 mPresenter.requestLoginData(parms);
-                startAct(MainActivity.class);
-                finish();
                 break;
             case R.id.bt_register:
                 startAct(RegisterActivity.class);
@@ -207,6 +211,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
 
     @Override
     public void returnInfoData(UserInfoData data) {
+        if (data.isOk()){
+            //缓存用户信息
+            GApp.getInstance().saveObject(data, Constant.USER_INFO_CACHE);
+            finish();
+        }else {
+            showToast("用户名或密码错误，请重新输入");
+        }
 
     }
 

@@ -1,5 +1,9 @@
 package com.guoyie.www.delivery.easy.presenter;
 
+import android.content.Context;
+import android.content.Intent;
+
+import com.guoyie.www.delivery.easy.activity.MainActivity;
 import com.guoyie.www.delivery.easy.contract.LoginContract;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
@@ -19,7 +23,8 @@ public class LoginPresenter extends LoginContract.Presenter {
         Subscription subscribe = mModel.getLoginData(parms).subscribe(new RxSubscriber<UserInfoData>(mContext, true) {
             @Override
             protected void _onNext(UserInfoData userInfoData) {
-                mView.returnInfoData(userInfoData);
+                    mView.returnInfoData(userInfoData);
+
             }
 
             @Override

@@ -38,11 +38,12 @@
                         android:text="商品品名"
                         android:textSize="13sp"
                         android:textColor="#666666"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/less"
-                        android:layout_alignParentRight="true"/>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_goods_name"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@mipmap/less"-->
+                        <!--android:layout_alignParentRight="true"/>-->
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_goods_name"
@@ -61,11 +62,12 @@
                         android:text="储罐性质"
                         android:textSize="13sp"
                         android:textColor="#666666"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/less"
-                        android:layout_alignParentRight="true"/>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_store_class"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@mipmap/less"-->
+                        <!--android:layout_alignParentRight="true"/>-->
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_store_class"
@@ -84,11 +86,12 @@
                         android:text="储罐号"
                         android:textSize="13sp"
                         android:textColor="#666666"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/less"
-                        android:layout_alignParentRight="true"/>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_store_number"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@mipmap/less"-->
+                        <!--android:layout_alignParentRight="true"/>-->
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_store_number"

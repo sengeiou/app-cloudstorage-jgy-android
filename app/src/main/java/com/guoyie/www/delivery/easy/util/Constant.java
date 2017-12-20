@@ -14,18 +14,8 @@ public class Constant {
 
 
     public static boolean DEBUG = true;
-    //从首页传到详情页的数据
-    public static String HOMEITEM_ID="HOMEITEM_ID";
-    //从消息列表页传到合同详情页的合同id
-    public static String CONTRACT_ID="CONTRACT_ID";
-    //从消息列表页传到合同详情页的合同subject
-    public static String CONTRACT_SUBJECT="CONTRACT_SUBJECT";
-    //合同是否审核
-    public static String CONTRACT_ISAUDIT="CONTRACT_ISAUDIT";
-    //从审批列表拿到数据中的参数
-    public static String APPROVED_DATA="APPROVED_DATA";
-    //从未审批列表处理的数据
-    public static String UN_APPROVED_DATA="UN_APPROVED_DATA";
+   //用户信息缓存
+    public static String USER_INFO_CACHE="USER_INFO_CACHE";
 
 
 

@@ -34,10 +34,4 @@ public interface MainContract {
         public abstract void requstTime(String params );
     }
 
-
-
-
-
-
-
 }

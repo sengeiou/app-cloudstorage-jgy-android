@@ -10,6 +10,7 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoadingBinding;
 import com.guoyie.www.delivery.easy.download.SpUtils;
+import com.guoyie.www.delivery.easy.retrofit.RxBus;
 
 import java.util.concurrent.TimeUnit;
 
@@ -49,11 +50,10 @@ public class LoadingActivity extends BaseActivity {
         Boolean isGuide = sp.getBoolean("isGuide", false);
       //  Boolean isGuide = true;
         if (isGuide){
-            skip(MainActivity.class);
+            skip(LoginActivity.class);
         }else {
             skip(GuideActivity.class);
         }
-
     }
 
     private void skip(final Class<? extends BaseActivity> activityClass) {
@@ -68,6 +68,5 @@ public class LoadingActivity extends BaseActivity {
                     }
                 });
     }
-
 
 }

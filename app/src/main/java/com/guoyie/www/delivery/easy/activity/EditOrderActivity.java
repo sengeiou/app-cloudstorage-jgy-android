@@ -112,7 +112,11 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
 
         // 清空图片缓存，包括裁剪、压缩后的图片 注意:必须要在上传完成后调用 必须要获取权限
         RxPermissions permissions = new RxPermissions(this);
-        permissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
+        permissions.
+
+
+
+                request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
             @Override
             public void onSubscribe(Disposable d) {
             }

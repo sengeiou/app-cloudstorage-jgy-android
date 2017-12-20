@@ -19,16 +19,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.RegisterContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityRegisterBinding;
 import com.guoyie.www.delivery.easy.dialog.CustomDialog;
+import com.guoyie.www.delivery.easy.entity.RegisterData;
+import com.guoyie.www.delivery.easy.model.RegisterModel;
+import com.guoyie.www.delivery.easy.presenter.RegisterPresenter;
 import com.guoyie.www.delivery.easy.toast.TPrompt;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+/**
+ * 服务商入驻
+ */
+
+public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterModel> implements View.OnClickListener,RegisterContract.View {
 
 
     private ActivityRegisterBinding mBinding;
@@ -49,7 +59,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void initPresenter() {
-
+        mPresenter.attachVM(this,mModel);
     }
 
     @Override
@@ -184,7 +194,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 tvSure.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // TODO: 2017/12/8 提交入驻信息
+                        // 提交入驻信息
+                        String telephone = mEtTelephone.getText().toString().trim();
+                        String companyName = mEtCompanyname.getText().toString().trim();
+                        String contacts = mEtContacts.getText().toString().trim();
+                        String mobilePhone = mEtContactway.getText().toString().trim();
+                        String qq = mEtQq.getText().toString().trim();
+                        String email = mEtEmail.getText().toString().trim();
+
+                        String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.LOG_IN+"&vendor_name="+companyName+"&vendor_mobile="+telephone+
+                                "&vendor_contract_name="+contacts+"&vendor_contract="+mobilePhone+"&vendor_qq="+qq+"&vendor_email"+email);
+                        mPresenter.requestRegister(parms);
                     }
                 });
                 dialog.show();
@@ -209,4 +229,18 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public void returnRegisterData(RegisterData data) {
+        if (data.isOk()){
+            showToast("服务商已入驻，等待后台处理");
+            finish();
+        }else {
+            showToast("服务器遭到了小怪兽的攻击，攻城狮正在努力抢救中...");
+        }
+    }
+
+    @Override
+    public void error(String msg) {
+        showToast(msg);
+    }
 }

@@ -36,6 +36,7 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
     public TextView currentStoreClassTextView;    //当前被选中的储罐类型
     public TextView currentStoreNumberView;    //当前被选中的储罐编号
 
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_filter;
@@ -80,7 +81,7 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
 
     private void initData() {
         final ArrayList<String> strings1 = new ArrayList<>();//数据源
-        for (int i = 0;i<3;i++){
+        for (int i = 0;i<6;i++){
             strings1.add("AAA"+i);
         }
         final List<String> moreList1 = new ArrayList<>();

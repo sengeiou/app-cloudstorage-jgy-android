@@ -15,6 +15,8 @@ public class HttpUtils {
     public static final String GET_TIME          ="model=index&action=gettime";
     //登录的接口
     public static final String LOG_IN            ="model=login&action=login";
+    //服务商入驻的接口
+    public static final String RE_GISTER   ="model=vendor&action=index";
 
     //入库单列表的数据
     public static final String INTER_ORDER_LIST            ="model=warehouse&action=list";
