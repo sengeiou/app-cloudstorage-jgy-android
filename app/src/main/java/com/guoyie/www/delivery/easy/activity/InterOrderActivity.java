@@ -11,8 +11,12 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.InterListAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.InterOrderContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityInterorderBinding;
+import com.guoyie.www.delivery.easy.entity.OrderInfoData;
 import com.guoyie.www.delivery.easy.entity.TabEntity;
+import com.guoyie.www.delivery.easy.model.InputOrderModel;
+import com.guoyie.www.delivery.easy.presenter.InputOrderPresenter;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -25,7 +29,7 @@ import java.util.List;
  * email：774169396@qq.com
  * data：2017/12/6
  */
-public class InterOrderActivity extends BaseActivity implements View.OnClickListener, InterListAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener {
+public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOrderModel> implements View.OnClickListener, InterListAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, InterOrderContract.View {
     private ImageView                 mLeft_back;
     private TextView                  mTv_title;
     private ActivityInterorderBinding binding;
@@ -52,6 +56,7 @@ public class InterOrderActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void initPresenter() {
+        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -66,6 +71,9 @@ public class InterOrderActivity extends BaseActivity implements View.OnClickList
         mIv_search = (ImageView) getView(R.id.iv_search);
         mIv_search.setVisibility(View.VISIBLE);
         mIv_search.setOnClickListener(this);
+
+        //取得用户的信息
+
         initTab();
         initRecycleView();
 
@@ -191,5 +199,15 @@ public class InterOrderActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onLoadMore() {
      binding.nrecycler.stopLoadMore();
+    }
+
+    @Override
+    public void returnInputOrderData(OrderInfoData data) {
+
+    }
+
+    @Override
+    public void err_or(String data) {
+
     }
 }

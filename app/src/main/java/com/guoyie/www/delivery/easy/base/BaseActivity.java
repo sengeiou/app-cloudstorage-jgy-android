@@ -242,7 +242,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         super.onDestroy();
         if (mPresenter != null)
             mPresenter.onDestroy();
-        mRxManager.clear();
+              mRxManager.clear();
     }
 
     /**

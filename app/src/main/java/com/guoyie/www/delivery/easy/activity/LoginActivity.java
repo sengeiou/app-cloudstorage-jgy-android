@@ -20,7 +20,6 @@ import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.LoginModel;
 import com.guoyie.www.delivery.easy.presenter.LoginPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.widget.CustomEditText;
 import com.guoyie.www.delivery.easy.widget.LoginOrRegisterProblemPopupWindow;
 
@@ -208,10 +207,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
 
     @Override
     public void returnInfoData(UserInfoData data) {
-        if (data.isOk()){
-            String avatar = data.getData().getAvatar();
-            DebugUtil.debug(avatar+"hehe");
-        }
+
     }
 
     @Override

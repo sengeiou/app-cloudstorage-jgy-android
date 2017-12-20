@@ -16,6 +16,9 @@ public class HttpUtils {
     //登录的接口
     public static final String LOG_IN            ="model=login&action=login";
 
-
+    //入库单列表的数据
+    public static final String INTER_ORDER_LIST            ="model=warehouse&action=list";
+    //入库单的详情的接口
+    public static final String INTER_ORDER_DETAIL            ="model=warehouse&action=info";
 
 }
