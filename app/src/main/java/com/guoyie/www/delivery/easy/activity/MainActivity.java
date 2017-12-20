@@ -150,6 +150,11 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
     }
 
 
+
+
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
