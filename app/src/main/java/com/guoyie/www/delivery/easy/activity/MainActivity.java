@@ -1,9 +1,12 @@
 package com.guoyie.www.delivery.easy.activity;
+
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentTransaction;
+
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.MainContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityMainBinding;
@@ -14,6 +17,7 @@ import com.guoyie.www.delivery.easy.fragment.StoreHouseFragment;
 import com.guoyie.www.delivery.easy.fragment.UserCenterFragment;
 import com.guoyie.www.delivery.easy.model.MainModel;
 import com.guoyie.www.delivery.easy.presenter.MainPresenter;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
 
 import java.util.ArrayList;
 
@@ -52,6 +56,11 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
         mMainBinding = DataBindingUtil.setContentView(this, getLayoutId());
         initTab();
         switchTo(0);
+    }
+
+    private void getTime() {
+        String getTime = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.GET_TIME);
+        mPresenter.requstTime(getTime);
     }
 
 
@@ -138,5 +147,12 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
     @Override
     public void error(String msg) {
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTime();
     }
 }

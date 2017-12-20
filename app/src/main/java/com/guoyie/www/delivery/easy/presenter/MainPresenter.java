@@ -15,7 +15,7 @@ import rx.Subscription;
  */
 public class MainPresenter extends MainContract.Presenster{
     @Override
-    public void requstApprovedData(String params) {
+    public void requstTime(String params) {
 
         Subscription subscribe = mModel.getTime(params).subscribe(new RxSubscriber<GetTime>(mContext, false) {
             @Override
@@ -33,6 +33,5 @@ public class MainPresenter extends MainContract.Presenster{
 
 
         mRxManage.add(subscribe);
-
     }
 }

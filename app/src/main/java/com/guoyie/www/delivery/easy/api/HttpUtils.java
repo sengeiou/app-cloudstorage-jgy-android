@@ -6,10 +6,13 @@ public class HttpUtils {
 
     public final static int HTTP_RESULT_OK    = 200;
     public final static int HTTP_RESULT_ERROR = 0;
-    public static final String USER_INFO         = "USER_INFO";
+    public static final String USER_INFO      = "USER_INFO";
+
     public static String key                  = "chinayieapp";//app的秘钥
     //首页的列表的地址
     public static String HOMEPAGE_DATA        ="model=home&action=homepage";
+    //获取服务器时间的接口
+    public static final String GET_TIME          ="model=index&action=gettime";
 
 
 

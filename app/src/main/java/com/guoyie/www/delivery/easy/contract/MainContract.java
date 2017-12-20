@@ -31,7 +31,7 @@ public interface MainContract {
 
 
     abstract class Presenster extends BasePresenter<View,Model> {
-        public abstract void requstApprovedData(String params );
+        public abstract void requstTime(String params );
     }
 
 
