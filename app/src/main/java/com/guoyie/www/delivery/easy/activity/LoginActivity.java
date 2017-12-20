@@ -12,15 +12,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.LoginContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoginBinding;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
+import com.guoyie.www.delivery.easy.model.LoginModel;
+import com.guoyie.www.delivery.easy.presenter.LoginPresenter;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.widget.CustomEditText;
 import com.guoyie.www.delivery.easy.widget.LoginOrRegisterProblemPopupWindow;
 
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> implements View.OnClickListener, LoginContract.View {
 
 
     private static final int REQUSET_CODE = 1;//打电话权限请求码
@@ -41,6 +48,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void initPresenter() {
+        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -161,6 +169,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.bt_login:
                 // TODO: 2017/12/6 判断是否有账号，有就登录，否则申请入驻
+                String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.LOG_IN+"&username=sss&password=111111");
+                mPresenter.requestLoginData(parms);
                 startAct(MainActivity.class);
                 finish();
                 break;
@@ -196,4 +206,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     };
 
+    @Override
+    public void returnInfoData(UserInfoData data) {
+        if (data.isOk()){
+            String avatar = data.getData().getAvatar();
+            DebugUtil.debug(avatar+"hehe");
+        }
+    }
+
+    @Override
+    public void eeror(String msg) {
+
+    }
 }

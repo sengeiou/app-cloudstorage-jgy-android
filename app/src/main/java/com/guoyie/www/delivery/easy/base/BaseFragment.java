@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +13,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.guoyie.www.delivery.easy.api.HttpUtils;
-import com.guoyie.www.delivery.easy.application.GApp;
-import com.guoyie.www.delivery.easy.entity.UserInfo;
 import com.guoyie.www.delivery.easy.retrofit.RxManager;
 import com.guoyie.www.delivery.easy.util.TUtil;
 
@@ -216,13 +212,13 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
      *
      * @return
      */
-    protected boolean isCheckedLogin() {
+  /*  protected boolean isCheckedLogin() {
         UserInfo user = (UserInfo) GApp.getInstance().readObject(HttpUtils.USER_INFO);
         if (user == null || TextUtils.isEmpty(user.getUsername() + "")) {
             return false;
         }
         return true;
-    }
+    }*/
 
      //更新fragment数据
     public void updata(Object obj,int type) {

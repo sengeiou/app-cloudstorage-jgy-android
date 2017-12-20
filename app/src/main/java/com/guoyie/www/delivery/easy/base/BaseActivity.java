@@ -8,14 +8,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.guoyie.www.delivery.easy.api.HttpUtils;
-import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.entity.UserInfo;
 import com.guoyie.www.delivery.easy.retrofit.RxManager;
 import com.guoyie.www.delivery.easy.util.AppUtils;
@@ -251,13 +250,13 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      *
      * @return
      */
-    protected boolean isCheckedLogin() {
-        UserInfo user = (UserInfo) GApp.getInstance().readObject(HttpUtils.USER_INFO);
+   /* protected boolean isCheckedLogin() {
+    *//*    UserInfo user = (UserInfo) GApp.getInstance().readObject(HttpUtils.USER_INFO);
         if (user == null || TextUtils.isEmpty(user.getUsername() + "")) {
             return false;
         }
-        return true;
-    }
+        return true;*//*
+    }*/
 
 
     /**

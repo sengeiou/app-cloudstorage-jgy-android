@@ -13,6 +13,8 @@ public class HttpUtils {
     public static String HOMEPAGE_DATA        ="model=home&action=homepage";
     //获取服务器时间的接口
     public static final String GET_TIME          ="model=index&action=gettime";
+    //登录的接口
+    public static final String LOG_IN            ="model=login&action=login";
 
 
 
