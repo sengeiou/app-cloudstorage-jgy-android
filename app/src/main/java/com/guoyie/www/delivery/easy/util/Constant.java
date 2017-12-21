@@ -16,6 +16,8 @@ public class Constant {
     public static boolean DEBUG = true;
    //用户信息缓存
     public static String USER_INFO_CACHE="USER_INFO_CACHE";
+    //从入库的单点击传入详情的key
+    public static String INPUT_ORDER_ID="INPUT_ORDER_ID";
 
 
 

@@ -1,6 +1,7 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -174,7 +175,8 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
          }
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + String.valueOf(type)
                 + "&pageCurrent=" + page + "&pageSize=" + 10 );
-        mPresenter.requstInputOrderData(params);
+           mPresenter.requstInputOrderData(params);
+
 
     }
 
@@ -193,8 +195,12 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
 
     @Override
     public void onItemClick(View itemView, int position) {
-
-        startAct(InterDetailActivity.class);
+        OrderInfo.ListBean item = adapter.getItem(position);
+      if (item!=null){
+          Bundle bundle=new Bundle();
+          bundle.putString(Constant.INPUT_ORDER_ID,item.getId());
+          startAct(InterDetailActivity.class,bundle);
+      }
 
     }
 
@@ -296,8 +302,6 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                     page5++;
                     break;
             }
-
-            DebugUtil.debug("page1="+page1+"page2="+page2+"page3="+page3+"page4="+page4+"page5="+page5);
 
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
