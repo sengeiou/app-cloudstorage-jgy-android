@@ -17,6 +17,7 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.LoginContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoginBinding;
+import com.guoyie.www.delivery.easy.download.SpUtils;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.LoginModel;
 import com.guoyie.www.delivery.easy.presenter.LoginPresenter;
@@ -30,6 +31,7 @@ import com.guoyie.www.delivery.easy.widget.LoginOrRegisterProblemPopupWindow;
 
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
+import static com.guoyie.www.delivery.easy.api.HttpUtils.USER_INFO;
 
 public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> implements View.OnClickListener, LoginContract.View {
 
@@ -214,11 +216,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
         if (data.isOk()){
             //缓存用户信息
             GApp.getInstance().saveObject(data, Constant.USER_INFO_CACHE);
+            //缓存用户名密码
+            SpUtils spUtils = SpUtils.getInstance(this);
+            String userName = mEtUsername.getText().toString().trim();
+            String passWord = mEtPassword.getText().toString().trim();
+            spUtils.putString(USER_INFO,userName+"&"+passWord);
             finish();
+            startAct(MainActivity.class);
         }else {
             showToast("用户名或密码错误，请重新输入");
         }
-
     }
 
     @Override

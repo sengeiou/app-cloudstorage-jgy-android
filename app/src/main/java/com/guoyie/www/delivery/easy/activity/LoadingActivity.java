@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.WindowManager;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoadingBinding;
 import com.guoyie.www.delivery.easy.download.SpUtils;
@@ -17,6 +18,9 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+
+import static com.guoyie.www.delivery.easy.api.HttpUtils.OUT_LOGIN;
+import static com.guoyie.www.delivery.easy.api.HttpUtils.USER_INFO;
 
 
 public class LoadingActivity extends BaseActivity {
@@ -50,6 +54,12 @@ public class LoadingActivity extends BaseActivity {
         Boolean isGuide = sp.getBoolean("isGuide", false);
       //  Boolean isGuide = true;
         if (isGuide){
+            //判断是否已经登录过，如果登录过直接进入MainActivity,否则LoginActivity
+            String userInfo = sp.getString(USER_INFO, OUT_LOGIN);  //退出登录时将值设为OUT_LOGIN即可实现退出登录
+            if (!userInfo.equals(OUT_LOGIN)){
+                skip(MainActivity.class);
+                return;
+            }
             skip(LoginActivity.class);
         }else {
             skip(GuideActivity.class);

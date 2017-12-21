@@ -11,19 +11,9 @@
             android:id="@+id/iv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/logo"
+            android:src="@mipmap/logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="110dp"/>
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="交割易仓储系统"
-            android:textColor="#fff"
-            android:textSize="23dp"
-            android:layout_below="@id/iv_logo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"/>
         <com.guoyie.www.delivery.easy.widget.CustomEditText
             android:id="@+id/et_username"
             android:layout_marginLeft="25dp"
@@ -35,7 +25,8 @@
             android:textColor="#fff"
             android:textColorHint="#fff"
             android:textSize="15sp"
-            android:layout_below="@id/tv_name"
+            android:singleLine="true"
+            android:layout_below="@id/iv_logo"
             android:layout_marginTop="72dp"
             android:background="@drawable/edittext_bg"/>
         <com.guoyie.www.delivery.easy.widget.CustomEditText
@@ -47,6 +38,7 @@
             android:layout_below="@id/et_username"
             android:hint="登录密码"
             android:textSize="15sp"
+            android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#fff"
             android:paddingBottom="40dp"
