@@ -24,5 +24,7 @@ public class HttpUtils {
     public static final String INTER_ORDER_LIST            ="model=warehouse&action=list";
     //入库单的详情的接口
     public static final String INTER_ORDER_DETAIL            ="model=warehouse&action=info";
+    //获取储罐管理列表数据的接口
+    public static final String STORE_MANAGER_LIST    ="model=stock&action=jarlist";
 
 }

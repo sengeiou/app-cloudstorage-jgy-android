@@ -8,9 +8,13 @@ import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.StoreManagerContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreManagerBinding;
 import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
+import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ import java.util.List;
 /**
  * 储罐管理的Activity
  */
-public class StoreManagerActivity extends BaseActivity implements View.OnClickListener, StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener {
+public class StoreManagerActivity extends BaseActivity<StoreManagerContract.Presenter,StoreManagerContract.Model> implements View.OnClickListener, StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener ,StoreManagerContract.View{
     private ImageView mLeft_back;
     private TextView mTv_title;
     private TextView mTV_right;
@@ -36,7 +40,7 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void initPresenter() {
-
+        mPresenter.attachVM(this,mModel);
     }
 
     @Override
@@ -57,11 +61,14 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initRecycleView() {
-        mStoreManagerList = new ArrayList<>();
+//        mStoreManagerList = new ArrayList<>();
+//
+//        for (int i = 0;i < 10;i++){
+//            mStoreManagerList.add(new StoreManagerBean("4155411441","原子弹","1000吨","偷来的"));
+//        }
 
-        for (int i = 0;i < 10;i++){
-            mStoreManagerList.add(new StoreManagerBean("4155411441","原子弹","1000吨","偷来的"));
-        }
+//        BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST+"&vendor_no="+userName+"&password="+passWord);
+//        mPresenter.requestStoreManagerList();
 
         mAdapter = new StoreManagerAdapter(this);
 
@@ -99,5 +106,15 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onLoadMore() {
         mBinding.nrecycler.stopLoadMore();
+    }
+
+    @Override
+    public void returnStoreManagerList(StoreManagerListBean storeManagerListBean) {
+
+    }
+
+    @Override
+    public void error(String msg) {
+
     }
 }
