@@ -19,18 +19,22 @@ public interface InterOrderContract {
     interface  Model extends BaseModel {
         Observable<OrderInfoData> getInputData(String params);
 
+
+
     }
 
 
     interface  View extends BaseView{
         void returnInputOrderData(OrderInfoData data);
+
+
         void err_or(String data);
     }
 
 
     abstract  class Presenter extends BasePresenter<View,Model>{
-
         abstract public  void requstInputOrderData(String params);
+
 
     }
 }

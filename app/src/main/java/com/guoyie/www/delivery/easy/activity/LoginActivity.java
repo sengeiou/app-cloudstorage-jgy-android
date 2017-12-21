@@ -21,11 +21,8 @@ import com.guoyie.www.delivery.easy.download.SpUtils;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.LoginModel;
 import com.guoyie.www.delivery.easy.presenter.LoginPresenter;
-import com.guoyie.www.delivery.easy.toast.T;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
-import com.guoyie.www.delivery.easy.util.TUtil;
 import com.guoyie.www.delivery.easy.widget.CustomEditText;
 import com.guoyie.www.delivery.easy.widget.LoginOrRegisterProblemPopupWindow;
 
@@ -223,6 +220,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
             spUtils.putString(USER_INFO,userName+"&"+passWord);
             finish();
             startAct(MainActivity.class);
+
         }else {
             showToast("用户名或密码错误，请重新输入");
         }

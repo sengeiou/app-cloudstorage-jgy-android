@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.entity.OrderInfo;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NAdapter;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
 
@@ -14,7 +15,7 @@ import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
  * email：774169396@qq.com
  * data：2017/12/7
  */
-public class InterListAdapter extends NAdapter<String> {
+public class InterListAdapter extends NAdapter<OrderInfo.ListBean> {
     public InterListAdapter(Context context) {
         super(context);
     }
@@ -25,7 +26,7 @@ public class InterListAdapter extends NAdapter<String> {
     }
 
     @Override
-    protected void onBindData(final NRecyclerViewHolder holder, String s, final int position) {
+    protected void onBindData(final NRecyclerViewHolder holder, OrderInfo.ListBean data, final int position) {
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -29,4 +29,5 @@ public class InputOrderPresenter extends InterOrderContract.Presenter {
         });
         mRxManage.add(subscribe);
     }
+
 }

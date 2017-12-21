@@ -23,4 +23,5 @@ public class InputOrderModel implements InterOrderContract.Model {
                 .observeOn(AndroidSchedulers.mainThread());
 
     }
+
 }

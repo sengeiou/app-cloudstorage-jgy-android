@@ -159,7 +159,7 @@ public class UserInfo implements Serializable {
         this.info = info;
     }
 
-    public static class InfoBean {
+    public static class InfoBean implements Serializable {
         /**
          * id : 15
          * vendor_type : 1
