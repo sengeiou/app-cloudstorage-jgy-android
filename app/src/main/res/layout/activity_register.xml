@@ -71,6 +71,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
                 android:hint="企业名称"
+                android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <TextView
                 android:layout_width="0dp"
@@ -97,6 +98,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
                 android:hint="联系人"
+                android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <TextView
                 android:layout_width="0dp"
@@ -123,6 +125,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
                 android:hint="联系方式"
+                android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <TextView
                 android:layout_width="0dp"
@@ -149,6 +152,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
                 android:hint="座机"
+                android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <!--用于占位，使上下边框保持长度一致-->
             <TextView
@@ -175,6 +179,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
                 android:hint="QQ"
+                android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <!--用于占位，使上下边框保持长度一致-->
             <TextView
@@ -201,6 +206,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
                 android:hint="邮箱"
+                android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <!--用于占位，使上下边框保持长度一致-->
             <TextView

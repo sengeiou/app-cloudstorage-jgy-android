@@ -78,7 +78,7 @@ public class StoreManagerActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv_right:
-                startAct(FilterActivity.class);
+                startAct(StoreFilterActivity.class);
                 break;
             case R.id.left_back:
                 finish();

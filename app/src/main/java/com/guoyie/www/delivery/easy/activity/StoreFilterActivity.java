@@ -18,7 +18,7 @@ import com.guoyie.www.delivery.easy.widget.recyclerview.SpaceItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterActivity extends BaseActivity implements View.OnClickListener {
+public class StoreFilterActivity extends BaseActivity implements View.OnClickListener {
 
     private ActivityFilterBinding mBinding;
     private TextView mTV_title;

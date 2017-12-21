@@ -7,11 +7,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.UserBasicInfoActivity;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcUsercenterBinding;
+import com.guoyie.www.delivery.easy.entity.UserInfo;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
+import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.MyImageView;
+
+import java.io.Serializable;
 
 /**
  * author：柯军
@@ -50,7 +57,22 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         mIcon = mBinding.uerIcon;
         mLlAbout = mBinding.llAbout;
 
-
+        UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if(userInfoData!=null){
+            UserInfo data = userInfoData.getData();
+            Glide.with(this).load(data.getAvatar()).into(mBinding.uerIcon);
+            mBinding.tvUser.setText(data.getLoginname());
+            mBinding.tvServiceName.setText(data.getInfo().getVendor_name());
+            int type = data.getType();
+            String serviceDescription = "管理员";
+            if (type==0){
+                serviceDescription = "普通";
+            }
+            if (type==1){
+                serviceDescription = "管理员";
+            }
+            mBinding.tvServiceDescription.setText(serviceDescription);
+        }
         mIcon.setOnClickListener(this);
         mLlAbout.setOnClickListener(this);
     }

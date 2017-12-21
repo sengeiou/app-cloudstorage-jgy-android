@@ -49,7 +49,7 @@
             android:name=".activity.EditOrderDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.UserBasicInfoActivity" />
-        <activity android:name=".activity.FilterActivity" />
+        <activity android:name=".activity.StoreFilterActivity" />
         <activity android:name=".activity.StoreDetailActivity" />
         <!-- 获取进行搜索的 -->
         <activity android:name=".activity.SeachActivity" />

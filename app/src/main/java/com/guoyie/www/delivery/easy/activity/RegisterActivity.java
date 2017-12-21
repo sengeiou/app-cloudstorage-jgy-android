@@ -106,9 +106,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
             String qq = mEtQq.getText().toString().trim();
             String email = mEtEmail.getText().toString().trim();
 
-
-
-
             if (companyName.length()>100){
                 new TPrompt(RegisterActivity.this).showToast("企业名称在100字符以内");
             }
@@ -202,8 +199,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
                         String qq = mEtQq.getText().toString().trim();
                         String email = mEtEmail.getText().toString().trim();
 
-                        String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.LOG_IN+"&vendor_name="+companyName+"&vendor_mobile="+telephone+
-                                "&vendor_contract_name="+contacts+"&vendor_contract="+mobilePhone+"&vendor_qq="+qq+"&vendor_email"+email);
+                        String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.RE_GISTER+"&vendor_name="+companyName+
+                                "&vendor_mobile="+telephone+"&vendor_contract_name="+contacts+"&vendor_contract="+mobilePhone+
+                                "&vendor_qq="+qq+"&vendor_email="+email+"&status=" +1+"&vendor_source="+1+"&vendor_type="+1);
                         mPresenter.requestRegister(parms);
                     }
                 });
@@ -231,11 +229,12 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
 
     @Override
     public void returnRegisterData(RegisterData data) {
+
         if (data.isOk()){
             showToast("服务商已入驻，等待后台处理");
             finish();
         }else {
-            showToast("服务器遭到了小怪兽的攻击，攻城狮正在努力抢救中...");
+            showToast(data.isOk()+"服务器遭到了小怪兽的攻击，攻城狮正在努力抢救中...");
         }
     }
 

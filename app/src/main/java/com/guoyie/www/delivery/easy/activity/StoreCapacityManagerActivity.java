@@ -2,19 +2,15 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.StoreCapacityManagerAdapter;
-import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreCapacityManagerBinding;
 import com.guoyie.www.delivery.easy.entity.StoreCapacityBean;
-import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -22,7 +18,7 @@ import java.util.ArrayList;
 /**
  * 库容管理的Activity
  */
-public class StoreCapacityManagerActivity extends BaseActivity implements StoreCapacityManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener {
+public class StoreCapacityManagerActivity extends BaseActivity implements StoreCapacityManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, View.OnClickListener {
     private ImageView mLeft_back;
     private TextView mTv_title;
     private TextView mTV_right;
@@ -53,8 +49,9 @@ public class StoreCapacityManagerActivity extends BaseActivity implements StoreC
         mTV_right.setText("筛选");
 
         mRecyclerView = mBinding.nrecycler;
-
         initRecyclerView();
+
+        mLeft_back.setOnClickListener(this);
     }
 
     private void initRecyclerView() {
@@ -89,5 +86,17 @@ public class StoreCapacityManagerActivity extends BaseActivity implements StoreC
     @Override
     public void onLoadMore() {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.left_back:
+                finish();
+                break;
+            case R.id.tv_right:
+                startAct(StoreFilterActivity.class);
+                break;
+        }
     }
 }

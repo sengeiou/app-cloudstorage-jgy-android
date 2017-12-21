@@ -3,13 +3,21 @@ package com.guoyie.www.delivery.easy.activity;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityUserBasicInfoBinding;
+import com.guoyie.www.delivery.easy.entity.UserInfo;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
+import com.guoyie.www.delivery.easy.util.Constant;
+
+import java.io.Serializable;
 
 public class UserBasicInfoActivity extends BaseActivity implements View.OnClickListener {
 
@@ -35,6 +43,16 @@ public class UserBasicInfoActivity extends BaseActivity implements View.OnClickL
         mTv_title = (TextView) getView(R.id.tv_title);
         mTv_title.setText("基本信息");
 
+        UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if (userInfoData!=null){
+            UserInfo userInfo = userInfoData.getData();
+            Glide.with(this).load(userInfo.getAvatar()).into(mBinding.uerIcon);
+            mBinding.tvAccountName.setText(userInfo.getLoginname());
+            mBinding.tvUserName.setText(userInfo.getRealname());
+            mBinding.tvMobilephone.setText(userInfo.getMobile());
+            //mBinding.tvTelephone.setText(userInfo.);
+            mBinding.tvServiceName.setText(userInfo.getInfo().getVendor_name());
+        }
         mLeft_back.setOnClickListener(this);
     }
 

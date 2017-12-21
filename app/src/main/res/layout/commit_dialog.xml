@@ -6,9 +6,10 @@
     android:orientation="vertical"
     android:background="@drawable/dialog_shadow">
     <TextView
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:text="确认您的提交信息"
         android:textSize="16sp"
         android:textColor="#3C3F41"
@@ -17,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:text="企业名称"
         android:textSize="14sp"
         android:layout_marginLeft="20dp"
@@ -26,7 +27,7 @@
         android:id="@+id/tv_companyname"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:layout_marginLeft="20dp"
         android:textColor="#3C3F41"
         android:textSize="14sp"
@@ -44,15 +45,15 @@
         android:layout_height="0dp"
         android:layout_weight="1.5">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/ll_1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_centerVertical="true">
+            android:gravity="center_vertical"
+            android:orientation="vertical">
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/tv_contacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,21 +64,21 @@
                 android:id="@+id/tv_contacts_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_contacts"
                 android:text="联系人"
                 android:textSize="14sp"
                 android:textColor="#3C3F41"
                 />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/ll_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="160dp"
             android:layout_marginRight="20dp"
-            android:layout_centerVertical="true">
+            android:gravity="center_vertical"
+            android:orientation="vertical">
             <TextView
-                android:layout_marginTop="20dp"
+
                 android:id="@+id/tv_contactsway"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,12 +89,11 @@
                 android:id="@+id/tv_contactway_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_contactsway"
                 android:text="联系方式"
                 android:textSize="14sp"
                 android:textColor="#3C3F41"
                 />
-        </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 
     <View
@@ -109,15 +109,15 @@
         android:layout_height="0dp"
         android:layout_weight="1.5">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/ll_3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_centerVertical="true">
+            android:gravity="center_vertical"
+            android:orientation="vertical">
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/tv_telephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,16 +133,16 @@
                 android:textSize="14sp"
                 android:textColor="#3C3F41"
                 />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/ll_4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="160dp"
             android:layout_marginRight="20dp"
-            android:layout_centerVertical="true">
+            android:gravity="center_vertical"
+            android:orientation="vertical">
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/tv_qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                 android:textSize="14sp"
                 android:textColor="#3C3F41"
                 />
-        </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -170,26 +170,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5">
-        <TextView
-            android:layout_marginTop="20dp"
-            android:id="@+id/tv_email"
+        <LinearLayout
+
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="邮箱"
-            android:textSize="14sp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
-            android:gravity="center"/>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/tv_email_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8888888@qq.com"
-            android:textSize="14sp"
-            android:textColor="#3C3F41"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
-            android:layout_below="@id/tv_email"/>
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邮箱"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_email_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8888888@qq.com"
+                android:textSize="14sp"
+                android:textColor="#3C3F41" />
+        </LinearLayout>
+
     </RelativeLayout>
 
 

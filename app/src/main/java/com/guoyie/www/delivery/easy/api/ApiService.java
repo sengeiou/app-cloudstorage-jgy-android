@@ -24,4 +24,5 @@ public interface ApiService {
     @GET("model=warehouse&action=list")
     Observable<OrderInfoData> getInputOrderData(@Query("params") String params);
 
+
 }

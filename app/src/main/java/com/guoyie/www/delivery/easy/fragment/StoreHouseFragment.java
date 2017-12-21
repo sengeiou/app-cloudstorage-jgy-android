@@ -2,7 +2,6 @@ package com.guoyie.www.delivery.easy.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,9 +11,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
-import com.guoyie.www.delivery.easy.activity.FilterActivity;
 import com.guoyie.www.delivery.easy.activity.StoreCapacityManagerActivity;
-import com.guoyie.www.delivery.easy.activity.StoreDetailActivity;
 import com.guoyie.www.delivery.easy.activity.StoreManagerActivity;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
 import com.guoyie.www.delivery.easy.application.GApp;
@@ -24,7 +21,6 @@ import com.guoyie.www.delivery.easy.entity.BannerModel;
 import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
@@ -121,7 +117,6 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
                 break;
             case R.id.rl_store_capacity_manager:
                 startAct(StoreCapacityManagerActivity.class);
-                Toast.makeText(getContext(),"别点我，好疼",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
