@@ -2,7 +2,9 @@ package com.guoyie.www.delivery.easy.api;
 
 import com.guoyie.www.delivery.easy.entity.GetTime;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
-import com.guoyie.www.delivery.easy.entity.OrderInfoData;
+import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
+import com.guoyie.www.delivery.easy.entity.OuterOrderDetailData;
+import com.guoyie.www.delivery.easy.entity.OuterOrderInfoData;
 import com.guoyie.www.delivery.easy.entity.RegisterData;
 import com.guoyie.www.delivery.easy.entity.StorageData;
 import com.guoyie.www.delivery.easy.entity.StorageInfoData;
@@ -26,10 +28,17 @@ public interface ApiService {
     Observable<RegisterData> getRegister(@Query("params") String params);
     //获取入库单列表的接口
     @GET(HttpUtils.INTER_ORDER_LIST)
-    Observable<OrderInfoData> getInputOrderData(@Query("params") String params);
+    Observable<InputOrderInfoData> getInputOrderData(@Query("params") String params);
     //获取入库单详情的接口接口
     @GET(HttpUtils.INTER_ORDER_DETAIL)
     Observable<InputOrderDetailData> getInputOrderDetaliData(@Query("params") String params);
+
+    //获取出库单列表的接口
+    @GET(HttpUtils.OUTER_ORDER_LIST)
+    Observable<OuterOrderInfoData> getOuterOrderData(@Query("params") String params);
+    //获取出库单详情的接口接口
+    @GET(HttpUtils.OUTER_ORDER_DETAIL)
+    Observable<OuterOrderDetailData> getOuterOrderDetaliData(@Query("params") String params);
     //获取储罐管理列表的接口
     @GET(HttpUtils.STORE_MANAGER_LIST)
     Observable<StoreManagerListBean> getStoreManagerList(@Query("params") String params);

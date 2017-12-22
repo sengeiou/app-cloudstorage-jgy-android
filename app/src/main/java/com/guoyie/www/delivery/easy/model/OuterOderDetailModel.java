@@ -2,8 +2,8 @@ package com.guoyie.www.delivery.easy.model;
 
 import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
-import com.guoyie.www.delivery.easy.contract.InterOrderContract;
-import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
+import com.guoyie.www.delivery.easy.contract.OutOrderDetailContract;
+import com.guoyie.www.delivery.easy.entity.OuterOrderDetailData;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -14,14 +14,13 @@ import rx.schedulers.Schedulers;
  * project：app-cloudstorage-jgy-android
  * package：com.guoyie.www.delivery.easy.model
  * email：774169396@qq.com
- * data：2017/12/20
+ * data：2017/12/22
  */
-public class InputOrderModel implements InterOrderContract.Model {
+public class OuterOderDetailModel implements OutOrderDetailContract.Model {
     @Override
-    public  Observable <InputOrderInfoData> getInputData(String params) {
-         return   ApiManager.getService(HostType.HTTP_ORDINARY).getInputOrderData(params).subscribeOn(Schedulers.io())
+    public Observable<OuterOrderDetailData> getOuterDetailrData(String params) {
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getOuterOrderDetaliData(params).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-
     }
 
 }

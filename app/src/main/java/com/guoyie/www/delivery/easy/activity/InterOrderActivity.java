@@ -16,8 +16,8 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.InterOrderContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityInterorderBinding;
-import com.guoyie.www.delivery.easy.entity.OrderInfo;
-import com.guoyie.www.delivery.easy.entity.OrderInfoData;
+import com.guoyie.www.delivery.easy.entity.InputOrderInfo;
+import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
 import com.guoyie.www.delivery.easy.entity.TabEntity;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.InputOrderModel;
@@ -46,11 +46,11 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     private ImageView mIv_search;
     private boolean IS_MORE=false;
     //处理五情况来记录的type，和每页的情况判断情况
-    private List<OrderInfo.ListBean>  list1;//网络获取数据保存,全部的数据
-    private List<OrderInfo.ListBean>  list2;//网络获取数据保存,待审核的数据
-    private List<OrderInfo.ListBean>  list3;//网络获取数据保存,待审核的数据
-    private List<OrderInfo.ListBean>  list4;//网络获取数据保存,待审核的数据
-    private List<OrderInfo.ListBean>  list5;//网络获取数据保存,待审核的数据
+    private List<InputOrderInfo.ListBean> list1;//网络获取数据保存,全部的数据
+    private List<InputOrderInfo.ListBean> list2;//网络获取数据保存,待审核的数据
+    private List<InputOrderInfo.ListBean> list3;//网络获取数据保存,待审核的数据
+    private List<InputOrderInfo.ListBean> list4;//网络获取数据保存,待审核的数据
+    private List<InputOrderInfo.ListBean> list5;//网络获取数据保存,待审核的数据
     private int type = 1;//1是未读，2是已读
     private int page1 = 1, page2 = 1,page3 = 1,page4 = 1,page5= 1;//全部, 待审核(3),未通过,入库中(3),"已完成
     private InterListAdapter adapter;
@@ -191,7 +191,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
 
     @Override
     public void onItemClick(View itemView, int position) {
-        OrderInfo.ListBean item = adapter.getItem(position);
+        InputOrderInfo.ListBean item = adapter.getItem(position);
         if (item!=null){
             Bundle bundle=new Bundle();
             bundle.putString(Constant.INPUT_ORDER_ID,item.getId());
@@ -257,9 +257,9 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
 
     //返回数据的地方
     @Override
-    public void returnInputOrderData(OrderInfoData data) {
+    public void returnInputOrderData(InputOrderInfoData data) {
         if (data.isOk()) {
-            List<OrderInfo.ListBean> list = data.getData().getList();
+            List<InputOrderInfo.ListBean> list = data.getData().getList();
 
             switch (type) {
                 case 1:

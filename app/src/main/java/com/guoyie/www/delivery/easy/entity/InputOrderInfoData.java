@@ -9,15 +9,15 @@ import com.guoyie.www.delivery.easy.base.BaseResponse;
  * email：774169396@qq.com
  * data：2017/12/20
  */
-public class OrderInfoData extends BaseResponse {
+public class InputOrderInfoData extends BaseResponse {
 
-    private OrderInfo data;
+    private InputOrderInfo data;
 
-    public OrderInfo getData() {
+    public InputOrderInfo getData() {
         return data;
     }
 
-    public void setData(OrderInfo data) {
+    public void setData(InputOrderInfo data) {
         this.data = data;
     }
 }

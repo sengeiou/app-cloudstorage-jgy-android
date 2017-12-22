@@ -1,7 +1,7 @@
 package com.guoyie.www.delivery.easy.presenter;
 
 import com.guoyie.www.delivery.easy.contract.InterOrderContract;
-import com.guoyie.www.delivery.easy.entity.OrderInfoData;
+import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
 
 import rx.Subscription;
@@ -16,9 +16,9 @@ import rx.Subscription;
 public class InputOrderPresenter extends InterOrderContract.Presenter {
     @Override
     public void requstInputOrderData(String params) {
-        Subscription subscribe = mModel.getInputData(params).subscribe(new RxSubscriber<OrderInfoData>(mContext,true) {
+        Subscription subscribe = mModel.getInputData(params).subscribe(new RxSubscriber<InputOrderInfoData>(mContext,true) {
             @Override
-            protected void _onNext(OrderInfoData orderInfoData) {
+            protected void _onNext(InputOrderInfoData orderInfoData) {
                   mView.returnInputOrderData(orderInfoData);
             }
 
