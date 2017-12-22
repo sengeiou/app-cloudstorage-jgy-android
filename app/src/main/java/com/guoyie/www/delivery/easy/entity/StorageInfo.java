@@ -45,7 +45,7 @@ public class StorageInfo implements Serializable {
     private String company_contact;
     private String company_contact_name;
     private Object vendor_id;
-    private Object vendor_name;
+    private String vendor_name;
     private String province_code;
     private String province_name;
     private String city_code;
@@ -55,9 +55,9 @@ public class StorageInfo implements Serializable {
     private String goods_name;
     private String goods_num;
     private String goods_unit;
-    private String contract_type;
+    private int contract_type;
     private String remark;
-    private String status;
+    private int status;
     private String create_at;
     private String update_at;
 
@@ -125,11 +125,11 @@ public class StorageInfo implements Serializable {
         this.vendor_id = vendor_id;
     }
 
-    public Object getVendor_name() {
+    public String getVendor_name() {
         return vendor_name;
     }
 
-    public void setVendor_name(Object vendor_name) {
+    public void setVendor_name(String vendor_name) {
         this.vendor_name = vendor_name;
     }
 
@@ -205,11 +205,11 @@ public class StorageInfo implements Serializable {
         this.goods_unit = goods_unit;
     }
 
-    public String getContract_type() {
+    public int getContract_type() {
         return contract_type;
     }
 
-    public void setContract_type(String contract_type) {
+    public void setContract_type(int contract_type) {
         this.contract_type = contract_type;
     }
 
@@ -221,11 +221,11 @@ public class StorageInfo implements Serializable {
         this.remark = remark;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

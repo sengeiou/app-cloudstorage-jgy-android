@@ -170,10 +170,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     }
      //加载数据的
     private void loadData(int type, int page) {
-         if(type==1){
-             type=0;
-         }
-        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + String.valueOf(type)
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + (type==1?"":type )
                 + "&pageCurrent=" + page + "&pageSize=" + 10 );
         mPresenter.requstInputOrderData(params);
 
@@ -195,11 +192,11 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     @Override
     public void onItemClick(View itemView, int position) {
         OrderInfo.ListBean item = adapter.getItem(position);
-      if (item!=null){
-          Bundle bundle=new Bundle();
-          bundle.putString(Constant.INPUT_ORDER_ID,item.getId());
-          startAct(InterDetailActivity.class,bundle);
-      }
+        if (item!=null){
+            Bundle bundle=new Bundle();
+            bundle.putString(Constant.INPUT_ORDER_ID,item.getId());
+            startAct(InterDetailActivity.class,bundle);
+        }
 
     }
 

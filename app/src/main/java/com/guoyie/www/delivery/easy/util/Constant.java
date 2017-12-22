@@ -18,6 +18,8 @@ public class Constant {
     public static String USER_INFO_CACHE="USER_INFO_CACHE";
     //从入库的单点击传入详情的key
     public static String INPUT_ORDER_ID="INPUT_ORDER_ID";
+    //意向单列表到详情的key
+    public static String STORAGE_DETAIL_ID="STORAGE_DETAIL_ID";
     //从储罐列表传入储罐详情的储罐id的key
     public static final String STORE_ID = "STORE_ID";
 

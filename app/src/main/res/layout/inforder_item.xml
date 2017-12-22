@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        
+
         <TextView
             android:layout_width="match_parent"
             android:background="#F7F7F7"
@@ -14,79 +14,75 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        
-        <RelativeLayout
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:textSize="16sp"
-                android:text="苯乙烯 | 1000.000吨"
-                android:textColor="#666666"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_centerHorizontal="true"
-              android:layout_alignParentRight="true"
-                android:src="@mipmap/right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/goods_name"
+                    android:textSize="16sp"
+                    android:text="苯乙烯 | 1000.000吨"
+                    android:textColor="#666666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
 
             <View
                 android:background="#E5E5E5"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
 
 
             <TextView
+                android:id="@+id/instock_customer_no"
                 android:textSize="14sp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:text="入库单号    12023696"
+                android:text="意向单号      12023696"
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/instock_date"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:text="预计入库时间    2017-12-31"
+                android:text="发起时间        2017-12-31"
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/shop_company_name"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:text="企业名称    上海国烨跨境电子商务有限公司"
+                android:text="企业名称      上海国烨跨境电子商务有限公司"
                 android:layout_height="wrap_content"/>
 
 
-          <TextView
-              android:textSize="14sp"
-              android:text="入库中"
-              android:textColor="@color/app_color"
-              android:background="@drawable/interstuts_bg"
-              android:layout_marginTop="8dp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_status"
+                android:textSize="14sp"
+                android:text="入库中"
+                android:textColor="@color/app_color"
+                android:background="@drawable/interstuts_bg"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
-
-
-
-
-
-
-        
-
-
-    </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
