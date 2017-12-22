@@ -253,7 +253,7 @@ public class Storage implements Serializable {
         private String goods_unit;
         private String contract_type;
         private String remark;
-        private String status;
+        private int status;
         private String create_at;
         private Object update_at;
         private String create_name;
@@ -410,11 +410,11 @@ public class Storage implements Serializable {
             this.remark = remark;
         }
 
-        public String getStatus() {
+        public int getStatus() {
             return status;
         }
 
-        public void setStatus(String status) {
+        public void setStatus(int status) {
             this.status = status;
         }
 
