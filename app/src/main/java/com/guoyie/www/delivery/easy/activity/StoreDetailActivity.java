@@ -1,5 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreDetailBinding;
+import com.guoyie.www.delivery.easy.util.Constant;
 
 public class StoreDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -36,6 +38,10 @@ public class StoreDetailActivity extends BaseActivity implements View.OnClickLis
         mIv_back = (ImageView) getView(R.id.left_back);
         mTv_title.setText("储罐详情");
         mIv_back.setImageResource(R.mipmap.left_arrow);
+
+        Intent intent = getIntent();
+        int storeId = intent.getIntExtra(Constant.STORE_ID, -1);
+
 
         mIv_back.setOnClickListener(this);
 

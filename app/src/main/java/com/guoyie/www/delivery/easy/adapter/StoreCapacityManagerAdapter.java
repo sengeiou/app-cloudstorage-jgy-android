@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.entity.StoreCapacityBean;
-import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NAdapter;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
 

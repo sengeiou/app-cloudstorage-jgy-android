@@ -1,5 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -9,29 +10,37 @@ import android.widget.TextView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.StoreManagerContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreManagerBinding;
-import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
+import com.guoyie.www.delivery.easy.model.StoreManagerModel;
+import com.guoyie.www.delivery.easy.presenter.StoreManagerPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
+import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.guoyie.www.delivery.easy.util.Constant.STORE_ID;
 
 /**
  * 储罐管理的Activity
  */
-public class StoreManagerActivity extends BaseActivity<StoreManagerContract.Presenter,StoreManagerContract.Model> implements View.OnClickListener, StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener ,StoreManagerContract.View{
+public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,StoreManagerModel> implements View.OnClickListener, StoreManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener ,StoreManagerContract.View{
     private ImageView mLeft_back;
     private TextView mTv_title;
     private TextView mTV_right;
 
     private NRecyclerView mRecyclerView;
-    private List<StoreManagerBean> mStoreManagerList;
+    private List<StoreManagerListBean.DataBean.ListBean> mStoreManagerList;
     private StoreManagerAdapter mAdapter;
     private ActivityStoreManagerBinding mBinding;
+    private int pageSize = 9;
+    private int pageCurrent = 1;
+    private UserInfoData mUserInfoData;
 
     @Override
     public int getLayoutId() {
@@ -61,24 +70,25 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerContract.Pres
     }
 
     private void initRecycleView() {
-//        mStoreManagerList = new ArrayList<>();
-//
-//        for (int i = 0;i < 10;i++){
-//            mStoreManagerList.add(new StoreManagerBean("4155411441","原子弹","1000吨","偷来的"));
-//        }
-
-//        BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST+"&vendor_no="+userName+"&password="+passWord);
-//        mPresenter.requestStoreManagerList();
-
         mAdapter = new StoreManagerAdapter(this);
-
-        mAdapter.setData(mStoreManagerList);
         mAdapter.setOnItemClickListener(this);
         mBinding.swipeRefresh.setOnRefreshListener(this);
         mBinding.nrecycler.setOnLoadMoreListener(this);
         mBinding.nrecycler.setLoadMoreEnable(true);
         mBinding.nrecycler.setAdapter(mAdapter);
-        mBinding.nrecycler.setErrorMessage("暂无消息提醒");
+        mBinding.nrecycler.setErrorMessage("暂无储罐信息");
+
+        mUserInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if (mUserInfoData !=null){
+            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
+                    + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
+            mPresenter.requestStoreManagerList(params);
+        }else {
+            showToast("null");
+            return;
+        }
+
+
     }
 
     @Override
@@ -95,7 +105,10 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerContract.Pres
 
     @Override
     public void onItemClick(View itemView, int position) {
-        startAct(StoreDetailActivity.class);
+        //startAct(StoreDetailActivity.class);
+        Intent intent = new Intent(this, StoreDetailActivity.class);
+        intent.putExtra(STORE_ID,mAdapter.getList().get(position).getId());
+        startActivity(intent);
     }
 
     @Override
@@ -105,12 +118,22 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerContract.Pres
 
     @Override
     public void onLoadMore() {
-        mBinding.nrecycler.stopLoadMore();
+        pageCurrent++;
+        showToast(pageCurrent+"");
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
+                + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
+        mPresenter.requestStoreManagerList(params);
     }
 
     @Override
     public void returnStoreManagerList(StoreManagerListBean storeManagerListBean) {
-
+        mStoreManagerList = storeManagerListBean.getData().getList();
+        if(pageCurrent == 1){
+            mAdapter.setData(mStoreManagerList);
+        }else {
+            mAdapter.addData(mStoreManagerList);
+            //mRecyclerView.stopLoadMore();
+        }
     }
 
     @Override

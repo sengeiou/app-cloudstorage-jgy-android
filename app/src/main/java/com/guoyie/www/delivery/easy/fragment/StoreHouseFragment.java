@@ -18,7 +18,6 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcStorehouseBinding;
 import com.guoyie.www.delivery.easy.entity.BannerModel;
-import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.List;
@@ -42,9 +41,6 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
     private TextView            mTv_title;
     private FcStorehouseBinding mBinding;
     private TextView mTV_right;
-    private NRecyclerView mRecyclerView;
-    private List<StoreManagerBean> mStoreManagerList;
-    private StoreManagerAdapter mAdapter;
     private RelativeLayout mRlStoreManager;
     private RelativeLayout mRlStoreCapacityManager;
 

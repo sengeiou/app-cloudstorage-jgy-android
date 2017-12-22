@@ -55,8 +55,8 @@ public class StoreManagerListBean extends BaseResponse{
          * jar_no :
          * goods_name :
          * jar_material :
-         * pageSize : 9
-         * pageCurrent : 1
+         * pageSize : 9             *
+         * pageCurrent : 1          *
          * orders : update_at desc
          * totalRow : 9
          * list : [{"id":"11","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"5201","jar_type":"内贸罐","goods_id":"45","goods_name":"二甘醇(恒阳)","stock":"100000.000","jar_material":"碳钢","unit":"吨","remark":"","create_at":"2017-12-20 16:43:11","update_at":"2017-12-20 16:43:11"},{"id":"10","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"93950","jar_type":"内贸罐","goods_id":"88","goods_name":"烧碱（氢氧化钠）","stock":"2000.000","jar_material":"碳钢","unit":"吨","remark":"","create_at":"2017-12-20 16:21:58","update_at":"2017-12-20 16:21:58"},{"id":"9","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"520","jar_type":"外贸罐","goods_id":"165","goods_name":"石脑油","stock":"6000.000","jar_material":"123","unit":"千克","remark":"","create_at":"2017-12-20 16:19:22","update_at":"2017-12-20 16:19:22"},{"id":"8","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"555","jar_type":"外贸罐","goods_id":"148","goods_name":"混合芳烃","stock":"900.000","jar_material":"666","unit":"立方米","remark":"","create_at":"2017-12-20 16:18:29","update_at":"2017-12-20 16:18:29"},{"id":"7","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"123","jar_type":"保税罐","goods_id":"44","goods_name":"纯苯","stock":"3000.000","jar_material":"555","unit":"吨","remark":"","create_at":"2017-12-20 16:17:59","update_at":"2017-12-20 16:17:59"},{"id":"6","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"777","jar_type":"外贸罐","goods_id":"54","goods_name":"辛醇","stock":"2000.000","jar_material":"pvc","unit":"吨","remark":"","create_at":"2017-12-20 16:17:42","update_at":"2017-12-20 16:17:42"},{"id":"5","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"888","jar_type":"内贸罐","goods_id":"63","goods_name":"羧酸","stock":"1000.000","jar_material":"123","unit":"吨","remark":"","create_at":"2017-12-20 16:16:10","update_at":"2017-12-20 16:16:10"},{"id":"4","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"666","jar_type":"内贸罐","goods_id":"34","goods_name":"甲苯","stock":"6000.000","jar_material":"pvc","unit":"吨","remark":"","create_at":"2017-12-20 16:15:43","update_at":"2017-12-20 16:15:43"},{"id":"3","vendor_no":"YC0000000015","vendor_name":"新版","jar_no":"adasd2312","jar_type":"外贸罐","goods_id":"2","goods_name":"我企鹅体验完全统一","stock":"111.000","jar_material":"3333","unit":"吨","remark":"","create_at":"2017-12-14 10:13:54","update_at":"2017-12-14 10:13:54"}]
@@ -166,14 +166,14 @@ public class StoreManagerListBean extends BaseResponse{
         public static class ListBean {
             /**
              * id : 11
-             * vendor_no : YC0000000015
+             * vendor_no : YC0000000015      *
              * vendor_name : 新版
-             * jar_no : 5201
+             * jar_no : 5201                  *
              * jar_type : 内贸罐
              * goods_id : 45
-             * goods_name : 二甘醇(恒阳)
+             * goods_name : 二甘醇(恒阳)         *
              * stock : 100000.000
-             * jar_material : 碳钢
+             * jar_material : 碳钢              *
              * unit : 吨
              * remark :
              * create_at : 2017-12-20 16:43:11

@@ -175,8 +175,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
          }
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + String.valueOf(type)
                 + "&pageCurrent=" + page + "&pageSize=" + 10 );
-           mPresenter.requstInputOrderData(params);
-
+        mPresenter.requstInputOrderData(params);
 
     }
 
@@ -240,7 +239,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
         int page=0;
         switch (type){
             case 1:
-               page=page1;
+                page=page1;
                 break;
             case 2:
                 page=page2;

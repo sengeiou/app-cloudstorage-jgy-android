@@ -3,7 +3,6 @@ package com.guoyie.www.delivery.easy.contract;
 import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
-import com.guoyie.www.delivery.easy.entity.StoreManagerBean;
 import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
 
 import rx.Observable;

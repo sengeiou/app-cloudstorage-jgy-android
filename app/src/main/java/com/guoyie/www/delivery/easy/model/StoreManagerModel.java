@@ -22,7 +22,8 @@ public class StoreManagerModel implements StoreManagerContract.Model {
     @Override
     public Observable<StoreManagerListBean> getStoreManagerList(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY)
-                .getStoreManagerList(params).subscribeOn(Schedulers.io())
+                .getStoreManagerList(params)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 }
