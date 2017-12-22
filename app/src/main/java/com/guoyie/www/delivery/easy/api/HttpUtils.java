@@ -30,5 +30,7 @@ public class HttpUtils {
     public static final String INFO_STORAGE ="model=subscribe&action=storage";
     //意向单详情的数据接口
     public static final String INFO_STORAGE_DETALI ="model=subscribe&action=storageinfo";
+    //储罐详情的接口
+    public static final String STORE_DETAIL = "model=stock&action=jarinfo";
 
 }

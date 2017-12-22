@@ -9,8 +9,11 @@ import android.widget.TextView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.StoreCapacityManagerAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.StoreCapacityManagerContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreCapacityManagerBinding;
-import com.guoyie.www.delivery.easy.entity.StoreCapacityBean;
+import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
+import com.guoyie.www.delivery.easy.model.StoreCapacityModel;
+import com.guoyie.www.delivery.easy.presenter.StoreCapacityPresenter;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -18,14 +21,14 @@ import java.util.ArrayList;
 /**
  * 库容管理的Activity
  */
-public class StoreCapacityManagerActivity extends BaseActivity implements StoreCapacityManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, View.OnClickListener {
+public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPresenter,StoreCapacityModel> implements StoreCapacityManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, View.OnClickListener, StoreCapacityManagerContract.View {
     private ImageView mLeft_back;
     private TextView mTv_title;
     private TextView mTV_right;
 
     private ActivityStoreCapacityManagerBinding mBinding;
     private NRecyclerView mRecyclerView;
-    private ArrayList<StoreCapacityBean> mStoreCapacityList;
+    private ArrayList<StoreCapacityListBean> mStoreCapacityList;
     private StoreCapacityManagerAdapter mAdapter;
 
     @Override
@@ -35,6 +38,7 @@ public class StoreCapacityManagerActivity extends BaseActivity implements StoreC
 
     @Override
     public void initPresenter() {
+       mPresenter.attachVM(this,mModel);
 
     }
 
@@ -59,7 +63,7 @@ public class StoreCapacityManagerActivity extends BaseActivity implements StoreC
         mStoreCapacityList = new ArrayList<>();
 
         for (int i = 0;i < 10;i++){
-            mStoreCapacityList.add(new StoreCapacityBean());
+            mStoreCapacityList.add(new StoreCapacityListBean());
         }
 
         mAdapter = new StoreCapacityManagerAdapter(this);
@@ -98,5 +102,15 @@ public class StoreCapacityManagerActivity extends BaseActivity implements StoreC
                 startAct(StoreFilterActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public void returnStoreCapacityList(StoreCapacityListBean storeCapacityListBean) {
+
+    }
+
+    @Override
+    public void error() {
+
     }
 }

@@ -6,6 +6,8 @@ import com.guoyie.www.delivery.easy.entity.OrderInfoData;
 import com.guoyie.www.delivery.easy.entity.RegisterData;
 import com.guoyie.www.delivery.easy.entity.StorageData;
 import com.guoyie.www.delivery.easy.entity.StorageInfoData;
+import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
+import com.guoyie.www.delivery.easy.entity.StoreDetailBean;
 import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 
@@ -39,5 +41,10 @@ public interface ApiService {
     //意向单详情的接口
     @GET(HttpUtils.INFO_STORAGE_DETALI)
     Observable<StorageInfoData>getStorageInfoData(@Query("params") String params);
-
+    //储罐详情的接口
+    @GET("model=stock&action=jarinfo")
+    Observable<StoreDetailBean> getStoreDetail(@Query("params") String params);
+    //获取库容管理列表的接口
+    @GET("model=stock&action=stocklist")
+    Observable<StoreCapacityListBean> getStoreCapacityList(@Query("params") String params);
 }

@@ -3,7 +3,8 @@ package com.guoyie.www.delivery.easy.contract;
 import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
-import com.guoyie.www.delivery.easy.entity.StoreDetailBean;
+import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
+import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
 
 import rx.Observable;
 
@@ -15,17 +16,17 @@ import rx.Observable;
  * data：2017/12/22
  */
 
-public interface StoreDetailContract {
+public interface StoreCapacityManagerContract {
     interface Model extends BaseModel {
-        Observable<StoreDetailBean> getStoreDetail(String params);
+        Observable<StoreCapacityListBean> getStoreCapacity(String params);
     }
 
     interface View extends BaseView {
-        void returnStoreDetail(StoreDetailBean storeDetailBean);
-        void error(String msg);
+        void returnStoreCapacityList(StoreCapacityListBean storeCapacityListBean);
+        void error();
     }
 
     abstract class Presenter extends BasePresenter<View,Model> {
-        public abstract void requestStoreDetail(String params);
+        public abstract void requestStoreCapacityList(String params);
     }
 }

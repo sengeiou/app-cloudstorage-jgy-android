@@ -228,6 +228,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
 
     @Override
     public void eeror(String msg) {
-
+        showToast(msg);
     }
 }

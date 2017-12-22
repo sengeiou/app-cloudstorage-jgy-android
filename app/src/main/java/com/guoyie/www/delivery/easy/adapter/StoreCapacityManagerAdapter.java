@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.guoyie.www.delivery.easy.R;
-import com.guoyie.www.delivery.easy.entity.StoreCapacityBean;
+import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NAdapter;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
 
@@ -15,7 +15,7 @@ import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
  * email：774169396@qq.com
  * data：2017/12/7
  */
-public class StoreCapacityManagerAdapter extends NAdapter<StoreCapacityBean> {
+public class StoreCapacityManagerAdapter extends NAdapter<StoreCapacityListBean> {
     public StoreCapacityManagerAdapter(Context context) {
         super(context);
     }
@@ -26,8 +26,7 @@ public class StoreCapacityManagerAdapter extends NAdapter<StoreCapacityBean> {
     }
 
     @Override
-    protected void onBindData(final NRecyclerViewHolder holder, StoreCapacityBean s, final int position) {
-
+    protected void onBindData(final NRecyclerViewHolder holder, StoreCapacityListBean s, final int position) {
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
