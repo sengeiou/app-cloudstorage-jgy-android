@@ -8,14 +8,13 @@ import android.widget.TextView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
-import com.guoyie.www.delivery.easy.contract.InterOrderDetailContract;
-import com.guoyie.www.delivery.easy.databinding.ActivityInterdetailBinding;
-import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
-import com.guoyie.www.delivery.easy.model.InputorderDetaliModel;
-import com.guoyie.www.delivery.easy.presenter.InputOrderDetaliPresenter;
+import com.guoyie.www.delivery.easy.contract.OutOrderDetailContract;
+import com.guoyie.www.delivery.easy.databinding.ActivityOuterordetailBinding;
+import com.guoyie.www.delivery.easy.entity.OuterOrderDetailData;
+import com.guoyie.www.delivery.easy.model.OuterOderDetailModel;
+import com.guoyie.www.delivery.easy.presenter.OuterOrderDetailPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
 
 /**
  * author：柯军
@@ -24,14 +23,14 @@ import com.guoyie.www.delivery.easy.util.DebugUtil;
  * email：774169396@qq.com
  * data：2017/12/7
  */
-public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,InputorderDetaliModel> implements View.OnClickListener, InterOrderDetailContract.View {
-    private ImageView mLeft_back;
-    private TextView  mTv_title;
-    private ActivityInterdetailBinding binding;
+public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,OuterOderDetailModel> implements View.OnClickListener, OutOrderDetailContract.View {
+    private ImageView                    mLeft_back;
+    private TextView                     mTv_title;
+    private ActivityOuterordetailBinding binding;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_interdetail;
+        return R.layout.activity_outerordetail;
     }
 
 
@@ -49,12 +48,12 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         binding.tvAgree.setOnClickListener(this);
         mLeft_back.setOnClickListener(this);
         mTv_title =  getView(R.id.tv_title);
-        mTv_title.setText("入库单详情");
+        mTv_title.setText("出库单详情");
         //从上个页面传回来的数据
-        String id = getIntent().getStringExtra(Constant.INPUT_ORDER_ID);
+        String id = getIntent().getStringExtra(Constant.OUTER_ORDER_ID);
         loadData(id);
 
-       /* ArrayList<BaseResponse> list=new ArrayList<>();
+     /*   ArrayList<BaseResponse> list=new ArrayList<>();
         for (int i = 0; i <1 ; i++) {
             BaseResponse bs=new BaseResponse();
             bs.setCode(i);
@@ -73,15 +72,15 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
 
 
-        }
-*/
+        }*/
+
 
 
     }
 
     private void loadData(String id) {
-        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_DETAIL + "&id=" + id);
-        mPresenter.requstInterOrderDetail(params);
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_DETAIL + "&id=" + id);
+        mPresenter.requstOuterDetailrData(params);
 
     }
 
@@ -106,9 +105,12 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     }
 
+
+
     @Override
-    public void returnInterOrderDetailData(InputOrderDetailData data) {
-        DebugUtil.debug(data.getData()+"");
+    public void returnOuterDetailrData(OuterOrderDetailData data) {
+
+
 
     }
 

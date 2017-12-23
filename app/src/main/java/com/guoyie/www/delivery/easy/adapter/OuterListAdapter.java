@@ -38,29 +38,29 @@ public class OuterListAdapter extends NAdapter<OuterOrderInfo.ListBean> {
 
         //设置数据的啊
         goods_name.setText(data.getGoods_name()+" | "+data.getOrder_qty()+data.getGoods_unit());//品名
-        instock_customer_no.setText("入库单号       "+data.getOutstock_customer_no());//入库单号
-      //  instock_date.setText("预计入库时间        "+data.getoutstock_);//预计入库时间
+        instock_customer_no.setText("出库单号       "+data.getOutstock_customer_no());//入库单号
+        instock_date.setText("预计出库时间        "+data.getCreate_at());//预计入库时间
         shop_company_name.setText("企业名称     "+data.getShop_company_name());//企业名称
         String status=null;
-        //status 状态：1.待编辑，2.待审核，3.未通过，4.入库中，5.已完成，6.已结束
+      //  status  1.待填写, 2.待仓储审核, 3.仓审驳回, 4.出库执行中, 5.已完成, 6.取消
         switch (data.getStatus()){
             case 1:
-                status="待编辑";
+                status="待填写";
                 break;
             case 2:
-                status="待审核";
+                status="待仓储审核";
                 break;
             case 3:
-                status="未通过";
+                status="仓审驳回";
                 break;
             case 4:
-                status="入库中";
+                status="出库执行中";
                 break;
             case 5:
                 status="已完成";
                 break;
             case 6:
-                status="已结束";
+                status="取消";
                 break;
         }
 

@@ -44,4 +44,9 @@ public class HttpUtils {
     //库容筛选获取储罐号的接口
     public static final String CAPACITY_FILTER_STORE_NUMBER = "model=stock&action=searchstockno";
 
+    //货权转移的列表的接口
+    public static final String TRANSSTOCK_LSIT = "model=transstock&action=list";
+    //货权转移的详情的接口的接口
+    public static final String TRANSSTOCK_DETAIL = "model=transstock&action=detail";
+
 }

@@ -116,7 +116,7 @@ class InfoOrderDetailActivity  extends BaseActivity<StorAgeDetailPresenter,Store
                 break;
         }
         binding.tvContractType.setText(contract_type);//合同类型
-        binding.tvCreateName1.setText(info.getVendor_name());//企业联系人
+        binding.tvCreateName.setText(info.getCreate_name());//企业联系人
         binding.tvCompanyContact.setText(info.getCompany_contact());//联系方式
         binding.tvCompanyName.setText(info.getCompany_name());//企业名称
         binding.tvInquiryNo.setText(info.getInquiry_no());//意向单号

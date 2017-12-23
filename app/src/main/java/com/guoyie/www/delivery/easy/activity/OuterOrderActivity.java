@@ -100,7 +100,7 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
         binding.nrecycler.setOnLoadMoreListener(this);
         binding.nrecycler.setLoadMoreEnable(true);
         binding.nrecycler.setAdapter(adapter);
-        binding.nrecycler.setErrorMessage("暂无相关入库单");
+
 
     }
 
@@ -168,7 +168,27 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
     }
     //加载数据的
     private void loadData(int type, int page) {
-        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + (type==1?"":type )
+        //status （1.待填写,2.待仓储审核,3.仓审驳回,4.出库执行中,5.已完成,6.已取消）
+        String status="";
+        switch (type){
+            case 1:
+                status="";
+                break;
+            case 2:
+                status="2";
+                break;
+            case 3:
+                status="3";
+                break;
+            case 4:
+                status="4";
+                break;
+            case 5:
+                status="5";
+                break;
+        }
+
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + status
                 + "&pageCurrent=" + page + "&pageSize=" + 10 );
         mPresenter.requstOutorderData(params);
 
@@ -192,8 +212,8 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
         OuterOrderInfo.ListBean item = adapter.getItem(position);
         if (item!=null){
             Bundle bundle=new Bundle();
-            bundle.putString(Constant.INPUT_ORDER_ID,item.getId());
-            startAct(InterDetailActivity.class,bundle);
+            bundle.putString(Constant.OUTER_ORDER_ID,item.getId());
+            startAct(OuterDetailActivity.class,bundle);
         }
 
     }
@@ -253,17 +273,13 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
         loadData(type, page);
     }
 
-    //返回数据的地方
 
 
     //返回更多数据的地方
-
-
     @Override
     public void returnOuterOrderData(OuterOrderInfoData data) {
         if (data.isOk()) {
             List<OuterOrderInfo.ListBean> list = data.getData().getList();
-
             switch (type) {
                 case 1:
                     list1.addAll(list);
@@ -292,7 +308,7 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
                     if (list.size()>0)
                         page4++;
                     TextView textView = binding.tabLayout.getTitleView(3);
-                    textView.setText("入库中(" + data.getData().getTotalRow() + ")");
+                    textView.setText("出库中(" + data.getData().getTotalRow() + ")");
                     break;
                 case 5:
                     list5.addAll(list);
@@ -308,6 +324,9 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
 
                 binding.swipeRefresh.setRefreshing(false);
             }
+
+
+            binding.nrecycler.setErrorMessage("暂无相关出库单");
 
         }
     }

@@ -170,8 +170,27 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     }
      //加载数据的
     private void loadData(int type, int page) {
-        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + (type==1?"":type )
-                + "&pageCurrent=" + page + "&pageSize=" + 10 );
+        //2.待审核，3.未通过，4.入库中，5.已完成，6.已结束
+        String status="";
+        switch (type){
+            case 1:
+                status="";
+                break;
+            case 2:
+                status="2";
+                break;
+            case 3:
+                status="3";
+                break;
+            case 4:
+                status="4";
+                break;
+            case 5:
+                status="5";
+                break;
+        }
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + status
+                + "&pageCurrent=" + page + "&pageSize=" + 10);
         mPresenter.requstInputOrderData(params);
 
     }

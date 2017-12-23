@@ -58,7 +58,9 @@
         <activity android:name=".activity.StoreCapacityManagerActivity" />
         <activity android:name=".activity.InfoOrderDetailActivity" />
         <activity android:name=".activity.TransTormDetailActivity" />
-        <activity android:name=".activity.CapacityFilterActivity"></activity>
+        <activity android:name=".activity.CapacityFilterActivity"/>
+        <activity android:name=".activity.OuterDetailActivity"/>
+        <activity android:name=".activity.CAActivity"/>
     </application>
 
 </manifest>
