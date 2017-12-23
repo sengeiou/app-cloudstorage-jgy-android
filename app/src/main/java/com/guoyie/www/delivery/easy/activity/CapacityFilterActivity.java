@@ -1,24 +1,37 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.FilterAdapter;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.contract.CapacityFilterGoodsNameContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityCapacityFilterBinding;
+import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
+import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
+import com.guoyie.www.delivery.easy.model.CapacityGoodsNameModel;
+import com.guoyie.www.delivery.easy.presenter.CapacityGoodsNamePresenter;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
+import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.recyclerview.SpaceItemDecoration;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CapacityFilterActivity extends BaseActivity implements View.OnClickListener {
+public class CapacityFilterActivity extends BaseActivity<CapacityGoodsNamePresenter,CapacityGoodsNameModel> implements View.OnClickListener, CapacityFilterGoodsNameContract.View {
 
     private ActivityCapacityFilterBinding mBinding;
     private TextView mTV_title;
@@ -30,6 +43,9 @@ public class CapacityFilterActivity extends BaseActivity implements View.OnClick
 
     public TextView currentGoodNameTextView;    //当前被选中的商品名
     public TextView currentStoreNumberView;    //当前被选中的储罐编号
+    private UserInfoData mUserInfoData;
+    private List<CapacityGoodsNameBean.DataBean> mDataBeanList1 = new ArrayList<>();  //数据源
+    private List<CapacityStoreNumberBean.DataBean> mDataBeanList3 = new ArrayList<>();  //数据源
 
     @Override
     public int getLayoutId() {
@@ -38,7 +54,7 @@ public class CapacityFilterActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void initPresenter() {
-
+        mPresenter.attachVM(this,mModel);
     }
 
     @Override
@@ -52,148 +68,19 @@ public class CapacityFilterActivity extends BaseActivity implements View.OnClick
         mBinding.btReset.setOnClickListener(this);
         mBinding.btSure.setOnClickListener(this);
 
+        mUserInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if (mUserInfoData!=null){
+            String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.CAPACITY_FILTER_GOODS_NAME+"&vendor_no="
+                    +mUserInfoData.getData().getInfo().getVendor_no());
+            mPresenter.requestCapacityGoodsName(parms);
+
+            String parms1 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.CAPACITY_FILTER_STORE_NUMBER+"&vendor_no="
+                    +mUserInfoData.getData().getInfo().getVendor_no());
+            mPresenter.requestStoreNumber(parms1);
+        }
         initRecyclerView();
-        initData();
     }
 
-    private void initData() {
-        final ArrayList<String> strings1 = new ArrayList<>();//数据源
-        for (int i = 0;i<6;i++){
-            strings1.add("AAA"+i);
-        }
-        final List<String> moreList1 = new ArrayList<>();
-        moreList1.addAll(strings1);
-        moreList1.add("收起更多");
-
-        final List<String> lessList1 = new ArrayList<>();
-        if (strings1.size()>=4){  //避免索引越界
-            lessList1.addAll(strings1.subList(0,4));
-            lessList1.add("更多选项");
-        }
-        mFilterAdapter1 = new FilterAdapter();
-        if (strings1.size()>4){
-
-            mFilterAdapter1.setStringList(lessList1);
-        }else {
-            mFilterAdapter1.setStringList(strings1);
-        }
-        mRvGoodsName.setAdapter(mFilterAdapter1);
-//---------------------------------------------------------------------------
-        ArrayList<String> strings3 = new ArrayList<>();
-        for (int i = 0;i<4;i++){
-            strings3.add("AAA"+i);
-        }
-        final List<String> moreList3 = new ArrayList<>();
-        moreList3.addAll(strings3);
-        moreList3.add("收起更多");
-
-        final List<String> lessList3 = new ArrayList<>();
-        if (strings3.size()>=4){  //避免索引越界
-            lessList3.addAll(strings3.subList(0,4));
-            lessList3.add("更多选项");
-        }
-        mFilterAdapter3 = new FilterAdapter();
-        if (strings3.size()>4){
-
-            mFilterAdapter3.setStringList(lessList3);
-        }else {
-            mFilterAdapter3.setStringList(strings3);
-        }
-        mRvStoreNumber.setAdapter(mFilterAdapter3);
-
-       //条目点击
-        mFilterAdapter1.setOnItemClickListener(new FilterAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(View v,int position) {
-                int itemCount = mFilterAdapter1.getItemCount();
-                //如果适配器当前的集合是moreList，则点击第5个item的时候将其设为currentGoodNameTextView，并将选中状态设为true
-                if (itemCount == moreList1.size()){
-                    if (position == 4){
-                        if (currentGoodNameTextView!=null){
-                            currentGoodNameTextView.setSelected(false);
-                        }
-                        currentGoodNameTextView = (TextView) v;
-                        currentGoodNameTextView.setSelected(true);
-                        return;
-                    }
-                }
-                if (position == 4){
-                    //strings1.remove(4);
-                    mFilterAdapter1.setStringList(moreList1);
-                    //切换集合的时候将当前被点击的位置处的Item设为未选中状态，并将currentGoodNameTextView重置为空
-                    if (currentGoodNameTextView!=null){
-                        currentGoodNameTextView.setSelected(false);
-                        currentGoodNameTextView = null;
-                    }
-                    return;
-                }
-                if (position == moreList1.size()-1){
-                    mFilterAdapter1.setStringList(lessList1);
-                    //v.setSelected(false);
-                    if (currentGoodNameTextView!=null){
-                        currentGoodNameTextView.setSelected(false);
-                        currentGoodNameTextView = null;
-                    }
-                    return;
-                }
-                TextView tv = (TextView) v;
-                if (currentGoodNameTextView!=null){
-                    currentGoodNameTextView.setSelected(false);
-                }
-                currentGoodNameTextView = tv;
-                currentGoodNameTextView.setSelected(true);
-
-            }
-        });
-//----------------------------------------------------------------------------
-        mFilterAdapter3.setOnItemClickListener(new FilterAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(View v,int position) {
-                int itemCount = mFilterAdapter3.getItemCount();
-                //如果适配器当前的集合是moreList，则点击第5个item的时候将其设为currentGoodNameTextView，并将选中状态设为true
-                if (itemCount == moreList3.size()){
-                    if (position == 4){
-                        if (currentStoreNumberView!=null){
-                            currentStoreNumberView.setSelected(false);
-                        }
-                        currentStoreNumberView = (TextView) v;
-                        currentStoreNumberView.setSelected(true);
-                        return;
-                    }
-                }
-
-                if (position == 4){
-                    //strings1.remove(4);
-                    mFilterAdapter3.setStringList(moreList3);
-                    //切换集合的时候将当前被点击的位置处的Item设为未选中状态，并将currentGoodNameTextView重置为空
-                    if (currentStoreNumberView!=null){
-                        currentStoreNumberView.setSelected(false);
-                        currentStoreNumberView = null;
-                    }
-                    return;
-                }
-
-                if (position == moreList3.size()-1){
-                    mFilterAdapter3.setStringList(lessList3);
-                    //v.setSelected(false);
-                    if (currentStoreNumberView!=null){
-                        currentStoreNumberView.setSelected(false);
-                        currentStoreNumberView = null;
-                    }
-                    return;
-                }
-
-                TextView tv = (TextView) v;
-                if (currentStoreNumberView!=null){
-                    currentStoreNumberView.setSelected(false);
-                }
-                currentStoreNumberView = tv;
-                currentStoreNumberView.setSelected(true);
-            }
-        });
-    }
 
     private void initRecyclerView() {
         mRvGoodsName = mBinding.rvGoodsName;
@@ -221,5 +108,169 @@ public class CapacityFilterActivity extends BaseActivity implements View.OnClick
                 if (currentStoreNumberView!=null)
                     currentStoreNumberView.setSelected(false);
         }
+    }
+
+    //返回商品名
+    @Override
+    public void returnCapacityGoodsName(CapacityGoodsNameBean capacityGoodsNameBean) {
+        if (capacityGoodsNameBean.isOk()){
+            mDataBeanList1.addAll(capacityGoodsNameBean.getData());
+
+            final List<CapacityGoodsNameBean.DataBean> moreList1 = new ArrayList<>();
+            moreList1.addAll(mDataBeanList1);
+            CapacityGoodsNameBean.DataBean dataBeanMore = new CapacityGoodsNameBean.DataBean();
+            dataBeanMore.setGoods_name("收起更多");
+            moreList1.add(dataBeanMore);
+
+            final List<CapacityGoodsNameBean.DataBean> lessList1 = new ArrayList<>();
+            if (mDataBeanList1.size()>=4){  //避免索引越界
+                lessList1.addAll(mDataBeanList1.subList(0,4));
+                CapacityGoodsNameBean.DataBean dataBeanLess = new CapacityGoodsNameBean.DataBean();
+                dataBeanLess.setGoods_name("更多选项");
+                lessList1.add(dataBeanLess);
+            }
+            mFilterAdapter1 = new FilterAdapter();
+            if (moreList1.size()>4){
+
+                mFilterAdapter1.setStringList(lessList1);
+            }else {
+                mFilterAdapter1.setStringList(mDataBeanList1);
+            }
+            mRvGoodsName.setAdapter(mFilterAdapter1);
+//---------------------------------------------------------------------------
+
+            //条目点击
+            mFilterAdapter1.setOnItemClickListener(new FilterAdapter.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(View v,int position) {
+                    int itemCount = mFilterAdapter1.getItemCount();
+                    //如果适配器当前的集合是moreList，则点击第5个item的时候将其设为currentGoodNameTextView，并将选中状态设为true
+                    if (itemCount == moreList1.size()){
+                        if (position == 4){
+                            if (currentGoodNameTextView!=null){
+                                currentGoodNameTextView.setSelected(false);
+                            }
+                            currentGoodNameTextView = (TextView) v;
+                            currentGoodNameTextView.setSelected(true);
+                            return;
+                        }
+                    }
+                    if (position == 4){
+                        //strings1.remove(4);
+                        mFilterAdapter1.setStringList(moreList1);
+                        //切换集合的时候将当前被点击的位置处的Item设为未选中状态，并将currentGoodNameTextView重置为空
+                        if (currentGoodNameTextView!=null){
+                            currentGoodNameTextView.setSelected(false);
+                            currentGoodNameTextView = null;
+                        }
+                        return;
+                    }
+                    if (position == moreList1.size()-1){
+                        mFilterAdapter1.setStringList(lessList1);
+                        //v.setSelected(false);
+                        if (currentGoodNameTextView!=null){
+                            currentGoodNameTextView.setSelected(false);
+                            currentGoodNameTextView = null;
+                        }
+                        return;
+                    }
+                    TextView tv = (TextView) v;
+                    if (currentGoodNameTextView!=null){
+                        currentGoodNameTextView.setSelected(false);
+                    }
+                    currentGoodNameTextView = tv;
+                    currentGoodNameTextView.setSelected(true);
+                }
+            });
+
+        }else {
+            showToast("网络错误");
+        }
+    }
+    //返回储罐号
+    @Override
+    public void returnStoreNumber(CapacityStoreNumberBean capacityStoreNumberBean) {
+        if (capacityStoreNumberBean.isOk()){
+
+            mDataBeanList3.addAll(capacityStoreNumberBean.getData());
+
+            final List<CapacityStoreNumberBean.DataBean> moreList3 = new ArrayList<>();
+            moreList3.addAll(mDataBeanList3);
+            CapacityStoreNumberBean.DataBean dataBeanMore = new CapacityStoreNumberBean.DataBean();
+            dataBeanMore.setStock_no("收起更多");
+            moreList3.add(dataBeanMore);
+
+            final List<CapacityStoreNumberBean.DataBean> lessList3 = new ArrayList<>();
+            if (mDataBeanList3.size()>=4){  //避免索引越界
+                lessList3.addAll(mDataBeanList3.subList(0,4));
+                CapacityStoreNumberBean.DataBean dataBeanLess = new CapacityStoreNumberBean.DataBean();
+                dataBeanLess.setStock_no("更多选项");
+                lessList3.add(dataBeanLess);
+            }
+            mFilterAdapter3 = new FilterAdapter();
+            if (mDataBeanList3.size()>4){
+
+                mFilterAdapter3.setStringList(lessList3);
+            }else {
+                mFilterAdapter3.setStringList(mDataBeanList3);
+            }
+            mRvStoreNumber.setAdapter(mFilterAdapter3);
+
+            //----------------------------------------------------------------------------
+            mFilterAdapter3.setOnItemClickListener(new FilterAdapter.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(View v,int position) {
+                    int itemCount = mFilterAdapter3.getItemCount();
+                    //如果适配器当前的集合是moreList，则点击第5个item的时候将其设为currentGoodNameTextView，并将选中状态设为true
+                    if (itemCount == moreList3.size()){
+                        if (position == 4){
+                            if (currentStoreNumberView!=null){
+                                currentStoreNumberView.setSelected(false);
+                            }
+                            currentStoreNumberView = (TextView) v;
+                            currentStoreNumberView.setSelected(true);
+                            return;
+                        }
+                    }
+
+                    if (position == 4){
+                        //strings1.remove(4);
+                        mFilterAdapter3.setStringList(moreList3);
+                        //切换集合的时候将当前被点击的位置处的Item设为未选中状态，并将currentGoodNameTextView重置为空
+                        if (currentStoreNumberView!=null){
+                            currentStoreNumberView.setSelected(false);
+                            currentStoreNumberView = null;
+                        }
+                        return;
+                    }
+
+                    if (position == moreList3.size()-1){
+                        mFilterAdapter3.setStringList(lessList3);
+                        //v.setSelected(false);
+                        if (currentStoreNumberView!=null){
+                            currentStoreNumberView.setSelected(false);
+                            currentStoreNumberView = null;
+                        }
+                        return;
+                    }
+
+                    TextView tv = (TextView) v;
+                    if (currentStoreNumberView!=null){
+                        currentStoreNumberView.setSelected(false);
+                    }
+                    currentStoreNumberView = tv;
+                    currentStoreNumberView.setSelected(true);
+                }
+            });
+        } else {
+            showToast("网络错误");
+        }
+    }
+
+    @Override
+    public void error(String msg) {
+        showToast(msg);
     }
 }

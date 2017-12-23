@@ -1,5 +1,7 @@
 package com.guoyie.www.delivery.easy.api;
 
+import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
+import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.GetTime;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
 import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
@@ -56,4 +58,10 @@ public interface ApiService {
     //获取库容管理列表的接口
     @GET("model=stock&action=stocklist")
     Observable<StoreCapacityListBean> getStoreCapacityList(@Query("params") String params);
+    //库容管理筛选，获取商品名列表
+    @GET("model=stock&action=searchgoodsname")
+    Observable<CapacityGoodsNameBean> getCapacityGoodsNameList(@Query("params") String params);
+    //库容管理筛选，获取储罐号
+    @GET("model=stock&action=searchstockno")
+    Observable<CapacityStoreNumberBean> getCapacityStoreNumber(@Query("params") String params);
 }

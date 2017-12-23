@@ -2,12 +2,14 @@ package com.guoyie.www.delivery.easy.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
+import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +22,12 @@ import java.util.List;
  * data：2017/12/12
  */
 
-public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterViewHolder>{
+public class FilterAdapter<E> extends RecyclerView.Adapter<FilterAdapter.FilterViewHolder>{
 
-    private List<String> mStringList = new ArrayList<>();
+    private List<E> mStringList = new ArrayList<>();
     private OnItemClickListener mOnItemClickListener;
 
-    public void setStringList(List<String> stringList) {
+    public void setStringList(List<E> stringList) {
         mStringList.clear();
         mStringList.addAll(stringList);
         notifyDataSetChanged();
@@ -58,7 +60,17 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
                 mOnItemClickListener.onItemClick(v,position);
             }
         });
-        holder.mTextView.setText(mStringList.get(position));
+
+        //此处注意判断泛型类型
+        E e = mStringList.get(position);
+        if (e instanceof CapacityGoodsNameBean.DataBean){
+            CapacityGoodsNameBean.DataBean e1 = (CapacityGoodsNameBean.DataBean) e;
+            holder.mTextView.setText(e1.getGoods_name());
+        }
+        if (e instanceof CapacityStoreNumberBean.DataBean){
+            CapacityStoreNumberBean.DataBean e1 = (CapacityStoreNumberBean.DataBean) e;
+            holder.mTextView.setText(e1.getStock_no());
+        }
 
     }
 

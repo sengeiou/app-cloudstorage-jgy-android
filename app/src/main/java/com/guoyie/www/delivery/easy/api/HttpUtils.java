@@ -39,5 +39,9 @@ public class HttpUtils {
     public static final String STORE_DETAIL = "model=stock&action=jarinfo";
     //库容管理列表的接口
     public static final String CAPACITY_MANAGER = "model=stock&action=stocklist";
+    //库容筛选获取商品名的接口
+    public static final String CAPACITY_FILTER_GOODS_NAME = "model=stock&action=searchgoodsname";
+    //库容筛选获取储罐号的接口
+    public static final String CAPACITY_FILTER_STORE_NUMBER = "model=stock&action=searchstockno";
 
 }
