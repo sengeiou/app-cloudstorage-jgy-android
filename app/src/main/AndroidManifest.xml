@@ -54,10 +54,11 @@
         <!-- 获取进行搜索的 -->
         <activity android:name=".activity.SeachActivity" />
         <activity android:name=".activity.SeachRusltActivity" />
-        <activity android:name=".activity.StoreManagerActivity"/>
-        <activity android:name=".activity.StoreCapacityManagerActivity"/>
-        <activity android:name=".activity.InfoOrderDetailActivity"/>
-        <activity android:name=".activity.TransTormDetailActivity"/>
+        <activity android:name=".activity.StoreManagerActivity" />
+        <activity android:name=".activity.StoreCapacityManagerActivity" />
+        <activity android:name=".activity.InfoOrderDetailActivity" />
+        <activity android:name=".activity.TransTormDetailActivity" />
+        <activity android:name=".activity.CapacityFilterActivity"></activity>
     </application>
 
 </manifest>

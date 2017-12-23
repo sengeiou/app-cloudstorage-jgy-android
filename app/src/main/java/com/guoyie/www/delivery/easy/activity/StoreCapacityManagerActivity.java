@@ -5,18 +5,25 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.StoreCapacityManagerAdapter;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.StoreCapacityManagerContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityStoreCapacityManagerBinding;
 import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.StoreCapacityModel;
 import com.guoyie.www.delivery.easy.presenter.StoreCapacityPresenter;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
+import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * 库容管理的Activity
@@ -28,8 +35,11 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
     private ActivityStoreCapacityManagerBinding mBinding;
     private NRecyclerView mRecyclerView;
-    private ArrayList<StoreCapacityListBean> mStoreCapacityList;
+    private List<StoreCapacityListBean.DataBean.ListBean> mStoreCapacityList;
     private StoreCapacityManagerAdapter mAdapter;
+    private int pageSize = 9;
+    private int pageCurrent = 1;
+    private UserInfoData mUserInfoData;
 
     @Override
     public int getLayoutId() {
@@ -60,21 +70,32 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
     private void initRecyclerView() {
 
-        mStoreCapacityList = new ArrayList<>();
+//        mStoreCapacityList = new ArrayList<>();
 
-        for (int i = 0;i < 10;i++){
-            mStoreCapacityList.add(new StoreCapacityListBean());
-        }
+//        for (int i = 0;i < 10;i++){
+//            mStoreCapacityList.add(new StoreCapacityListBean());
+//        }
+
 
         mAdapter = new StoreCapacityManagerAdapter(this);
 
-        mAdapter.setData(mStoreCapacityList);
         mAdapter.setOnItemClickListener(this);
         mBinding.swipeRefresh.setOnRefreshListener(this);
         mBinding.nrecycler.setOnLoadMoreListener(this);
         mBinding.nrecycler.setLoadMoreEnable(true);
         mBinding.nrecycler.setAdapter(mAdapter);
         mBinding.nrecycler.setErrorMessage("暂无消息提醒");
+
+        mUserInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if (mUserInfoData !=null){
+            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.CAPACITY_MANAGER + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
+                    + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
+            mPresenter.requestStoreCapacityList(params);
+        }else {
+            showToast("null");
+            return;
+        }
+
     }
 
     @Override
@@ -107,6 +128,14 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
     @Override
     public void returnStoreCapacityList(StoreCapacityListBean storeCapacityListBean) {
 
+        if (storeCapacityListBean.isOk()){
+            mStoreCapacityList = storeCapacityListBean.getData().getList();
+            //showToast(mStoreCapacityList.size()+"XXXXX");
+            mAdapter.setData(mStoreCapacityList);
+
+        }else {
+            showToast("网络错误");
+        }
     }
 
     @Override

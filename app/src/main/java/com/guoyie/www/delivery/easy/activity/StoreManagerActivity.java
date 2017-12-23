@@ -127,6 +127,10 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
     @Override
     public void returnStoreManagerList(StoreManagerListBean storeManagerListBean) {
+        if (!storeManagerListBean.isOk()){
+            showToast("网络错误");
+            return;
+        }
         mStoreManagerList = storeManagerListBean.getData().getList();
         if(pageCurrent == 1){
             mAdapter.setData(mStoreManagerList);
@@ -138,6 +142,6 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
     @Override
     public void error(String msg) {
-
+        showToast(msg);
     }
 }
