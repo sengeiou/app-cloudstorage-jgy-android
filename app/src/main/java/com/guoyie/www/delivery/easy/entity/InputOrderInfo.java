@@ -9,12 +9,12 @@ import java.util.List;
  * email：774169396@qq.com
  * data：2017/12/20
  */
-public class OrderInfo {
+public class InputOrderInfo {
 
 
     /**
      * _url : /index.php/
-     * vendor_no : YC0000000015
+     * vendor_no : OuterOrderInfo
      * status : 0
      * instock_customer_no :
      * real_insock_no :

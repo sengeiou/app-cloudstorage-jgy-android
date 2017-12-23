@@ -3,7 +3,7 @@ package com.guoyie.www.delivery.easy.contract;
 import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
-import com.guoyie.www.delivery.easy.entity.OrderInfoData;
+import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
 
 import rx.Observable;
 
@@ -17,7 +17,7 @@ import rx.Observable;
 public interface InterOrderContract {
 
     interface  Model extends BaseModel {
-        Observable<OrderInfoData> getInputData(String params);
+        Observable<InputOrderInfoData> getInputData(String params);
 
 
 
@@ -25,7 +25,7 @@ public interface InterOrderContract {
 
 
     interface  View extends BaseView{
-        void returnInputOrderData(OrderInfoData data);
+        void returnInputOrderData(InputOrderInfoData data);
 
 
         void err_or(String data);

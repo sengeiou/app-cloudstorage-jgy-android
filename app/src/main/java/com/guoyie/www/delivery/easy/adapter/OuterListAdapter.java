@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
-import com.guoyie.www.delivery.easy.entity.InputOrderInfo;
+import com.guoyie.www.delivery.easy.entity.OuterOrderInfo;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NAdapter;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
 
@@ -16,20 +16,20 @@ import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerViewHolder;
  * email：774169396@qq.com
  * data：2017/12/7
  */
-public class InterListAdapter extends NAdapter<InputOrderInfo.ListBean> {
+public class OuterListAdapter extends NAdapter<OuterOrderInfo.ListBean> {
 
-    public InterListAdapter(Context context) {
+    public OuterListAdapter(Context context) {
         super(context);
 
     }
 
     @Override
     protected int getItemLayoutId() {
-        return R.layout.interorder_item;
+        return R.layout.outerorder_item;
     }
 
     @Override
-    protected void onBindData(final NRecyclerViewHolder holder, InputOrderInfo.ListBean data, final int position) {
+    protected void onBindData(final NRecyclerViewHolder holder, OuterOrderInfo.ListBean data, final int position) {
         TextView goods_name = holder.getView(R.id.goods_name);
         TextView instock_customer_no = holder.getView(R.id.instock_customer_no);
         TextView instock_date = holder.getView(R.id.instock_date);
@@ -38,8 +38,8 @@ public class InterListAdapter extends NAdapter<InputOrderInfo.ListBean> {
 
         //设置数据的啊
         goods_name.setText(data.getGoods_name()+" | "+data.getOrder_qty()+data.getGoods_unit());//品名
-        instock_customer_no.setText("入库单号       "+data.getInstock_customer_no());//入库单号
-        instock_date.setText("预计入库时间        "+data.getInstock_date());//预计入库时间
+        instock_customer_no.setText("入库单号       "+data.getOutstock_customer_no());//入库单号
+      //  instock_date.setText("预计入库时间        "+data.getoutstock_);//预计入库时间
         shop_company_name.setText("企业名称     "+data.getShop_company_name());//企业名称
         String status=null;
         //status 状态：1.待编辑，2.待审核，3.未通过，4.入库中，5.已完成，6.已结束
