@@ -66,6 +66,7 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
         initRecyclerView();
 
         mLeft_back.setOnClickListener(this);
+        mTV_right.setOnClickListener(this);
     }
 
     private void initRecyclerView() {
@@ -120,8 +121,9 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
                 finish();
                 break;
             case R.id.tv_right:
-                startAct(StoreFilterActivity.class);
+                startAct(CapacityFilterActivity.class);
                 break;
+
         }
     }
 
@@ -130,9 +132,7 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
         if (storeCapacityListBean.isOk()){
             mStoreCapacityList = storeCapacityListBean.getData().getList();
-            //showToast(mStoreCapacityList.size()+"XXXXX");
             mAdapter.setData(mStoreCapacityList);
-
         }else {
             showToast("网络错误");
         }
