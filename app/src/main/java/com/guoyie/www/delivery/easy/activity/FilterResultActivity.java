@@ -27,7 +27,7 @@ import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterResultActivity extends BaseActivity<StoreManagerPresenter,StoreManagerModel> implements StoreManagerContract.View {
+public class FilterResultActivity extends BaseActivity<StoreManagerPresenter,StoreManagerModel> implements StoreManagerContract.View, View.OnClickListener {
 
     private ActivityFilterResultBinding mBinding;
     private ImageView mLeft_back;
@@ -59,6 +59,8 @@ public class FilterResultActivity extends BaseActivity<StoreManagerPresenter,Sto
         mTV_right = (TextView) getView(R.id.tv_right);
         mTv_title.setText("筛选结果");
         mTV_right.setVisibility(View.GONE);
+
+        mLeft_back.setOnClickListener(this);
 
         mRecyclerView = mBinding.nrecycler;
         mSwipeRefresh = mBinding.swipeRefresh;
@@ -108,5 +110,14 @@ public class FilterResultActivity extends BaseActivity<StoreManagerPresenter,Sto
     @Override
     public void error(String msg) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.left_back:
+                finish();
+                break;
+        }
     }
 }
