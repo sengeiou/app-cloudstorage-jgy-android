@@ -41,6 +41,7 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
     private int pageSize = 9;
     private int pageCurrent = 1;
     private UserInfoData mUserInfoData;
+    private int mTotalPage;
 
     @Override
     public int getLayoutId() {
@@ -80,14 +81,19 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
         mUserInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
         if (mUserInfoData !=null){
-            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
-                    + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
-            mPresenter.requestStoreManagerList(params);
+            loadData();
         }else {
             showToast("null");
             return;
+
         }
 
+    }
+
+    private void loadData() {
+            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
+                    + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
+            mPresenter.requestStoreManagerList(params);
 
     }
 
@@ -119,10 +125,11 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
     @Override
     public void onLoadMore() {
         pageCurrent++;
-        showToast(pageCurrent+"");
-        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
-                + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
-        mPresenter.requestStoreManagerList(params);
+        showToast(pageCurrent+"+++++++"+mTotalPage);
+        loadData();
+        if (pageCurrent<=mTotalPage){
+            mRecyclerView.stopLoadMore();
+        }
     }
 
     @Override
@@ -131,12 +138,12 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
             showToast("网络错误");
             return;
         }
+        mTotalPage = storeManagerListBean.getData().getTotalPage();
         mStoreManagerList = storeManagerListBean.getData().getList();
         if(pageCurrent == 1){
             mAdapter.setData(mStoreManagerList);
         }else {
             mAdapter.addData(mStoreManagerList);
-            //mRecyclerView.stopLoadMore();
         }
     }
 

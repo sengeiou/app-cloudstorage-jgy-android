@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -121,15 +122,50 @@ public class StoreFilterActivity extends BaseActivity<StoreFilterPresenter,Store
                 finish();
                 break;
             case R.id.bt_sure:
-                // TODO: 2017/12/13 确定选择，筛选结果
+                // 跳转到FilterResultActivity，确定选择，筛选结果
+                String goodsName;
+                String storeNumber;
+                String storeType;
+                if (currentGoodNameTextView==null&&currentStoreNumberView==null&&currentStoreClassTextView==null){
+                    showToast("请选择筛选条件");
+                    return;
+                }
+                //带上筛选条件
+                if (currentGoodNameTextView == null){
+                    goodsName = "";
+                }{
+                    goodsName = currentGoodNameTextView.getText().toString().trim(); //商品名
+                }
+                if (currentStoreNumberView == null){
+                    storeNumber = "";
+                }else {
+                    storeNumber = currentStoreNumberView.getText().toString().trim(); //储罐号
+                }
+                if (currentStoreClassTextView == null){
+                    storeType = "";
+                }else {
+                    storeType = currentStoreClassTextView.getText().toString().trim(); //储罐类型
+                }
+                Bundle bundle = new Bundle();
+                bundle.putString(Constant.GOODS_NAME,goodsName);
+                bundle.putString(Constant.STORE_NUMBER,storeNumber);
+                bundle.putString(Constant.STORE_TYPE,storeType);
+                startAct(FilterResultActivity.class,bundle);
                 break;
             case R.id.bt_reset:
-                if (currentGoodNameTextView!=null)
+                if (currentGoodNameTextView!=null){
                     currentGoodNameTextView.setSelected(false);
-                if (currentStoreNumberView!=null)
+                    currentGoodNameTextView = null;
+                }
+                if (currentStoreNumberView!=null){
                     currentStoreNumberView.setSelected(false);
-                if (currentStoreClassTextView!=null)
+                    currentStoreNumberView = null;
+                }
+                if (currentStoreClassTextView!=null){
                     currentStoreClassTextView.setSelected(false);
+                    currentStoreClassTextView = null;
+                }
+
         }
     }
 //------------------------------------实现自视图接口的方法----------------------------------

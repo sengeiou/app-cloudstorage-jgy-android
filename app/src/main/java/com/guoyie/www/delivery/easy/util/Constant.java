@@ -29,8 +29,10 @@ public class Constant {
     //从货权转移的CA数据
     public static final String TRANSSTOCK_CA_ID = "TRANSSTOCK_CA_ID";
 
-
-
-
-
+    //储罐筛选条件，商品名的key
+    public static final String GOODS_NAME = "STORE_NAME";
+    //储罐筛选条件，储罐号的key
+    public static final String STORE_NUMBER = "STORE_NUMBER";
+    //储罐筛选条件，储罐性质的key
+    public static final String STORE_TYPE = "STORE_TYPE";
 }
