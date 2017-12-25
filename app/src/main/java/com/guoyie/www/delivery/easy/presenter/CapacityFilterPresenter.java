@@ -1,6 +1,6 @@
 package com.guoyie.www.delivery.easy.presenter;
 
-import com.guoyie.www.delivery.easy.contract.CapacityFilterGoodsNameContract;
+import com.guoyie.www.delivery.easy.contract.CapacityFilterContract;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
@@ -15,7 +15,7 @@ import rx.Subscription;
  * data：2017/12/23
  */
 
-public class CapacityGoodsNamePresenter extends CapacityFilterGoodsNameContract.Presenter{
+public class CapacityFilterPresenter extends CapacityFilterContract.Presenter{
 
     //请求商品名
     @Override

@@ -1,12 +1,8 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
-import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,22 +12,21 @@ import com.guoyie.www.delivery.easy.adapter.FilterAdapter;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
-import com.guoyie.www.delivery.easy.contract.CapacityFilterGoodsNameContract;
+import com.guoyie.www.delivery.easy.contract.CapacityFilterContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityCapacityFilterBinding;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
-import com.guoyie.www.delivery.easy.model.CapacityGoodsNameModel;
-import com.guoyie.www.delivery.easy.presenter.CapacityGoodsNamePresenter;
+import com.guoyie.www.delivery.easy.model.CapacityFilterModel;
+import com.guoyie.www.delivery.easy.presenter.CapacityFilterPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.recyclerview.SpaceItemDecoration;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CapacityFilterActivity extends BaseActivity<CapacityGoodsNamePresenter,CapacityGoodsNameModel> implements View.OnClickListener, CapacityFilterGoodsNameContract.View {
+public class CapacityFilterActivity extends BaseActivity<CapacityFilterPresenter,CapacityFilterModel> implements View.OnClickListener, CapacityFilterContract.View {
 
     private ActivityCapacityFilterBinding mBinding;
     private TextView mTV_title;
@@ -44,8 +39,8 @@ public class CapacityFilterActivity extends BaseActivity<CapacityGoodsNamePresen
     public TextView currentGoodNameTextView;    //当前被选中的商品名
     public TextView currentStoreNumberView;    //当前被选中的储罐编号
     private UserInfoData mUserInfoData;
-    private List<CapacityGoodsNameBean.DataBean> mDataBeanList1 = new ArrayList<>();  //数据源
-    private List<CapacityStoreNumberBean.DataBean> mDataBeanList3 = new ArrayList<>();  //数据源
+    private List<CapacityGoodsNameBean.DataBean> mDataBeanList1 = new ArrayList<>();  //商品名数据源
+    private List<CapacityStoreNumberBean.DataBean> mDataBeanList3 = new ArrayList<>();  //储罐号数据源
 
     @Override
     public int getLayoutId() {
@@ -194,7 +189,6 @@ public class CapacityFilterActivity extends BaseActivity<CapacityGoodsNamePresen
         if (capacityStoreNumberBean.isOk()){
 
             mDataBeanList3.addAll(capacityStoreNumberBean.getData());
-
             final List<CapacityStoreNumberBean.DataBean> moreList3 = new ArrayList<>();
             moreList3.addAll(mDataBeanList3);
             CapacityStoreNumberBean.DataBean dataBeanMore = new CapacityStoreNumberBean.DataBean();

@@ -2,9 +2,8 @@ package com.guoyie.www.delivery.easy.api;
 
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
-import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
-import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.GetTime;
+import com.guoyie.www.delivery.easy.entity.GoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
 import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetailData;
@@ -15,6 +14,8 @@ import com.guoyie.www.delivery.easy.entity.StorageInfoData;
 import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
 import com.guoyie.www.delivery.easy.entity.StoreDetailBean;
 import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
+import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
+import com.guoyie.www.delivery.easy.entity.StoreTypeBean;
 import com.guoyie.www.delivery.easy.entity.TransstockData;
 import com.guoyie.www.delivery.easy.entity.TransstockDetailData;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
@@ -74,4 +75,13 @@ public interface ApiService {
     //库容管理筛选，获取储罐号
     @GET("model=stock&action=searchstockno")
     Observable<CapacityStoreNumberBean> getCapacityStoreNumber(@Query("params") String params);
+    //储罐筛选，获取储罐号
+    @GET("model=stock&action=distinctlist")
+    Observable<StoreNumberBean> getStoreNumber(@Query("params") String params);
+    //储罐筛选，获取商品名
+    @GET("model=stock&action=distinctlist")
+    Observable<GoodsNameBean> getStoreName(@Query("params") String params);
+    //储罐筛选，获取储罐性质
+    @GET("model=stock&action=distinctlist")
+    Observable<StoreTypeBean> getStoreType(@Query("params") String params);
 }

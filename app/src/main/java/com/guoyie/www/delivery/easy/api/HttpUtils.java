@@ -48,5 +48,7 @@ public class HttpUtils {
     public static final String TRANSSTOCK_LSIT = "model=transstock&action=list";
     //货权转移的详情的接口的接口
     public static final String TRANSSTOCK_DETAIL = "model=transstock&action=detail";
+    //储罐筛选，获取储罐号，商品名，储罐性质的接口
+    public static final String STORE_FILTER = "model=stock&action=distinctlist";
 
 }

@@ -17,7 +17,7 @@ import rx.Observable;
  * data：2017/12/23
  */
 
-public interface CapacityFilterGoodsNameContract {
+public interface CapacityFilterContract {
     interface Model extends BaseModel {
         //获取商品名
         Observable<CapacityGoodsNameBean> getCapacityGoodsName(String params);

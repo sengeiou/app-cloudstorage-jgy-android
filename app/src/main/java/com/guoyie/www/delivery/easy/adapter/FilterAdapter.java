@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
+import com.guoyie.www.delivery.easy.entity.GoodsNameBean;
+import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
+import com.guoyie.www.delivery.easy.entity.StoreTypeBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,6 @@ public class FilterAdapter<E> extends RecyclerView.Adapter<FilterAdapter.FilterV
     @Override
     public FilterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         TextView tv = (TextView) parent.inflate(parent.getContext(), R.layout.filter_item, null);
-
         return new FilterViewHolder(tv);
     }
 
@@ -70,6 +72,18 @@ public class FilterAdapter<E> extends RecyclerView.Adapter<FilterAdapter.FilterV
         if (e instanceof CapacityStoreNumberBean.DataBean){
             CapacityStoreNumberBean.DataBean e1 = (CapacityStoreNumberBean.DataBean) e;
             holder.mTextView.setText(e1.getStock_no());
+        }
+        if (e instanceof GoodsNameBean.DataBean){
+            GoodsNameBean.DataBean e1 = (GoodsNameBean.DataBean) e;
+            holder.mTextView.setText(e1.getGoods_name());
+        }
+        if (e instanceof StoreTypeBean.DataBean){
+            StoreTypeBean.DataBean e1 = (StoreTypeBean.DataBean) e;
+            holder.mTextView.setText(e1.getJar_material());
+        }
+        if (e instanceof StoreNumberBean.DataBean){
+            StoreNumberBean.DataBean e1 = (StoreNumberBean.DataBean) e;
+            holder.mTextView.setText(e1.getJar_no());
         }
 
     }

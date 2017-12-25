@@ -2,7 +2,7 @@ package com.guoyie.www.delivery.easy.model;
 
 import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
-import com.guoyie.www.delivery.easy.contract.CapacityFilterGoodsNameContract;
+import com.guoyie.www.delivery.easy.contract.CapacityFilterContract;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 
@@ -19,7 +19,7 @@ import rx.schedulers.Schedulers;
  * data：2017/12/23
  */
 
-public class CapacityGoodsNameModel implements CapacityFilterGoodsNameContract.Model {
+public class CapacityFilterModel implements CapacityFilterContract.Model {
 
     //获取商品名
     @Override
