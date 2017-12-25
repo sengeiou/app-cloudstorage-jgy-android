@@ -64,13 +64,13 @@ public class InputOrderDetail implements Serializable {
     private String id;
     private String        instock_no;
     private String        instock_customer_no;
-    private String        instock_source;
+    private int        instock_source;
     private String        instock_type;
     private String        create_name;
     private String        vendor_no;
     private String        vendor_name;
     private Object        shop_order_id;
-    private Object        shop_order_no;
+    private String        shop_order_no;
     private Object        shop_batch_id;
     private String        shop_contract;
     private String        shop_company_id;
@@ -91,7 +91,7 @@ public class InputOrderDetail implements Serializable {
     private String        real_contact;
     private String        real_contact_name;
     private String        real_remark;
-    private String        status;
+    private int        status;
     private String        isold;
     private String        remark;
     private String        create_at;
@@ -131,11 +131,11 @@ public class InputOrderDetail implements Serializable {
         this.instock_customer_no = instock_customer_no;
     }
 
-    public String getInstock_source() {
+    public int getInstock_source() {
         return instock_source;
     }
 
-    public void setInstock_source(String instock_source) {
+    public void setInstock_source(int instock_source) {
         this.instock_source = instock_source;
     }
 
@@ -179,11 +179,11 @@ public class InputOrderDetail implements Serializable {
         this.shop_order_id = shop_order_id;
     }
 
-    public Object getShop_order_no() {
+    public String getShop_order_no() {
         return shop_order_no;
     }
 
-    public void setShop_order_no(Object shop_order_no) {
+    public void setShop_order_no(String shop_order_no) {
         this.shop_order_no = shop_order_no;
     }
 
@@ -347,11 +347,11 @@ public class InputOrderDetail implements Serializable {
         this.real_remark = real_remark;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

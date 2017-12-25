@@ -1,5 +1,6 @@
 package com.guoyie.www.delivery.easy.presenter;
 
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.TranssTockDetailContract;
 import com.guoyie.www.delivery.easy.entity.TransstockDetailData;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
@@ -31,6 +32,25 @@ public class TranssTockDetailPresenter extends TranssTockDetailContract.Presente
         });
 
         mRxManage.add(subscribe);
+    }
+
+    @Override
+    public void requstTransstockUpdata(String params) {
+
+        Subscription subscribe = mModel.getTranssUpdate(params).subscribe(new RxSubscriber<BaseResponse>(mContext,true) {
+            @Override
+            protected void _onNext(BaseResponse baseResponse) {
+                mView.returnTransstockUpdate(baseResponse);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.error(message);
+            }
+        });
+
+        mRxManage.add(subscribe);
+
     }
 }
 

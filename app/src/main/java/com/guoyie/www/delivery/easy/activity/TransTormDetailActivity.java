@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,8 +12,10 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.TranssTockDetailContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityTranstomrdetalBinding;
+import com.guoyie.www.delivery.easy.dialog.CustomDialog;
 import com.guoyie.www.delivery.easy.entity.TransstockDetail;
 import com.guoyie.www.delivery.easy.entity.TransstockDetailData;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
@@ -73,9 +76,12 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
                 finish();
                 break;
             case R.id.tv_refused:
+                //处理不通过的逻辑
+               showUpdateDialog(5,"确定拒绝本条申请？");
 
                 break;
             case R.id.tv_agree:
+                showUpdateDialog(5,"确定通过本条申请？");
                 break;
 
             case R.id.ll_ca_viewpath:
@@ -95,6 +101,38 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
     }
 
+
+
+    private void showUpdateDialog(final int status, String message) {
+        final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
+                GApp.screenHeight / 4, R.layout.wind_base_dialog_xml, R.style.Theme_dialog);
+        Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
+        Button btn_commit =  dialog.findViewById(R.id.btn_commit);
+        TextView tv_title = dialog.findViewById(R.id.tv_title);
+        TextView tv_content =  dialog.findViewById(R.id.tv_content);
+        tv_title.setText("提示");
+        tv_content.setText(message);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //走请求网络的接口
+              //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + 123321);
+             //   mPresenter.requstTransstockUpdata(params);
+                dialog.dismiss();
+            }
+        });
+        btn_commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+
     @Override
     public void returnTransstockDetailData(TransstockDetailData data) {
         if (data.isOk()){
@@ -103,6 +141,11 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
                 initData(mDetail);
             }
         }
+
+    }
+
+    @Override
+    public void returnTransstockUpdate(BaseResponse data) {
 
     }
 

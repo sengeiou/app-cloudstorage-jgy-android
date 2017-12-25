@@ -1,5 +1,6 @@
 package com.guoyie.www.delivery.easy.api;
 
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.GetTime;
@@ -63,12 +64,15 @@ public interface ApiService {
     //获取库容管理列表的接口
     @GET("model=stock&action=stocklist")
     Observable<StoreCapacityListBean> getStoreCapacityList(@Query("params") String params);
-    //意向单列表的接口
+    //货权转移列表的接口
      @GET(HttpUtils.TRANSSTOCK_LSIT)
     Observable<TransstockData>getTransstockListData(@Query("params") String params);
-    //意向单详情的接口
+    //货转单单详情的接口
     @GET(HttpUtils.TRANSSTOCK_DETAIL)
     Observable<TransstockDetailData>getTransstockDetailData(@Query("params") String params);
+    //货权转移的通过或者拒绝的接口
+    @GET(HttpUtils.TRANSSTOCK_UPDATE)
+    Observable<BaseResponse>getTransstockUpdate(@Query("params") String params);
     //库容管理筛选，获取商品名列表
     @GET("model=stock&action=searchgoodsname")
     Observable<CapacityGoodsNameBean> getCapacityGoodsNameList(@Query("params") String params);

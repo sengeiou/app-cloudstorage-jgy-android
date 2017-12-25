@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.contract;
 
 import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.TransstockDetailData;
 
@@ -18,10 +19,12 @@ public interface TranssTockDetailContract {
 
     interface Model extends BaseModel{
         Observable <TransstockDetailData>getTransstockDetailData(String params);
+      Observable<BaseResponse> getTranssUpdate(String params);
     }
 
     interface View extends BaseView{
         void returnTransstockDetailData(TransstockDetailData data);
+        void returnTransstockUpdate(BaseResponse data);
         void error(String data);
     }
 
@@ -29,6 +32,7 @@ public interface TranssTockDetailContract {
 
     abstract class Presenter extends BasePresenter<View,Model>{
         abstract public void requstTransstockDetailData(String params);
+        abstract public void requstTransstockUpdata(String params);
     }
 
 
