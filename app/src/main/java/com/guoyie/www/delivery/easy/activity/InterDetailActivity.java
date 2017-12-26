@@ -146,16 +146,16 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //走请求网络的接口
-                //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + 123321);
-                //   mPresenter.requstTransstockUpdata(params);
+
                 dialog.dismiss();
             }
         });
         btn_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //走请求网络的接口
+                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_UPDATE + "&id" + mDetail.getId() + "&status=" + status);
+                mPresenter.requstInterOrderUpdate(params);
 
                 dialog.dismiss();
             }
