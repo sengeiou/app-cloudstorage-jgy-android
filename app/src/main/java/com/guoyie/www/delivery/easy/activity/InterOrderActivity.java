@@ -202,7 +202,10 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                 finish();
                 break;
             case R.id.iv_search:
-                startAct(SeachActivity.class);
+                //传递搜索时候 的标志
+                Bundle bundle=new Bundle();
+                bundle.putInt(Constant.SEACH_ID,1);
+                startAct(SeachActivity.class,bundle);
                 break;
         }
 

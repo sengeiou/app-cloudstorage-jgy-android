@@ -2,7 +2,6 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +22,6 @@ import com.guoyie.www.delivery.easy.model.TransstockDetailModel;
 import com.guoyie.www.delivery.easy.presenter.TranssTockDetailPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
-
-import java.util.List;
 
 /**
  * author：柯军
@@ -53,9 +50,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
     @Override
     public void initView() {
-
          binding= DataBindingUtil.setContentView(this,getLayoutId());
-
         mLeft_back = getView(R.id.left_back);
         binding.tvRefused.setOnClickListener(this);
         binding.tvAgree.setOnClickListener(this);
@@ -77,11 +72,11 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
                 break;
             case R.id.tv_refused:
                 //处理不通过的逻辑
-               showUpdateDialog(5,"确定拒绝本条申请？");
+               showUpdateDialog(5,"确定拒绝本条申请？","");
 
                 break;
             case R.id.tv_agree:
-                showUpdateDialog(5,"确定通过本条申请？");
+                showUpdateDialog(5,"确定通过本条申请？",mDetail.getTrans_qty());
                 break;
 
             case R.id.ll_ca_viewpath:
@@ -103,7 +98,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
 
 
-    private void showUpdateDialog(final int status, String message) {
+    private void showUpdateDialog(final int status, String message, final String trans_qty) {
         final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
                 GApp.screenHeight / 4, R.layout.wind_base_dialog_xml, R.style.Theme_dialog);
         Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
@@ -124,8 +119,8 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
             public void onClick(View view) {
 
                 //走请求网络的接口
-              //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + mDetail.getGoods().get());
-              //  mPresenter.requstTransstockUpdata(params);
+                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + trans_qty);
+                mPresenter.requstTransstockUpdata(params);
                 dialog.dismiss();
             }
         });
@@ -146,6 +141,8 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
     @Override
     public void returnTransstockUpdate(BaseResponse data) {
+
+
 
     }
 
@@ -173,27 +170,19 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
         binding.buyContactName.setText(data.getBuy_contact_name());//企业联系人
         binding.buyContact.setText(data.getBuy_contact());//联系方式
         //处理货转货物明细的集合
-        initArray(data.getGoods());
+
         //处理货转单详细信息
         binding.buyFreeday.setText(data.getBuy_freeday()+"天");//免仓期
         binding.tvRmark.setText(data.getRemark());//备注
         //处理CA的点击后的数据
         binding.llCaViewpath.setOnClickListener(this);
 
-    }
 
-    private void initArray(List<TransstockDetail.GoodsBean> goods) {
-        for (int i = 0; i < goods.size(); i++) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.goods_item, null, false);
-            TextView  goods_name=  view.findViewById(R.id.goods_name);
-            TextView  goods_nature=  view.findViewById(R.id.goods_nature);
-            TextView  remark=  view.findViewById(R.id.remark);
-            TransstockDetail.GoodsBean data = goods.get(i);
-            goods_name.setText(data.getGoods_name()+" | "+data.getTrans_qty()+data.getGoods_unit());//品名
-            goods_nature.setText(data.getGoods_nature());//货物的性质
-            remark.setText("备注："+data.getRemark());//备注
-            binding.gridLayout.addView(view);
-        }
+        //处理
+        binding.goodsName.setText(data.getGoods_name()+" | "+data.getTrans_qty()+data.getGoods_unit());//品名
+        binding.goodsNature.setText(data.getGoods_nature());//货物的性质
+        binding.remark.setText("备注："+data.getRemark());//备注
+
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.guoyie.www.delivery.easy.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * author：柯军
@@ -14,58 +13,74 @@ public class TransstockDetail implements Serializable{
 
 
     /**
-     * id : 1
-     * transstock_no : T201712169215
+     * id : 14
+     * transstock_no : T201712207452
      * shop_order_no : null
      * shop_order_id : null
-     * transstock_customer_no : 113123123
+     * transstock_customer_no : 666666
      * transstock_source : 2
      * vendor_no : YC0000000015
      * vendor_name : 新版
-     * shop_sale_company_id : 11898
-     * shop_sale_company_name : HelloKitty
-     * sale_contact : 15221489148
-     * sale_contact_name : Kitty
-     * shop_buy_company_id : 664
-     * shop_buy_company_name : 上海国烨跨境电子商务有限公司
+     * shop_sale_company_id : 11931
+     * shop_sale_company_name : 王敬测试公司
+     * sale_contact : 13006106128
+     * sale_contact_name : 556
+     * shop_buy_company_id : 11950
+     * shop_buy_company_name : 分批交割测试有限公司
      * buy_contact : 13917064564
      * buy_contact_name : sdas
-     * buy_freeday : 3
-     * create_name : Kitty
-     * ca_viewpath : https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171216143922&transaction_id=CA2017121622241762&msg_digest=OEY1NTVBRjAxQTc4ODM4RTBFMEJGMDcxQTc4MzlERjA4Qzk3OUUyOQ==
-     * status : 4
+     * buy_freeday : 50
+     * create_name : 王敬
+     * ca_viewpath : https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220163410&transaction_id=CA2017122040321829&msg_digest=MUNDNjE4MUFDQjUwNUIwN0E2NUFBREY3QzNGNjM3OEY0Mzc0QUQ2NQ==
+     * status : 6
      * isdel : 0
-     * remark : 3
-     * create_at : 2017-12-16 14:39:20
-     * finish_at : null
-     * goods : [{"id":"1","transstock_goods_no":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","trans_qty":"33.000","srock_qty":null,"goods_nature":"一般进口","remark":"3"}]
+     * remark : 575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575
+     * create_at : 2017-12-20 16:32:35
+     * finish_at : 2017-12-20 16:34:28
+     * transstock_goods_no : null
+     * goods_id : 34
+     * goods_name : 甲苯
+     * goods_unit : 吨
+     * trans_qty : 5000.000
+     * srock_qty : null
+     * goods_nature : 内贸内销
+     * product_id : 14
+     * goods_remark : 57575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757575757
      */
 
-    private String           id;
-    private String          transstock_no;
-    private Object          shop_order_no;
-    private Object          shop_order_id;
-    private String          transstock_customer_no;
-    private String          transstock_source;
-    private String          vendor_no;
-    private String          vendor_name;
-    private String          shop_sale_company_id;
-    private String          shop_sale_company_name;
-    private String          sale_contact;
-    private String          sale_contact_name;
-    private String          shop_buy_company_id;
-    private String          shop_buy_company_name;
-    private String          buy_contact;
-    private String          buy_contact_name;
-    private String          buy_freeday;
-    private String          create_name;
-    private String          ca_viewpath;
-    private int          status;
-    private String          isdel;
-    private String          remark;
-    private String          create_at;
-    private Object          finish_at;
-    private List<GoodsBean> goods;
+    private String id;
+    private String transstock_no;
+    private Object shop_order_no;
+    private Object shop_order_id;
+    private String transstock_customer_no;
+    private String transstock_source;
+    private String vendor_no;
+    private String vendor_name;
+    private String shop_sale_company_id;
+    private String shop_sale_company_name;
+    private String sale_contact;
+    private String sale_contact_name;
+    private String shop_buy_company_id;
+    private String shop_buy_company_name;
+    private String buy_contact;
+    private String buy_contact_name;
+    private String buy_freeday;
+    private String create_name;
+    private String ca_viewpath;
+    private int status;
+    private String isdel;
+    private String remark;
+    private String create_at;
+    private String finish_at;
+    private Object transstock_goods_no;
+    private String goods_id;
+    private String goods_name;
+    private String goods_unit;
+    private String trans_qty;
+    private Object srock_qty;
+    private String goods_nature;
+    private String product_id;
+    private String goods_remark;
 
     public String getId() {
         return id;
@@ -251,115 +266,83 @@ public class TransstockDetail implements Serializable{
         this.create_at = create_at;
     }
 
-    public Object getFinish_at() {
+    public String getFinish_at() {
         return finish_at;
     }
 
-    public void setFinish_at(Object finish_at) {
+    public void setFinish_at(String finish_at) {
         this.finish_at = finish_at;
     }
 
-    public List<GoodsBean> getGoods() {
-        return goods;
+    public Object getTransstock_goods_no() {
+        return transstock_goods_no;
     }
 
-    public void setGoods(List<GoodsBean> goods) {
-        this.goods = goods;
+    public void setTransstock_goods_no(Object transstock_goods_no) {
+        this.transstock_goods_no = transstock_goods_no;
     }
 
-    public static class GoodsBean {
-        /**
-         * id : 1
-         * transstock_goods_no : null
-         * goods_id : 1
-         * goods_name : 乙二醇乙醚醋酸酯
-         * goods_unit : 吨
-         * trans_qty : 33.000
-         * srock_qty : null
-         * goods_nature : 一般进口
-         * remark : 3
-         */
+    public String getGoods_id() {
+        return goods_id;
+    }
 
-        private String id;
-        private Object transstock_goods_no;
-        private String goods_id;
-        private String goods_name;
-        private String goods_unit;
-        private String trans_qty;
-        private Object srock_qty;
-        private String goods_nature;
-        private String remark;
+    public void setGoods_id(String goods_id) {
+        this.goods_id = goods_id;
+    }
 
-        public String getId() {
-            return id;
-        }
+    public String getGoods_name() {
+        return goods_name;
+    }
 
-        public void setId(String id) {
-            this.id = id;
-        }
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
 
-        public Object getTransstock_goods_no() {
-            return transstock_goods_no;
-        }
+    public String getGoods_unit() {
+        return goods_unit;
+    }
 
-        public void setTransstock_goods_no(Object transstock_goods_no) {
-            this.transstock_goods_no = transstock_goods_no;
-        }
+    public void setGoods_unit(String goods_unit) {
+        this.goods_unit = goods_unit;
+    }
 
-        public String getGoods_id() {
-            return goods_id;
-        }
+    public String getTrans_qty() {
+        return trans_qty;
+    }
 
-        public void setGoods_id(String goods_id) {
-            this.goods_id = goods_id;
-        }
+    public void setTrans_qty(String trans_qty) {
+        this.trans_qty = trans_qty;
+    }
 
-        public String getGoods_name() {
-            return goods_name;
-        }
+    public Object getSrock_qty() {
+        return srock_qty;
+    }
 
-        public void setGoods_name(String goods_name) {
-            this.goods_name = goods_name;
-        }
+    public void setSrock_qty(Object srock_qty) {
+        this.srock_qty = srock_qty;
+    }
 
-        public String getGoods_unit() {
-            return goods_unit;
-        }
+    public String getGoods_nature() {
+        return goods_nature;
+    }
 
-        public void setGoods_unit(String goods_unit) {
-            this.goods_unit = goods_unit;
-        }
+    public void setGoods_nature(String goods_nature) {
+        this.goods_nature = goods_nature;
+    }
 
-        public String getTrans_qty() {
-            return trans_qty;
-        }
+    public String getProduct_id() {
+        return product_id;
+    }
 
-        public void setTrans_qty(String trans_qty) {
-            this.trans_qty = trans_qty;
-        }
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
+    }
 
-        public Object getSrock_qty() {
-            return srock_qty;
-        }
+    public String getGoods_remark() {
+        return goods_remark;
+    }
 
-        public void setSrock_qty(Object srock_qty) {
-            this.srock_qty = srock_qty;
-        }
-
-        public String getGoods_nature() {
-            return goods_nature;
-        }
-
-        public void setGoods_nature(String goods_nature) {
-            this.goods_nature = goods_nature;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
+    public void setGoods_remark(String goods_remark) {
+        this.goods_remark = goods_remark;
     }
 }

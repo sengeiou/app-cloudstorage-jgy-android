@@ -186,7 +186,10 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
                 finish();
                 break;
             case R.id.iv_search:
-                startAct(SeachActivity.class);
+                //传递搜索时候 的标志
+                Bundle bundle=new Bundle();
+                bundle.putInt(Constant.SEACH_ID,4);
+                startAct(SeachActivity.class,bundle);
                 break;
         }
 

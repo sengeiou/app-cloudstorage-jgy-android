@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
@@ -18,6 +17,7 @@ import com.guoyie.www.delivery.easy.adapter.RetrievalAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivitySearchBinding;
 import com.guoyie.www.delivery.easy.db.HistoricalDB;
+import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.Tools;
 import com.guoyie.www.delivery.easy.util.Utils;
@@ -42,7 +42,6 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
     private HistoricalDB   historicalDB;
     private RetrievalAdapter  adapt;
     private ActivitySearchBinding binding;
-    private int type=2;
 
     @Override
     public int getLayoutId() {
@@ -57,14 +56,14 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void initView() {
         binding = DataBindingUtil.setContentView(this,getLayoutId());
+        //拿到出来的type值
+        final int type = getIntent().getIntExtra(Constant.SEACH_ID, 0);
         historicalDB = new HistoricalDB(this,type);
-
-
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         et_content = (AutoCompleteTextView) getView(R.id.et_content);
         tv_cancel = (TextView) getView(R.id.tv_cancel);
         tv_cancel.setOnClickListener(this);
-        //自动提示
+       /* //自动提示
         et_content.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -76,7 +75,7 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                 startAct(SeachRusltActivity.class, bundle);
                 historicalDB.saveHistorical(item);
             }
-        });
+        });*/
 
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         binding.recycleView.setItemAnimator(new DefaultItemAnimator());
@@ -96,7 +95,8 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                     // 先隐藏键盘
                     hideKeyboard(et_content);
                     Bundle bundle = new Bundle();
-                    bundle.putString("ProductName", keywords);
+                    bundle.putInt(Constant.SEACHSULT_ID,type);
+                    bundle.putString(Constant.KEYS_WORD, keywords);
                     startAct(SeachRusltActivity.class, bundle);
                 } else {
                     showToast("请输入搜索关键字~");
@@ -113,7 +113,8 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                         // 先隐藏键盘
                         hideKeyboard(et_content);
                         Bundle bundle = new Bundle();
-                        bundle.putString("ProductName", keywords);
+                        bundle.putInt(Constant.SEACHSULT_ID,type);
+                        bundle.putString(Constant.KEYS_WORD, keywords);
                         startAct(SeachRusltActivity.class, bundle);
                         historicalDB.saveHistorical(keywords);
                     } else {

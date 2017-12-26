@@ -201,7 +201,10 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
                 finish();
                 break;
             case R.id.iv_search:
-                startAct(SeachActivity.class);
+                //传递搜索时候 的标志
+                Bundle bundle=new Bundle();
+                bundle.putInt(Constant.SEACH_ID,2);
+                startAct(SeachActivity.class,bundle);
                 break;
         }
 

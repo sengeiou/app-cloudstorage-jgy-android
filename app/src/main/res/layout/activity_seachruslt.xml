@@ -15,12 +15,22 @@
             android:layout_height="wrap_content" />
 
 
-        <com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView
+        <com.guoyie.www.delivery.easy.widget.SwipeRefreshLayoutt
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView
+                    android:id="@+id/nrecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
 
+        </com.guoyie.www.delivery.easy.widget.SwipeRefreshLayoutt>
 
     </LinearLayout>
 

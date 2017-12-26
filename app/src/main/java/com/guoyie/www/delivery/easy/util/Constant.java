@@ -35,4 +35,10 @@ public class Constant {
     public static final String STORE_NUMBER = "STORE_NUMBER";
     //筛选条件，储罐性质的key
     public static final String STORE_TYPE = "STORE_TYPE";
+    //传递搜索的时候的key
+    public static final String SEACH_ID = "SEACH_ID";
+    //从搜索页面传到结果要页面的的id
+    public static final String SEACHSULT_ID = "SEACHSULT_ID";
+    //搜索传递的关键字
+    public static final String KEYS_WORD = "KEYS_WORD";
 }
