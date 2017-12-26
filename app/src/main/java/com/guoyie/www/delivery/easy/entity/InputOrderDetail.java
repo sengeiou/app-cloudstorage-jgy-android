@@ -65,7 +65,7 @@ public class InputOrderDetail implements Serializable {
     private String        instock_no;
     private String        instock_customer_no;
     private int        instock_source;
-    private String        instock_type;
+    private int        instock_type;
     private String        create_name;
     private String        vendor_no;
     private String        vendor_name;
@@ -139,11 +139,11 @@ public class InputOrderDetail implements Serializable {
         this.instock_source = instock_source;
     }
 
-    public String getInstock_type() {
+    public int getInstock_type() {
         return instock_type;
     }
 
-    public void setInstock_type(String instock_type) {
+    public void setInstock_type(int instock_type) {
         this.instock_type = instock_type;
     }
 

@@ -4,14 +4,18 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.InterOrderDetailContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityInterdetailBinding;
+import com.guoyie.www.delivery.easy.dialog.CustomDialog;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetail;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
 import com.guoyie.www.delivery.easy.model.InputorderDetaliModel;
@@ -77,13 +81,25 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 finish();
                 break;
             case R.id.tv_refused:
-            //调到编辑详情页面
-
+            //调到编辑详情页面status 4:审核通过 3:审核不通过
+                String refused = binding.tvRefused.getText().toString().trim();
+            if (refused.equals("拒绝")){
+                showUpdateDialog(3,"确定拒绝本条入库单？");
+            }else {
                 startAct(EditOrderDetailActivity.class);
+            }
                 break;
             case R.id.tv_agree:
                 //调到订单编辑页面
-                startAct(EditOrderActivity.class);
+
+                //调到编辑详情页面status 4:审核通过 3:审核不通过
+                String agree = binding.tvRefused.getText().toString().trim();
+                if (agree.equals("拒绝")){
+                    showUpdateDialog(4,"确定同意本条入库单？");
+                }else {
+                    startAct(EditOrderActivity.class);
+                }
+
                 break;
 
             case R.id.ll_ca_viewpath:
@@ -116,6 +132,37 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     }
 
+
+
+    private void showUpdateDialog(final int status, String message) {
+        final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
+                GApp.screenHeight / 4, R.layout.wind_base_dialog_xml, R.style.Theme_dialog);
+        Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
+        Button btn_commit =  dialog.findViewById(R.id.btn_commit);
+        TextView tv_title = dialog.findViewById(R.id.tv_title);
+        TextView tv_content =  dialog.findViewById(R.id.tv_content);
+        tv_title.setText("提示");
+        tv_content.setText(message);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //走请求网络的接口
+                //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + 123321);
+                //   mPresenter.requstTransstockUpdata(params);
+                dialog.dismiss();
+            }
+        });
+        btn_commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
     @Override
     public void returnInterOrderDetailData(InputOrderDetailData data) {
        //进行数据处理
@@ -125,6 +172,11 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 initData(mDetail);
             }
         }
+
+    }
+
+    @Override
+    public void retrunInterOrderDetailUpdate(BaseResponse data) {
 
     }
 
@@ -190,7 +242,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         //处理车辆明细的数据
         initships(data.getShip());
         //入库确认单的数据
-        binding.instockType.setText(data.getInstock_type()=="1"?"车入库":"船入库");//入库的方式
+        binding.instockType.setText(data.getInstock_type()==1?"车入库":"船入库");//入库的方式
         binding.realQty.setText(data.getReal_qty());//入库数量
         binding.realContactName.setText(data.getReal_contact_name());//仓库联系人
         binding.llCaConfirmViewpath.setOnClickListener(this);

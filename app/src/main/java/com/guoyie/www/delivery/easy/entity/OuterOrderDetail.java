@@ -63,43 +63,43 @@ public class OuterOrderDetail implements Serializable {
     private String id;
     private String        outstock_no;
     private String        outstock_customer_no;
-    private String        outstock_source;
-    private String        outstock_type;
+    private int        outstock_source;
+    private int        outstock_type;
     private String        vendor_no;
     private String        vendor_name;
-    private Object        shop_order_id;
-    private Object        shop_order_no;
-    private Object        shop_batch_id;
+    private String        shop_order_id;
+    private String        shop_order_no;
+    private String        shop_batch_id;
     private String        shop_contract;
     private String        shop_company_id;
     private String        shop_company_name;
-    private Object        shop_delivery_method;
+    private String        shop_delivery_method;
     private String        contact;
     private String        contact_name;
     private String        outstock_date;
-    private Object        outstock_real_date;
+    private String        outstock_real_date;
     private String        create_name;
     private String        ca_number;
     private String        ca_viewpath;
-    private Object        ca_confirm_number;
-    private Object        ca_confirm_viewpath;
+    private String        ca_confirm_number;
+    private String        ca_confirm_viewpath;
     private String        real_outstock_type;
-    private Object        real_outsock_no;
+    private String        real_outsock_no;
     private String        real_contact;
     private String        real_contact_name;
-    private Object        real_remark;
-    private String        status;
+    private String        real_remark;
+    private int        status;
     private String        isdel;
-    private Object        isold;
+    private String        isold;
     private String        remark;
     private String        create_at;
     private String        update_at;
-    private Object        finish_at;
+    private String        finish_at;
     private String        goods_id;
     private String        goods_name;
     private String        goods_unit;
     private String        order_qty;
-    private Object        real_qty;
+    private String        real_qty;
     private String        goods_nature;
     private List<CarBean> car;
     private List<ShipBean>       ship;
@@ -129,19 +129,19 @@ public class OuterOrderDetail implements Serializable {
         this.outstock_customer_no = outstock_customer_no;
     }
 
-    public String getOutstock_source() {
+    public int getOutstock_source() {
         return outstock_source;
     }
 
-    public void setOutstock_source(String outstock_source) {
+    public void setOutstock_source(int outstock_source) {
         this.outstock_source = outstock_source;
     }
 
-    public String getOutstock_type() {
+    public int getOutstock_type() {
         return outstock_type;
     }
 
-    public void setOutstock_type(String outstock_type) {
+    public void setOutstock_type(int outstock_type) {
         this.outstock_type = outstock_type;
     }
 
@@ -161,27 +161,27 @@ public class OuterOrderDetail implements Serializable {
         this.vendor_name = vendor_name;
     }
 
-    public Object getShop_order_id() {
+    public String getShop_order_id() {
         return shop_order_id;
     }
 
-    public void setShop_order_id(Object shop_order_id) {
+    public void setShop_order_id(String shop_order_id) {
         this.shop_order_id = shop_order_id;
     }
 
-    public Object getShop_order_no() {
+    public String getShop_order_no() {
         return shop_order_no;
     }
 
-    public void setShop_order_no(Object shop_order_no) {
+    public void setShop_order_no(String shop_order_no) {
         this.shop_order_no = shop_order_no;
     }
 
-    public Object getShop_batch_id() {
+    public String getShop_batch_id() {
         return shop_batch_id;
     }
 
-    public void setShop_batch_id(Object shop_batch_id) {
+    public void setShop_batch_id(String shop_batch_id) {
         this.shop_batch_id = shop_batch_id;
     }
 
@@ -209,11 +209,11 @@ public class OuterOrderDetail implements Serializable {
         this.shop_company_name = shop_company_name;
     }
 
-    public Object getShop_delivery_method() {
+    public String getShop_delivery_method() {
         return shop_delivery_method;
     }
 
-    public void setShop_delivery_method(Object shop_delivery_method) {
+    public void setShop_delivery_method(String shop_delivery_method) {
         this.shop_delivery_method = shop_delivery_method;
     }
 
@@ -241,11 +241,11 @@ public class OuterOrderDetail implements Serializable {
         this.outstock_date = outstock_date;
     }
 
-    public Object getOutstock_real_date() {
+    public String getOutstock_real_date() {
         return outstock_real_date;
     }
 
-    public void setOutstock_real_date(Object outstock_real_date) {
+    public void setOutstock_real_date(String outstock_real_date) {
         this.outstock_real_date = outstock_real_date;
     }
 
@@ -273,19 +273,19 @@ public class OuterOrderDetail implements Serializable {
         this.ca_viewpath = ca_viewpath;
     }
 
-    public Object getCa_confirm_number() {
+    public String getCa_confirm_number() {
         return ca_confirm_number;
     }
 
-    public void setCa_confirm_number(Object ca_confirm_number) {
+    public void setCa_confirm_number(String ca_confirm_number) {
         this.ca_confirm_number = ca_confirm_number;
     }
 
-    public Object getCa_confirm_viewpath() {
+    public String getCa_confirm_viewpath() {
         return ca_confirm_viewpath;
     }
 
-    public void setCa_confirm_viewpath(Object ca_confirm_viewpath) {
+    public void setCa_confirm_viewpath(String ca_confirm_viewpath) {
         this.ca_confirm_viewpath = ca_confirm_viewpath;
     }
 
@@ -297,11 +297,11 @@ public class OuterOrderDetail implements Serializable {
         this.real_outstock_type = real_outstock_type;
     }
 
-    public Object getReal_outsock_no() {
+    public String getReal_outsock_no() {
         return real_outsock_no;
     }
 
-    public void setReal_outsock_no(Object real_outsock_no) {
+    public void setReal_outsock_no(String real_outsock_no) {
         this.real_outsock_no = real_outsock_no;
     }
 
@@ -321,19 +321,19 @@ public class OuterOrderDetail implements Serializable {
         this.real_contact_name = real_contact_name;
     }
 
-    public Object getReal_remark() {
+    public String getReal_remark() {
         return real_remark;
     }
 
-    public void setReal_remark(Object real_remark) {
+    public void setReal_remark(String real_remark) {
         this.real_remark = real_remark;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -345,11 +345,11 @@ public class OuterOrderDetail implements Serializable {
         this.isdel = isdel;
     }
 
-    public Object getIsold() {
+    public String getIsold() {
         return isold;
     }
 
-    public void setIsold(Object isold) {
+    public void setIsold(String isold) {
         this.isold = isold;
     }
 
@@ -377,11 +377,11 @@ public class OuterOrderDetail implements Serializable {
         this.update_at = update_at;
     }
 
-    public Object getFinish_at() {
+    public String getFinish_at() {
         return finish_at;
     }
 
-    public void setFinish_at(Object finish_at) {
+    public void setFinish_at(String finish_at) {
         this.finish_at = finish_at;
     }
 
@@ -417,11 +417,11 @@ public class OuterOrderDetail implements Serializable {
         this.order_qty = order_qty;
     }
 
-    public Object getReal_qty() {
+    public String getReal_qty() {
         return real_qty;
     }
 
-    public void setReal_qty(Object real_qty) {
+    public void setReal_qty(String real_qty) {
         this.real_qty = real_qty;
     }
 
