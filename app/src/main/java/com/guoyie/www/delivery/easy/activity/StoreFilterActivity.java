@@ -133,7 +133,7 @@ public class StoreFilterActivity extends BaseActivity<StoreFilterPresenter,Store
                 //带上筛选条件
                 if (currentGoodNameTextView == null){
                     goodsName = "";
-                }{
+                }else {
                     goodsName = currentGoodNameTextView.getText().toString().trim(); //商品名
                 }
                 if (currentStoreNumberView == null){

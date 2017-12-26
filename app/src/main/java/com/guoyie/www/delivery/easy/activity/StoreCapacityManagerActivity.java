@@ -1,6 +1,8 @@
 package com.guoyie.www.delivery.easy.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,6 +42,8 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
     private int pageSize = 9;
     private int pageCurrent = 1;
     private UserInfoData mUserInfoData;
+    private String mGoodsName;
+    private String mStoreNumber;
 
     @Override
     public int getLayoutId() {
@@ -71,13 +75,6 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
     private void initRecyclerView() {
 
-//        mStoreCapacityList = new ArrayList<>();
-
-//        for (int i = 0;i < 10;i++){
-//            mStoreCapacityList.add(new StoreCapacityListBean());
-//        }
-
-
         mAdapter = new StoreCapacityManagerAdapter(this);
 
         mAdapter.setOnItemClickListener(this);
@@ -87,16 +84,35 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
         mBinding.nrecycler.setAdapter(mAdapter);
         mBinding.nrecycler.setErrorMessage("暂无消息提醒");
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle!=null){
+            //储罐名
+            mGoodsName = bundle.getString(Constant.GOODS_NAME);
+            //储罐号
+            mStoreNumber = bundle.getString(Constant.STORE_NUMBER);
+
+            mTV_right.setVisibility(View.GONE);
+
+        }else {
+            mGoodsName = "";
+            mStoreNumber = "";
+        }
+
         mUserInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
         if (mUserInfoData !=null){
-            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.CAPACITY_MANAGER + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
-                    + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
-            mPresenter.requestStoreCapacityList(params);
+            loadData();
         }else {
             showToast("null");
             return;
         }
 
+    }
+
+    private void loadData() {
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.CAPACITY_MANAGER + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
+                + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no()+"&goods_name="+mGoodsName+"&stock_no="+mStoreNumber);
+        mPresenter.requestStoreCapacityList(params);
     }
 
     @Override

@@ -8,11 +8,15 @@ import android.view.WindowManager;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoadingBinding;
 import com.guoyie.www.delivery.easy.download.SpUtils;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.retrofit.RxBus;
+import com.guoyie.www.delivery.easy.util.Constant;
 
+import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -55,8 +59,9 @@ public class LoadingActivity extends BaseActivity {
       //  Boolean isGuide = true;
         if (isGuide){
             //判断是否已经登录过，如果登录过直接进入MainActivity,否则LoginActivity
-            String userInfo = sp.getString(USER_INFO, OUT_LOGIN);  //退出登录时将值设为OUT_LOGIN即可实现退出登录
-            if (!userInfo.equals(OUT_LOGIN)){
+//            String userInfo = sp.getString(USER_INFO, OUT_LOGIN);  //退出登录时将值设为OUT_LOGIN即可实现退出登录
+            UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+            if (userInfoData!=null){
                 skip(MainActivity.class);
                 return;
             }

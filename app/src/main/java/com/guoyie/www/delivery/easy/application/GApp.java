@@ -163,4 +163,13 @@ public class GApp extends Application {
     public Engine getEngine() {
         return mEngine;
     }
+
+    public void  deleteObject(String file) throws Exception {
+        if (isExistDataCache(file)){
+            File data = getFileStreamPath(file);
+            data.delete();
+        }else {
+            throw new Exception("删除对象不存在");
+        }
+    }
 }

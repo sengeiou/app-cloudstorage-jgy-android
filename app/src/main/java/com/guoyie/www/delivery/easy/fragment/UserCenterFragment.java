@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.activity.LoginActivity;
 import com.guoyie.www.delivery.easy.activity.UserBasicInfoActivity;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
@@ -73,18 +74,32 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
             }
             mBinding.tvServiceDescription.setText(serviceDescription);
         }
-        mIcon.setOnClickListener(this);
-        mLlAbout.setOnClickListener(this);
+        mIcon.setOnClickListener(this);//点击头像
+        mLlAbout.setOnClickListener(this);//关于交割易
+        mBinding.llContact.setOnClickListener(this);//联系客服
+        mBinding.llLoginOut.setOnClickListener(this);//退出登录
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.uer_icon:
+            case R.id.uer_icon:  //点击头像
                 startAct(UserBasicInfoActivity.class);
                 break;
-            case R.id.ll_about:
-                Toast.makeText(getContext(),"收款方靠觉得你放假",Toast.LENGTH_SHORT).show();
+            case R.id.ll_about:  //关于交割易
+                Toast.makeText(getContext(),"交割易，让买卖更容易",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.ll_contact: //联系客服
+                showToast("你好，再见");
+                break;
+            case R.id.ll_login_out: //退出登录
+                try {
+                    GApp.getInstance().deleteObject(Constant.USER_INFO_CACHE);
+                    startAct(LoginActivity.class);
+                    getActivity().finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
         }
     }
 }

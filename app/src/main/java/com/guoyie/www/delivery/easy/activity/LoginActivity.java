@@ -228,6 +228,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
 
     @Override
     public void eeror(String msg) {
+        // TODO: 2017/12/26 跳转到商户入库页
         showToast(msg);
     }
 }

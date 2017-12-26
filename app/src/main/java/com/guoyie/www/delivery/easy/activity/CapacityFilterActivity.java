@@ -1,6 +1,7 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -95,13 +96,40 @@ public class CapacityFilterActivity extends BaseActivity<CapacityFilterPresenter
                 finish();
                 break;
             case R.id.bt_sure:
-                // TODO: 2017/12/23 确定选择，筛选结果
+                // 确定选择，筛选结果
+
+                String goodsName;
+                String storeNumber;
+                String storeType;
+                if (currentGoodNameTextView==null&&currentStoreNumberView==null){
+                    showToast("请选择筛选条件");
+                    return;
+                }
+                //带上筛选条件
+                if (currentGoodNameTextView == null){
+                    goodsName = "";
+                }else {
+                goodsName = currentGoodNameTextView.getText().toString().trim(); //商品名
+            }
+            if (currentStoreNumberView == null){
+                storeNumber = "";
+            }else {
+                storeNumber = currentStoreNumberView.getText().toString().trim(); //储罐号
+            }
+            Bundle bundle = new Bundle();
+            bundle.putString(Constant.GOODS_NAME,goodsName);
+            bundle.putString(Constant.STORE_NUMBER,storeNumber);
+            startAct(StoreCapacityManagerActivity.class,bundle);
                 break;
             case R.id.bt_reset:
-                if (currentGoodNameTextView!=null)
+                if (currentGoodNameTextView!=null){
                     currentGoodNameTextView.setSelected(false);
-                if (currentStoreNumberView!=null)
+                    currentGoodNameTextView = null;
+                }
+                if (currentStoreNumberView!=null){
                     currentStoreNumberView.setSelected(false);
+                    currentStoreNumberView = null;
+                }
         }
     }
 
