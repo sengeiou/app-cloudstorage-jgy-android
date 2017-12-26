@@ -115,9 +115,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //走请求网络的接口
-              //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + 123321);
-             //   mPresenter.requstTransstockUpdata(params);
+
                 dialog.dismiss();
             }
         });
@@ -125,7 +123,9 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
             @Override
             public void onClick(View view) {
 
-
+                //走请求网络的接口
+              //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + mDetail.getGoods().get());
+              //  mPresenter.requstTransstockUpdata(params);
                 dialog.dismiss();
             }
         });

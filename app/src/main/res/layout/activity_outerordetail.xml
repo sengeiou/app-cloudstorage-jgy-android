@@ -59,7 +59,7 @@
 
                    <TextView
                        style="@style/tv_title_inter"
-                       android:text="预计入库时间"/>
+                       android:text="预计出库时间"/>
 
                    <TextView
                        android:id="@+id/instock_date"
@@ -73,7 +73,7 @@
 
                    <TextView
                        style="@style/tv_title_inter"
-                       android:text="入库单号"/>
+                       android:text="出库单号"/>
 
                    <TextView
                        android:id="@+id/instock_customer_no"
@@ -307,18 +307,18 @@
                <LinearLayout
                    style="@style/ll_interorder">
                    <TextView
-                       android:text="入库类型"
+                       android:text="出库类型"
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/instock_type"
-                       android:text="车入库"
+                       android:text="车出库"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
                <!-- 2-->
                <LinearLayout
                    style="@style/ll_interorder">
                    <TextView
-                       android:text="实际入库数量"
+                       android:text="实际出库数量"
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/real_qty"
@@ -376,7 +376,7 @@
 
            <TextView
                android:id="@+id/tv_title_logs"
-               android:text="入库明细"
+               android:text="出库明细"
                style="@style/tv_title_itmes"/>
 
            <GridLayout
@@ -400,6 +400,7 @@
 
 
         <LinearLayout
+            android:visibility="gone"
              android:id="@+id/ll_inter_refused_agree"
             android:layout_width="match_parent"
             android:orientation="horizontal"

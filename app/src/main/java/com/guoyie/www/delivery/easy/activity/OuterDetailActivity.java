@@ -1,16 +1,20 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.OutOrderDetailContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityOuterordetailBinding;
+import com.guoyie.www.delivery.easy.dialog.CustomDialog;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetail;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetailData;
 import com.guoyie.www.delivery.easy.model.OuterOderDetailModel;
@@ -73,12 +77,49 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 finish();
                 break;
             case R.id.tv_refused:
-            //调到编辑详情页面
-             startAct(EditOrderDetailActivity.class);
+                //调到编辑详情页面status 4:审核通过 3:审核不通过
+                String refused = binding.tvRefused.getText().toString().trim();
+                if (refused.equals("拒绝")){
+                    showUpdateDialog(3,"确定拒绝本条入库单？");
+                }else {
+                    startAct(EditOrderDetailActivity.class);
+                }
                 break;
             case R.id.tv_agree:
                 //调到订单编辑页面
-                startAct(EditOrderActivity.class);
+
+                //调到编辑详情页面status 4:审核通过 3:审核不通过
+                String agree = binding.tvRefused.getText().toString().trim();
+                if (agree.equals("拒绝")){
+                    showUpdateDialog(4,"确定同意本条入库单？");
+                }else {
+                    startAct(EditOrderActivity.class);
+                }
+
+                break;
+
+            case R.id.ll_ca_viewpath:
+                String ca_viewpath = mDetail.getCa_viewpath();
+                if (ca_viewpath!=null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Constant.TRANSSTOCK_CA_ID, ca_viewpath);
+                    startAct(CAActivity.class, bundle);
+                }else {
+                    showToast("CA地址不存在");
+
+                }
+                break;
+
+            case R.id.ll_ca_confirm_viewpath:
+                String ca_confirm_viewpath = mDetail.getCa_confirm_viewpath();
+                if (ca_confirm_viewpath!=null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Constant.TRANSSTOCK_CA_ID, ca_confirm_viewpath);
+                    startAct(CAActivity.class, bundle);
+                }else {
+                    showToast("CA地址不存在");
+                }
+
                 break;
 
         }
@@ -87,6 +128,34 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     }
 
+    private void showUpdateDialog(final int status, String message) {
+        final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
+                GApp.screenHeight / 4, R.layout.wind_base_dialog_xml, R.style.Theme_dialog);
+        Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
+        Button btn_commit =  dialog.findViewById(R.id.btn_commit);
+        TextView tv_title = dialog.findViewById(R.id.tv_title);
+        TextView tv_content =  dialog.findViewById(R.id.tv_content);
+        tv_title.setText("提示");
+        tv_content.setText(message);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //走请求网络的接口
+                //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + 123321);
+                //   mPresenter.requstTransstockUpdata(params);
+                dialog.dismiss();
+            }
+        });
+        btn_commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 
 
     @Override
@@ -105,7 +174,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     @Override
     public void error(String msg) {
-
+        showToast(msg);
     }
 
 
@@ -128,8 +197,8 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
             case 4:
                 status="入库中";
                 binding.llInterRefusedAgree.setVisibility(View.VISIBLE);//出现通过和拒绝的按钮
-                binding.tvRefused.setText("编辑入库确认单");
-                binding.tvAgree.setText("添加入库明细");
+                binding.tvRefused.setText("编辑出库确认单");
+                binding.tvAgree.setText("添加出库明细");
                 break;
             case 5:
                 status="已完成";
@@ -172,7 +241,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         //处理车辆明细的数据
         initships(data.getShip());
         //入库确认单的数据
-        binding.instockType.setText(data.getOutstock_type()==1?"车出来库":"船出库");//入库的方式
+        binding.instockType.setText(data.getOutstock_type()==1?"车出库":"船出库");//入库的方式
         binding.realQty.setText(data.getReal_qty());//入库数量
         binding.realContactName.setText(data.getReal_contact_name());//仓库联系人
         binding.llCaConfirmViewpath.setOnClickListener(this);
@@ -180,10 +249,6 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
         //入库明细的处理
         initLogs(data.getLog());
-
-
-
-
 
 
     }
@@ -204,10 +269,10 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
                 goods_name.setText(logBean.getGoods_name()+" | "+logBean.getStock_qty()+logBean.getGoods_unit());//品名
                 goods_nature.setText(logBean.getGoods_nature());//货物的性质
-                instock_detail_no.setText(logBean.getInstock_detail_no());//
+                instock_detail_no.setText(logBean.getOutstock_detail_no());//
                 jar_no.setText(logBean.getJar_no());//
                 number.setText(logBean.getNumber());//
-                instock_date.setText(logBean.getInstock_date());//
+                instock_date.setText(logBean.getOutstock_date());//
                 remark.setText(logBean.getRemark());//
                 binding.gridLayoutLogs.addView(view);
             }

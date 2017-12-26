@@ -458,31 +458,34 @@ public class OuterOrderDetail implements Serializable {
     }
 
     public static class LogBean {
+
         /**
          * id : 1
-         * instock_id : 1
-         * instock_detail_no : 23123
-         * instock_date : 2017-12-14
+         * outstock_id : 1
+         * outstock_detail_no : 213
+         * outstock_date : 2017-12-14
          * goods_id : 1
          * goods_name : 乙二醇乙醚醋酸酯
          * goods_unit : 吨
          * goods_nature : 一般进口
+         * lose_qty : 33.000
          * stock_qty : 33.000
-         * number : 333
+         * number : 33
          * jar_no : adasd2312
          * remark : 33
-         * create_at : 2017-12-14 11:53:06
-         * update_at : 2017-12-14 11:53:06
+         * create_at : 2017-12-14 13:06:53
+         * update_at : 2017-12-14 13:06:53
          */
 
         private String id;
-        private String instock_id;
-        private String instock_detail_no;
-        private String instock_date;
+        private String outstock_id;
+        private String outstock_detail_no;
+        private String outstock_date;
         private String goods_id;
         private String goods_name;
         private String goods_unit;
         private String goods_nature;
+        private String lose_qty;
         private String stock_qty;
         private String number;
         private String jar_no;
@@ -498,28 +501,28 @@ public class OuterOrderDetail implements Serializable {
             this.id = id;
         }
 
-        public String getInstock_id() {
-            return instock_id;
+        public String getOutstock_id() {
+            return outstock_id;
         }
 
-        public void setInstock_id(String instock_id) {
-            this.instock_id = instock_id;
+        public void setOutstock_id(String outstock_id) {
+            this.outstock_id = outstock_id;
         }
 
-        public String getInstock_detail_no() {
-            return instock_detail_no;
+        public String getOutstock_detail_no() {
+            return outstock_detail_no;
         }
 
-        public void setInstock_detail_no(String instock_detail_no) {
-            this.instock_detail_no = instock_detail_no;
+        public void setOutstock_detail_no(String outstock_detail_no) {
+            this.outstock_detail_no = outstock_detail_no;
         }
 
-        public String getInstock_date() {
-            return instock_date;
+        public String getOutstock_date() {
+            return outstock_date;
         }
 
-        public void setInstock_date(String instock_date) {
-            this.instock_date = instock_date;
+        public void setOutstock_date(String outstock_date) {
+            this.outstock_date = outstock_date;
         }
 
         public String getGoods_id() {
@@ -552,6 +555,14 @@ public class OuterOrderDetail implements Serializable {
 
         public void setGoods_nature(String goods_nature) {
             this.goods_nature = goods_nature;
+        }
+
+        public String getLose_qty() {
+            return lose_qty;
+        }
+
+        public void setLose_qty(String lose_qty) {
+            this.lose_qty = lose_qty;
         }
 
         public String getStock_qty() {
@@ -608,17 +619,17 @@ public class OuterOrderDetail implements Serializable {
 
         /**
          * id : 1
-         * instock_id : 6
+         * outstock_id : 3
          * carname : 张三
-         * mobilephone : 18745874587
-         * idcard : 310
-         * carid : 沪A12345
+         * mobilephone : 18745584587
+         * idcard : 3666222
+         * carid : 京A23424
          * carmarks : -
-         * create_at : 2017-12-20 15:45:53
+         * create_at : 2017-12-20 15:54:04
          */
 
         private String id;
-        private String instock_id;
+        private String outstock_id;
         private String carname;
         private String mobilephone;
         private String idcard;
@@ -634,12 +645,12 @@ public class OuterOrderDetail implements Serializable {
             this.id = id;
         }
 
-        public String getInstock_id() {
-            return instock_id;
+        public String getOutstock_id() {
+            return outstock_id;
         }
 
-        public void setInstock_id(String instock_id) {
-            this.instock_id = instock_id;
+        public void setOutstock_id(String outstock_id) {
+            this.outstock_id = outstock_id;
         }
 
         public String getCarname() {
