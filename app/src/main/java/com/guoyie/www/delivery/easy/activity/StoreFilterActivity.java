@@ -150,7 +150,7 @@ public class StoreFilterActivity extends BaseActivity<StoreFilterPresenter,Store
                 bundle.putString(Constant.GOODS_NAME,goodsName);
                 bundle.putString(Constant.STORE_NUMBER,storeNumber);
                 bundle.putString(Constant.STORE_TYPE,storeType);
-                startAct(FilterResultActivity.class,bundle);
+                startAct(StoreManagerActivity.class,bundle);
                 break;
             case R.id.bt_reset:
                 if (currentGoodNameTextView!=null){

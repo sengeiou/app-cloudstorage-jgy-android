@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +43,9 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
     private int pageCurrent = 1;
     private UserInfoData mUserInfoData;
     private int mTotalPage;
+    private String mGoodsName;
+    private String mStoreNumber;
+    private String mStoreType;
 
     @Override
     public int getLayoutId() {
@@ -79,6 +83,23 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
         mBinding.nrecycler.setAdapter(mAdapter);
         mBinding.nrecycler.setErrorMessage("暂无储罐信息");
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle!=null){
+            //储罐名
+            mGoodsName = bundle.getString(Constant.GOODS_NAME);
+            //储罐号
+            mStoreNumber = bundle.getString(Constant.STORE_NUMBER);
+            //储罐类型
+            mStoreType = bundle.getString(Constant.STORE_TYPE);
+
+            mTV_right.setVisibility(View.GONE);
+
+        }else {
+            mGoodsName = "";
+            mStoreNumber = "";
+            mStoreType = "";
+        }
         mUserInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
         if (mUserInfoData !=null){
             loadData();
@@ -91,8 +112,9 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
     }
 
     private void loadData() {
-            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
-                    + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no());
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
+                + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no()+"&jar_no="+mStoreNumber+"&goods_name="+mGoodsName+"&\n" +
+                "jar_material="+mStoreType);
             mPresenter.requestStoreManagerList(params);
 
     }
