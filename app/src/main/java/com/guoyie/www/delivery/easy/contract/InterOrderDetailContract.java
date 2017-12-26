@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.contract;
 
 import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
 
@@ -18,17 +19,20 @@ import rx.Observable;
 public interface InterOrderDetailContract  {
     interface Model extends BaseModel{
         Observable<InputOrderDetailData> getIODetailData(String params);
+        Observable<BaseResponse>getInterOrderUpdate(String params);
     }
 
 
     interface View extends BaseView{
         void returnInterOrderDetailData(InputOrderDetailData data);
+        void retrunInterOrderDetailUpdate(BaseResponse data);
         void error(String msg);
     }
 
 
     abstract class Presenter extends BasePresenter<View,Model>{
      public abstract    void  requstInterOrderDetail(String params);
+     public abstract  void requstInterOrderUpdate(String params);
 
 
     }

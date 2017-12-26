@@ -24,7 +24,8 @@ public class HttpUtils {
     public static final String INTER_ORDER_LIST="model=warehouse&action=list";
     //入库单的详情的接口
     public static final String INTER_ORDER_DETAIL="model=warehouse&action=info";
-
+    //入库单的审核的接口的接口
+    public static final String INTER_ORDER_UPDATE="model=warehouse&action=update";
     //出库单列表的数据
     public static final String OUTER_ORDER_LIST="model=outstock&action=list";
     //出库单的详情的接口

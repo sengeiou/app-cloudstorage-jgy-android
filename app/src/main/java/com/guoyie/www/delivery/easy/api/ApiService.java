@@ -43,6 +43,10 @@ public interface ApiService {
     @GET(HttpUtils.INTER_ORDER_DETAIL)
     Observable<InputOrderDetailData> getInputOrderDetaliData(@Query("params") String params);
 
+    //获取入库单详情的接口接口
+    @GET(HttpUtils.INTER_ORDER_UPDATE)
+    Observable<BaseResponse> getInputOrderDetaliUpdate(@Query("params") String params);
+
     //获取出库单列表的接口
     @GET(HttpUtils.OUTER_ORDER_LIST)
     Observable<OuterOrderInfoData> getOuterOrderData(@Query("params") String params);

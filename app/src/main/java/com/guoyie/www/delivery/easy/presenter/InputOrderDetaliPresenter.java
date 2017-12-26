@@ -1,5 +1,6 @@
 package com.guoyie.www.delivery.easy.presenter;
 
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.InterOrderDetailContract;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
@@ -32,4 +33,23 @@ public  class InputOrderDetaliPresenter extends InterOrderDetailContract.Present
         mRxManage.add(subscribe);
 
     }
+
+    @Override
+    public void requstInterOrderUpdate(String params) {
+        Subscription subscribe = mModel.getInterOrderUpdate(params).subscribe(new RxSubscriber<BaseResponse>(mContext,true) {
+            @Override
+            protected void _onNext(BaseResponse baseResponse) {
+                mView.retrunInterOrderDetailUpdate(baseResponse);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.error(message);
+
+            }
+        });
+        mRxManage.add(subscribe);
+    }
+
+
 }
