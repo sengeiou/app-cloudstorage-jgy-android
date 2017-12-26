@@ -23,7 +23,7 @@ public interface StoreCapacityManagerContract {
 
     interface View extends BaseView {
         void returnStoreCapacityList(StoreCapacityListBean storeCapacityListBean);
-        void error();
+        void error(String msg);
     }
 
     abstract class Presenter extends BasePresenter<View,Model> {

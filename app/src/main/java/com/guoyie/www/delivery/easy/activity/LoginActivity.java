@@ -197,7 +197,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
         public void call() {
 
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            Uri data = Uri.parse("tel:" + "13155096502");
+            Uri data = Uri.parse("tel:" + "13155833297");
             intent.setData(data);
             startActivity(intent);
         }

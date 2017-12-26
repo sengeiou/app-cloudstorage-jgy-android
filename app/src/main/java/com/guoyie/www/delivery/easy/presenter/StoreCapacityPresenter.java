@@ -25,7 +25,7 @@ public class StoreCapacityPresenter extends StoreCapacityManagerContract.Present
 
             @Override
             protected void _onError(String message) {
-                mView.error();
+                mView.error(message);
             }
         });
     }

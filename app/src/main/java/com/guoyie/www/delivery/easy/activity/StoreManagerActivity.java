@@ -85,7 +85,7 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if (bundle!=null){
+        if (bundle!=null){    //此时进入的是筛选结果列表
             //储罐名
             mGoodsName = bundle.getString(Constant.GOODS_NAME);
             //储罐号
@@ -94,6 +94,7 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
             mStoreType = bundle.getString(Constant.STORE_TYPE);
 
             mTV_right.setVisibility(View.GONE);
+            mBinding.swipeRefresh.setEnabled(false);//下拉刷新不可用
 
         }else {
             mGoodsName = "";
@@ -141,17 +142,14 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
     @Override
     public void onRefresh() {
-        mBinding.swipeRefresh.setRefreshing(false);
+        pageCurrent = 1;
+        loadData();
     }
 
     @Override
     public void onLoadMore() {
         pageCurrent++;
-        showToast(pageCurrent+"+++++++"+mTotalPage);
         loadData();
-        if (pageCurrent<=mTotalPage){
-            mRecyclerView.stopLoadMore();
-        }
     }
 
     @Override
@@ -167,6 +165,8 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
         }else {
             mAdapter.addData(mStoreManagerList);
         }
+        mRecyclerView.stopLoadMore();
+        mBinding.swipeRefresh.setRefreshing(false);
     }
 
     @Override

@@ -86,13 +86,14 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if (bundle!=null){
+        if (bundle!=null){   //此时进入的是筛选结果列表
             //储罐名
             mGoodsName = bundle.getString(Constant.GOODS_NAME);
             //储罐号
             mStoreNumber = bundle.getString(Constant.STORE_NUMBER);
 
-            mTV_right.setVisibility(View.GONE);
+            mTV_right.setVisibility(View.GONE); //隐藏标题栏右侧"筛选"
+            mBinding.swipeRefresh.setEnabled(false);//下拉刷新不可用
 
         }else {
             mGoodsName = "";
@@ -122,11 +123,15 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
     @Override
     public void onRefresh() {
+        pageCurrent = 1;
+        loadData();
 
     }
 
     @Override
     public void onLoadMore() {
+        pageCurrent++;
+        loadData();
 
     }
 
@@ -148,14 +153,20 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
         if (storeCapacityListBean.isOk()){
             mStoreCapacityList = storeCapacityListBean.getData().getList();
-            mAdapter.setData(mStoreCapacityList);
+            if(pageCurrent == 1){
+                mAdapter.setData(mStoreCapacityList);
+            }else {
+                mAdapter.addData(mStoreCapacityList);
+            }
         }else {
             showToast("网络错误");
         }
+        mBinding.nrecycler.stopLoadMore();
+        mBinding.swipeRefresh.setRefreshing(false);
     }
 
     @Override
-    public void error() {
-
+    public void error(String msg) {
+        showToast(msg);
     }
 }
