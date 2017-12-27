@@ -24,7 +24,7 @@ import com.guoyie.www.delivery.easy.model.InputOrderModel;
 import com.guoyie.www.delivery.easy.presenter.InputOrderPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
+import com.guoyie.www.delivery.easy.util.Tools;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -55,6 +55,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     private int page1 = 1, page2 = 1,page3 = 1,page4 = 1,page5= 1;//全部, 待审核(3),未通过,入库中(3),"已完成
     private InterListAdapter adapter;
     private UserInfoData mUserInfo;
+    private String keywords="";
 
     @Override
     public int getLayoutId() {
@@ -79,9 +80,19 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
         mIv_search.setVisibility(View.VISIBLE);
         mIv_search.setOnClickListener(this);
 
+
         //取得用户的信息
         mUserInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
-        DebugUtil.debug("信息"+ mUserInfo.getData().getInfo().getVendor_no());
+        keywords = getIntent().getStringExtra(Constant.KEYS_WORD);
+     //  DebugUtil.debug("信息"+ mUserInfo.getData().getInfo().getVendor_no());
+        //处理搜索的逻辑
+        if (!Tools.isNull(keywords)){
+            mTv_title.setText("搜索结果");
+            mIv_search.setVisibility(View.GONE);
+            binding.tabLayout.setVisibility(View.GONE);
+        }else {
+            keywords="";
+        }
 
         initTab();
         initRecycleView();
@@ -190,7 +201,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                 break;
         }
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + status
-                + "&pageCurrent=" + page + "&pageSize=" + 10);
+                + "&pageCurrent=" + page + "&pageSize=" + 10+ "&advance_searchtxt=" + keywords);
         mPresenter.requstInputOrderData(params);
 
     }

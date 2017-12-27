@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.adapter.InfoOrderListAdapter;
 import com.guoyie.www.delivery.easy.adapter.RecyclerSearchAdapter;
 import com.guoyie.www.delivery.easy.adapter.RetrievalAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
@@ -95,9 +96,9 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                     // 先隐藏键盘
                     hideKeyboard(et_content);
                     Bundle bundle = new Bundle();
-                    bundle.putInt(Constant.SEACHSULT_ID,type);
                     bundle.putString(Constant.KEYS_WORD, keywords);
-                    startAct(SeachRusltActivity.class, bundle);
+                    goTagActivity(bundle, type);
+
                 } else {
                     showToast("请输入搜索关键字~");
                 }
@@ -113,9 +114,8 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                         // 先隐藏键盘
                         hideKeyboard(et_content);
                         Bundle bundle = new Bundle();
-                        bundle.putInt(Constant.SEACHSULT_ID,type);
                         bundle.putString(Constant.KEYS_WORD, keywords);
-                        startAct(SeachRusltActivity.class, bundle);
+                       goTagActivity(bundle,type);
                         historicalDB.saveHistorical(keywords);
                     } else {
                         showToast("请输入搜索关键字~");
@@ -126,6 +126,24 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
             }
         });
 
+    }
+
+    private void goTagActivity(Bundle bundle, int type) {
+        switch (type){
+            case 1:
+                startAct(InterOrderActivity.class,bundle);
+                break;
+            case 2:
+                startAct(OuterOrderActivity.class,bundle);
+                break;
+            case 3:
+                startAct(TransTormorderActivity.class,bundle);
+                break;
+            case 4:
+                startAct(InfoOrderListAdapter.class,bundle);
+                break;
+
+        }
     }
 
     @Override

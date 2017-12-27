@@ -28,68 +28,68 @@ import rx.Observable;
 
 public interface ApiService {
     //获取服务器时间的接口
-    @GET(HttpUtils.GET_TIME)
+    @GET("?")
     Observable<GetTime> getTime(@Query("params") String params);
      //登录的接口
-    @GET(HttpUtils.LOG_IN)
+     @GET("?")
     Observable<UserInfoData> getLogin(@Query("params") String params);
     //加盟商入驻的接口
-    @GET(HttpUtils.RE_GISTER)
+    @GET("?")
     Observable<RegisterData> getRegister(@Query("params") String params);
     //获取入库单列表的接口
-    @GET(HttpUtils.INTER_ORDER_LIST)
+    @GET("?")
     Observable<InputOrderInfoData> getInputOrderData(@Query("params") String params);
     //获取入库单详情的接口接口
-    @GET(HttpUtils.INTER_ORDER_DETAIL)
+    @GET("?")
     Observable<InputOrderDetailData> getInputOrderDetaliData(@Query("params") String params);
 
     //获取入库单详情的接口接口
-    @GET(HttpUtils.INTER_ORDER_UPDATE)
+    @GET("?")
     Observable<BaseResponse> getInputOrderDetaliUpdate(@Query("params") String params);
 
     //获取出库单列表的接口
-    @GET(HttpUtils.OUTER_ORDER_LIST)
+    @GET("?")
     Observable<OuterOrderInfoData> getOuterOrderData(@Query("params") String params);
     //获取出库单详情的接口接口
-    @GET(HttpUtils.OUTER_ORDER_DETAIL)
+    @GET("?")
     Observable<OuterOrderDetailData> getOuterOrderDetaliData(@Query("params") String params);
     //获取储罐管理列表的接口
-    @GET(HttpUtils.STORE_MANAGER_LIST)
+    @GET("?")
     Observable<StoreManagerListBean> getStoreManagerList(@Query("params") String params);
     //意向单列表的接口
-    @GET(HttpUtils.INFO_STORAGE)
+    @GET("?")
     Observable<StorageData>getStorageData(@Query("params") String params);
     //意向单详情的接口
-    @GET(HttpUtils.INFO_STORAGE_DETALI)
+    @GET("?")
     Observable<StorageInfoData>getStorageInfoData(@Query("params") String params);
     //储罐详情的接口
-    @GET("model=stock&action=jarinfo")
+    @GET("?")
     Observable<StoreDetailBean> getStoreDetail(@Query("params") String params);
     //获取库容管理列表的接口
-    @GET("model=stock&action=stocklist")
+    @GET("?")
     Observable<StoreCapacityListBean> getStoreCapacityList(@Query("params") String params);
     //货权转移列表的接口
-     @GET(HttpUtils.TRANSSTOCK_LSIT)
+    @GET("?")
     Observable<TransstockData>getTransstockListData(@Query("params") String params);
     //货转单单详情的接口
-    @GET(HttpUtils.TRANSSTOCK_DETAIL)
+    @GET("?")
     Observable<TransstockDetailData>getTransstockDetailData(@Query("params") String params);
     //货权转移的通过或者拒绝的接口
-    @GET(HttpUtils.TRANSSTOCK_UPDATE)
+    @GET("?")
     Observable<BaseResponse>getTransstockUpdate(@Query("params") String params);
     //库容管理筛选，获取商品名列表
-    @GET("model=stock&action=searchgoodsname")
+    @GET("?")
     Observable<CapacityGoodsNameBean> getCapacityGoodsNameList(@Query("params") String params);
     //库容管理筛选，获取储罐号
-    @GET("model=stock&action=searchstockno")
+    @GET("?")
     Observable<CapacityStoreNumberBean> getCapacityStoreNumber(@Query("params") String params);
     //储罐筛选，获取储罐号
-    @GET("model=stock&action=distinctlist")
+    @GET("?")
     Observable<StoreNumberBean> getStoreNumber(@Query("params") String params);
     //储罐筛选，获取商品名
-    @GET("model=stock&action=distinctlist")
+    @GET("?")
     Observable<GoodsNameBean> getStoreName(@Query("params") String params);
     //储罐筛选，获取储罐性质
-    @GET("model=stock&action=distinctlist")
+    @GET("?")
     Observable<StoreTypeBean> getStoreType(@Query("params") String params);
 }
