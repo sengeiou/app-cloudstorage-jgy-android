@@ -24,6 +24,7 @@ import com.guoyie.www.delivery.easy.model.OuterOderModel;
 import com.guoyie.www.delivery.easy.presenter.OuterOrderPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.Tools;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
     private int page1 = 1, page2 = 1,page3 = 1,page4 = 1,page5= 1;//全部, 待审核(3),未通过,入库中(3),"已完成
     private OuterListAdapter adapter;
     private UserInfoData     mUserInfo;
+    private String keywords="";
 
     @Override
     public int getLayoutId() {
@@ -80,6 +82,15 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
 
         //取得用户的信息
         mUserInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        keywords = getIntent().getStringExtra(Constant.KEYS_WORD);
+        //处理搜索的逻辑
+        if (!Tools.isNull(keywords)){
+            mTv_title.setText("搜索结果");
+            mIv_search.setVisibility(View.GONE);
+            binding.tabLayout.setVisibility(View.GONE);
+        }else {
+            keywords="";
+        }
 
         initTab();
         initRecycleView();
@@ -189,7 +200,7 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
         }
 
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + status
-                + "&pageCurrent=" + page + "&pageSize=" + 10 );
+                + "&pageCurrent=" + page + "&pageSize=" + 10 + "&keyword1s=" + keywords);
         mPresenter.requstOutorderData(params);
 
     }
@@ -296,8 +307,6 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
                     adapter.setData(list2);
                     if (list.size()>0)
                         page2++;
-                    TextView titleView = binding.tabLayout.getTitleView(1);
-                    titleView.setText("待审核(" + data.getData().getTotalRow() + ")");
                     break;
                 case 3:
                     list3.addAll(list);
@@ -310,8 +319,6 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
                     adapter.setData(list4);
                     if (list.size()>0)
                         page4++;
-                    TextView textView = binding.tabLayout.getTitleView(3);
-                    textView.setText("出库中(" + data.getData().getTotalRow() + ")");
                     break;
                 case 5:
                     list5.addAll(list);
@@ -320,6 +327,9 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
                         page5++;
                     break;
             }
+            //处理导航上数据问题
+            binding.tabLayout.getTitleView(1).setText("待审核(" + data.getData().getCount_2() + ")");
+            binding.tabLayout.getTitleView(3).setText("待审核(" + data.getData().getCount_4() + ")");
 
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
@@ -338,4 +348,13 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
     public void error(String msg) {
         showToast(msg);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefresh();//刷新数据
+    }
 }
+
+

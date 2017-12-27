@@ -29,6 +29,8 @@ public class HttpUtils {
     //出库单列表的数据
     public static final String OUTER_ORDER_LIST="model=outstock&action=list";
     //出库单的详情的接口
+    public static final String OUTER_ORDER_UPDATE="model=outstock&action=update";
+    //出库单审核的接口
     public static final String OUTER_ORDER_DETAIL="model=outstock&action=info";
     //获取储罐管理列表数据的接口
     public static final String STORE_MANAGER_LIST ="model=stock&action=jarlist";

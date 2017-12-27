@@ -12,6 +12,7 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.OutOrderDetailContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityOuterordetailBinding;
 import com.guoyie.www.delivery.easy.dialog.CustomDialog;
@@ -21,6 +22,7 @@ import com.guoyie.www.delivery.easy.model.OuterOderDetailModel;
 import com.guoyie.www.delivery.easy.presenter.OuterOrderDetailPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 
 import java.util.List;
 
@@ -66,7 +68,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     private void loadData(String id) {
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_DETAIL + "&id=" + id);
-        mPresenter.requstOuterDetailrData(params);
+        mPresenter.requstOuterDetailData(params);
 
     }
 
@@ -82,18 +84,18 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 if (refused.equals("拒绝")){
                     showUpdateDialog(3,"确定拒绝本条入库单？");
                 }else {
-                    startAct(EditOrderDetailActivity.class);
+                    startAct(EditOrderActivity.class);
                 }
                 break;
             case R.id.tv_agree:
                 //调到订单编辑页面
 
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
-                String agree = binding.tvRefused.getText().toString().trim();
-                if (agree.equals("拒绝")){
-                    showUpdateDialog(4,"确定同意本条入库单？");
+                String agree = binding.tvAgree.getText().toString().trim();
+                if (agree.equals("同意")){
+                    showUpdateDialog(4,"确定同意本条出库单？");
                 }else {
-                    startAct(EditOrderActivity.class);
+                    startAct(EditOrderDetailActivity.class);
                 }
 
                 break;
@@ -140,9 +142,10 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //走请求网络的接口
-                //  String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + 123321);
-                //   mPresenter.requstTransstockUpdata(params);
+                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_UPDATE+ "&id=" + mDetail.getId() + "&status=" + status);
+                String encrypt = BlowfishTools.decrypt(HttpUtils.key, params);
+                DebugUtil.debug("heheh"+encrypt);
+                mPresenter.requstOuterDetailUpdate(params);
                 dialog.dismiss();
             }
         });
@@ -159,7 +162,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
 
     @Override
-    public void returnOuterDetailrData(OuterOrderDetailData data) {
+    public void returnOuterDetailData(OuterOrderDetailData data) {
         //进行数据处理
         //进行数据处理
         if (data.isOk()){
@@ -169,6 +172,15 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
             }
         }
 
+
+    }
+
+    @Override
+    public void returnOuterDetailUpdate(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
 
     }
 

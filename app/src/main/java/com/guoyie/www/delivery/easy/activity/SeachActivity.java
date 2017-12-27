@@ -12,7 +12,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.guoyie.www.delivery.easy.R;
-import com.guoyie.www.delivery.easy.adapter.InfoOrderListAdapter;
 import com.guoyie.www.delivery.easy.adapter.RecyclerSearchAdapter;
 import com.guoyie.www.delivery.easy.adapter.RetrievalAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
@@ -64,6 +63,9 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
         et_content = (AutoCompleteTextView) getView(R.id.et_content);
         tv_cancel = (TextView) getView(R.id.tv_cancel);
         tv_cancel.setOnClickListener(this);
+        if (type==4){
+              et_content.setHint("请输入产品名称");
+        }
        /* //自动提示
         et_content.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -140,7 +142,7 @@ public class SeachActivity extends BaseActivity implements View.OnClickListener 
                 startAct(TransTormorderActivity.class,bundle);
                 break;
             case 4:
-                startAct(InfoOrderListAdapter.class,bundle);
+                startAct(InfoOrderActivity.class,bundle);
                 break;
 
         }

@@ -31,8 +31,9 @@ public class Storage implements Serializable {
      * pageCurrent : 1
      * pageSize : 10
      * totalRow : 11
-     * list : [{"id":"15","inquiry_no":"I201712204408","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120105","area_name":"河北区","goods_name":"醋酸","goods_num":"123.000","goods_unit":"吨","contract_type":"1","remark":"","status":"1","create_at":"2017-12-20 15:28:39","update_at":null,"create_name":"王敬"},{"id":"14","inquiry_no":"I201712205785","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120104","area_name":"南开区","goods_name":"丁二烯","goods_num":"366.000","goods_unit":"吨","contract_type":"1","remark":"","status":"1","create_at":"2017-12-20 15:28:08","update_at":null,"create_name":"王敬"},{"id":"13","inquiry_no":"I201712208165","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"纯苯","goods_num":"222.000","goods_unit":"吨","contract_type":"1","remark":"","status":"1","create_at":"2017-12-20 15:27:50","update_at":null,"create_name":"王敬"},{"id":"12","inquiry_no":"I201712202185","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"异丙醇","goods_num":"444.000","goods_unit":"吨","contract_type":"1","remark":"","status":"1","create_at":"2017-12-20 15:27:35","update_at":null,"create_name":"王敬"},{"id":"11","inquiry_no":"I201712203211","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"辛醇","goods_num":"555.000","goods_unit":"吨","contract_type":"2","remark":"","status":"1","create_at":"2017-12-20 15:22:29","update_at":null,"create_name":"王敬"},{"id":"10","inquiry_no":"I201712204702","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"异丁醇","goods_num":"888.000","goods_unit":"吨","contract_type":"2","remark":"","status":"1","create_at":"2017-12-20 15:22:06","update_at":null,"create_name":"王敬"},{"id":"9","inquiry_no":"I201712206649","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120102","area_name":"河东区","goods_name":"异丙醇","goods_num":"666.000","goods_unit":"吨","contract_type":"2","remark":"","status":"1","create_at":"2017-12-20 15:21:47","update_at":null,"create_name":"王敬"},{"id":"8","inquiry_no":"I201712205471","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120102","area_name":"河东区","goods_name":"氢溴酸2","goods_num":"1000.000","goods_unit":"吨","contract_type":"1","remark":"","status":"1","create_at":"2017-12-20 15:21:21","update_at":null,"create_name":"王敬"},{"id":"7","inquiry_no":"I201712137750","company_id":"11898","company_name":"HelloKitty","company_contact":"15221489148","company_contact_name":"Kitty","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120104","area_name":"南开区","goods_name":"异丁醇","goods_num":"222.000","goods_unit":"立方米","contract_type":"2","remark":"222","status":"-1","create_at":"2017-12-13 14:50:07","update_at":null,"create_name":"Kitty"},{"id":"6","inquiry_no":"I201712138020","company_id":"11898","company_name":"HelloKitty","company_contact":"15221489148","company_contact_name":"Kitty","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"溶剂二甲苯","goods_num":"2.000","goods_unit":"千克","contract_type":"2","remark":"222","status":"1","create_at":"2017-12-13 14:49:48","update_at":null,"create_name":"Kitty"}]
+     * list : [{"id":"15","inquiry_no":"I201712204408","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120105","area_name":"河北区","goods_name":"醋酸","goods_num":"123.000","goods_unit":"吨","contract_type":"1","remark":"","status":"-1","create_at":"2017-12-20 15:28:39","update_at":"2017-12-25 09:30:44","create_name":"王敬"},{"id":"14","inquiry_no":"I201712205785","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120104","area_name":"南开区","goods_name":"丁二烯","goods_num":"366.000","goods_unit":"吨","contract_type":"1","remark":"","status":"-1","create_at":"2017-12-20 15:28:08","update_at":"2017-12-25 09:30:48","create_name":"王敬"},{"id":"13","inquiry_no":"I201712208165","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"纯苯","goods_num":"222.000","goods_unit":"吨","contract_type":"1","remark":"","status":"-1","create_at":"2017-12-20 15:27:50","update_at":"2017-12-25 09:30:38","create_name":"王敬"},{"id":"12","inquiry_no":"I201712202185","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"异丙醇","goods_num":"444.000","goods_unit":"吨","contract_type":"1","remark":"","status":"-1","create_at":"2017-12-20 15:27:35","update_at":"2017-12-26 10:08:20","create_name":"王敬"},{"id":"11","inquiry_no":"I201712203211","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"辛醇","goods_num":"555.000","goods_unit":"吨","contract_type":"2","remark":"","status":"1","create_at":"2017-12-20 15:22:29","update_at":null,"create_name":"王敬"},{"id":"10","inquiry_no":"I201712204702","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"异丁醇","goods_num":"888.000","goods_unit":"吨","contract_type":"2","remark":"","status":"1","create_at":"2017-12-20 15:22:06","update_at":null,"create_name":"王敬"},{"id":"9","inquiry_no":"I201712206649","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120102","area_name":"河东区","goods_name":"异丙醇","goods_num":"666.000","goods_unit":"吨","contract_type":"2","remark":"","status":"1","create_at":"2017-12-20 15:21:47","update_at":null,"create_name":"王敬"},{"id":"8","inquiry_no":"I201712205471","company_id":"11931","company_name":"王敬测试公司","company_contact":"15156875945","company_contact_name":"王敬","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120102","area_name":"河东区","goods_name":"氢溴酸2","goods_num":"1000.000","goods_unit":"吨","contract_type":"1","remark":"","status":"1","create_at":"2017-12-20 15:21:21","update_at":null,"create_name":"王敬"},{"id":"7","inquiry_no":"I201712137750","company_id":"11898","company_name":"HelloKitty","company_contact":"15221489148","company_contact_name":"Kitty","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120104","area_name":"南开区","goods_name":"异丁醇","goods_num":"222.000","goods_unit":"立方米","contract_type":"2","remark":"222","status":"-1","create_at":"2017-12-13 14:50:07","update_at":null,"create_name":"Kitty"},{"id":"6","inquiry_no":"I201712138020","company_id":"11898","company_name":"HelloKitty","company_contact":"15221489148","company_contact_name":"Kitty","vendor_id":null,"vendor_name":null,"province_code":"120000","province_name":"天津市","city_code":"120100","city_name":"天津市","area_code":"120101","area_name":"和平区","goods_name":"溶剂二甲苯","goods_num":"2.000","goods_unit":"千克","contract_type":"2","remark":"222","status":"1","create_at":"2017-12-13 14:49:48","update_at":null,"create_name":"Kitty"}]
      * totalPage : 2
+     * count_1 : 6
      */
 
     private String _url;
@@ -53,6 +54,7 @@ public class Storage implements Serializable {
     private String         pageSize;
     private String         totalRow;
     private int            totalPage;
+    private String         count_1;
     private List<ListBean> list;
 
     public String get_url() {
@@ -199,6 +201,14 @@ public class Storage implements Serializable {
         this.totalPage = totalPage;
     }
 
+    public String getCount_1() {
+        return count_1;
+    }
+
+    public void setCount_1(String count_1) {
+        this.count_1 = count_1;
+    }
+
     public List<ListBean> getList() {
         return list;
     }
@@ -228,9 +238,9 @@ public class Storage implements Serializable {
          * goods_unit : 吨
          * contract_type : 1
          * remark :
-         * status : 1
+         * status : -1
          * create_at : 2017-12-20 15:28:39
-         * update_at : null
+         * update_at : 2017-12-25 09:30:44
          * create_name : 王敬
          */
 
@@ -255,7 +265,7 @@ public class Storage implements Serializable {
         private String remark;
         private int status;
         private String create_at;
-        private Object update_at;
+        private String update_at;
         private String create_name;
 
         public String getId() {
@@ -426,11 +436,11 @@ public class Storage implements Serializable {
             this.create_at = create_at;
         }
 
-        public Object getUpdate_at() {
+        public String getUpdate_at() {
             return update_at;
         }
 
-        public void setUpdate_at(Object update_at) {
+        public void setUpdate_at(String update_at) {
             this.update_at = update_at;
         }
 

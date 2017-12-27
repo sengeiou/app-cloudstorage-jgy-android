@@ -22,6 +22,7 @@ import com.guoyie.www.delivery.easy.model.TransstockDetailModel;
 import com.guoyie.www.delivery.easy.presenter.TranssTockDetailPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 
 /**
  * author：柯军
@@ -50,7 +51,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
     @Override
     public void initView() {
-         binding= DataBindingUtil.setContentView(this,getLayoutId());
+        binding= DataBindingUtil.setContentView(this,getLayoutId());
         mLeft_back = getView(R.id.left_back);
         binding.tvRefused.setOnClickListener(this);
         binding.tvAgree.setOnClickListener(this);
@@ -76,7 +77,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
                 break;
             case R.id.tv_agree:
-                showUpdateDialog(5,"确定通过本条申请？",mDetail.getTrans_qty());
+                showUpdateDialog(6,"确定通过本条申请？",mDetail.getTrans_qty());
                 break;
 
             case R.id.ll_ca_viewpath:
@@ -119,11 +120,15 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
             public void onClick(View view) {
 
                 //走请求网络的接口
-                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id" + mDetail.getId() + "&status=" + status + "&read_num=" + trans_qty);
+                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_UPDATE + "&id=" + mDetail.getId() + "&status=" + status + "&read_num=" + trans_qty);
+                String encrypt = BlowfishTools.decrypt(HttpUtils.key, params);
+                DebugUtil.debug("heheh"+encrypt);
+
                 mPresenter.requstTransstockUpdata(params);
                 dialog.dismiss();
             }
         });
+
         dialog.show();
     }
 
@@ -142,6 +147,10 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
     @Override
     public void returnTransstockUpdate(BaseResponse data) {
 
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
 
 
     }

@@ -24,7 +24,7 @@ import com.guoyie.www.delivery.easy.model.TransstockModel;
 import com.guoyie.www.delivery.easy.presenter.TranssTockPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
+import com.guoyie.www.delivery.easy.util.Tools;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -58,6 +58,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
     private TrantosListAdapter adapter;
     private UserInfoData mUserInfo;
     private boolean IS_MORE=false;
+    private String keywords="";
 
     @Override
     public int getLayoutId() {
@@ -83,7 +84,16 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
         mIv_search.setOnClickListener(this);
         //取得用户的信息
         mUserInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
-        DebugUtil.debug("信息"+ mUserInfo.getData().getInfo().getVendor_no());
+        keywords = getIntent().getStringExtra(Constant.KEYS_WORD);
+        //处理搜索的逻辑
+        if (!Tools.isNull(keywords)){
+            mTv_title.setText("搜索结果");
+            mIv_search.setVisibility(View.GONE);
+            binding.tabLayout.setVisibility(View.GONE);
+        }else {
+            keywords="";
+        }
+
         initTab();
         initRecycleView();
         onRefresh();
@@ -170,7 +180,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
 
         }
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.TRANSSTOCK_LSIT + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + status
-                + "&pageCurrent=" + page + "&pageSize=" + 10+"&from=usercenter");
+                + "&pageCurrent=" + page + "&pageSize=" + 10+"&from=usercenter"+"&vendor_transstock_like="+keywords);
         mPresenter.requstTranssTockData(params);
 
     }
@@ -247,6 +257,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
         }
 
         loadData(type, 1);
+
         binding.swipeRefresh.setRefreshing(true);
     }
 
@@ -290,8 +301,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
                     adapter.setData(list2);
                     if (list.size()>0)
                         page2++;
-                    TextView titleView = binding.tabLayout.getTitleView(1);
-                    titleView.setText("待审核(" + data.getData().getTotalRow() + ")");
+
                     break;
                 case 3:
                     list3.addAll(list);
@@ -307,6 +317,8 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
                     break;
 
             }
+            //处理导航条
+            binding.tabLayout.getTitleView(1).setText("待审核(" + data.getData().getUnauditedCount() + ")");
 
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
@@ -324,5 +336,12 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
         binding.swipeRefresh.setRefreshing(false);
         showToast(msg);
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefresh();//刷新数据
     }
 }

@@ -25,6 +25,7 @@ import com.guoyie.www.delivery.easy.model.StoreAgeModel;
 import com.guoyie.www.delivery.easy.presenter.StorAgePresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.Tools;
 import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
     private int type = 1;//1是未读，2是已读
 
     private int page1 = 1, page2 = 1,page3 = 1;//全部, 进行中(3),已结束
+
     //处理五情况来记录的type，和每页的情况判断情况
 
     private List<Storage.ListBean>             list1;//网络获取数据保存,全部的数据
@@ -57,6 +59,7 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
     private InfoOrderListAdapter     adapter;
     private ActivityInforederBinding binding;
     private UserInfoData mUserInfo;
+    private String keywords="";
 
     @Override
     public int getLayoutId() {
@@ -81,6 +84,16 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
         mIv_search.setOnClickListener(this);
         //取得用户的信息
         mUserInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        keywords = getIntent().getStringExtra(Constant.KEYS_WORD);
+        //  DebugUtil.debug("信息"+ mUserInfo.getData().getInfo().getVendor_no());
+        //处理搜索的逻辑
+        if (!Tools.isNull(keywords)){
+            mTv_title.setText("搜索结果");
+            mIv_search.setVisibility(View.GONE);
+            binding.tabLayout.setVisibility(View.GONE);
+        }else {
+            keywords="";
+        }
 
         initTab();
         initRecycleView();
@@ -158,7 +171,8 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
 
         String params= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INFO_STORAGE+"&vendor_no="+mUserInfo.getData().getInfo().getVendor_no()
                 +"&vendor_province_code="+mUserInfo.getData().getInfo().getProvince_code()+"&vendor_city_code="+mUserInfo.getData().getInfo().getCity_code()
-                + "&status=" + status + "&pageCurrent=" + page + "&pageSize=" + 10  );
+                + "&status=" + status + "&pageCurrent=" + page + "&pageSize=" + 10
+                + "&goods_name=" + keywords);
             mPresenter.requstStorageData(params);
 
     }
@@ -269,8 +283,6 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
                     adapter.setData(list2);
                     if (list.size()>0)
                         page2++;
-                    TextView titleView = binding.tabLayout.getTitleView(1);
-                    titleView.setText("进行中(" + data.getData().getTotalRow() + ")");
                     break;
                 case 3:
                     list3.addAll(list);
@@ -280,6 +292,8 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
                     break;
 
             }
+            //处理导航上数据问题
+            binding.tabLayout.getTitleView(1).setText("待审核(" + data.getData().getCount_1() + ")");
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
             } else{

@@ -45,6 +45,15 @@ public class Transstock implements Serializable{
     private String         totalRow;
     private int            totalPage;
     private List<ListBean> list;
+    private String   unauditedCount;
+
+    public String getUnauditedCount() {
+        return unauditedCount;
+    }
+
+    public void setUnauditedCount(String unauditedCount) {
+        this.unauditedCount = unauditedCount;
+    }
 
     public String get_url() {
         return _url;

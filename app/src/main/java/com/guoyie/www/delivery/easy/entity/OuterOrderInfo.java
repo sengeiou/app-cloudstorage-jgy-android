@@ -12,10 +12,12 @@ import java.util.List;
  */
 public class OuterOrderInfo implements Serializable {
 
+
     /**
      * _url : /index.php/
      * vendor_no : YC0000000015
      * status :
+     * keyword1s :
      * outstock_customer_no :
      * real_outsock_no :
      * goods_id :
@@ -27,14 +29,19 @@ public class OuterOrderInfo implements Serializable {
      * end_time :
      * pageCurrent : 1
      * pageSize : 10
-     * totalRow : 12
-     * list : [{"id":"12","outstock_no":"O201712204423","outstock_customer_no":"55656","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 16:27:40","outstock_source":"2","status":"2","outstock_id":"12","goods_id":"62","goods_name":"草酸","goods_unit":"吨","order_qty":"100.000","goods_nature":"内贸转出口","remark":"商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注"},{"id":"11","outstock_no":"O201712206210","outstock_customer_no":"1314","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 16:00:13","outstock_source":"2","status":"2","outstock_id":"11","goods_id":"63","goods_name":"羧酸","goods_unit":"吨","order_qty":"520.000","goods_nature":"内贸转出口","remark":""},{"id":"10","outstock_no":"O201712202393","outstock_customer_no":"675758","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:59:45","outstock_source":"2","status":"2","outstock_id":"10","goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"保税","remark":""},{"id":"9","outstock_no":"O201712201892","outstock_customer_no":"1213","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:59:18","outstock_source":"2","status":"2","outstock_id":"9","goods_id":"58","goods_name":"丁二烯","goods_unit":"吨","order_qty":"123.000","goods_nature":"一般进口","remark":""},{"id":"8","outstock_no":"O201712208672","outstock_customer_no":"89898","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:58:32","outstock_source":"2","status":"2","outstock_id":"8","goods_id":"23","goods_name":"氢溴酸2","goods_unit":"吨","order_qty":"666.000","goods_nature":"一般进口","remark":""},{"id":"7","outstock_no":"O201712206795","outstock_customer_no":"4564656","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:57:20","outstock_source":"2","status":"2","outstock_id":"7","goods_id":"41","goods_name":"溶剂二甲苯","goods_unit":"吨","order_qty":"444.000","goods_nature":"一般进口","remark":""},{"id":"6","outstock_no":"O201712207746","outstock_customer_no":"56456456456","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:56:06","outstock_source":"2","status":"2","outstock_id":"6","goods_id":"41","goods_name":"溶剂二甲苯","goods_unit":"吨","order_qty":"666.000","goods_nature":"内贸转出口","remark":""},{"id":"5","outstock_no":"O201712205165","outstock_customer_no":"8888","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:55:31","outstock_source":"2","status":"2","outstock_id":"5","goods_id":"38","goods_name":"有机化工","goods_unit":"吨","order_qty":"666.000","goods_nature":"内贸内销","remark":""},{"id":"4","outstock_no":"O201712208073","outstock_customer_no":"65656","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:54:31","outstock_source":"2","status":"2","outstock_id":"4","goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"一般进口","remark":""},{"id":"3","outstock_no":"O201712203597","outstock_customer_no":"666","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:54:01","outstock_source":"2","status":"2","outstock_id":"3","goods_id":"34","goods_name":"甲苯","goods_unit":"吨","order_qty":"666.000","goods_nature":"内贸内销","remark":""}]
+     * totalRow : 13
+     * list : [{"id":"13","outstock_no":"O201712255722","outstock_customer_no":"81","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-25 11:02:29","outstock_source":"2","status":"5","outstock_id":"13","goods_id":"513","goods_name":"硫酸","goods_unit":"吨","order_qty":"2.000","goods_nature":"内贸内销","remark":"备注"},{"id":"12","outstock_no":"O201712204423","outstock_customer_no":"55656","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 16:27:40","outstock_source":"2","status":"4","outstock_id":"12","goods_id":"62","goods_name":"草酸","goods_unit":"吨","order_qty":"100.000","goods_nature":"内贸转出口","remark":"商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注"},{"id":"11","outstock_no":"O201712206210","outstock_customer_no":"1314","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 16:00:13","outstock_source":"2","status":"2","outstock_id":"11","goods_id":"63","goods_name":"羧酸","goods_unit":"吨","order_qty":"520.000","goods_nature":"内贸转出口","remark":""},{"id":"10","outstock_no":"O201712202393","outstock_customer_no":"675758","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:59:45","outstock_source":"2","status":"2","outstock_id":"10","goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"保税","remark":""},{"id":"9","outstock_no":"O201712201892","outstock_customer_no":"1213","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:59:18","outstock_source":"2","status":"2","outstock_id":"9","goods_id":"58","goods_name":"丁二烯","goods_unit":"吨","order_qty":"123.000","goods_nature":"一般进口","remark":""},{"id":"8","outstock_no":"O201712208672","outstock_customer_no":"89898","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:58:32","outstock_source":"2","status":"2","outstock_id":"8","goods_id":"23","goods_name":"氢溴酸2","goods_unit":"吨","order_qty":"666.000","goods_nature":"一般进口","remark":""},{"id":"7","outstock_no":"O201712206795","outstock_customer_no":"4564656","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:57:20","outstock_source":"2","status":"2","outstock_id":"7","goods_id":"41","goods_name":"溶剂二甲苯","goods_unit":"吨","order_qty":"444.000","goods_nature":"一般进口","remark":""},{"id":"6","outstock_no":"O201712207746","outstock_customer_no":"56456456456","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"1","create_at":"2017-12-20 15:56:06","outstock_source":"2","status":"2","outstock_id":"6","goods_id":"41","goods_name":"溶剂二甲苯","goods_unit":"吨","order_qty":"666.000","goods_nature":"内贸转出口","remark":""},{"id":"5","outstock_no":"O201712205165","outstock_customer_no":"8888","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:55:31","outstock_source":"2","status":"2","outstock_id":"5","goods_id":"38","goods_name":"有机化工","goods_unit":"吨","order_qty":"666.000","goods_nature":"内贸内销","remark":""},{"id":"4","outstock_no":"O201712208073","outstock_customer_no":"65656","real_outsock_no":null,"vendor_name":"新版","shop_company_name":"王敬测试公司","outstock_type":"2","create_at":"2017-12-20 15:54:31","outstock_source":"2","status":"2","outstock_id":"4","goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"一般进口","remark":""}]
      * totalPage : 2
+     * count_2 : 9
+     * count_3 : 1
+     * count_4 : 1
+     * count_5 : 2
      */
 
     private String _url;
     private String         vendor_no;
     private String         status;
+    private String         keyword1s;
     private String         outstock_customer_no;
     private String         real_outsock_no;
     private String         goods_id;
@@ -48,6 +55,10 @@ public class OuterOrderInfo implements Serializable {
     private String         pageSize;
     private String         totalRow;
     private int            totalPage;
+    private String         count_2;
+    private String         count_3;
+    private String         count_4;
+    private String         count_5;
     private List<ListBean> list;
 
     public String get_url() {
@@ -72,6 +83,14 @@ public class OuterOrderInfo implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getKeyword1s() {
+        return keyword1s;
+    }
+
+    public void setKeyword1s(String keyword1s) {
+        this.keyword1s = keyword1s;
     }
 
     public String getOutstock_customer_no() {
@@ -178,6 +197,38 @@ public class OuterOrderInfo implements Serializable {
         this.totalPage = totalPage;
     }
 
+    public String getCount_2() {
+        return count_2;
+    }
+
+    public void setCount_2(String count_2) {
+        this.count_2 = count_2;
+    }
+
+    public String getCount_3() {
+        return count_3;
+    }
+
+    public void setCount_3(String count_3) {
+        this.count_3 = count_3;
+    }
+
+    public String getCount_4() {
+        return count_4;
+    }
+
+    public void setCount_4(String count_4) {
+        this.count_4 = count_4;
+    }
+
+    public String getCount_5() {
+        return count_5;
+    }
+
+    public void setCount_5(String count_5) {
+        this.count_5 = count_5;
+    }
+
     public List<ListBean> getList() {
         return list;
     }
@@ -188,23 +239,23 @@ public class OuterOrderInfo implements Serializable {
 
     public static class ListBean {
         /**
-         * id : 12
-         * outstock_no : O201712204423
-         * outstock_customer_no : 55656
+         * id : 13
+         * outstock_no : O201712255722
+         * outstock_customer_no : 81
          * real_outsock_no : null
          * vendor_name : 新版
          * shop_company_name : 王敬测试公司
          * outstock_type : 1
-         * create_at : 2017-12-20 16:27:40
+         * create_at : 2017-12-25 11:02:29
          * outstock_source : 2
-         * status : 2
-         * outstock_id : 12
-         * goods_id : 62
-         * goods_name : 草酸
+         * status : 5
+         * outstock_id : 13
+         * goods_id : 513
+         * goods_name : 硫酸
          * goods_unit : 吨
-         * order_qty : 100.000
-         * goods_nature : 内贸转出口
-         * remark : 商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注商品明细备注
+         * order_qty : 2.000
+         * goods_nature : 内贸内销
+         * remark : 备注
          */
 
         private String id;

@@ -14,8 +14,9 @@ public class InputOrderInfo {
 
     /**
      * _url : /index.php/
-     * vendor_no : OuterOrderInfo
-     * status : 0
+     * vendor_no : YC0000000015
+     * status : 2
+     * advance_searchtxt :
      * instock_customer_no :
      * real_insock_no :
      * goods_id :
@@ -26,14 +27,19 @@ public class InputOrderInfo {
      * isdel :
      * pageCurrent : 1
      * pageSize : 10
-     * totalRow : 11
-     * list : [{"id":"11","instock_no":"I201712208111","instock_customer_no":"2017123155535655","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-25","instock_real_date":null,"isdel":"0","ca_number":"CA201712200715","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220155236&transaction_id=CA2017122007151774&msg_digest=RTE5QkI5OEFGQ0Y2RDk1REMyM0JEREM1QkI2Q0ZEQUE1NzY1NEVERg==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:52:07","update_at":"2017-12-20 15:52:10","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"保税"},{"id":"10","instock_no":"I201712207829","instock_customer_no":"6666","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-22","instock_real_date":null,"isdel":"0","ca_number":"CA201712202600","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220155155&transaction_id=CA2017122026001773&msg_digest=QjU2MkU0MTZBQzlBRUMzRURBRjE1OUFFMDI1NkJEQTNGRkRBMjUzQQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:51:25","update_at":"2017-12-20 15:51:29","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"内贸内销"},{"id":"9","instock_no":"I201712202852","instock_customer_no":"666","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-23","instock_real_date":null,"isdel":"0","ca_number":"CA201712200062","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220155030&transaction_id=CA2017122000621772&msg_digest=RDkwODQ2QUEyOTIyNzc1NDQzNDcwNUMxREE2OTZBNENDN0M5RTAxOQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:50:00","update_at":"2017-12-20 15:50:04","finish_at":null,"goods_id":"34","goods_name":"甲苯","goods_unit":"吨","order_qty":"66.000","goods_nature":"内贸内销"},{"id":"8","instock_no":"I201712203070","instock_customer_no":"789","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-28","instock_real_date":null,"isdel":"0","ca_number":"CA201712204806","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154817&transaction_id=CA2017122048061771&msg_digest=NzdDRTQxQTIwMTcwN0ZFQTZFNUY5ODQ3NjBEQjg0QUE1OTM3QzY1MA==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:47:47","update_at":"2017-12-20 15:47:51","finish_at":null,"goods_id":"23","goods_name":"氢溴酸2","goods_unit":"吨","order_qty":"888.000","goods_nature":"内贸转出口"},{"id":"7","instock_no":"I201712209600","instock_customer_no":"888888","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-26","instock_real_date":null,"isdel":"0","ca_number":"CA201712203454","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154704&transaction_id=CA2017122034541770&msg_digest=NUQ0NkMxMDJGRkE2QzRGOTlDREM4QzFFQTY1MUExODVCNjQwRkE4NQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:46:34","update_at":"2017-12-20 15:46:38","finish_at":null,"goods_id":"41","goods_name":"溶剂二甲苯","goods_unit":"吨","order_qty":"888.000","goods_nature":"内贸转出口"},{"id":"6","instock_no":"I201712209780","instock_customer_no":"2017103155535655","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-29","instock_real_date":null,"isdel":"0","ca_number":"CA201712204992","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154619&transaction_id=CA2017122049921769&msg_digest=MzJBMjZGNTdDNDhFODdCMjc4RENBODhDMDY5MzNENDk2Qzc1OEZFMA==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:45:49","update_at":"2017-12-20 15:45:53","finish_at":null,"goods_id":"38","goods_name":"有机化工","goods_unit":"吨","order_qty":"123.000","goods_nature":"内贸内销"},{"id":"5","instock_no":"I201712209825","instock_customer_no":"44444","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-28","instock_real_date":null,"isdel":"0","ca_number":"CA201712203716","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154512&transaction_id=CA2017122037161768&msg_digest=RUVFNEU3NDg0NzQ2MURCMTZCODgzNEMyRTk4MzdFRUQwRjJBMzhBQQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:44:37","update_at":"2017-12-20 15:44:46","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"内贸内销"},{"id":"4","instock_no":"I201712206104","instock_customer_no":"666","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-24","instock_real_date":null,"isdel":"0","ca_number":"CA201712204609","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154315&transaction_id=CA2017122046091767&msg_digest=QUM1NTRGMEM0NjE0MEIzNDQxRkJCNjk4ODcxMTExMTY2RUUwRTg4NQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:42:45","update_at":"2017-12-20 15:42:49","finish_at":null,"goods_id":"34","goods_name":"甲苯","goods_unit":"吨","order_qty":"456.000","goods_nature":"内贸内销"},{"id":"3","instock_no":"I201712204693","instock_customer_no":"123","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-22","instock_real_date":null,"isdel":"0","ca_number":"CA201712204987","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154219&transaction_id=CA2017122049871766&msg_digest=ODc1OTk1QzNEOUYwODM1QUVCOUJDRDVEMDU0Q0ZGQTgwNzQ1MUEyMw==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:41:49","update_at":"2017-12-20 15:41:53","finish_at":null,"goods_id":"34","goods_name":"甲苯","goods_unit":"吨","order_qty":"666.000","goods_nature":"内贸内销"},{"id":"2","instock_no":"I201712207514","instock_customer_no":"111","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-22","instock_real_date":null,"isdel":"0","ca_number":"CA201712201134","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154140&transaction_id=CA2017122011341765&msg_digest=NTYzRkYyMUM1MDQyQjQ1QTU4ODM2QzdDNkRERjJFOEE1M0FDM0Y3Mw==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:41:11","update_at":"2017-12-20 15:41:14","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"100.000","goods_nature":"一般进口"}]
-     * totalPage : 2
+     * totalRow : 8
+     * list : [{"id":"12","instock_no":"I201712207673","instock_customer_no":"65656","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-22","instock_real_date":null,"isdel":"0","ca_number":"CA201712200832","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220162538&transaction_id=CA2017122008321821&msg_digest=RkM1QzI0NTk2OTM3ODY5NkM0QTNEOUU1RTE5ODhENDgzOEFBQ0M4Qw==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"入库单备注入库单备注入库单备注入库单备注入库11111单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注","create_at":"2017-12-20 16:25:08","update_at":"2017-12-20 16:25:12","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"100.000","goods_nature":"内贸转出口"},{"id":"11","instock_no":"I201712208111","instock_customer_no":"2017123155535655","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-25","instock_real_date":null,"isdel":"0","ca_number":"CA201712200715","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220155236&transaction_id=CA2017122007151774&msg_digest=RTE5QkI5OEFGQ0Y2RDk1REMyM0JEREM1QkI2Q0ZEQUE1NzY1NEVERg==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:52:07","update_at":"2017-12-20 15:52:10","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"保税"},{"id":"10","instock_no":"I201712207829","instock_customer_no":"6666","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-22","instock_real_date":null,"isdel":"0","ca_number":"CA201712202600","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220155155&transaction_id=CA2017122026001773&msg_digest=QjU2MkU0MTZBQzlBRUMzRURBRjE1OUFFMDI1NkJEQTNGRkRBMjUzQQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:51:25","update_at":"2017-12-20 15:51:29","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"内贸内销"},{"id":"8","instock_no":"I201712203070","instock_customer_no":"789","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-28","instock_real_date":null,"isdel":"0","ca_number":"CA201712204806","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154817&transaction_id=CA2017122048061771&msg_digest=NzdDRTQxQTIwMTcwN0ZFQTZFNUY5ODQ3NjBEQjg0QUE1OTM3QzY1MA==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:47:47","update_at":"2017-12-20 15:47:51","finish_at":null,"goods_id":"23","goods_name":"氢溴酸2","goods_unit":"吨","order_qty":"888.000","goods_nature":"内贸转出口"},{"id":"7","instock_no":"I201712209600","instock_customer_no":"888888","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-26","instock_real_date":null,"isdel":"0","ca_number":"CA201712203454","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154704&transaction_id=CA2017122034541770&msg_digest=NUQ0NkMxMDJGRkE2QzRGOTlDREM4QzFFQTY1MUExODVCNjQwRkE4NQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:46:34","update_at":"2017-12-20 15:46:38","finish_at":null,"goods_id":"41","goods_name":"溶剂二甲苯","goods_unit":"吨","order_qty":"888.000","goods_nature":"内贸转出口"},{"id":"6","instock_no":"I201712209780","instock_customer_no":"2017103155535655","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-29","instock_real_date":null,"isdel":"0","ca_number":"CA201712204992","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154619&transaction_id=CA2017122049921769&msg_digest=MzJBMjZGNTdDNDhFODdCMjc4RENBODhDMDY5MzNENDk2Qzc1OEZFMA==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:45:49","update_at":"2017-12-20 15:45:53","finish_at":null,"goods_id":"38","goods_name":"有机化工","goods_unit":"吨","order_qty":"123.000","goods_nature":"内贸内销"},{"id":"5","instock_no":"I201712209825","instock_customer_no":"44444","instock_source":"2","instock_type":"2","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-28","instock_real_date":null,"isdel":"0","ca_number":"CA201712203716","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154512&transaction_id=CA2017122037161768&msg_digest=RUVFNEU3NDg0NzQ2MURCMTZCODgzNEMyRTk4MzdFRUQwRjJBMzhBQQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"2","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:44:37","update_at":"2017-12-20 15:44:46","finish_at":null,"goods_id":"1","goods_name":"乙二醇乙醚醋酸酯","goods_unit":"吨","order_qty":"123.000","goods_nature":"内贸内销"},{"id":"4","instock_no":"I201712206104","instock_customer_no":"666","instock_source":"2","instock_type":"1","create_name":"wangjing","vendor_no":"YC0000000015","vendor_name":"新版","shop_order_id":null,"shop_order_no":null,"shop_batch_id":null,"shop_contract":"","shop_company_id":"11931","shop_company_name":"王敬测试公司","shop_delivery_method":null,"contact":"15156875945","contact_name":"王敬","instock_date":"2017-12-24","instock_real_date":null,"isdel":"0","ca_number":"CA201712204609","ca_viewpath":"https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220154315&transaction_id=CA2017122046091767&msg_digest=QUM1NTRGMEM0NjE0MEIzNDQxRkJCNjk4ODcxMTExMTY2RUUwRTg4NQ==","ca_confirm_number":null,"ca_confirm_viewpath":null,"real_instock_type":"1","real_insock_no":null,"real_contract_no":null,"real_contact":"18015993809","real_contact_name":"测试","real_remark":null,"status":"2","isold":"0","remark":"","create_at":"2017-12-20 15:42:45","update_at":"2017-12-20 15:42:49","finish_at":null,"goods_id":"34","goods_name":"甲苯","goods_unit":"吨","order_qty":"456.000","goods_nature":"内贸内销"}]
+     * totalPage : 1
+     * count_2 : 8
+     * count_3 : 1
+     * count_4 : 1
+     * count_5 : 5
      */
 
-    private String             _url;
+    private String _url;
     private String         vendor_no;
     private String         status;
+    private String         advance_searchtxt;
     private String         instock_customer_no;
     private String         real_insock_no;
     private String         goods_id;
@@ -46,6 +52,10 @@ public class InputOrderInfo {
     private String         pageSize;
     private String         totalRow;
     private int            totalPage;
+    private String         count_2;
+    private String         count_3;
+    private String         count_4;
+    private String         count_5;
     private List<ListBean> list;
 
     public String get_url() {
@@ -70,6 +80,14 @@ public class InputOrderInfo {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAdvance_searchtxt() {
+        return advance_searchtxt;
+    }
+
+    public void setAdvance_searchtxt(String advance_searchtxt) {
+        this.advance_searchtxt = advance_searchtxt;
     }
 
     public String getInstock_customer_no() {
@@ -168,6 +186,38 @@ public class InputOrderInfo {
         this.totalPage = totalPage;
     }
 
+    public String getCount_2() {
+        return count_2;
+    }
+
+    public void setCount_2(String count_2) {
+        this.count_2 = count_2;
+    }
+
+    public String getCount_3() {
+        return count_3;
+    }
+
+    public void setCount_3(String count_3) {
+        this.count_3 = count_3;
+    }
+
+    public String getCount_4() {
+        return count_4;
+    }
+
+    public void setCount_4(String count_4) {
+        this.count_4 = count_4;
+    }
+
+    public String getCount_5() {
+        return count_5;
+    }
+
+    public void setCount_5(String count_5) {
+        this.count_5 = count_5;
+    }
+
     public List<ListBean> getList() {
         return list;
     }
@@ -178,9 +228,9 @@ public class InputOrderInfo {
 
     public static class ListBean {
         /**
-         * id : 11
-         * instock_no : I201712208111
-         * instock_customer_no : 2017123155535655
+         * id : 12
+         * instock_no : I201712207673
+         * instock_customer_no : 65656
          * instock_source : 2
          * instock_type : 1
          * create_name : wangjing
@@ -195,11 +245,11 @@ public class InputOrderInfo {
          * shop_delivery_method : null
          * contact : 15156875945
          * contact_name : 王敬
-         * instock_date : 2017-12-25
+         * instock_date : 2017-12-22
          * instock_real_date : null
          * isdel : 0
-         * ca_number : CA201712200715
-         * ca_viewpath : https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220155236&transaction_id=CA2017122007151774&msg_digest=RTE5QkI5OEFGQ0Y2RDk1REMyM0JEREM1QkI2Q0ZEQUE1NzY1NEVERg==
+         * ca_number : CA201712200832
+         * ca_viewpath : https://testapi.fadada.com:8443/api//viewdocs.action?app_id=400141&send_app_id=null&v=2.0×tamp=20171220162538&transaction_id=CA2017122008321821&msg_digest=RkM1QzI0NTk2OTM3ODY5NkM0QTNEOUU1RTE5ODhENDgzOEFBQ0M4Qw==
          * ca_confirm_number : null
          * ca_confirm_viewpath : null
          * real_instock_type : 1
@@ -210,15 +260,15 @@ public class InputOrderInfo {
          * real_remark : null
          * status : 2
          * isold : 0
-         * remark :
-         * create_at : 2017-12-20 15:52:07
-         * update_at : 2017-12-20 15:52:10
+         * remark : 入库单备注入库单备注入库单备注入库单备注入库11111单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注入库单备注
+         * create_at : 2017-12-20 16:25:08
+         * update_at : 2017-12-20 16:25:12
          * finish_at : null
          * goods_id : 1
          * goods_name : 乙二醇乙醚醋酸酯
          * goods_unit : 吨
-         * order_qty : 123.000
-         * goods_nature : 保税
+         * order_qty : 100.000
+         * goods_nature : 内贸转出口
          */
 
         private String id;
@@ -251,7 +301,7 @@ public class InputOrderInfo {
         private String real_contact;
         private String real_contact_name;
         private Object real_remark;
-        private int  status;
+        private int status;
         private String isold;
         private String remark;
         private String create_at;

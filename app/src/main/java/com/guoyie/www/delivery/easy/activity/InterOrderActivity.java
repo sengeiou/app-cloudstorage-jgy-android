@@ -307,8 +307,6 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                     adapter.setData(list2);
                     if (list.size()>0)
                     page2++;
-                    TextView titleView = binding.tabLayout.getTitleView(1);
-                    titleView.setText("待审核(" + data.getData().getTotalRow() + ")");
                     break;
                 case 3:
                     list3.addAll(list);
@@ -321,8 +319,6 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                     adapter.setData(list4);
                     if (list.size()>0)
                     page4++;
-                    TextView textView = binding.tabLayout.getTitleView(3);
-                    textView.setText("入库中(" + data.getData().getTotalRow() + ")");
                     break;
                 case 5:
                     list5.addAll(list);
@@ -331,6 +327,9 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                     page5++;
                     break;
             }
+             //处理导航上数据问题
+            binding.tabLayout.getTitleView(1).setText("待审核(" + data.getData().getCount_2() + ")");
+            binding.tabLayout.getTitleView(3).setText("待审核(" + data.getData().getCount_4() + ")");
 
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
@@ -349,5 +348,12 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     public void err_or(String data) {
         showToast(data);
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefresh();//刷新数据
     }
 }

@@ -22,6 +22,7 @@ import com.guoyie.www.delivery.easy.model.InputorderDetaliModel;
 import com.guoyie.www.delivery.easy.presenter.InputOrderDetaliPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 
 import java.util.List;
 
@@ -86,18 +87,18 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             if (refused.equals("拒绝")){
                 showUpdateDialog(3,"确定拒绝本条入库单？");
             }else {
-                startAct(EditOrderDetailActivity.class);
+                startAct(EditOrderActivity.class);
             }
                 break;
             case R.id.tv_agree:
                 //调到订单编辑页面
 
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
-                String agree = binding.tvRefused.getText().toString().trim();
-                if (agree.equals("拒绝")){
+                String agree = binding.tvAgree.getText().toString().trim();
+                if (agree.equals("通过")){
                     showUpdateDialog(4,"确定同意本条入库单？");
                 }else {
-                    startAct(EditOrderActivity.class);
+                    startAct(EditOrderDetailActivity.class);
                 }
 
                 break;
@@ -154,7 +155,9 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             @Override
             public void onClick(View view) {
                 //走请求网络的接口
-                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_UPDATE + "&id" + mDetail.getId() + "&status=" + status);
+                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_UPDATE + "&id=" + mDetail.getId() + "&status=" + status);
+                String encrypt = BlowfishTools.decrypt(HttpUtils.key, params);
+                DebugUtil.debug("heheh"+encrypt);
                 mPresenter.requstInterOrderUpdate(params);
 
                 dialog.dismiss();
@@ -177,6 +180,10 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     @Override
     public void retrunInterOrderDetailUpdate(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
 
     }
 

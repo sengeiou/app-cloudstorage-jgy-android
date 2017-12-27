@@ -23,7 +23,7 @@
             android:drawablePadding="5dp"
             android:dropDownVerticalOffset="2dp"
             android:gravity="center_vertical"
-            android:hint="请输入产品名称"
+            android:hint="请输入产品名称/公司名称"
             android:imeOptions="actionSearch"
             android:maxLines="1"
             android:textCursorDrawable="@drawable/color_cursor"

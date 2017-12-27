@@ -42,8 +42,7 @@ public interface ApiService {
     //获取入库单详情的接口接口
     @GET("?")
     Observable<InputOrderDetailData> getInputOrderDetaliData(@Query("params") String params);
-
-    //获取入库单详情的接口接口
+    //获取入库单详情审核接口
     @GET("?")
     Observable<BaseResponse> getInputOrderDetaliUpdate(@Query("params") String params);
 
@@ -53,6 +52,8 @@ public interface ApiService {
     //获取出库单详情的接口接口
     @GET("?")
     Observable<OuterOrderDetailData> getOuterOrderDetaliData(@Query("params") String params);
+    @GET("?")
+    Observable<BaseResponse> getOuterOrderDetaliUpdate(@Query("params") String params);
     //获取储罐管理列表的接口
     @GET("?")
     Observable<StoreManagerListBean> getStoreManagerList(@Query("params") String params);
