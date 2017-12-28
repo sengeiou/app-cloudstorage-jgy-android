@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tv_deseription_name"
+                android:id="@+id/goods_name"
                 android:text="苯乙烯"
                 android:textSize="14sp"
                 android:textColor="#111111"
@@ -87,12 +87,13 @@
                 style="@style/ll_editdetail">
 
                 <TextView
+                   android:id="@+id/tv_stock_type"
                     android:text="入库类型"
                     style="@style/tv_editdetail_title"/>
 
 
                 <TextView
-                    android:id="@+id/tv_intertype"
+                    android:id="@+id/instock_type"
                     android:text="车入库"
                     android:textColor="#111111"
                     style="@style/tv_editdetail_cotent"/>
@@ -114,7 +115,7 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
-                    android:id="@+id/et_contact_name"
+                    android:id="@+id/contact_name"
                     android:background="@null"
                     android:text="柯军"
                     android:textColor="#111111"
@@ -132,7 +133,7 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
-                    android:id="@+id/et_contact_phone"
+                    android:id="@+id/contact"
                     android:background="@null"
                     android:textColor="#111111"
                     android:text="13248171603"
@@ -142,7 +143,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_height="80dp"
+
                 style="@style/ll_editdetail">
 
                 <TextView
@@ -151,13 +152,13 @@
                     android:text="备注："
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
                     android:id="@+id/et_remark"
                     android:textColor="#111111"
                     android:textSize="14sp"
                     android:background="@null"
-                    android:text="项目好久好久还积极的肯德基看风景代理费考虑到积分领导就"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>

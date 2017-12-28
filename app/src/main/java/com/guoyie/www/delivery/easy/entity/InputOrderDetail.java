@@ -613,7 +613,7 @@ public class InputOrderDetail implements Serializable {
         }
     }
 
-    public static class CarBean {
+    public static class CarBean implements Serializable {
 
 
         /**

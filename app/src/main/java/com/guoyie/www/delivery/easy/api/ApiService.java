@@ -21,7 +21,13 @@ import com.guoyie.www.delivery.easy.entity.TransstockData;
 import com.guoyie.www.delivery.easy.entity.TransstockDetailData;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 
+import java.util.Map;
+
+import okhttp3.RequestBody;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -93,4 +99,23 @@ public interface ApiService {
     //储罐筛选，获取储罐性质
     @GET("?")
     Observable<StoreTypeBean> getStoreType(@Query("params") String params);
+
+    //编辑出入库确认单入库接口以及图片上传的问
+    @GET("?")
+    Observable<BaseResponse> getEditInter(@Query("params") String params);//入库
+    @GET("?")
+    Observable<BaseResponse> getEditOuter(@Query("params") String params);//出库
+    @Multipart
+    @POST("?")
+    Observable<BaseResponse> upLoadFile(@Part() Map<String,RequestBody> params);//上传图片
+    //编辑出入库明细的接口
+    @GET("?")
+    Observable<BaseResponse> getAddInter(@Query("params") String params);//入库
+    @GET("?")
+    Observable<BaseResponse> getAddOuter(@Query("params") String params);//出库
+
+
+
+
+
 }

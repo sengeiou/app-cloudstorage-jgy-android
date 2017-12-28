@@ -46,7 +46,7 @@
             android:name=".activity.EditOrderActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.EditOrderDetailActivity"
+            android:name=".activity.AddOrderDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.UserBasicInfoActivity" />
         <activity android:name=".activity.StoreFilterActivity" />

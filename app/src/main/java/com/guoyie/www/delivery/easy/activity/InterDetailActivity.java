@@ -65,8 +65,6 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         String id = getIntent().getStringExtra(Constant.INPUT_ORDER_ID);
         loadData(id);
 
-
-
     }
 
     private void loadData(String id) {
@@ -87,7 +85,14 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             if (refused.equals("拒绝")){
                 showUpdateDialog(3,"确定拒绝本条入库单？");
             }else {
-                startAct(EditOrderActivity.class);
+                if (mDetail!=null) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(Constant.STOCK_TYPE,1);
+                    bundle.putSerializable(Constant.INPUT_EDIT_ORDER, mDetail);
+                    startAct(EditOrderActivity.class,bundle);
+                }
+
             }
                 break;
             case R.id.tv_agree:
@@ -98,7 +103,14 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 if (agree.equals("通过")){
                     showUpdateDialog(4,"确定同意本条入库单？");
                 }else {
-                    startAct(EditOrderDetailActivity.class);
+                    //处理从详情页传回来数据
+                    if (mDetail!=null) {
+
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(Constant.STOCK_TYPE,1);
+                        bundle.putSerializable(Constant.INPUT_EDIT_ORDER, mDetail);
+                        startAct(AddOrderDetailActivity.class,bundle);
+                    }
                 }
 
                 break;

@@ -329,7 +329,7 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
             }
             //处理导航上数据问题
             binding.tabLayout.getTitleView(1).setText("待审核(" + data.getData().getCount_2() + ")");
-            binding.tabLayout.getTitleView(3).setText("待审核(" + data.getData().getCount_4() + ")");
+            binding.tabLayout.getTitleView(3).setText("出库中(" + data.getData().getCount_4() + ")");
 
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();

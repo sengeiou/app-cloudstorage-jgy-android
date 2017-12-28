@@ -41,4 +41,10 @@ public class Constant {
     public static final String SEACHSULT_ID = "SEACHSULT_ID";
     //搜索传递的关键字
     public static final String KEYS_WORD = "KEYS_WORD";
+    //入库编辑的数据
+     public static String INPUT_EDIT_ORDER="INPUT_EDIT_ORDER";
+     //入库类别
+     public static String STOCK_TYPE="STOCK_TYPE";
+     //添加的类型
+     public static String OUTER_EDIT_ORDER="ADD_TYPE";
 }

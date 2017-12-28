@@ -457,7 +457,7 @@ public class OuterOrderDetail implements Serializable {
         this.log = log;
     }
 
-    public static class LogBean {
+    public static class LogBean implements Serializable {
 
         /**
          * id : 1
@@ -614,7 +614,7 @@ public class OuterOrderDetail implements Serializable {
         }
     }
 
-    public static class CarBean {
+    public static class CarBean implements Serializable  {
 
 
         /**
@@ -704,7 +704,7 @@ public class OuterOrderDetail implements Serializable {
 
 
 
-    public static class ShipBean {
+    public static class ShipBean  implements Serializable  {
 
 
         /**

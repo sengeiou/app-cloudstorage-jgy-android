@@ -24,7 +24,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <ScrollView
@@ -79,7 +79,7 @@
 
 
          <TextView
-             android:id="@+id/tv_deseription_name"
+             android:id="@+id/goods_name"
              android:layout_marginTop="10dp"
              android:text="苯乙烯"
              android:layout_below="@+id/tv_title_name"
@@ -88,7 +88,7 @@
 
 
          <TextView
-             android:id="@+id/tv_deseription_num"
+             android:id="@+id/order_qty"
              android:layout_marginTop="10dp"
              android:layout_alignParentRight="true"
              android:text="5000吨"
@@ -114,12 +114,13 @@
                 style="@style/ll_editdetail">
 
                 <TextView
+                    android:id="@+id/tv_stock_time"
                     android:text="入库时间"
                     style="@style/tv_editdetail_title"/>
 
                 <TextView
+                    android:text="请选择时间"
                     android:id="@+id/tv_time"
-                    android:text="2018-12-2"
                     style="@style/tv_editdetail_cotent"/>
 
                 <ImageView
@@ -135,13 +136,14 @@
                 style="@style/ll_editdetail">
 
                 <TextView
+                    android:id="@+id/tv_stock_order_num"
                     android:text="入库单号"
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
                     android:id="@+id/et_inputorder_num"
                     android:background="@null"
-                    android:text="2018-12-2"
+                    android:hint="请输入单号"
                     style="@style/tv_editdetail_cotent"/>
 
 
@@ -160,11 +162,12 @@
                     style="@style/tv_editdetail_title"/>
 
                 <TextView
-                    android:id="@+id/tv_goonsxinzhi"
-                    android:text="进口"
+                    android:id="@+id/goods_nature"
+                    android:text=""
                     style="@style/tv_editdetail_cotent"/>
 
                 <ImageView
+                    android:visibility="gone"
                     android:src="@mipmap/right"
                     style="@style/iv_editdetail_end"/>
 
@@ -183,7 +186,7 @@
 
                 <TextView
                     android:id="@+id/tv_guannum"
-                    android:text="T-11000"
+                    android:text="请选择罐号"
                     style="@style/tv_editdetail_cotent"/>
 
                 <ImageView
@@ -199,13 +202,14 @@
                 style="@style/ll_editdetail">
 
                 <TextView
+                    android:id="@+id/tv_stock_num"
                     android:text="入库数量"
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
                     android:id="@+id/et_input_num"
                     android:background="@null"
-                    android:text="2018-12-2"
+                   android:hint="请输入库数量"
                     style="@style/tv_editdetail_cotent"/>
 
 
@@ -226,14 +230,13 @@
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
                     android:id="@+id/et_car_num"
                     android:background="@null"
-                    android:text="2018-12-2"
+                     android:hint="请输入车牌号"
                     style="@style/tv_editdetail_cotent"/>
             </LinearLayout>
 
 
 
             <LinearLayout
-                 android:layout_height="120dp"
                 style="@style/ll_editdetail">
 
                <TextView
@@ -247,8 +250,7 @@
                     android:textColor="#999999"
                     android:textSize="14sp"
                     android:background="@null"
-                    android:text="项目好久好久还积极的肯德基看风景代理费考虑到积分领导就"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>

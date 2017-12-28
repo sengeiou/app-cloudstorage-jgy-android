@@ -15,7 +15,14 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.FullyGridLayoutManager;
 import com.guoyie.www.delivery.easy.adapter.GridImageAdapter;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
+import com.guoyie.www.delivery.easy.base.BaseResponse;
+import com.guoyie.www.delivery.easy.contract.EditOrderContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityEditorderBinding;
+import com.guoyie.www.delivery.easy.entity.InputOrderDetail;
+import com.guoyie.www.delivery.easy.entity.OuterOrderDetail;
+import com.guoyie.www.delivery.easy.model.EditOrderModel;
+import com.guoyie.www.delivery.easy.presenter.EditOrderPresenter;
+import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.util.PopOneHelper;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -37,7 +44,7 @@ import io.reactivex.disposables.Disposable;
  * email：774169396@qq.com
  * data：2017/12/8
  */
-public class EditOrderActivity extends BaseActivity implements View.OnClickListener, PopOneHelper.OnClickOkListener {
+public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrderModel> implements View.OnClickListener, PopOneHelper.OnClickOkListener, EditOrderContract.View {
     private ImageView mLeft_back;
     private TextView  mTv_title;
     ActivityEditorderBinding binding;
@@ -47,7 +54,11 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
     private List<LocalMedia> selectList = new ArrayList<>();
     private RecyclerView     recyclerView;
     private GridImageAdapter adapter;
-    private int maxSelectNum = 9;
+   // private int maxSelectNum = 9;
+    private int              mType;
+    private InputOrderDetail mInputOrderDetail;
+    private OuterOrderDetail mOuterOrderDetail;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_editorder;
@@ -55,6 +66,7 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void initPresenter() {
+        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -62,24 +74,60 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
     public void initView() {
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
-        mLeft_back = (ImageView) getView(R.id.left_back);
+        mLeft_back =  getView(R.id.left_back);
         recyclerView =  findViewById(R.id.recycler);
 
         mLeft_back.setOnClickListener(this);
         binding.llIntertype.setOnClickListener(this);
         binding.tvCommit.setOnClickListener(this);
+        mTv_title =  getView(R.id.tv_title);
+        //拿到点击时候的传递的type只
+        Intent intent = getIntent();
+        //type=1,是入库单处理的逻辑 2是出库单的逻辑
+        mType = intent.getIntExtra(Constant.STOCK_TYPE, 0);
+        switch (mType){
+            case 1:
+                mInputOrderDetail = (InputOrderDetail) intent.getSerializableExtra(Constant.INPUT_EDIT_ORDER);
+                break;
+            case 2:
+                mOuterOrderDetail = (OuterOrderDetail) intent.getSerializableExtra(Constant.OUTER_EDIT_ORDER);
+                break;
+        }
 
-        mTv_title = (TextView) getView(R.id.tv_title);
-        mTv_title.setText("编辑入库确认单");
-
-        goods.add("进口");
-        goods.add("一般");
-        goods.add("去口");
-        goods.add("走势");
-        goods.add("好货");
-        goods.add("垃圾");
+        initData(mType);
+    //    mTv_title.setText("编辑入库确认单");
 
         initRecycleView();
+
+    }
+
+    private void initData(int type) {
+        switch (type){
+            case 1:
+                //出事入库单的逻辑
+                mTv_title.setText("编辑入库确认单");//标题
+                binding.goodsName.setText(mInputOrderDetail.getGoods_name());//商品名称
+                binding.instockType.setText(mInputOrderDetail.getInstock_type()==1?"车入库":"船入库");//入库类型
+                binding.contactName.setText(mInputOrderDetail.getContact_name());//仓库联系人
+                binding.contact.setText(mInputOrderDetail.getContact());//仓库联系方式
+                //初始化选择器的数据
+                goods.add("车入库");
+                goods.add("船入库");
+                break;
+
+            case 2:
+                //出事入库单的逻辑
+                mTv_title.setText("编辑出库确认单");//标题
+                binding.goodsName.setText(mOuterOrderDetail.getGoods_name());//商品名称
+                binding.instockType.setText(mOuterOrderDetail.getOutstock_type()==1?"车出库":"船出库");//入库类型
+                binding.contactName.setText(mOuterOrderDetail.getContact_name());//仓库联系人
+                binding.contact.setText(mOuterOrderDetail.getContact());//仓库联系方式
+                //初始化选择器的数据
+                goods.add("车出库");
+                goods.add("船出库");
+                break;
+        }
+
 
     }
 
@@ -112,11 +160,7 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
 
         // 清空图片缓存，包括裁剪、压缩后的图片 注意:必须要在上传完成后调用 必须要获取权限
         RxPermissions permissions = new RxPermissions(this);
-        permissions.
-
-
-
-                request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
+        permissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
@@ -185,11 +229,19 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
                     for (LocalMedia media : selectList) {
                         Log.i("图片-----》", media.getPath());
                         Log.i("图片--》", media.getCompressPath());
+                     //   File file=new File(media.getCompressPath());
+                       // RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
+                      //  mPresenter.requstreturneditLoadobj(requestBody);
+
+                       // Map<String , RequestBody> params=new HashMap<>();
+                       // params.put(params)
+
 
                     }
                     adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
                     break;
+
             }
         }
     }
@@ -218,8 +270,27 @@ public class EditOrderActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void onClickOk(String birthday, int position) {
-        binding.tvIntertype.setText(birthday);
+        binding.instockType.setText(birthday);
     }
 
+    @Override
+    public void returneditinterstock(BaseResponse data) {
+
+    }
+
+    @Override
+    public void returneditouterstock(BaseResponse data) {
+
+    }
+
+    @Override
+    public void returneditLoadobj(BaseResponse data) {
+
+    }
+
+    @Override
+    public void eeror(String msg) {
+
+    }
 }
 

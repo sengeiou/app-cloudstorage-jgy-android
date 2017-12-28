@@ -84,7 +84,13 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 if (refused.equals("拒绝")){
                     showUpdateDialog(3,"确定拒绝本条入库单？");
                 }else {
-                    startAct(EditOrderActivity.class);
+
+                    if (mDetail!=null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(Constant.STOCK_TYPE,2);
+                        bundle.putSerializable(Constant.OUTER_EDIT_ORDER, mDetail);
+                        startAct(EditOrderActivity.class,bundle);
+                    }
                 }
                 break;
             case R.id.tv_agree:
@@ -92,10 +98,17 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
                 String agree = binding.tvAgree.getText().toString().trim();
-                if (agree.equals("同意")){
+                if (agree.equals("通过")){
                     showUpdateDialog(4,"确定同意本条出库单？");
                 }else {
-                    startAct(EditOrderDetailActivity.class);
+
+
+                    if (mDetail!=null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(Constant.STOCK_TYPE,2);
+                        bundle.putSerializable(Constant.OUTER_EDIT_ORDER, mDetail);
+                        startAct(AddOrderDetailActivity.class,bundle);
+                    }
                 }
 
                 break;
