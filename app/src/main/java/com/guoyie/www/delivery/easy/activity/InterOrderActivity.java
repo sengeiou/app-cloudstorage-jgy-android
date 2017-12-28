@@ -96,7 +96,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
 
         initTab();
         initRecycleView();
-        onRefresh();
+    //    onRefresh();
 
     }
 

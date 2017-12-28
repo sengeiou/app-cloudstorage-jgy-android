@@ -94,7 +94,7 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
 
         initTab();
         initRecycleView();
-        onRefresh();
+      //  onRefresh();
 
     }
 

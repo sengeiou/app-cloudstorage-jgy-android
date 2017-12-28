@@ -96,7 +96,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
 
         initTab();
         initRecycleView();
-        onRefresh();
+       // onRefresh();
 
 
     }

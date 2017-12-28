@@ -98,7 +98,7 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
         initTab();
         initRecycleView();
         //初始化数据
-        onRefresh();
+     //   onRefresh();
 
 
     }
