@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.InterOrderContract;
 import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
+import com.guoyie.www.delivery.easy.rx.RxSchedulers;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -19,8 +18,10 @@ import rx.schedulers.Schedulers;
 public class InputOrderModel implements InterOrderContract.Model {
     @Override
     public  Observable <InputOrderInfoData> getInputData(String params) {
-         return   ApiManager.getService(HostType.HTTP_ORDINARY).getInputOrderData(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+         /*return   ApiManager.getService(HostType.HTTP_ORDINARY).getInputOrderData(params).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());*/
+      //  return ApiManager.getService(HostType.HTTP_ORDINARY).getAddInter(params).compose(RxSchedulers.<BaseResponse>io_main());
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getInputOrderData(params).compose(RxSchedulers.<InputOrderInfoData>io_main());
 
     }
 

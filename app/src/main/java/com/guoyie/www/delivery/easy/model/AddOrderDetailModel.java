@@ -4,6 +4,7 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.AddOrderDetailContract;
+import com.guoyie.www.delivery.easy.rx.RxSchedulers;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,8 +20,10 @@ import rx.schedulers.Schedulers;
 public class AddOrderDetailModel implements AddOrderDetailContract.Model {
     @Override
     public Observable<BaseResponse> getAddStockInter(String params) {
-        return  ApiManager.getService(HostType.HTTP_ORDINARY).getAddInter(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        /*return  ApiManager.getService(HostType.HTTP_ORDINARY).getAddInter(params).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());*/
+       //  return Api.getDefaultService().queryHot(page).map(new RxFunc<List<HotBean>>()).compose(RxSchedulers.<List<HotBean>>io_main());
+       return ApiManager.getService(HostType.HTTP_ORDINARY).getAddInter(params).compose(RxSchedulers.<BaseResponse>io_main());
 
     }
 
