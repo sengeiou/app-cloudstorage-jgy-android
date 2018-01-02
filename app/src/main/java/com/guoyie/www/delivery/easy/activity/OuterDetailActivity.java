@@ -281,6 +281,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
     private void initLogs(List<OuterOrderDetail.LogBean> log) {
 
         if (log.size()>0){
+            binding.gridLayoutLogs.removeAllViews();
             for (int i = 0; i < log.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.logs_items, null, false);
                 TextView  goods_name=view.findViewById(R.id.goods_name);//丙乙烯 | 1000.00吨
@@ -310,8 +311,8 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
     }
 
     private void initships(List<OuterOrderDetail.ShipBean> ship) {
-
         if (ship.size()>0){
+            binding.gridLayoutShip.removeAllViews();
             for (int i = 0; i < ship.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.ships_item, null, false);
                 TextView  shipno=view.findViewById(R.id.shipno);//船编号
@@ -337,6 +338,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     private void initcars(List<OuterOrderDetail.CarBean> car) {
         if (car.size()>0){
+            binding.gridLayoutCar.removeAllViews();
             for (int i = 0; i < car.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.cars_item, null, false);
                 TextView  carid=view.findViewById(R.id.carid);//车牌号

@@ -120,7 +120,7 @@
 
                 <TextView
                     android:text="请选择时间"
-                    android:id="@+id/tv_time"
+                    android:id="@+id/instock_date"
                     style="@style/tv_editdetail_cotent"/>
 
                 <ImageView
@@ -141,7 +141,9 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
-                    android:id="@+id/et_inputorder_num"
+                    android:id="@+id/instock_detail_no"
+                    android:singleLine="true"
+                    android:maxLength="20"
                     android:background="@null"
                     android:hint="请输入单号"
                     style="@style/tv_editdetail_cotent"/>
@@ -185,7 +187,7 @@
                     style="@style/tv_editdetail_title"/>
 
                 <TextView
-                    android:id="@+id/tv_guannum"
+                    android:id="@+id/jar_no"
                     android:text="请选择罐号"
                     style="@style/tv_editdetail_cotent"/>
 
@@ -207,9 +209,11 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
-                    android:id="@+id/et_input_num"
+                    android:id="@+id/stock_qty"
                     android:background="@null"
                    android:hint="请输入库数量"
+                    android:singleLine="true"
+                    android:maxLength="15"
                     style="@style/tv_editdetail_cotent"/>
 
 
@@ -228,9 +232,10 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
-                    android:id="@+id/et_car_num"
+                    android:id="@+id/number"
                     android:background="@null"
-                     android:hint="请输入车牌号"
+                     android:hint="请输入车牌号/船舶编号"
+                    android:maxLength="50"
                     style="@style/tv_editdetail_cotent"/>
             </LinearLayout>
 
@@ -250,6 +255,7 @@
                     android:textColor="#999999"
                     android:textSize="14sp"
                     android:background="@null"
+                    android:maxLength="100"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

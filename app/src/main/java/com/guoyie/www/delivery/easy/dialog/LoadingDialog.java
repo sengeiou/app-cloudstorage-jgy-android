@@ -10,6 +10,7 @@ import com.guoyie.www.delivery.easy.R;
 
 
 public class LoadingDialog extends Dialog {
+
     public Context context;
 
     public LoadingDialog(Context context) {

@@ -47,4 +47,6 @@ public class Constant {
      public static String STOCK_TYPE="STOCK_TYPE";
      //添加的类型
      public static String OUTER_EDIT_ORDER="ADD_TYPE";
+     //储罐名称的字段
+     public static String ACHEA_STORE_NUMBER="ACHEA_STORE_NUMBER";
 }

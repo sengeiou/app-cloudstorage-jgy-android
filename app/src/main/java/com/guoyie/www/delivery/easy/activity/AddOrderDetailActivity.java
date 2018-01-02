@@ -6,18 +6,28 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.AddOrderDetailContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityEditorderdetailBinding;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetail;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetail;
+import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.AddOrderDetailModel;
 import com.guoyie.www.delivery.easy.presenter.AddOrderPresenter;
+import com.guoyie.www.delivery.easy.toast.T;
+import com.guoyie.www.delivery.easy.util.ACache;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.PopDateHelper;
 import com.guoyie.www.delivery.easy.util.PopOneHelper;
+import com.guoyie.www.delivery.easy.util.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +45,13 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
     private ActivityEditorderdetailBinding binding;
     private PopOneHelper oneHelper;
     private PopDateHelper dateHelper;
-    List<String>nums=new ArrayList<>();
     private int              mType;
     private InputOrderDetail mInputOrderDetail;
     private OuterOrderDetail mOuterOrderDetail;
-
+    private ACache mACache=ACache.get(mContext);//拿到缓冲的对象
+    private UserInfoData mInfo;
+    //放储罐号
+    private  List<String>nums=new ArrayList<>();
 
     @Override
     public int getLayoutId() {
@@ -64,8 +76,22 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
         binding.llGoogsxingzhi.setOnClickListener(this);
         binding.llGuanNum.setOnClickListener(this);
         mTv_title =  getView(R.id.tv_title);
+        //在这里做缓冲数据的处理
+        String cacheJson = mACache.getAsString(Constant.ACHEA_STORE_NUMBER);
+        DebugUtil.i("cache json str::" + cacheJson);
+        mInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if (Tools.isNull(cacheJson)) {
+            String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_FILTER +
+                    "&vendor_no=" + mInfo.getData().getInfo().getVendor_no()+
+                    "&type=jar_no");
+            mPresenter.requestStoreNumber(params);
+        } else {
+            nums = JSON.parseArray(cacheJson, String.class);
+
+        }
 
 
+          binding.tvCommit.setOnClickListener(this);
         //拿到点击时候的传递的type只
         Intent intent = getIntent();
         //type=1,是入库单处理的逻辑 2是出库单的逻辑
@@ -80,13 +106,6 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
         }
 
         initData(mType);
-
-    //    mTv_title.setText("添加入库明细单");
-
-        nums.add("1号罐");
-        nums.add("2号罐");
-        nums.add("3号罐");
-        nums.add("4号罐");
 
     }
 
@@ -130,21 +149,69 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
                 oneHelper.setListData(nums);
                 oneHelper.show(view);
                 break;
+            case R.id.tv_commit:
+                //用于提交数据防止多次提交
+                if (isFastDoubleClick()) {
+                    return;
+                }
+
+                String instockDate = binding.instockDate.getText().toString().trim();//时间
+                String instockDetailNo = binding.instockDetailNo.getText().toString().trim();//入库单号
+                String jarNo = binding.jarNo.getText().toString().trim();//选择罐号
+                String stockQty = binding.stockQty.getText().toString().trim();//入库数量
+                String number = binding.number.getText().toString().trim();//船编号
+                String etRemark = binding.etRemark.getText().toString().trim();//备注
+                if (instockDate.equals("请选择时间")) {
+                    T.showAnimToast(mContext, "请选择时间");
+                } else if (Tools.isNull(instockDetailNo)) {
+                    T.showAnimToast(mContext, "请输入单号");
+                } else if (jarNo.equals("请选择罐号")) {
+                    T.showAnimToast(mContext, "请选择罐号");
+                }else if (Tools.isNull(stockQty)) {
+                    T.showAnimToast(mContext, "请输入库数量");
+                }else if (Tools.isNull(number)) {
+                    T.showAnimToast(mContext, "请输入车牌号/船舶编号");
+                }else {
+
+                switch (mType){
+                    case 1://添加入库明细的接口啊
+                        String params=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INTER_ORDER_ADDSTOCK+"&instock_id="+mInputOrderDetail.getId()
+                        +"&instock_detail_no="+instockDetailNo+"&nstock_date="+instockDate+"&goods_id="+mInputOrderDetail.getGoods_id()+"&goods_name="+mInputOrderDetail.getGoods_name()
+                        +"&goods_unit="+mInputOrderDetail.getGoods_unit()+"&goods_nature="+mInputOrderDetail.getGoods_nature()+"&stock_qty="+stockQty
+                        +"&number="+number+"&jar_no="+jarNo+"&remark="+etRemark);
+                        mPresenter.requstAddStcokInter(params);
+                        break;
 
 
-        }
+                }
+
+            }
+
+            break;
+            }
+
 
     }
 
     @Override
     public void onClickOk(String birthday, int position) {
-              binding.tvGuannum.setText(birthday);
+        binding.jarNo.setText(birthday);
 
     }
 
     @Override
     public void onClickOk(String birthday) {
-        binding.tvTime.setText(birthday);
+        String[] split = birthday.split("-");
+        if(split[1].length()==1){
+            split[1]=0+split[1];
+        }
+
+        if(split[2].length()==1){
+            split[2]=0+split[2];
+        }
+        //对数据进行重新排列设置
+        birthday=split[0]+"-"+split[1]+"-"+split[2];
+        binding.instockDate.setText(birthday);
 
     }
 
@@ -155,6 +222,22 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
 
     @Override
     public void returnAddStcokOuter(BaseResponse data) {
+
+    }
+
+    @Override
+    public void returnStoreNumber(StoreNumberBean storeNumberBean) {
+        if (storeNumberBean.isOk()){
+            List<StoreNumberBean.DataBean> data = storeNumberBean.getData();
+            for (int i = 0; i < data.size(); i++) {
+                 nums.add(data.get(i).getJar_no());
+            }
+
+            if (nums!=null){
+                mACache.put(Constant.ACHEA_STORE_NUMBER, JSON.toJSONString(nums), 1800);
+            }
+
+        }
 
     }
 

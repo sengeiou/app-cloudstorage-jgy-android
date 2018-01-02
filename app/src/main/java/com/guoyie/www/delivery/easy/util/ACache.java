@@ -145,7 +145,7 @@ public class ACache {
     }
 
 
-    private ACache(File cacheDir, long max_size, int max_count) {
+    public ACache(File cacheDir, long max_size, int max_count) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             if (!cacheDir.exists() && !cacheDir.mkdirs()) {
                 throw new RuntimeException("can't make dirs in " + cacheDir.getAbsolutePath());

@@ -4,11 +4,10 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.AddOrderDetailContract;
+import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
 import com.guoyie.www.delivery.easy.rx.RxSchedulers;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -29,7 +28,15 @@ public class AddOrderDetailModel implements AddOrderDetailContract.Model {
 
     @Override
     public Observable<BaseResponse> getAddStockOuter(String params) {
-        return ApiManager.getService(HostType.HTTP_ORDINARY).getAddOuter(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+      /*  return ApiManager.getService(HostType.HTTP_ORDINARY).getAddOuter(params).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());*/
+      return  ApiManager.getService(HostType.HTTP_ORDINARY).getAddOuter(params).compose(RxSchedulers.<BaseResponse>io_main());
+    }
+
+    @Override
+    public Observable<StoreNumberBean> getStoreNumber(String params) {
+
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getStoreNumber(params).compose(RxSchedulers.<StoreNumberBean>io_main());
+
     }
 }

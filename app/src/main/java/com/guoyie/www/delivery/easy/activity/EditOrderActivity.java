@@ -139,7 +139,6 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
         adapter.setList(selectList);
         adapter.setSelectMax(10000);
         recyclerView.setAdapter(adapter);
-
         adapter.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View v) {
@@ -197,7 +196,7 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                         .maxSelectNum(100000)// 最大图片选择数量
                         .minSelectNum(1)// 最小选择数量
                         .imageSpanCount(4)// 每行显示个数
-                        .selectionMode(PictureConfig.MULTIPLE )// 多选 or 单选
+                        .selectionMode(PictureConfig.MAX_COMPRESS_SIZE )// 多选 or 单选
                         .previewImage(true)// 是否可预览图片
                         .isCamera(true)// 是否显示拍照按钮
                         .isZoomAnim(true)// 图片列表点击 缩放效果 默认true

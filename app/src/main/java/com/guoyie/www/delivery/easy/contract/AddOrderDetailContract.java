@@ -4,6 +4,7 @@ import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.base.BaseView;
+import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
 
 import rx.Observable;
 
@@ -21,6 +22,8 @@ public interface AddOrderDetailContract {
         Observable <BaseResponse> getAddStockInter(String params);
         //添加出库明细
         Observable <BaseResponse> getAddStockOuter(String params);
+        //获取储罐号
+        Observable<StoreNumberBean> getStoreNumber(String params);
 
     }
 
@@ -29,6 +32,8 @@ public interface AddOrderDetailContract {
         void returnAddStcokInter(BaseResponse data);
         //添加出库明细
         void returnAddStcokOuter(BaseResponse data);
+        //获取储罐号
+        void returnStoreNumber(StoreNumberBean storeNumberBean);
 
         void error(String msg);
     }
@@ -41,6 +46,8 @@ public interface AddOrderDetailContract {
         public abstract  void requstAddStcokInter(String params);
         //添加出库明细
         public abstract  void requstAddStcokOuter(String params);
+        //获取储罐号
+        public abstract void requestStoreNumber(String params);
     }
 
 }

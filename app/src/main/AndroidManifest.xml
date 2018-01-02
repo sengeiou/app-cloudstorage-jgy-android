@@ -53,7 +53,6 @@
         <activity android:name=".activity.StoreDetailActivity" />
         <!-- 获取进行搜索的 -->
         <activity android:name=".activity.SeachActivity" />
-        <activity android:name=".activity.SeachRusltActivity" />
         <activity android:name=".activity.StoreManagerActivity" />
         <activity android:name=".activity.StoreCapacityManagerActivity" />
         <activity android:name=".activity.InfoOrderDetailActivity" />

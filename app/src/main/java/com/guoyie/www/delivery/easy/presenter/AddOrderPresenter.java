@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.presenter;
 
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.AddOrderDetailContract;
+import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
 
 import rx.Subscription;
@@ -48,5 +49,22 @@ public class AddOrderPresenter extends AddOrderDetailContract.Presenter {
         });
         mRxManage.add(subscribe);
 
+    }
+
+    @Override
+    public void requestStoreNumber(String params) {
+        Subscription subscribe = mModel.getStoreNumber(params).subscribe(new RxSubscriber<StoreNumberBean>(mContext,true) {
+            @Override
+            protected void _onNext(StoreNumberBean storeNumberBean) {
+                mView.returnStoreNumber(storeNumberBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.error(message);
+
+            }
+        });
+        mRxManage.add(subscribe);
     }
 }

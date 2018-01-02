@@ -1,7 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +26,6 @@ import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.recyclerview.SpaceItemDecoration;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

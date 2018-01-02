@@ -38,6 +38,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
     private TextView  mTv_title;
     private ActivityInterdetailBinding binding;
     private InputOrderDetail mDetail;
+    private String mId;
 
     @Override
     public int getLayoutId() {
@@ -62,8 +63,8 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         mTv_title =  getView(R.id.tv_title);
         mTv_title.setText("入库单详情");
         //从上个页面传回来的数据
-        String id = getIntent().getStringExtra(Constant.INPUT_ORDER_ID);
-        loadData(id);
+        mId = getIntent().getStringExtra(Constant.INPUT_ORDER_ID);
+    //    loadData(id);
 
     }
 
@@ -279,6 +280,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     private void initLogs(List<InputOrderDetail.LogBean> log) {
         if (log.size()>0){
+            binding.gridLayoutLogs.removeAllViews();
             for (int i = 0; i < log.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.logs_items, null, false);
                 TextView  goods_name=view.findViewById(R.id.goods_name);//丙乙烯 | 1000.00吨
@@ -309,6 +311,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     private void initships(List<InputOrderDetail.ShipBean> ship) {
         if (ship.size()>0){
+            binding.gridLayoutShip.removeAllViews();
             for (int i = 0; i < ship.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.ships_item, null, false);
                 TextView  shipno=view.findViewById(R.id.shipno);//船编号
@@ -335,6 +338,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     private void initcars(List<InputOrderDetail.CarBean> car) {
         if (car.size()>0){
+            binding.gridLayoutCar.removeAllViews();
             for (int i = 0; i < car.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.cars_item, null, false);
                 TextView  carid=view.findViewById(R.id.carid);//车牌号
@@ -361,5 +365,12 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
     public void error(String msg) {
         showToast(msg);
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData(mId);
     }
 }

@@ -467,7 +467,7 @@ public class InputOrderDetail implements Serializable {
         this.log = log;
     }
 
-    public static class LogBean {
+    public static class LogBean implements Serializable {
         /**
          * id : 1
          * instock_id : 1
@@ -703,7 +703,7 @@ public class InputOrderDetail implements Serializable {
 
 
 
-    public static class ShipBean {
+    public static class ShipBean implements Serializable{
 
 
         /**

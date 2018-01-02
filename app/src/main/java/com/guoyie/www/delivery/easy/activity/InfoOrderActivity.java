@@ -297,7 +297,6 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
             } else{
-
                 binding.swipeRefresh.setRefreshing(false);
             }
 
@@ -309,5 +308,12 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
     @Override
     public void err_or(String msg) {
         showToast(msg);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefresh();
     }
 }
