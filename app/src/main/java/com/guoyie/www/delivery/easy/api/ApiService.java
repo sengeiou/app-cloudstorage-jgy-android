@@ -27,7 +27,7 @@ import okhttp3.RequestBody;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -107,7 +107,7 @@ public interface ApiService {
     Observable<BaseResponse> getEditOuter(@Query("params") String params);//出库
     @Multipart
     @POST("?")
-    Observable<BaseResponse> upLoadFile(@Part() Map<String,RequestBody> params);//上传图片
+    Observable<BaseResponse> upLoadFile(@PartMap Map<String, RequestBody> params);//上传图片
     //编辑出入库明细的接口
     @GET("?")
     Observable<BaseResponse> getAddInter(@Query("params") String params);//入库

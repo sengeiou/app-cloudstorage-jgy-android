@@ -102,6 +102,7 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
                 break;
             case 2:
                 mOuterOrderDetail = (OuterOrderDetail) intent.getSerializableExtra(Constant.OUTER_EDIT_ORDER);
+                binding.llLoseQty.setVisibility(View.VISIBLE);
                 break;
         }
 
@@ -121,6 +122,7 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
                 mTv_title.setText("添加出库明细单");//标题
                 binding.goodsName.setText(mOuterOrderDetail.getGoods_name());//商品名臣
                 binding.orderQty.setText(mOuterOrderDetail.getOrder_qty()+mOuterOrderDetail.getGoods_unit());//入库数量和单位
+                binding.goodsNature.setText(mOuterOrderDetail.getGoods_nature());//货物性质写死的
                 binding.tvTitleNum.setText("预约出库数量/单位");//预约数量的修改
                 binding.tvStockTime.setText("出库时间");//出库时间
                 binding.tvStockOrderNum.setText("出库单号");//出库单号
@@ -160,32 +162,44 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
                 String jarNo = binding.jarNo.getText().toString().trim();//选择罐号
                 String stockQty = binding.stockQty.getText().toString().trim();//入库数量
                 String number = binding.number.getText().toString().trim();//船编号
+                String lose_qty = binding.loseQty.getText().toString().trim();//耗损量
                 String etRemark = binding.etRemark.getText().toString().trim();//备注
-                if (instockDate.equals("请选择时间")) {
-                    T.showAnimToast(mContext, "请选择时间");
-                } else if (Tools.isNull(instockDetailNo)) {
-                    T.showAnimToast(mContext, "请输入单号");
-                } else if (jarNo.equals("请选择罐号")) {
-                    T.showAnimToast(mContext, "请选择罐号");
-                }else if (Tools.isNull(stockQty)) {
-                    T.showAnimToast(mContext, "请输入库数量");
-                }else if (Tools.isNull(number)) {
-                    T.showAnimToast(mContext, "请输入车牌号/船舶编号");
-                }else {
+                    if (instockDate.equals("请选择时间")) {
+                        T.showAnimToast(mContext, "请选择时间");
+                    } else if (Tools.isNull(instockDetailNo)) {
+                        T.showAnimToast(mContext, "请输入单号");
+                    } else if (jarNo.equals("请选择罐号")) {
+                        T.showAnimToast(mContext, "请选择罐号");
+                    }else if (Tools.isNull(stockQty)) {
+                        T.showAnimToast(mContext, "请输入库数量");
+                    }else if (Tools.isNull(number)) {
+                        T.showAnimToast(mContext, "请输入车牌号/船舶编号");
+                    }else if (mType==2&&Tools.isNull(lose_qty)){
+                        T.showAnimToast(mContext, "请输入耗损量");
+                    }else {
 
-                switch (mType){
-                    case 1://添加入库明细的接口啊
-                        String params=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INTER_ORDER_ADDSTOCK+"&instock_id="+mInputOrderDetail.getId()
-                        +"&instock_detail_no="+instockDetailNo+"&nstock_date="+instockDate+"&goods_id="+mInputOrderDetail.getGoods_id()+"&goods_name="+mInputOrderDetail.getGoods_name()
-                        +"&goods_unit="+mInputOrderDetail.getGoods_unit()+"&goods_nature="+mInputOrderDetail.getGoods_nature()+"&stock_qty="+stockQty
-                        +"&number="+number+"&jar_no="+jarNo+"&remark="+etRemark);
-                        mPresenter.requstAddStcokInter(params);
-                        break;
+                        switch (mType){
+                            case 1://添加入库明细的接口啊
+                                String params1=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INTER_ORDER_ADDSTOCK+"&instock_id="+mInputOrderDetail.getId()
+                                +"&instock_detail_no="+instockDetailNo+"&instock_date="+instockDate+"&goods_id="+mInputOrderDetail.getGoods_id()+"&goods_name="+mInputOrderDetail.getGoods_name()
+                                +"&goods_unit="+mInputOrderDetail.getGoods_unit()+"&goods_nature="+mInputOrderDetail.getGoods_nature()+"&stock_qty="+stockQty
+                                +"&number="+number+"&jar_no="+jarNo+"&remark="+etRemark);
+                                mPresenter.requstAddStcokInter(params1);
+                                break;
 
+                            case 2://添加出库明细的接口
+                                String params2=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.OUTER_ORDER_ADDSTOCK+"&outstock_id="+mOuterOrderDetail.getId()
+                                        +"&outstock_detail_no="+instockDetailNo+"&outstock_date="+instockDate+"&goods_id="+mOuterOrderDetail.getGoods_id()+"&goods_name="+mOuterOrderDetail.getGoods_name()
+                                        +"&goods_unit="+mOuterOrderDetail.getGoods_unit()+"&goods_nature="+mOuterOrderDetail.getGoods_nature()+"&stock_qty="+stockQty+"&lose_qty="+lose_qty
+                                        +"&number="+number+"&jar_no="+jarNo+"&remark="+etRemark);
+                                mPresenter.requstAddStcokOuter(params2);
+                                break;
+
+
+
+                        }
 
                 }
-
-            }
 
             break;
             }

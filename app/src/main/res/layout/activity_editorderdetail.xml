@@ -201,6 +201,28 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_lose_qty"
+                android:visibility="gone"
+                style="@style/ll_editdetail">
+
+                <TextView
+                    android:id="@+id/tv_lose_qty"
+                    android:text="损耗数量"
+                    style="@style/tv_editdetail_title"/>
+
+                <com.guoyie.www.delivery.easy.widget.FocusEditText
+                    android:id="@+id/lose_qty"
+                    android:background="@null"
+                    android:hint="请输损耗数量"
+                    android:singleLine="true"
+                    android:maxLength="15"
+                    style="@style/tv_editdetail_cotent"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 style="@style/ll_editdetail">
 
                 <TextView
@@ -213,6 +235,7 @@
                     android:background="@null"
                    android:hint="请输入库数量"
                     android:singleLine="true"
+                    android:inputType="numberDecimal"
                     android:maxLength="15"
                     style="@style/tv_editdetail_cotent"/>
 

@@ -38,6 +38,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
     private TextView                     mTv_title;
     private ActivityOuterordetailBinding binding;
     private OuterOrderDetail             mDetail;
+    private String mId;
 
     @Override
     public int getLayoutId() {
@@ -61,8 +62,8 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         mTv_title =  getView(R.id.tv_title);
         mTv_title.setText("出库单详情");
         //从上个页面传回来的数据
-        String id = getIntent().getStringExtra(Constant.OUTER_ORDER_ID);
-        loadData(id);
+        mId = getIntent().getStringExtra(Constant.OUTER_ORDER_ID);
+
 
     }
 
@@ -361,4 +362,10 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData(mId);
+    }
 }

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.FullyGridLayoutManager;
 import com.guoyie.www.delivery.easy.adapter.GridImageAdapter;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.EditOrderContract;
@@ -22,8 +23,11 @@ import com.guoyie.www.delivery.easy.entity.InputOrderDetail;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetail;
 import com.guoyie.www.delivery.easy.model.EditOrderModel;
 import com.guoyie.www.delivery.easy.presenter.EditOrderPresenter;
+import com.guoyie.www.delivery.easy.toast.T;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.util.PopOneHelper;
+import com.guoyie.www.delivery.easy.util.Tools;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -31,11 +35,16 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.permissions.RxPermissions;
 import com.luck.picture.lib.tools.PictureFileUtils;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * author：柯军
@@ -95,8 +104,6 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
         }
 
         initData(mType);
-    //    mTv_title.setText("编辑入库确认单");
-
         initRecycleView();
 
     }
@@ -260,6 +267,34 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                 break;
 
             case R.id.tv_commit:
+                String instockType = binding.instockType.getText().toString().trim(); //拿到入库类型
+                String contactName = binding.contactName.getText().toString().trim();//仓库联系人
+                String contact = binding.contact.getText().toString().trim();//联系方式
+                String etRemark = binding.etRemark.getText().toString().trim();//备注
+                if (Tools.isNull(contactName)){
+                    T.showAnimToast(mContext,"请输入联系人");
+                }else if (Tools.isNull(contact)){
+                    T.showAnimToast(mContext,"请输入联系方式");
+                }else if(selectList.size()==0) {
+                    T.showAnimToast(mContext,"请添加附件");
+                }else {
+
+                    Map<String, RequestBody> bodyMap = new HashMap<>();
+                    String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.UPLOAD_OBJ);
+                    RequestBody body = RequestBody.create(MediaType.parse("text/plain"), params);
+                    bodyMap.put("params",body);
+                    for (int i = 0; i < selectList.size(); i++) {
+                        File file=new File(selectList.get(i).getCompressPath());
+                        bodyMap.put("file"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+                    }
+
+                    // bodyMap.put(key + "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
+                   // Map<String, RequestBody> bodyMap = UploadManage.HandleImg(params, hashMap);
+                  //  DebugUtil.i("上传图片大小::" + bodyMap.size());
+                    mPresenter.requstreturneditLoadobj(bodyMap);
+                }
+
+
 
                 break;
 
@@ -284,6 +319,7 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
 
     @Override
     public void returneditLoadobj(BaseResponse data) {
+
 
     }
 
