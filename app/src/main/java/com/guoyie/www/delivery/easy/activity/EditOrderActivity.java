@@ -292,6 +292,9 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                    // Map<String, RequestBody> bodyMap = UploadManage.HandleImg(params, hashMap);
                   //  DebugUtil.i("上传图片大小::" + bodyMap.size());
                     mPresenter.requstreturneditLoadobj(bodyMap);
+
+
+
                 }
 
 
