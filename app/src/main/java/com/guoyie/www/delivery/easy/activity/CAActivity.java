@@ -61,7 +61,7 @@ public class CAActivity extends BaseActivity implements View.OnClickListener {
         //支持对字体的改变
         settings.setSupportZoom(true);
         settings.setTextSize(WebSettings.TextSize.NORMAL);
-         settings.setBuiltInZoomControls(true);// 显示缩放按钮(wap网页不支持)
+         //settings.setBuiltInZoomControls(true);// 显示缩放按钮(wap网页不支持)
          settings.setUseWideViewPort(true);// 支持双击缩放(wap网页不支持)
          settings.setJavaScriptEnabled(true);// 支持js功能
         //自适应屏幕
@@ -102,7 +102,7 @@ public class CAActivity extends BaseActivity implements View.OnClickListener {
                 // Handle the error
                 //  view.loadUrl(TIME_OUT_PAGE);
 
-                String data = "网络有异常请重试！";
+                String data = "网络有异常请重试!";
                 view.loadUrl("javascript:document.body.innerHTML=\"" + data + "\"");
 
             }

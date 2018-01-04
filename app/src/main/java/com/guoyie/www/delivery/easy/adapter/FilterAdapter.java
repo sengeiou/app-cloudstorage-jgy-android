@@ -39,6 +39,7 @@ public class FilterAdapter<E> extends RecyclerView.Adapter<FilterAdapter.FilterV
     @Override
     public FilterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         TextView tv = (TextView) parent.inflate(parent.getContext(), R.layout.filter_item, null);
+
         return new FilterViewHolder(tv);
     }
 

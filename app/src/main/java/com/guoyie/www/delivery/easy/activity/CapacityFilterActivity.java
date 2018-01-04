@@ -35,13 +35,13 @@ public class CapacityFilterActivity extends BaseActivity<CapacityFilterPresenter
     private RecyclerView mRvGoodsName;
     private RecyclerView mRvStoreNumber;
     private FilterAdapter mFilterAdapter1;
-    private FilterAdapter mFilterAdapter3;
+    private FilterAdapter mFilterAdapter2;
 
     public TextView currentGoodNameTextView;    //当前被选中的商品名
     public TextView currentStoreNumberView;    //当前被选中的储罐编号
     private UserInfoData mUserInfoData;
     private List<CapacityGoodsNameBean.DataBean> mDataBeanList1 = new ArrayList<>();  //商品名数据源
-    private List<CapacityStoreNumberBean.DataBean> mDataBeanList3 = new ArrayList<>();  //储罐号数据源
+    private List<CapacityStoreNumberBean.DataBean> mDataBeanList2 = new ArrayList<>();  //储罐号数据源
 
     @Override
     public int getLayoutId() {
@@ -216,35 +216,35 @@ public class CapacityFilterActivity extends BaseActivity<CapacityFilterPresenter
     public void returnStoreNumber(CapacityStoreNumberBean capacityStoreNumberBean) {
         if (capacityStoreNumberBean.isOk()){
 
-            mDataBeanList3.addAll(capacityStoreNumberBean.getData());
+            mDataBeanList2.addAll(capacityStoreNumberBean.getData());
             final List<CapacityStoreNumberBean.DataBean> moreList3 = new ArrayList<>();
-            moreList3.addAll(mDataBeanList3);
+            moreList3.addAll(mDataBeanList2);
             CapacityStoreNumberBean.DataBean dataBeanMore = new CapacityStoreNumberBean.DataBean();
             dataBeanMore.setStock_no("收起更多");
             moreList3.add(dataBeanMore);
 
             final List<CapacityStoreNumberBean.DataBean> lessList3 = new ArrayList<>();
-            if (mDataBeanList3.size()>=4){  //避免索引越界
-                lessList3.addAll(mDataBeanList3.subList(0,4));
+            if (mDataBeanList2.size()>=4){  //避免索引越界
+                lessList3.addAll(mDataBeanList2.subList(0,4));
                 CapacityStoreNumberBean.DataBean dataBeanLess = new CapacityStoreNumberBean.DataBean();
                 dataBeanLess.setStock_no("更多选项");
                 lessList3.add(dataBeanLess);
             }
-            mFilterAdapter3 = new FilterAdapter();
-            if (mDataBeanList3.size()>4){
+            mFilterAdapter2 = new FilterAdapter();
+            if (mDataBeanList2.size()>4){
 
-                mFilterAdapter3.setStringList(lessList3);
+                mFilterAdapter2.setStringList(lessList3);
             }else {
-                mFilterAdapter3.setStringList(mDataBeanList3);
+                mFilterAdapter2.setStringList(mDataBeanList2);
             }
-            mRvStoreNumber.setAdapter(mFilterAdapter3);
+            mRvStoreNumber.setAdapter(mFilterAdapter2);
 
             //----------------------------------------------------------------------------
-            mFilterAdapter3.setOnItemClickListener(new FilterAdapter.OnItemClickListener() {
+            mFilterAdapter2.setOnItemClickListener(new FilterAdapter.OnItemClickListener() {
 
                 @Override
                 public void onItemClick(View v,int position) {
-                    int itemCount = mFilterAdapter3.getItemCount();
+                    int itemCount = mFilterAdapter2.getItemCount();
                     //如果适配器当前的集合是moreList，则点击第5个item的时候将其设为currentGoodNameTextView，并将选中状态设为true
                     if (itemCount == moreList3.size()){
                         if (position == 4){
@@ -259,7 +259,7 @@ public class CapacityFilterActivity extends BaseActivity<CapacityFilterPresenter
 
                     if (position == 4){
                         //strings1.remove(4);
-                        mFilterAdapter3.setStringList(moreList3);
+                        mFilterAdapter2.setStringList(moreList3);
                         //切换集合的时候将当前被点击的位置处的Item设为未选中状态，并将currentGoodNameTextView重置为空
                         if (currentStoreNumberView!=null){
                             currentStoreNumberView.setSelected(false);
@@ -269,7 +269,7 @@ public class CapacityFilterActivity extends BaseActivity<CapacityFilterPresenter
                     }
 
                     if (position == moreList3.size()-1){
-                        mFilterAdapter3.setStringList(lessList3);
+                        mFilterAdapter2.setStringList(lessList3);
                         //v.setSelected(false);
                         if (currentStoreNumberView!=null){
                             currentStoreNumberView.setSelected(false);
