@@ -21,6 +21,7 @@ public interface OutOrderDetailContract {
 
         Observable<OuterOrderDetailData> getOuterDetailData(String params);
         Observable<BaseResponse> getOuterDetailUpdate(String params);
+        Observable<BaseResponse>getHandleOuter(String params);
 
     }
 
@@ -28,6 +29,7 @@ public interface OutOrderDetailContract {
     interface View extends BaseView {
         void returnOuterDetailData(OuterOrderDetailData data);
         void returnOuterDetailUpdate(BaseResponse data);
+        void returnOuterHandle(BaseResponse data);
         void error(String msg);
     }
 
@@ -36,6 +38,7 @@ public interface OutOrderDetailContract {
 
         abstract public void requstOuterDetailData(String params);
         abstract public void requstOuterDetailUpdate(String params);
+        public abstract void requstouterHandle(String params);
     }
 
 

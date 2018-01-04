@@ -113,6 +113,9 @@ public interface ApiService {
     Observable<BaseResponse> getAddInter(@Query("params") String params);//入库
     @GET("?")
     Observable<BaseResponse> getAddOuter(@Query("params") String params);//出库
+    //完成入库的接口
+    @GET("?")
+    Observable<BaseResponse>getOrderHandle(@Query("params") String params);//完成入库
 
 
 

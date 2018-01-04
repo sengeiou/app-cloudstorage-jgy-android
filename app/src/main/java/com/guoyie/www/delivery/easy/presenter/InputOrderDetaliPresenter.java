@@ -51,5 +51,21 @@ public  class InputOrderDetaliPresenter extends InterOrderDetailContract.Present
         mRxManage.add(subscribe);
     }
 
+    @Override
+    public void requstInterHandle(String params) {
+        Subscription subscribe = mModel.getHandleInter(params).subscribe(new RxSubscriber<BaseResponse>(mContext,true) {
+            @Override
+            protected void _onNext(BaseResponse baseResponse) {
+                mView.returnInterHandle(baseResponse);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.error(message);
+            }
+        });
+        mRxManage.add(subscribe);
+    }
+
 
 }

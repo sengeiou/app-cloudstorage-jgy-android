@@ -27,7 +27,9 @@ public class HttpUtils {
     public static final String INTER_ORDER_UPDATE="model=warehouse&action=update";
     //入库单的添加入库明细的接口
     public static final String INTER_ORDER_ADDSTOCK="model=warehouse&action=addstock";
-    //入库单的编辑入库确认单的接口
+    //出入库单的编辑入库确认单的接口
+    public static final String INTER_OUTER_HANDLE="model=warehouse&action=handle";
+    //完成入库的接口
     public static final String INTER_ORDER_UPINSTOCK="model=warehouse&action=upinstock";
      /*======================出库单接口===============================*/
     //出库单列表的数据
@@ -39,7 +41,7 @@ public class HttpUtils {
     //出库单的添加入库明细的接口
     public static final String OUTER_ORDER_ADDSTOCK="model=outstock&action=addstock";
     //出库单的编辑入库确认单的接口
-    public static final String INTER_ORDER_UPOUTSTOCK="model=outstock&action=upoutstock";
+    public static final String OUTER_ORDER_UPOUTSTOCK="model=outstock&action=upoutstock";
 
     //上传文件的接口model=warehouse&action=uploadobj（POST 请求）
     public static final String UPLOAD_OBJ="model=warehouse&action=uploadobj";

@@ -67,6 +67,10 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
     private int              mType;
     private InputOrderDetail mInputOrderDetail;
     private OuterOrderDetail mOuterOrderDetail;
+    private String mInstockType;
+    private String mContactName;
+    private String mContact;
+    private String mEtRemark;
 
     @Override
     public int getLayoutId() {
@@ -267,33 +271,46 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                 break;
 
             case R.id.tv_commit:
-                String instockType = binding.instockType.getText().toString().trim(); //拿到入库类型
-                String contactName = binding.contactName.getText().toString().trim();//仓库联系人
-                String contact = binding.contact.getText().toString().trim();//联系方式
-                String etRemark = binding.etRemark.getText().toString().trim();//备注
-                if (Tools.isNull(contactName)){
+                //拿到入库类型
+                mInstockType = binding.instockType.getText().toString().trim();
+                //仓库联系人
+                mContactName = binding.contactName.getText().toString().trim();
+                //联系方式
+                mContact = binding.contact.getText().toString().trim();
+                //备注
+                mEtRemark = binding.etRemark.getText().toString().trim();
+                if (Tools.isNull(mContactName)){
                     T.showAnimToast(mContext,"请输入联系人");
-                }else if (Tools.isNull(contact)){
+                }else if (Tools.isNull(mContact)){
                     T.showAnimToast(mContext,"请输入联系方式");
                 }else if(selectList.size()==0) {
                     T.showAnimToast(mContext,"请添加附件");
                 }else {
 
                     Map<String, RequestBody> bodyMap = new HashMap<>();
-                    String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.UPLOAD_OBJ);
+                    String requstparams="";
+                    if (mType==1){
+                        requstparams="&type=实际入库"+"&type_id="+mInputOrderDetail.getId();
+                    }else {
+                        requstparams="&type=实际出库"+"&type_id="+mOuterOrderDetail.getId();
+                    }
+                    String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.UPLOAD_OBJ+requstparams);
                     RequestBody body = RequestBody.create(MediaType.parse("text/plain"), params);
                     bodyMap.put("params",body);
-                    for (int i = 0; i < selectList.size(); i++) {
+                  /*  for (int i = 0; i < selectList.size(); i++) {
                         File file=new File(selectList.get(i).getCompressPath());
-                        bodyMap.put("file"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+                        bodyMap.put("file"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image*//*"), file));
                     }
+*/
+                    for (LocalMedia localMedia : selectList) {
+                        File file=new File(localMedia.getCompressPath());
+                        bodyMap.put("file[]"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
 
+                    }
                     // bodyMap.put(key + "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
                    // Map<String, RequestBody> bodyMap = UploadManage.HandleImg(params, hashMap);
                   //  DebugUtil.i("上传图片大小::" + bodyMap.size());
                     mPresenter.requstreturneditLoadobj(bodyMap);
-
-
 
                 }
 
@@ -312,22 +329,49 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
 
     @Override
     public void returneditinterstock(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
+
 
     }
 
     @Override
     public void returneditouterstock(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
 
     }
 
     @Override
     public void returneditLoadobj(BaseResponse data) {
 
+        if (data.isOk()){
+            //图片上传成功后在提交表单内容
+            switch (mType){
+                case 1://入库编辑
+                String params1=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INTER_ORDER_UPINSTOCK+"&id="+mInputOrderDetail.getId()+
+                "&shop_company_id="+mInputOrderDetail.getShop_company_id()+"&real_instock_type="+mInstockType+"&real_contact_name="+mContactName
+                +"&real_contact="+mContact+"&real_remark="+mEtRemark);
+                mPresenter.requsteditinterstock(params1);
+                break;
+                case 2://出库编辑
+                    String params2=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.OUTER_ORDER_UPOUTSTOCK+"&id="+mOuterOrderDetail.getId()+
+                            "&real_outsock_no="+mOuterOrderDetail.getReal_outsock_no()+"&real_outstock_type ="+(mInstockType.equals("车出库")?1:2)+"&real_contact_name="+mContactName
+                            +"&real_contact="+mContact+"&real_remark="+mEtRemark);
+                    mPresenter.requsteditouterstock(params2);
+                    break;
+            }
+        }
 
     }
 
     @Override
     public void eeror(String msg) {
+        showToast(msg);
 
     }
 }

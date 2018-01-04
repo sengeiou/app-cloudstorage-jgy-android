@@ -36,7 +36,7 @@ public class EditOrderModel implements EditOrderContract.Model {
 
     @Override
     public Observable<BaseResponse> editLoadobj(Map<String,RequestBody> params) {
-        return  ApiManager.getService(HostType.HTTP_ORDINARY).upLoadFile(params).subscribeOn(Schedulers.io())
+        return  ApiManager.getService(HostType.HTTP_PICTURE).upLoadFile(params).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
     }

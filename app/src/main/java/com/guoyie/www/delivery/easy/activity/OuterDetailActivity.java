@@ -39,6 +39,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
     private ActivityOuterordetailBinding binding;
     private OuterOrderDetail             mDetail;
     private String mId;
+    private TextView mTv_right;
 
     @Override
     public int getLayoutId() {
@@ -62,6 +63,9 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         mTv_title =  getView(R.id.tv_title);
         mTv_title.setText("出库单详情");
         //从上个页面传回来的数据
+        mTv_right = getView(R.id.tv_right);
+        mTv_right.setOnClickListener(this);//完成入库的按钮
+        mTv_right.setText("完成出库");
         mId = getIntent().getStringExtra(Constant.OUTER_ORDER_ID);
 
 
@@ -83,7 +87,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
                 String refused = binding.tvRefused.getText().toString().trim();
                 if (refused.equals("拒绝")){
-                    showUpdateDialog(3,"确定拒绝本条入库单？");
+                    showUpdateDialog(3,"提示","确定拒绝本条入库单？",false);
                 }else {
 
                     if (mDetail!=null) {
@@ -100,7 +104,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
                 String agree = binding.tvAgree.getText().toString().trim();
                 if (agree.equals("通过")){
-                    showUpdateDialog(4,"确定同意本条出库单？");
+                    showUpdateDialog(4,"提示","确定同意本条出库单？",false);
                 }else {
 
 
@@ -138,35 +142,50 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
                 break;
 
+
+            case R.id.tv_right:
+                showUpdateDialog(0,"是否确认完成出库?", "确认完成后，该订单为已完成\n" +"内容不可更改。",true);
+                break;
+
+
         }
 
 
 
     }
 
-    private void showUpdateDialog(final int status, String message) {
+    private void showUpdateDialog(final int status, String title, String message, final boolean isok) {
         final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
                 GApp.screenHeight / 4, R.layout.wind_base_dialog_xml, R.style.Theme_dialog);
         Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
         Button btn_commit =  dialog.findViewById(R.id.btn_commit);
         TextView tv_title = dialog.findViewById(R.id.tv_title);
         TextView tv_content =  dialog.findViewById(R.id.tv_content);
-        tv_title.setText("提示");
+        tv_title.setText(title);
         tv_content.setText(message);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_UPDATE+ "&id=" + mDetail.getId() + "&status=" + status);
-                String encrypt = BlowfishTools.decrypt(HttpUtils.key, params);
-                DebugUtil.debug("heheh"+encrypt);
-                mPresenter.requstOuterDetailUpdate(params);
                 dialog.dismiss();
             }
         });
         btn_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isok){//完成出库的接口
+                    String params1 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_OUTER_HANDLE + "&id=" + mDetail.getId() + "&type=出库"
+                            +"&real_number="+mDetail.getReal_qty()+"&shop_company_id="+mDetail.getShop_company_id());
+                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params1);
+                    DebugUtil.debug("heheh"+encrypt);
+                    mPresenter.requstouterHandle(params1);
 
+                }else {
+                    //走审核通过的接口的逻辑
+                    String params2 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_UPDATE+ "&id=" + mDetail.getId() + "&status=" + status);
+                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params2);
+                    DebugUtil.debug("heheh"+encrypt);
+                    mPresenter.requstOuterDetailUpdate(params2);
+                }
 
                 dialog.dismiss();
             }
@@ -191,6 +210,15 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     @Override
     public void returnOuterDetailUpdate(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
+
+    }
+
+    @Override
+    public void returnOuterHandle(BaseResponse data) {
         if (data.isOk()){
             showToast(data.getMsg());
             finish();
@@ -282,6 +310,9 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
     private void initLogs(List<OuterOrderDetail.LogBean> log) {
 
         if (log.size()>0){
+            if (mDetail.getStatus()==4){
+                mTv_right.setVisibility(View.VISIBLE);//让完成入库的按钮可见
+            }
             binding.gridLayoutLogs.removeAllViews();
             for (int i = 0; i < log.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.logs_items, null, false);

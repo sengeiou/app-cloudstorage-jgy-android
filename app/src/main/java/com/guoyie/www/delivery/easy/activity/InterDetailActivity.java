@@ -39,6 +39,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
     private ActivityInterdetailBinding binding;
     private InputOrderDetail mDetail;
     private String mId;
+    private TextView mTv_right;
 
     @Override
     public int getLayoutId() {
@@ -61,6 +62,9 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         mLeft_back.setOnClickListener(this);
         binding.llInterRefusedAgree.setVisibility(View.GONE);
         mTv_title =  getView(R.id.tv_title);
+        mTv_right = getView(R.id.tv_right);
+        mTv_right.setOnClickListener(this);//完成入库的按钮
+        mTv_right.setText("完成入库");
         mTv_title.setText("入库单详情");
         //从上个页面传回来的数据
         mId = getIntent().getStringExtra(Constant.INPUT_ORDER_ID);
@@ -84,7 +88,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             //调到编辑详情页面status 4:审核通过 3:审核不通过
                 String refused = binding.tvRefused.getText().toString().trim();
             if (refused.equals("拒绝")){
-                showUpdateDialog(3,"确定拒绝本条入库单？");
+                showUpdateDialog(3,"提示","确定拒绝本条入库单？",false);
             }else {
                 if (mDetail!=null) {
 
@@ -102,7 +106,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
                 String agree = binding.tvAgree.getText().toString().trim();
                 if (agree.equals("通过")){
-                    showUpdateDialog(4,"确定同意本条入库单？");
+                    showUpdateDialog(4,"提示","确定同意本条入库单？",false);
                 }else {
                     //处理从详情页传回来数据
                     if (mDetail!=null) {
@@ -116,7 +120,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
                 break;
 
-            case R.id.ll_ca_viewpath:
+            case R.id.ll_ca_viewpath://CA的跳转
                     String ca_viewpath = mDetail.getCa_viewpath();
                     if (ca_viewpath!=null) {
                         Bundle bundle = new Bundle();
@@ -128,7 +132,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             }
                  break;
 
-            case R.id.ll_ca_confirm_viewpath:
+            case R.id.ll_ca_confirm_viewpath://确定CA的跳转
                     String ca_confirm_viewpath = mDetail.getCa_confirm_viewpath();
                 if (ca_confirm_viewpath!=null) {
                     Bundle bundle = new Bundle();
@@ -140,6 +144,11 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
                 break;
 
+
+            case R.id.tv_right:
+                showUpdateDialog(0,"是否确认完成入库?", "确认完成后，该订单为已完成\n" +"内容不可更改。",true);
+                break;
+
         }
 
 
@@ -148,14 +157,14 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
 
 
-    private void showUpdateDialog(final int status, String message) {
+    private void showUpdateDialog(final int status, String title, String message, final boolean isok) {
         final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
                 GApp.screenHeight / 4, R.layout.wind_base_dialog_xml, R.style.Theme_dialog);
         Button btn_cancel =  dialog.findViewById(R.id.btn_cancel);
         Button btn_commit =  dialog.findViewById(R.id.btn_commit);
         TextView tv_title = dialog.findViewById(R.id.tv_title);
         TextView tv_content =  dialog.findViewById(R.id.tv_content);
-        tv_title.setText("提示");
+        tv_title.setText(title);
         tv_content.setText(message);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,14 +176,29 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         btn_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //走请求网络的接口
-                String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_UPDATE + "&id=" + mDetail.getId() + "&status=" + status);
-                String encrypt = BlowfishTools.decrypt(HttpUtils.key, params);
-                DebugUtil.debug("heheh"+encrypt);
-                mPresenter.requstInterOrderUpdate(params);
+
+               if (isok){//完成入库的接口
+                   String params1 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_OUTER_HANDLE + "&id=" + mDetail.getId() + "&type=入库"
+                   +"&real_number="+mDetail.getReal_qty()+"&shop_company_id="+mDetail.getShop_company_id());
+                   String encrypt = BlowfishTools.decrypt(HttpUtils.key, params1);
+                   DebugUtil.debug("heheh"+encrypt);
+                   mPresenter.requstInterHandle(params1);
+
+               }else {
+                   //走审核通过的接口的逻辑
+                   String params2 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_ORDER_UPDATE + "&id=" + mDetail.getId() + "&status=" + status);
+                   String encrypt = BlowfishTools.decrypt(HttpUtils.key, params2);
+                   DebugUtil.debug("heheh"+encrypt);
+                   mPresenter.requstInterOrderUpdate(params2);
+               }
 
                 dialog.dismiss();
+
+
+
+
             }
+
         });
         dialog.show();
     }
@@ -193,6 +217,16 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     @Override
     public void retrunInterOrderDetailUpdate(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
+
+    }
+
+    @Override
+    public void returnInterHandle(BaseResponse data) {
+        //返回处理完成入库的数据
         if (data.isOk()){
             showToast(data.getMsg());
             finish();
@@ -280,6 +314,10 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     private void initLogs(List<InputOrderDetail.LogBean> log) {
         if (log.size()>0){
+            if (mDetail.getStatus()==4){
+                mTv_right.setVisibility(View.VISIBLE);//让完成入库的按钮可见
+            }
+
             binding.gridLayoutLogs.removeAllViews();
             for (int i = 0; i < log.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.logs_items, null, false);

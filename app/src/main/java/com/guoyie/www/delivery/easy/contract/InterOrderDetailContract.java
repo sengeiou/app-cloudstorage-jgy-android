@@ -20,12 +20,14 @@ public interface InterOrderDetailContract  {
     interface Model extends BaseModel{
         Observable<InputOrderDetailData> getIODetailData(String params);
         Observable<BaseResponse>getInterOrderUpdate(String params);
+        Observable<BaseResponse>getHandleInter(String params);
     }
 
 
     interface View extends BaseView{
         void returnInterOrderDetailData(InputOrderDetailData data);
         void retrunInterOrderDetailUpdate(BaseResponse data);
+        void returnInterHandle(BaseResponse data);
         void error(String msg);
     }
 
@@ -33,6 +35,7 @@ public interface InterOrderDetailContract  {
     abstract class Presenter extends BasePresenter<View,Model>{
      public abstract    void  requstInterOrderDetail(String params);
      public abstract  void requstInterOrderUpdate(String params);
+     public abstract void requstInterHandle(String params);
 
 
     }

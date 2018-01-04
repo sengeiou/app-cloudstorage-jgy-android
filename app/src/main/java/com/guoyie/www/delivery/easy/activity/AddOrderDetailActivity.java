@@ -231,11 +231,20 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
 
     @Override
     public void returnAddStcokInter(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
 
     }
 
     @Override
     public void returnAddStcokOuter(BaseResponse data) {
+        if (data.isOk()){
+            showToast(data.getMsg());
+            finish();
+        }
+
 
     }
 
@@ -257,6 +266,7 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
 
     @Override
     public void error(String msg) {
+        showToast(msg);
 
     }
 }
