@@ -347,6 +347,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     @Override
     public void err_or(String data) {
         showToast(data);
+        binding.swipeRefresh.setRefreshing(false);
 
     }
 

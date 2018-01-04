@@ -145,6 +145,7 @@ status 询价单状态:   1 =>进行中, -1 =>已取消
 
     @Override
     public void err_or(String msg) {
+        showToast(msg);
 
     }
 }
