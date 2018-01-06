@@ -196,7 +196,6 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
     @Override
     public void error(String data) {
-        showToast(data);
 
     }
     //请求数据的地方

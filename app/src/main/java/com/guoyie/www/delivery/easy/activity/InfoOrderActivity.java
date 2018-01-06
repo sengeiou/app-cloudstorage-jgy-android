@@ -308,7 +308,6 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
     @Override
     public void err_or(String msg) {
         showToast(msg);
-        binding.swipeRefresh.setRefreshing(false);
     }
 
 

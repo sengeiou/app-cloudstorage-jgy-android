@@ -347,7 +347,6 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
     @Override
     public void error(String msg) {
         showToast(msg);
-        binding.swipeRefresh.setRefreshing(false);
     }
 
 
