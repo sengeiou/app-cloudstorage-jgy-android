@@ -2,9 +2,6 @@ package com.guoyie.www.delivery.easy.api;
 
 import java.io.IOException;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okio.Buffer;
@@ -12,6 +9,9 @@ import okio.BufferedSink;
 import okio.ForwardingSink;
 import okio.Okio;
 import okio.Sink;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 public class ProgressRequestBody extends RequestBody {
     //实际的待包装请求体
@@ -76,13 +76,11 @@ public class ProgressRequestBody extends RequestBody {
                 if (totalBytesCount == 0) {
                     totalBytesCount = contentLength();
                 }
-                Observable.just(writtenBytesCount).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
+                Observable.just(writtenBytesCount).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception {
+                    public void call(Long aLong) {
                         progressListener.onProgress(writtenBytesCount, totalBytesCount);
                     }
-
-
                 });
             }
         };

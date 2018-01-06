@@ -7,8 +7,7 @@ import com.guoyie.www.delivery.easy.entity.GoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.StoreTypeBean;
 
-import io.reactivex.Observable;
-
+import rx.Observable;
 
 /**
  * author：江滔

@@ -5,8 +5,7 @@ import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.OuterOrderInfoData;
 
-import io.reactivex.Observable;
-
+import rx.Observable;
 
 /**
  * author：柯军

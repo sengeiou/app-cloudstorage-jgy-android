@@ -4,22 +4,22 @@ package com.guoyie.www.delivery.easy.retrofit;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
+import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.subscriptions.CompositeSubscription;
 
 
 /**
  * 用于管理单个presenter的RxBus的事件和Rxjava相关代码的生命周期处理
  */
 public class RxManager {
-    public  RxBus                      mRxBus                 = RxBus.getInstance();
+    public RxBus mRxBus = RxBus.getInstance();
     //管理rxbus订阅
-    private Map<String, Observable<?>> mObservables           = new HashMap<>();
+    private Map<String, Observable<?>> mObservables = new HashMap<>();
     /*管理Observables 和 Subscribers订阅*/
-    private CompositeDisposable        mCompositeSubscription = new CompositeDisposable ();
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     /**
      * RxBus注入监听
@@ -27,17 +27,15 @@ public class RxManager {
      * @param eventName
      * @param action1
      */
-    public <T> void on(String eventName, Consumer<T> action1) {
+    public <T> void on(String eventName, Action1<T> action1) {
         Observable<T> mObservable = mRxBus.register(eventName);
         mObservables.put(eventName, mObservable);
-        Disposable subscribe = mObservable.observeOn(AndroidSchedulers.mainThread())
-                .subscribe(action1, new Consumer<Throwable>() {
+        Subscription subscribe = mObservable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(action1, new Action1<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable) throws Exception {
+                    public void call(Throwable throwable) {
                         throwable.printStackTrace();
                     }
-
-
                 });
         /*订阅管理*/
         mCompositeSubscription.add(subscribe);
@@ -48,7 +46,7 @@ public class RxManager {
      *
      * @param m
      */
-    public void add(Disposable m) {
+    public void add(Subscription m) {
         /*订阅管理*/
         mCompositeSubscription.add(m);
     }
@@ -57,7 +55,7 @@ public class RxManager {
      * 单个presenter生命周期结束，取消订阅和所有rxbus观察
      */
     public void clear() {
-        mCompositeSubscription.dispose();// 取消所有订阅
+        mCompositeSubscription.unsubscribe();// 取消所有订阅
         for (Map.Entry<String, Observable<?>> entry : mObservables.entrySet()) {
             mRxBus.unregister(entry.getKey(), entry.getValue());// 移除rxbus观察
         }

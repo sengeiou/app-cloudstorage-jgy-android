@@ -1,10 +1,21 @@
 package com.guoyie.www.delivery.easy.rx;
 
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import android.text.TextUtils;
 
+import com.alibaba.fastjson.JSON;
+import com.guoyie.www.delivery.easy.application.GApp;
+import com.guoyie.www.delivery.easy.util.ACache;
+
+import java.lang.reflect.Field;
+import java.util.List;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
+import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 public class RxUtil {
 
@@ -14,7 +25,7 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-  /*  public static <T> Observable.Transformer<T, T> rxSchedulerHelper() {    //compose简化线程
+    public static <T> Observable.Transformer<T, T> rxSchedulerHelper() {    //compose简化线程
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
@@ -22,22 +33,7 @@ public class RxUtil {
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
-    }*/
-
-
-  public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {    //compose简化线程
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(io.reactivex.Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-            }
-
-
-        };
     }
-
-
 
     /**
      * 从缓存取数据
@@ -47,7 +43,7 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-   /* public static <T> Observable rxCreateDiskObservable(final String key, final Class<T> clazz) {
+    public static <T> Observable rxCreateDiskObservable(final String key, final Class<T> clazz) {
         Observable<T> on = Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -69,17 +65,6 @@ public class RxUtil {
                 .subscribeOn(AndroidSchedulers.mainThread());
         return on;
     }
-    */
-
-
-
-
-
-
-
-
-
-/*
 
     public static <T> Observable.Transformer<T, T> rxCacheListHelper(final String key) {
         return new Observable.Transformer<T, T>() {
@@ -120,9 +105,8 @@ public class RxUtil {
             }
         };
     }
-*/
 
-   /* public static <T> Observable.Transformer<T, T> rxCacheBeanHelper(final String key) {
+    public static <T> Observable.Transformer<T, T> rxCacheBeanHelper(final String key) {
         Observable.Transformer<T, T> transformer = new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
@@ -146,5 +130,5 @@ public class RxUtil {
         };
 
         return transformer;
-    }*/
+    }
 }

@@ -6,10 +6,9 @@ import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.TranssTockDetailContract;
 import com.guoyie.www.delivery.easy.entity.TransstockDetailData;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * author：柯军

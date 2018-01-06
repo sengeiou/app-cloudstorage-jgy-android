@@ -3,11 +3,9 @@ package com.guoyie.www.delivery.easy.presenter;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.AddOrderDetailContract;
 import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
-import com.guoyie.www.delivery.easy.retrofit.RxManager;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
 
-import io.reactivex.disposables.Disposable;
-
+import rx.Subscription;
 
 /**
  * author：柯军
@@ -19,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 public class AddOrderPresenter extends AddOrderDetailContract.Presenter {
     @Override
     public void requstAddStcokInter(String params) {
-        Disposable subscribe = mModel.getAddStockInter(params).subscribeWith(new RxSubscriber<BaseResponse>(mContext,true) {
+        Subscription subscribe = mModel.getAddStockInter(params).subscribe(new RxSubscriber<BaseResponse>(mContext,true) {
             @Override
             protected void _onNext(BaseResponse baseResponse) {
                 mView.returnAddStcokInter(baseResponse);
@@ -27,14 +25,11 @@ public class AddOrderPresenter extends AddOrderDetailContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-
+                mView.error(message);
 
             }
         });
         mRxManage.add(subscribe);
-
-
-
 
 
     }

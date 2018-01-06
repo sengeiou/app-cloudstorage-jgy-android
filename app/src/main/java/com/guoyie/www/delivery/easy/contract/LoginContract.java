@@ -1,11 +1,15 @@
 package com.guoyie.www.delivery.easy.contract;
 
+import android.app.Activity;
+import android.content.Context;
+
+import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.base.BaseModel;
 import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 
-import io.reactivex.Observable;
+import rx.Observable;
 
 
 /**

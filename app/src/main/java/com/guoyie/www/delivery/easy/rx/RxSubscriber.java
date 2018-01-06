@@ -8,11 +8,9 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.dialog.LoadingDialog;
 import com.guoyie.www.delivery.easy.util.NetWorkUtils;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import rx.Subscriber;
 
-
-public abstract class RxSubscriber<T> implements Observer<T> {
+public abstract class RxSubscriber<T> extends Subscriber<T> {
 
     private Context mContext;
     private String msg;
@@ -53,7 +51,7 @@ public abstract class RxSubscriber<T> implements Observer<T> {
     }
 
     @Override
-    public void onComplete() {
+    public void onCompleted() {
         if (showDialog) {
             if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
@@ -61,9 +59,9 @@ public abstract class RxSubscriber<T> implements Observer<T> {
         }
     }
 
-
     @Override
-    public void onSubscribe(Disposable d) {
+    public void onStart() {
+        super.onStart();
         if (showDialog) {
             try {
                 if (dialog == null) {
@@ -75,6 +73,7 @@ public abstract class RxSubscriber<T> implements Observer<T> {
             }
         }
     }
+
 
     @Override
     public void onNext(T t) {

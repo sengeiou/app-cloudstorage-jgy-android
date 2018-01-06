@@ -6,7 +6,7 @@ import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 
-import io.reactivex.Observable;
+import rx.Observable;
 
 
 /**

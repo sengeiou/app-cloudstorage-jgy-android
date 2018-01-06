@@ -6,8 +6,7 @@ import com.guoyie.www.delivery.easy.contract.InterOrderContract;
 import com.guoyie.www.delivery.easy.entity.InputOrderInfoData;
 import com.guoyie.www.delivery.easy.rx.RxSchedulers;
 
-import io.reactivex.Observable;
-
+import rx.Observable;
 
 /**
  * author：柯军
@@ -18,7 +17,7 @@ import io.reactivex.Observable;
  */
 public class InputOrderModel implements InterOrderContract.Model {
     @Override
-    public Observable<InputOrderInfoData> getInputData(String params) {
+    public  Observable <InputOrderInfoData> getInputData(String params) {
          /*return   ApiManager.getService(HostType.HTTP_ORDINARY).getInputOrderData(params).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());*/
       //  return ApiManager.getService(HostType.HTTP_ORDINARY).getAddInter(params).compose(RxSchedulers.<BaseResponse>io_main());

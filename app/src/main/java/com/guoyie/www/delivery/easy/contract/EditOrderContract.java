@@ -7,9 +7,8 @@ import com.guoyie.www.delivery.easy.base.BaseView;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
 import okhttp3.RequestBody;
-
+import rx.Observable;
 
 /**
  * author：柯军
@@ -23,7 +22,7 @@ public interface EditOrderContract {
 
     interface Model extends BaseModel{
     //入库编辑
-    Observable<BaseResponse> editinterstock(String params);
+    Observable<BaseResponse>editinterstock(String params);
     //出库编辑
     Observable<BaseResponse>editouterstock(String params);
     //上传图片的接口
