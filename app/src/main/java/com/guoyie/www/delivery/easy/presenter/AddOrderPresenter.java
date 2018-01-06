@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
 public class AddOrderPresenter extends AddOrderDetailContract.Presenter {
     @Override
     public void requstAddStcokInter(String params) {
-       /* Disposable subscribe = mModel.getAddStockInter(params).subscribeWith(new RxSubscriber<BaseResponse>(mContext,true) {
+        Disposable subscribe = mModel.getAddStockInter(params).subscribeWith(new RxSubscriber<BaseResponse>(mContext,true) {
             @Override
             protected void _onNext(BaseResponse baseResponse) {
                 mView.returnAddStcokInter(baseResponse);
@@ -31,19 +31,8 @@ public class AddOrderPresenter extends AddOrderDetailContract.Presenter {
 
             }
         });
-        mRxManage.add(subscribe);*/
+        mRxManage.add(subscribe);
 
-        RxSubscriber<BaseResponse> rxSubscriber = mModel.getAddStockOuter(params).subscribeWith(new RxSubscriber<BaseResponse>() {
-            @Override
-            protected void _onNext(BaseResponse baseResponse) {
-
-            }
-
-            @Override
-            protected void _onError(String message) {
-
-            }
-        });
 
 
 
