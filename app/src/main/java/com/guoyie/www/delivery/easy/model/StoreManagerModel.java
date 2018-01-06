@@ -2,13 +2,11 @@ package com.guoyie.www.delivery.easy.model;
 
 import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
-import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.contract.StoreManagerContract;
 import com.guoyie.www.delivery.easy.entity.StoreManagerListBean;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：江滔
@@ -23,7 +21,6 @@ public class StoreManagerModel implements StoreManagerContract.Model {
     public Observable<StoreManagerListBean> getStoreManagerList(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY)
                 .getStoreManagerList(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(RxUtil.<StoreManagerListBean>rxSchedulerHelper());
     }
 }

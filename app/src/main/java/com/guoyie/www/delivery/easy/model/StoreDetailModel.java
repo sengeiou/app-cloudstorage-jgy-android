@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.StoreDetailContract;
 import com.guoyie.www.delivery.easy.entity.StoreDetailBean;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：江滔
@@ -21,7 +20,6 @@ public class StoreDetailModel implements StoreDetailContract.Model {
     @Override
     public Observable<StoreDetailBean> getStoreDetail(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY).getStoreDetail(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(RxUtil.<StoreDetailBean>rxSchedulerHelper());
     }
 }

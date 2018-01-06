@@ -5,11 +5,9 @@ import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.OutOrderDetailContract;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetailData;
-import com.guoyie.www.delivery.easy.rx.RxSchedulers;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -21,21 +19,22 @@ import rx.schedulers.Schedulers;
 public class OuterOderDetailModel implements OutOrderDetailContract.Model {
     @Override
     public Observable<OuterOrderDetailData> getOuterDetailData(String params) {
-        return  ApiManager.getService(HostType.HTTP_ORDINARY).getOuterOrderDetaliData(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getOuterOrderDetaliData(params).
+                 compose(RxUtil.<OuterOrderDetailData>rxSchedulerHelper());
     }
 
     @Override
     public Observable<BaseResponse> getOuterDetailUpdate(String params) {
         return  ApiManager.getService(HostType.HTTP_ORDINARY).getInputOrderDetaliUpdate(params)
-                .compose(RxSchedulers.<BaseResponse>io_main());
+                .compose(RxUtil.<BaseResponse>rxSchedulerHelper());
 
     }
 
     @Override
     public Observable<BaseResponse> getHandleOuter(String params) {
 
-        return ApiManager.getService(HostType.HTTP_ORDINARY).getOrderHandle(params).compose(RxSchedulers.<BaseResponse>io_main());
+        return ApiManager.getService(HostType.HTTP_ORDINARY).getOrderHandle(params)
+                .compose(RxUtil.<BaseResponse>rxSchedulerHelper());
     }
 
 }

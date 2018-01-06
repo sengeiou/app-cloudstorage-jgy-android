@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.OutOrderContract;
 import com.guoyie.www.delivery.easy.entity.OuterOrderInfoData;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -19,8 +18,6 @@ import rx.schedulers.Schedulers;
 public class OuterOderModel implements OutOrderContract.Model {
     @Override
     public Observable<OuterOrderInfoData> getOuterOrderData(String params) {
-        return  ApiManager.getService(HostType.HTTP_ORDINARY).getOuterOrderData(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getOuterOrderData(params).compose(RxUtil.<OuterOrderInfoData>rxSchedulerHelper());
     }
 }

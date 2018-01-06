@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.RegisterContract;
 import com.guoyie.www.delivery.easy.entity.RegisterData;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：江滔
@@ -21,7 +20,6 @@ public class RegisterModel implements RegisterContract.Model {
     @Override
     public Observable<RegisterData> getRegister(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY).getRegister(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+               .compose(RxUtil.<RegisterData>rxSchedulerHelper());
     }
 }
