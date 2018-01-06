@@ -7,9 +7,9 @@ import com.guoyie.www.delivery.easy.entity.GoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.StoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.StoreTypeBean;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * author：江滔

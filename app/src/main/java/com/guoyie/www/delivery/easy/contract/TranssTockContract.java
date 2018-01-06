@@ -5,7 +5,8 @@ import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.TransstockData;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * author：柯军
@@ -17,7 +18,7 @@ import rx.Observable;
 public interface TranssTockContract {
 
     interface Model extends BaseModel{
-        Observable <TransstockData>getTranssTockData(String params);
+        Observable<TransstockData> getTranssTockData(String params);
     }
 
     interface View extends BaseView{

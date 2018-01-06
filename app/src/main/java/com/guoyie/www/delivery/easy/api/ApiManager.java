@@ -7,9 +7,13 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.intercept.LoggingInterceptor;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.NetWorkUtils;
+
+import org.apache.http.conn.ssl.SSLSocketFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -123,6 +127,9 @@ public class ApiManager {
                 .retryOnConnectionFailure(true)// 失败重发
                 .addInterceptor(logging)
                 .cache(cache)
+                //SSL证书
+                .sslSocketFactory(TrustManager.getUnsafeOkHttpClient())
+                .hostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
                 .build();
 
         return builder;

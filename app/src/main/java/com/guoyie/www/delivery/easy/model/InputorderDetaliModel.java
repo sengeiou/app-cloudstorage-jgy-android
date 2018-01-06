@@ -7,9 +7,10 @@ import com.guoyie.www.delivery.easy.contract.InterOrderDetailContract;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetailData;
 import com.guoyie.www.delivery.easy.rx.RxSchedulers;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * author：柯军

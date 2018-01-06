@@ -5,7 +5,7 @@ import com.guoyie.www.delivery.easy.base.BasePresenter;
 import com.guoyie.www.delivery.easy.base.BaseView;
 import com.guoyie.www.delivery.easy.entity.StorageData;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 
 /**
