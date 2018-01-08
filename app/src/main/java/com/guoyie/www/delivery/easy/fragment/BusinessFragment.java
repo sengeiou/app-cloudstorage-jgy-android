@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.InfoOrderActivity;
@@ -15,14 +16,18 @@ import com.guoyie.www.delivery.easy.activity.InterOrderActivity;
 import com.guoyie.www.delivery.easy.activity.OuterOrderActivity;
 import com.guoyie.www.delivery.easy.activity.TransTormorderActivity;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
 import com.guoyie.www.delivery.easy.databinding.FcBusinessBinding;
 import com.guoyie.www.delivery.easy.entity.Banner;
 import com.guoyie.www.delivery.easy.entity.BannerData;
+import com.guoyie.www.delivery.easy.entity.UserInfo;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.BusinessFragmentModel;
 import com.guoyie.www.delivery.easy.presenter.BusinessFragmentPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
+import com.guoyie.www.delivery.easy.util.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,14 +70,36 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         mLeft_back.setVisibility(View.GONE);
         mTv_title =  getView(R.id.tv_title);
         mTv_title.setText("我的业务");
-
-
-
         initBanner();
+        initIcon();
         initBottom();
 
 
 
+    }
+
+    private void initIcon() {
+
+        UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        if(userInfoData!=null){
+            UserInfo data = userInfoData.getData();
+           Glide.with(this)
+                   .load(data.getAvatar())
+                   .into(binding.imageview);//图像
+            binding.tvCompanyname.setText(data.getInfo().getVendor_name());//公司名称
+
+
+            int type = data.getType();
+            String serviceDescription = "管理员";
+            if (type==0){
+                serviceDescription = "普通";
+            }
+            if (type==1){
+                serviceDescription = "管理员";
+            }
+            binding.tvUserName.setText(data.getLoginname()+" | "+serviceDescription);//用户名和身份
+
+        }
     }
 
     private void initBanner() {
@@ -137,12 +164,15 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
                 imgs.add(banner.getAdpic());
             }
           binding.banner.setData(R.layout.item_fresco, imgs, null);
+        }else {//没有数据了
+            showToast(data.getMsg());
         }
 
     }
 
     @Override
     public void error(String data) {
+        showToast(data);
 
     }
 }

@@ -24,7 +24,7 @@ public interface BusinessFragmentContract {
 
     interface View extends BaseView{
         void returnBanner(BannerData data);
-        void error(String data);
+        void error(String message);
     }
 
     abstract class Presenter extends BasePresenter<View,Model>{
