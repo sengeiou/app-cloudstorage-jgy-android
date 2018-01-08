@@ -13,19 +13,20 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.StoreCapacityManagerActivity;
 import com.guoyie.www.delivery.easy.activity.StoreManagerActivity;
-import com.guoyie.www.delivery.easy.adapter.StoreManagerAdapter;
-import com.guoyie.www.delivery.easy.application.GApp;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
+import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
 import com.guoyie.www.delivery.easy.databinding.FcStorehouseBinding;
-import com.guoyie.www.delivery.easy.entity.BannerModel;
-import com.guoyie.www.delivery.easy.widget.recyclerview.NRecyclerView;
+import com.guoyie.www.delivery.easy.entity.Banner;
+import com.guoyie.www.delivery.easy.entity.BannerData;
+import com.guoyie.www.delivery.easy.model.BusinessFragmentModel;
+import com.guoyie.www.delivery.easy.presenter.BusinessFragmentPresenter;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 /**
@@ -36,13 +37,14 @@ import retrofit2.Response;
  * data：2017/12/4
  * 我的业务的fragment
  */
-public class StoreHouseFragment extends BaseFragment implements View.OnClickListener {
+public class StoreHouseFragment extends BaseFragment<BusinessFragmentPresenter,BusinessFragmentModel> implements View.OnClickListener, BusinessFragmentContract.View {
     private ImageView           mLeft_back;
     private TextView            mTv_title;
     private FcStorehouseBinding mBinding;
     private TextView mTV_right;
     private RelativeLayout mRlStoreManager;
     private RelativeLayout mRlStoreCapacityManager;
+    private List<String> imgs =new ArrayList<>();
 
     @Override
     protected int getLayoutResource() {
@@ -51,6 +53,7 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void initPresenter() {
+        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -75,6 +78,9 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
     }
 
     private void initBanner() {
+        //请求轮播图
+        String params= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.GET_BANNER);
+        mPresenter.requstBanner(params);
         mBinding.banner.setDelegate(new BGABanner.Delegate<CardView, String>() {
             @Override
             public void onBannerItemClick(BGABanner banner, CardView itemView, String model, int position) {
@@ -89,19 +95,7 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
             }
         });
 
-        GApp.getInstance().getEngine().fetchItemsWithItemCount(3).enqueue(new Callback<BannerModel>() {
-            @Override
-            public void onResponse(Call<BannerModel> call, Response<BannerModel> response) {
-                BannerModel bannerModel = response.body();
-                //                mContentBanner.setData(R.layout.item_fresco, bannerModel.imgs, bannerModel.tips);
-                mBinding.banner.setData(R.layout.item_fresco, bannerModel.imgs, null);
-            }
 
-            @Override
-            public void onFailure(Call<BannerModel> call, Throwable t) {
-                Toast.makeText(GApp.getInstance(), "网络数据加载失败", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -115,5 +109,21 @@ public class StoreHouseFragment extends BaseFragment implements View.OnClickList
                 startAct(StoreCapacityManagerActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public void returnBanner(BannerData data) {
+        if (data.isOk()){
+            List<Banner> banners = data.getData();
+            for (Banner banner : banners) {
+                imgs.add(banner.getAdpic());
+            }
+            mBinding.banner.setData(R.layout.item_fresco, imgs, null);
+        }
+    }
+
+    @Override
+    public void error(String data) {
+
     }
 }

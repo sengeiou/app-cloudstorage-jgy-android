@@ -14,15 +14,20 @@ import com.guoyie.www.delivery.easy.activity.InfoOrderActivity;
 import com.guoyie.www.delivery.easy.activity.InterOrderActivity;
 import com.guoyie.www.delivery.easy.activity.OuterOrderActivity;
 import com.guoyie.www.delivery.easy.activity.TransTormorderActivity;
-import com.guoyie.www.delivery.easy.application.GApp;
+import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
+import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
 import com.guoyie.www.delivery.easy.databinding.FcBusinessBinding;
-import com.guoyie.www.delivery.easy.entity.BannerModel;
+import com.guoyie.www.delivery.easy.entity.Banner;
+import com.guoyie.www.delivery.easy.entity.BannerData;
+import com.guoyie.www.delivery.easy.model.BusinessFragmentModel;
+import com.guoyie.www.delivery.easy.presenter.BusinessFragmentPresenter;
+import com.guoyie.www.delivery.easy.util.BlowfishTools;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * author：柯军
@@ -32,11 +37,12 @@ import retrofit2.Response;
  * data：2017/12/4
  * 我的业务的fragment
  */
-public class BusinessFragment extends BaseFragment implements View.OnClickListener {
+public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,BusinessFragmentModel> implements View.OnClickListener, BusinessFragmentContract.View {
 
     private ImageView         mLeft_back;
     private TextView          mTv_title;
     private FcBusinessBinding binding;
+    private List<String> imgs=new ArrayList<>();
 
     @Override
     protected int getLayoutResource() {
@@ -46,6 +52,7 @@ public class BusinessFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void initPresenter() {
+        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -69,6 +76,9 @@ public class BusinessFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void initBanner() {
+        //请求轮播图
+        String params= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.GET_BANNER);
+        mPresenter.requstBanner(params);
 
         binding.banner.setDelegate(new BGABanner.Delegate<CardView, String>() {
             @Override
@@ -81,20 +91,6 @@ public class BusinessFragment extends BaseFragment implements View.OnClickListen
             public void fillBannerItem(BGABanner banner, CardView itemView, String model, int position) {
                 SimpleDraweeView simpleDraweeView = itemView.findViewById(R.id.sdv_item_fresco_content);
                 simpleDraweeView.setImageURI(Uri.parse(model));
-            }
-        });
-
-        GApp.getInstance().getEngine().fetchItemsWithItemCount(3).enqueue(new Callback<BannerModel>() {
-            @Override
-            public void onResponse(Call<BannerModel> call, Response<BannerModel> response) {
-                BannerModel bannerModel = response.body();
-                //                mContentBanner.setData(R.layout.item_fresco, bannerModel.imgs, bannerModel.tips);
-                binding.banner.setData(R.layout.item_fresco, bannerModel.imgs, null);
-            }
-
-            @Override
-            public void onFailure(Call<BannerModel> call, Throwable t) {
-                Toast.makeText(GApp.getInstance(), "网络数据加载失败", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -130,6 +126,23 @@ public class BusinessFragment extends BaseFragment implements View.OnClickListen
 
         }
 
+
+    }
+
+    @Override
+    public void returnBanner(BannerData data) {
+        if (data.isOk()){
+            List<Banner> banners = data.getData();
+            for (Banner banner : banners) {
+                imgs.add(banner.getAdpic());
+            }
+          binding.banner.setData(R.layout.item_fresco, imgs, null);
+        }
+
+    }
+
+    @Override
+    public void error(String data) {
 
     }
 }

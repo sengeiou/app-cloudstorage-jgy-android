@@ -7,9 +7,11 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.intercept.LoggingInterceptor;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.NetWorkUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -83,7 +85,7 @@ public class ApiManager {
                 .baseUrl(ApiConstants.BASE_HOST)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 添加Rx适配器
                .addConverterFactory(FastJsonConverterFactory.create()) // 添加Fastjson转换器
-               // .addConverterFactory(GsonConverterFactory.create())  //添加gson的转换器
+              //  .addConverterFactory(GsonConverterFactory.create())  //添加gson的转换器
                 .client(httpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
