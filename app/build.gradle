@@ -50,7 +50,6 @@ dependencies {
     compile 'com.android.support:design:26.1.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
     compile 'com.google.code.gson:gson:2.8.1'
-  //  compile 'com.bm.photoview:library:1.4.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     // testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'

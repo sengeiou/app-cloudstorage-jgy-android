@@ -61,9 +61,9 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
 
         binding = DataBindingUtil.bind(rootView);
         //处理左侧的箭头
-        mLeft_back = (ImageView) getView(R.id.left_back);
+        mLeft_back = getView(R.id.left_back);
         mLeft_back.setVisibility(View.GONE);
-        mTv_title = (TextView) getView(R.id.tv_title);
+        mTv_title =  getView(R.id.tv_title);
         mTv_title.setText("我的业务");
 
 

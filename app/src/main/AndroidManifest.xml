@@ -62,6 +62,11 @@
         <activity android:name=".activity.CapacityFilterActivity" />
         <activity android:name=".activity.OuterDetailActivity" />
         <activity android:name=".activity.CAActivity" />
+
+        <!-- 友盟统计的appkey -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a531491b27b0a6c2d0000bd"/>
     </application>
 
 </manifest>
