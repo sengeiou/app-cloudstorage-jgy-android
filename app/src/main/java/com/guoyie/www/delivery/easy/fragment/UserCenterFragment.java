@@ -1,6 +1,8 @@
 package com.guoyie.www.delivery.easy.fragment;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.guoyie.www.delivery.easy.R;
+import com.guoyie.www.delivery.easy.activity.AboutActivity;
 import com.guoyie.www.delivery.easy.activity.LoginActivity;
 import com.guoyie.www.delivery.easy.activity.UserBasicInfoActivity;
 import com.guoyie.www.delivery.easy.application.GApp;
@@ -87,10 +90,13 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 startAct(UserBasicInfoActivity.class);
                 break;
             case R.id.ll_about:  //关于交割易
-                Toast.makeText(getContext(),"交割易，让买卖更容易",Toast.LENGTH_SHORT).show();
+                startAct(AboutActivity.class);
                 break;
             case R.id.ll_contact: //联系客服
-                showToast("你好，再见");
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Uri data = Uri.parse("tel:" + "13155833297");
+                intent.setData(data);
+                startActivity(intent);
                 break;
             case R.id.ll_login_out: //退出登录
                 try {

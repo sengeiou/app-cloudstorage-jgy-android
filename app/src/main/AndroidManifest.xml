@@ -60,6 +60,7 @@
         <activity android:name=".activity.CapacityFilterActivity" />
         <activity android:name=".activity.OuterDetailActivity" />
         <activity android:name=".activity.CAActivity" />
+        <activity android:name=".activity.AboutActivity"></activity>
     </application>
 
 </manifest>
