@@ -28,7 +28,9 @@
             android:singleLine="true"
             android:layout_below="@id/iv_logo"
             android:layout_marginTop="72dp"
-            android:background="@drawable/edittext_bg"/>
+            android:background="@drawable/edittext_bg"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@null" />
         <com.guoyie.www.delivery.easy.widget.CustomEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
@@ -45,7 +47,9 @@
             android:layout_marginTop="17dp"
             android:background="@drawable/edittext_bg"
             android:drawableRight="@mipmap/closeeyes"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@null"/>
         <TextView
             android:id="@+id/tv_problem"
             android:layout_below="@id/et_password"

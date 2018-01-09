@@ -64,6 +64,7 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
         mLeft_back = (ImageView) getView(R.id.left_back);
         mTv_title = (TextView) getView(R.id.tv_title);
         mTV_right = (TextView) getView(R.id.tv_right);
+        mTV_right.setVisibility(View.VISIBLE);
         mTv_title.setText("储罐管理");
         mTV_right.setText("筛选");
 
