@@ -35,6 +35,8 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        //沉浸式状态栏
+        initStatusBar(true);
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
 
         final ArrayList<View> views = new ArrayList<>();
