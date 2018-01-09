@@ -12,18 +12,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:banner_pointAutoPlayAble="false" />
-        <Button
+
+        <TextView
             android:id="@+id/bt_gotologin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:onClick="goToLogin"
-            android:text="立即体验"
+            android:text="立即使用"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
-            android:textSize="22sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="60dp"
+            android:textSize="14sp"
             android:textColor="#fff"
-            android:background="#7D97FA"/>
+            android:background="@drawable/button_enter_bg"
+            android:onClick="goToLogin"/>
     </RelativeLayout>
 </layout>

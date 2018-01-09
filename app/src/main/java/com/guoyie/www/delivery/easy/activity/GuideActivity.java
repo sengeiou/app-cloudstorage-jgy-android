@@ -43,6 +43,8 @@ public class GuideActivity extends BaseActivity {
         views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide02));
         views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide03));
 
+        //隐藏圆点指示器
+        mBinding.bgaGuide.hideGuide();
         mBinding.bgaGuide.setData(views);
         //滑动状态监听，判断是否该显示“去登陆”按钮
         mBinding.bgaGuide.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -70,7 +72,6 @@ public class GuideActivity extends BaseActivity {
 
     //跳转到登录页面
     public void goToLogin(View view) {
-
         //设置引导页标记
         SpUtils sp = SpUtils.getInstance(this);
         sp.putBoolean(IS_GUIDE,true);
