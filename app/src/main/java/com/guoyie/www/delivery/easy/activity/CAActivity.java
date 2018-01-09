@@ -45,7 +45,6 @@ public class CAActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initPresenter() {
-
     }
 
     @Override
@@ -69,14 +68,12 @@ public class CAActivity extends BaseActivity implements View.OnClickListener {
          settings.setJavaScriptEnabled(true);// 支持js功能
         //自适应屏幕
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        settings.setLoadWithOverviewMode(true);
 
         binding.wvAgent.setWebViewClient(new WebViewClient() {
             // 开始加载网页
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                //   mWbvAgent.loadUrl(Constant.agent);
                 System.out.println("开始加载网页了");
                 binding.pbLoading.setVisibility(View.VISIBLE);
             }

@@ -2,9 +2,11 @@ package com.guoyie.www.delivery.easy.activity;
 
 
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-
+import android.view.WindowManager;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
@@ -31,6 +33,13 @@ public class GuideActivity extends BaseActivity {
     @Override
     public void initPresenter() {
 
+    }
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
