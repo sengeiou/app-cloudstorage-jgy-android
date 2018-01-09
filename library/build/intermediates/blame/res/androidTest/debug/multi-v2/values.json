@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Project\\app-cloudstorage-jgy-android\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\Android\\project\\cloudstorage\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "D:\\Project\\app-cloudstorage-jgy-android\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "source": "F:\\Android\\project\\cloudstorage\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "from": {
                         "startLines": "23",
                         "startColumns": "4",

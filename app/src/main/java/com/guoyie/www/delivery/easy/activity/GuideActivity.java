@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityGuideBinding;
@@ -13,6 +14,8 @@ import com.guoyie.www.delivery.easy.download.SpUtils;
 import java.util.ArrayList;
 
 import cn.bingoogolapple.bgabanner.BGABannerUtil;
+
+
 
 
 public class GuideActivity extends BaseActivity {
@@ -36,9 +39,9 @@ public class GuideActivity extends BaseActivity {
 
         final ArrayList<View> views = new ArrayList<>();
 
-        views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide_1));
-        views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide_2));
-        views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide_3));
+        views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide01));
+        views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide02));
+        views.add(BGABannerUtil.getItemImageView(this,R.mipmap.guide03));
 
         mBinding.bgaGuide.setData(views);
         //滑动状态监听，判断是否该显示“去登陆”按钮

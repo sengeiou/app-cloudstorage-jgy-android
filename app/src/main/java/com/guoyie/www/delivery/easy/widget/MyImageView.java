@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
+
 import com.guoyie.www.delivery.easy.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+
 
 public class MyImageView extends CircleImageView {
     //宽高比，由我们自己设定

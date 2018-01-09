@@ -30,7 +30,7 @@
                 android:id="@+id/uer_icon"
                 android:layout_height="wrap_content"
                 android:layout_width="70dp"
-                android:src="@mipmap/guide_1"
+                android:src="@mipmap/guide01"
                 android:scaleType="centerCrop"
                 app:ratio="1"
                 android:layout_centerVertical="true"

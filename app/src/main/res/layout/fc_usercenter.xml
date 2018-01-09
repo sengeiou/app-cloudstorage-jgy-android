@@ -30,7 +30,6 @@
                     android:layout_height="wrap_content"
                     android:layout_width="70dp"
                     android:layout_marginTop="28dp"
-                    android:src="@mipmap/guide_1"
                     android:scaleType="centerCrop"
                     app:ratio="1"
                     android:layout_centerHorizontal="true"/>
