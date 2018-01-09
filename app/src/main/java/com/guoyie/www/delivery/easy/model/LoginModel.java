@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.LoginContract;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -19,8 +18,7 @@ import rx.schedulers.Schedulers;
 public class LoginModel implements LoginContract.Model {
     @Override
     public Observable<UserInfoData> getLoginData(String parms) {
-        return    ApiManager.getService(HostType.HTTP_ORDINARY).getLogin(parms).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return    ApiManager.getService(HostType.HTTP_ORDINARY).getLogin(parms).compose(RxUtil.<UserInfoData>rxSchedulerHelper());
 
     }
 }

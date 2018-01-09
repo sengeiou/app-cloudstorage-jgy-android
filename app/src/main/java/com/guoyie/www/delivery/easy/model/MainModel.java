@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.MainContract;
 import com.guoyie.www.delivery.easy.entity.GetTime;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -19,7 +18,6 @@ import rx.schedulers.Schedulers;
 public class MainModel implements MainContract.Model {
     @Override
     public Observable<GetTime> getTime(String params) {
-        return   ApiManager.getService(HostType.HTTP_ORDINARY).getTime(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return   ApiManager.getService(HostType.HTTP_ORDINARY).getTime(params).compose(RxUtil.<GetTime>rxSchedulerHelper());
     }
 }

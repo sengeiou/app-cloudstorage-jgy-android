@@ -13,6 +13,9 @@ public class HttpUtils {
     public static String key  = "chinayieapp";//app的秘钥
     //获取服务器时间的接口
     public static final String GET_TIME ="model=index&action=gettime";
+
+    //获取轮播图的接口
+    public static final String GET_BANNER ="model=index&action=slider";
     //登录的接口
     public static final String LOG_IN="model=login&action=login";
     //服务商入驻的接口

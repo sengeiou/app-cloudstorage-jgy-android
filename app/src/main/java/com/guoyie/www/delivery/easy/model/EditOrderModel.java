@@ -4,13 +4,12 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.EditOrderContract;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import java.util.Map;
 
 import okhttp3.RequestBody;
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -22,22 +21,18 @@ import rx.schedulers.Schedulers;
 public class EditOrderModel implements EditOrderContract.Model {
     @Override
     public Observable<BaseResponse> editinterstock(String params) {
-        return  ApiManager.getService(HostType.HTTP_ORDINARY).getEditInter(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getEditInter(params).compose(RxUtil.<BaseResponse>rxSchedulerHelper());
 
     }
 
     @Override
     public Observable<BaseResponse> editouterstock(String params) {
-        return  ApiManager.getService(HostType.HTTP_ORDINARY).getEditOuter(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return  ApiManager.getService(HostType.HTTP_ORDINARY).getEditOuter(params).compose(RxUtil.<BaseResponse>rxSchedulerHelper());
 
     }
 
     @Override
     public Observable<BaseResponse> editLoadobj(Map<String,RequestBody> params) {
-        return  ApiManager.getService(HostType.HTTP_PICTURE).upLoadFile(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-
+        return  ApiManager.getService(HostType.HTTP_PICTURE).upLoadFile(params).compose(RxUtil.<BaseResponse>rxSchedulerHelper());
     }
 }

@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.StoreCapacityManagerContract;
 import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 
 /**
@@ -22,7 +21,6 @@ public class StoreCapacityModel implements StoreCapacityManagerContract.Model{
     @Override
     public Observable<StoreCapacityListBean> getStoreCapacity(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY).getStoreCapacityList(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(RxUtil.<StoreCapacityListBean>rxSchedulerHelper());
     }
 }

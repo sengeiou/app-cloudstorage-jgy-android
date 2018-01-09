@@ -5,10 +5,9 @@ import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.CapacityFilterContract;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 
 /**
@@ -26,8 +25,7 @@ public class CapacityFilterModel implements CapacityFilterContract.Model {
     public Observable<CapacityGoodsNameBean> getCapacityGoodsName(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY)
                 .getCapacityGoodsNameList(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(RxUtil.<CapacityGoodsNameBean>rxSchedulerHelper());
     }
 
     //获取储罐号
@@ -35,8 +33,7 @@ public class CapacityFilterModel implements CapacityFilterContract.Model {
     public Observable<CapacityStoreNumberBean> getStoreNumber(String params) {
         return ApiManager.getService(HostType.HTTP_ORDINARY)
                 .getCapacityStoreNumber(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                 .compose(RxUtil.<CapacityStoreNumberBean>rxSchedulerHelper());
     }
 
 

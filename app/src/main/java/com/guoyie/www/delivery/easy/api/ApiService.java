@@ -1,6 +1,7 @@
 package com.guoyie.www.delivery.easy.api;
 
 import com.guoyie.www.delivery.easy.base.BaseResponse;
+import com.guoyie.www.delivery.easy.entity.BannerData;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
 import com.guoyie.www.delivery.easy.entity.GetTime;
@@ -36,6 +37,9 @@ public interface ApiService {
     //获取服务器时间的接口
     @GET("?")
     Observable<GetTime> getTime(@Query("params") String params);
+    //获取轮播图接口的接口
+    @GET("?")
+    Observable<BannerData> getBanner(@Query("params") String params);
      //登录的接口
      @GET("?")
     Observable<UserInfoData> getLogin(@Query("params") String params);

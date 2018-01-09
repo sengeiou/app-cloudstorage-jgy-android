@@ -4,10 +4,9 @@ import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.StoreAgeDetaliContract;
 import com.guoyie.www.delivery.easy.entity.StorageInfoData;
+import com.guoyie.www.delivery.easy.rx.RxUtil;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * author：柯军
@@ -20,7 +19,7 @@ public class StoreAgeDetailModel implements StoreAgeDetaliContract.Model{
     @Override
     public Observable<StorageInfoData> getStorageDetailData(String params) {
         return  ApiManager.getService(HostType.HTTP_ORDINARY).getStorageInfoData(params)
-                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+                .compose(RxUtil.<StorageInfoData>rxSchedulerHelper());
     }
 
 }
