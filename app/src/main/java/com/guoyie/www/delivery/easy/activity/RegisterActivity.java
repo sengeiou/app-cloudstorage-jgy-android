@@ -144,68 +144,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt_commit:
-                String telephone = mEtTelephone.getText().toString().trim();
-                //正则匹配判断固定电话格式
-                if (!TextUtils.isEmpty(telephone)){
-                    String regex = "\\d{3}-\\d{3}-\\d{4}";
-                    Pattern pattern = Pattern.compile(regex);
-                    Matcher matcher = pattern.matcher(telephone);
-                    boolean b = matcher.find();
-                    if (!b){
-                        new TPrompt(RegisterActivity.this).showToast("请输入此格式号码 021-666-6666");
-                    }
-                }
-
-                String companyName = mEtCompanyname.getText().toString().trim();
-                String contacts = mEtContacts.getText().toString().trim();
-                String mobilePhone = mEtContactway.getText().toString().trim();
-                String qq = mEtQq.getText().toString().trim();
-                String email = mEtEmail.getText().toString().trim();
-
-                final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
-                        GApp.screenHeight *8/15 , R.layout.commit_dialog, R.style.Theme_dialog);
-
-                TextView tvCompany = dialog.findViewById(R.id.tv_companyname);
-                TextView tvContacts = dialog.findViewById(R.id.tv_contacts_value);
-                TextView tvContactWay = dialog.findViewById(R.id.tv_contactway_value);
-                TextView tvTelephone = dialog.findViewById(R.id.tv_telephone_value);
-                TextView tvQQ = dialog.findViewById(R.id.tv_qq_value);
-                TextView tvEmail = dialog.findViewById(R.id.tv_email_value);
-                TextView tvCancel = dialog.findViewById(R.id.tv_cancel);
-                TextView tvSure = dialog.findViewById(R.id.tv_sure);
-
-                tvCompany.setText(companyName);
-                tvContacts.setText(contacts);
-                tvContactWay.setText(mobilePhone);
-                tvTelephone.setText(telephone);
-                tvQQ.setText(qq);
-                tvEmail.setText(email);
-
-                tvCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                tvSure.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 提交入驻信息
-                        String telephone = mEtTelephone.getText().toString().trim();
-                        String companyName = mEtCompanyname.getText().toString().trim();
-                        String contacts = mEtContacts.getText().toString().trim();
-                        String mobilePhone = mEtContactway.getText().toString().trim();
-                        String qq = mEtQq.getText().toString().trim();
-                        String email = mEtEmail.getText().toString().trim();
-
-                        String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.RE_GISTER+"&vendor_name="+companyName+
-                                "&vendor_mobile="+telephone+"&vendor_contract_name="+contacts+"&vendor_contract="+mobilePhone+
-                                "&vendor_qq="+qq+"&vendor_email="+email+"&status=" +1+"&vendor_source="+1+"&vendor_type="+1);
-                        mPresenter.requestRegister(parms);
-                    }
-                });
-                dialog.show();
+                commit();
                 break;
             case R.id.tv_toolbarcancel:
                 finish();
@@ -222,9 +161,78 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
                     return;
                 }
 
-                // TODO: 2017/12/8  提交入驻信息
+                commit();
         }
 
+    }
+
+    /**
+     *
+     * 提交入库信息
+     */
+    private void commit() {
+        String telephone = mEtTelephone.getText().toString().trim();
+        //正则匹配判断固定电话格式
+        if (!TextUtils.isEmpty(telephone)){
+            String regex = "\\d{3}-\\d{3}-\\d{4}";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(telephone);
+            boolean b = matcher.find();
+            if (!b){
+                new TPrompt(RegisterActivity.this).showToast("请输入此格式号码 021-666-6666");
+            }
+        }
+
+        String companyName = mEtCompanyname.getText().toString().trim();
+        String contacts = mEtContacts.getText().toString().trim();
+        String mobilePhone = mEtContactway.getText().toString().trim();
+        String qq = mEtQq.getText().toString().trim();
+        String email = mEtEmail.getText().toString().trim();
+
+        final CustomDialog dialog = new CustomDialog(mContext, GApp.screenWidth * 3 / 4,
+                GApp.screenHeight *8/15 , R.layout.commit_dialog, R.style.Theme_dialog);
+
+        TextView tvCompany = dialog.findViewById(R.id.tv_companyname);
+        TextView tvContacts = dialog.findViewById(R.id.tv_contacts_value);
+        TextView tvContactWay = dialog.findViewById(R.id.tv_contactway_value);
+        TextView tvTelephone = dialog.findViewById(R.id.tv_telephone_value);
+        TextView tvQQ = dialog.findViewById(R.id.tv_qq_value);
+        TextView tvEmail = dialog.findViewById(R.id.tv_email_value);
+        TextView tvCancel = dialog.findViewById(R.id.tv_cancel);
+        TextView tvSure = dialog.findViewById(R.id.tv_sure);
+
+        tvCompany.setText(companyName);
+        tvContacts.setText(contacts);
+        tvContactWay.setText(mobilePhone);
+        tvTelephone.setText(telephone);
+        tvQQ.setText(qq);
+        tvEmail.setText(email);
+
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        tvSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 提交入驻信息
+                String telephone = mEtTelephone.getText().toString().trim();
+                String companyName = mEtCompanyname.getText().toString().trim();
+                String contacts = mEtContacts.getText().toString().trim();
+                String mobilePhone = mEtContactway.getText().toString().trim();
+                String qq = mEtQq.getText().toString().trim();
+                String email = mEtEmail.getText().toString().trim();
+
+                String parms = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.RE_GISTER+"&vendor_name="+companyName+
+                        "&vendor_mobile="+telephone+"&vendor_contract_name="+contacts+"&vendor_contract="+mobilePhone+
+                        "&vendor_qq="+qq+"&vendor_email="+email+"&status=" +1+"&vendor_source="+1+"&vendor_type="+1);
+                mPresenter.requestRegister(parms);
+            }
+        });
+        dialog.show();
     }
 
     @Override
@@ -234,7 +242,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
             showToast("服务商已入驻，等待后台处理");
             finish();
         }else {
-            showToast(data.isOk()+"服务器遭到了小怪兽的攻击，攻城狮正在努力抢救中...");
+            showToast("请检查提交信息");
         }
     }
 

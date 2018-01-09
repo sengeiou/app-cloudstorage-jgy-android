@@ -27,7 +27,7 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void initPresenter() {
-        //mBinding = DataBindingUtil.setContentView(this,getLayoutId());
+
     }
 
     @Override

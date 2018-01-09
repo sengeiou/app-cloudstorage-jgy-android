@@ -124,7 +124,7 @@
                 android:layout_weight="20"
                 android:layout_height="match_parent"
                 android:background="@drawable/input_bg"
-                android:hint="联系方式"
+                android:hint="联系方式（11位手机号码）"
                 android:singleLine="true"
                 android:paddingLeft="10dp"/>
             <TextView
