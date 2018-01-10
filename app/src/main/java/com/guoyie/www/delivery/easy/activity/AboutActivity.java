@@ -1,8 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,11 +9,7 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityAboutBinding;
 
-import java.util.function.ToDoubleBiFunction;
-
 public class AboutActivity extends BaseActivity implements View.OnClickListener {
-
-
     private ActivityAboutBinding mBinding;
     private ImageView leftBack;
     private TextView title;
