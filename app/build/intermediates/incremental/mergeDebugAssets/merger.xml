@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config=":library"><source path="D:\Project\app-cloudstorage-jgy-android\library\build\intermediates\bundles\debug\assets"/></dataSet><dataSet config="main"><source path="D:\Project\app-cloudstorage-jgy-android\app\src\main\assets"/><source path="D:\Project\app-cloudstorage-jgy-android\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\Project\app-cloudstorage-jgy-android\app\src\debug\assets"/></dataSet></merger>

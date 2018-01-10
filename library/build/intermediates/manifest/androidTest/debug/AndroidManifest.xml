@@ -3,7 +3,7 @@
     package="cn.bingoogolapple.bgabanner.test" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="15"
         android:targetSdkVersion="26" />
 
     <instrumentation

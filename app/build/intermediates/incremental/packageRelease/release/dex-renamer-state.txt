@@ -1,4 +1,0 @@
-#Wed Jan 10 10:28:42 CST 2018
-base.0=D\:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\transforms\\dex\\release\\0
-path.0=classes.dex
-renamed.0=classes.dex
