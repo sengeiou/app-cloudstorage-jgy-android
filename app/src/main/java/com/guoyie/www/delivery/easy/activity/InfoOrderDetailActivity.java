@@ -26,7 +26,7 @@ import com.guoyie.www.delivery.easy.util.Constant;
  * email：774169396@qq.com
  * data：2017/12/13
  */
-class InfoOrderDetailActivity  extends BaseActivity<StorAgeDetailPresenter,StoreAgeDetailModel> implements View.OnClickListener, StoreAgeDetaliContract.View {
+ public class InfoOrderDetailActivity  extends BaseActivity<StorAgeDetailPresenter,StoreAgeDetailModel> implements View.OnClickListener, StoreAgeDetaliContract.View {
     private ImageView                     mLeft_back;
     private TextView                      mTv_title;
     private ActivityInfoorederdetailBinding binding;
