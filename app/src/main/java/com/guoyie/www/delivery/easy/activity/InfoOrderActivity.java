@@ -307,6 +307,8 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
 
     @Override
     public void err_or(String msg) {
+        //关闭下拉的进度条
+        binding.swipeRefresh.setRefreshing(false);
         showToast(msg);
     }
 
