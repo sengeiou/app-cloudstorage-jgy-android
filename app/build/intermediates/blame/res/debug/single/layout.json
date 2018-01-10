@@ -1,0 +1,130 @@
+[
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_infoorederdetail.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_infoorederdetail.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_store_detail.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_store_detail.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_capacity_filter.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_capacity_filter.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_filter.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_filter.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_guide.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_guide.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_loading.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_loading.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_transtoms.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_transtoms.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fc_usercenter.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\fc_usercenter.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_interorder.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_interorder.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_outerordetail.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_outerordetail.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_register.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\inforder_item.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\inforder_item.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_about.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_about.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\trantos_item.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\trantos_item.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_user_basic_info.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_user_basic_info.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_outerorder.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_outerorder.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_editorder.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_editorder.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_ca.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_ca.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\interorder_item.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\interorder_item.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fc_storehouse.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\fc_storehouse.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_editorderdetail.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_editorderdetail.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_transtomrdetal.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_transtomrdetal.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_inforeder.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_inforeder.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_store_capacity_manager.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_store_capacity_manager.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fc_business.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\fc_business.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_search.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_store_manager.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_store_manager.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_interdetail.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_interdetail.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_seachruslt.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\activity_seachruslt.xml"
+    },
+    {
+        "merged": "D:\\Project\\app-cloudstorage-jgy-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\outerorder_item.xml",
+        "source": "D:\\Project\\app-cloudstorage-jgy-android\\app\\src\\main\\res\\layout\\outerorder_item.xml"
+    }
+]
