@@ -1,23 +1,23 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml:1:1-50
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml:1:1-50
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml:1:1-50
+ADDED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml:1:1-50
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml:1:1-50
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml:1:1-50
 	package
-		ADDED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml:1:11-48
-		INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-		INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
+		ADDED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml:1:11-48
+		INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+		INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
 uses-sdk
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-		ADDED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-		INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
+		INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+		ADDED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+		INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-		ADDED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
-		INJECTED from F:\Android\project\cloudstorage\library\src\main\AndroidManifest.xml
+		INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+		ADDED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml
+		INJECTED from D:\Project\app-cloudstorage-jgy-android\library\src\main\AndroidManifest.xml

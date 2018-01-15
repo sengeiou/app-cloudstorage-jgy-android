@@ -83,7 +83,7 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
         if(userInfoData!=null){
             UserInfo data = userInfoData.getData();
-           Glide.with(this)
+           Glide.with(mContext)
                    .load(data.getAvatar())
                    .into(binding.imageview);//图像
             binding.tvCompanyname.setText(data.getInfo().getVendor_name());//公司名称

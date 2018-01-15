@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.api.HttpUtils;
-import com.guoyie.www.delivery.easy.entity.UserInfo;
 import com.guoyie.www.delivery.easy.retrofit.RxManager;
 import com.guoyie.www.delivery.easy.util.AppUtils;
 import com.guoyie.www.delivery.easy.util.TUtil;
@@ -34,11 +33,6 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     protected <T extends View> T getView(int id) {
         return (T) findViewById(id);
     }
-
-    protected UserInfo userInfo;
-    protected String uid = "";
-    protected String company_id = "";
-    protected int role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
