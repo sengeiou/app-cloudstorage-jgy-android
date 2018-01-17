@@ -1,5 +1,6 @@
 package com.guoyie.www.delivery.easy.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
@@ -7,7 +8,11 @@ import android.net.Uri;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,6 +22,7 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.LoginContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityLoginBinding;
+import com.guoyie.www.delivery.easy.dialog.CustomDialog;
 import com.guoyie.www.delivery.easy.download.SpUtils;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.LoginModel;
@@ -180,33 +186,35 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
                 startAct(RegisterActivity.class);
                 break;
             case R.id.tv_problem:
-                if (mProblemPopupWindow==null){
-                    View view = getLayoutInflater().inflate(R.layout.lrp_popupwindow_layout, null);
-                    mProblemPopupWindow = new LoginOrRegisterProblemPopupWindow(this,mOnClickListener,view);
-                }
-                if (mProblemPopupWindow.isShowing()){
-                    mProblemPopupWindow.dismiss();
-                }
-                mProblemPopupWindow.show();
 
+                View view = LayoutInflater.from(this).inflate(R.layout.lrp_popupwindow_layout, null);
+                TextView phone = view.findViewById(R.id.bt_phone);
+                TextView cancel = view.findViewById(R.id.bt_cancel);
+                final Dialog dialog = new Dialog(this, R.style.Theme_dialog);
+                dialog.setContentView(view);
+                phone.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        Uri data = Uri.parse("tel:" + "400-072-7777");
+                        intent.setData(data);
+                        startActivity(intent);
+                    }
+                });
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                Window window = dialog.getWindow();
+                window.setGravity(Gravity.BOTTOM);
+                WindowManager.LayoutParams attributes = window.getAttributes();
+                attributes.width = GApp.screenWidth*4/5;
+                window.setAttributes(attributes);
+                dialog.show();
         }
     }
-
-    LoginOrRegisterProblemPopupWindow.OnClickListener mOnClickListener = new LoginOrRegisterProblemPopupWindow.OnClickListener() {
-        @Override
-        public void call() {
-
-            Intent intent = new Intent(Intent.ACTION_DIAL);
-            Uri data = Uri.parse("tel:" + "13155833297");
-            intent.setData(data);
-            startActivity(intent);
-        }
-
-        @Override
-        public void cancel() {
-            mProblemPopupWindow.dismiss();
-        }
-    };
 
     @Override
     public void returnInfoData(UserInfoData data) {

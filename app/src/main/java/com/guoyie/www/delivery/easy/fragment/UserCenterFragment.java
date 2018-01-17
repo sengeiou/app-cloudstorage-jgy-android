@@ -103,14 +103,20 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.ll_login_out: //退出登录
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View view = LayoutInflater.from(getContext()).inflate(R.layout.login_out_dialog_layout, null);
-                builder.setView(view);
-                final AlertDialog dialog = builder.create();
-                dialog.show();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                View view = LayoutInflater.from(getContext()).inflate(R.layout.login_out_dialog_layout, null);
+//                builder.setView(view);
+//                final AlertDialog dialog = builder.create();
+//                dialog.show();
+//
+//                TextView tvBack = view.findViewById(R.id.tv_back);
+//                TextView tvLoginout = view.findViewById(R.id.tv_login_out);
 
-                TextView tvBack = view.findViewById(R.id.tv_back);
-                TextView tvLoginout = view.findViewById(R.id.tv_login_out);
+                final CustomDialog dialog = new CustomDialog(getContext(), GApp.screenWidth * 3 / 4, GApp.screenHeight / 4, R.layout.login_out_dialog_layout, R.style.Theme_dialog);
+                dialog.show();
+                TextView tvBack = dialog.findViewById(R.id.tv_back);
+                TextView tvLoginout = dialog.findViewById(R.id.tv_login_out);
+
                 tvBack.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -129,6 +135,7 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                         }
                     }
                 });
+
 
         }
     }

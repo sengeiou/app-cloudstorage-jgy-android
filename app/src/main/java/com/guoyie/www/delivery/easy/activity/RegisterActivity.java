@@ -79,6 +79,22 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
         mEtCompanyname.addTextChangedListener(mTextWatcher);
         mEtContacts.addTextChangedListener(mTextWatcher);
         mEtContactway.addTextChangedListener(mTextWatcher);
+        //焦点监听
+        mEtTelephone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                String telephone = mEtTelephone.getText().toString().trim();
+                if (!TextUtils.isEmpty(telephone)){
+                    String regex = "\\d{3}-\\d{3}-\\d{4}";
+                    Pattern pattern = Pattern.compile(regex);
+                    Matcher matcher = pattern.matcher(telephone);
+                    boolean b = matcher.find();
+                    if (!b){
+                        new TPrompt(RegisterActivity.this).showToast("请输入此格式号码 021-666-6666");
+                    }
+                }
+            }
+        });
         mEtTelephone.addTextChangedListener(mTextWatcher);
         mEtQq.addTextChangedListener(mTextWatcher);
         mEtEmail.addTextChangedListener(mTextWatcher);
@@ -90,7 +106,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
 
 
     }
-
     TextWatcher mTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -136,7 +151,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
             boolean canCommit = !TextUtils.isEmpty(companyName)&&!TextUtils.isEmpty(contacts)&&!TextUtils.isEmpty(mobilePhone);
 
             mBtCommit.setEnabled(canCommit);
-
         }
     };
 
