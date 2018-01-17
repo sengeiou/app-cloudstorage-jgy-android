@@ -103,28 +103,6 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.ll_login_out: //退出登录
-//                new AlertDialog.Builder(getContext())
-//                        .setTitle("确认退出账号吗？")
-//                        .setNegativeButton("返回", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                            }
-//                        })
-//                        .setPositiveButton("退出登录", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                            }
-//                        })
-//                        .create().show();
-
-//                CustomDialog dialog = new CustomDialog(getContext(), GApp.screenWidth * 3 / 4, GApp.screenHeight * 8 / 15, R.layout.login_out_dialog_layout, R.style.);
-//                TextView tvBack = dialog.findViewById(R.id.tv_back);
-//                TextView tvLoginout = dialog.findViewById(R.id.tv_login_out);
-//
-//                dialog.show();
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 View view = LayoutInflater.from(getContext()).inflate(R.layout.login_out_dialog_layout, null);
                 builder.setView(view);
