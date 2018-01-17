@@ -187,15 +187,9 @@
                                 android:layout_height="match_parent">
                                 <ImageView
                                     android:src="@mipmap/inter"
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"/>
-                                <TextView
-                                    android:textColor="@color/white"
-                                    android:textSize="13sp"
-                                    android:text="入库单管理"
-                                    android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
+
 
                             </LinearLayout>
 
@@ -212,15 +206,9 @@
                                 android:layout_height="match_parent">
                                 <ImageView
                                     android:src="@mipmap/out"
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"/>
-                                <TextView
-                                    android:textColor="@color/white"
-                                    android:textSize="13sp"
-                                    android:text="出库单管理"
-                                    android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
+
 
                             </LinearLayout>
 
@@ -248,15 +236,9 @@
                                 android:layout_height="match_parent">
                                 <ImageView
                                     android:src="@mipmap/tranom"
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"/>
-                                <TextView
-                                    android:textColor="@color/white"
-                                    android:textSize="13sp"
-                                    android:text="货转单管理"
-                                    android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
+
 
                             </LinearLayout>
 
@@ -273,15 +255,9 @@
                                 android:layout_height="match_parent">
                                 <ImageView
                                     android:src="@mipmap/info"
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"/>
-                                <TextView
-                                    android:textColor="@color/white"
-                                    android:textSize="13sp"
-                                    android:text="意向单管理"
-                                    android:layout_marginTop="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
+
 
                             </LinearLayout>
 
