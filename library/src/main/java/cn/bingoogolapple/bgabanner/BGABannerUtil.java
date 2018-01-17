@@ -35,6 +35,7 @@ public class BGABannerUtil {
     public static ImageView getItemImageView(Context context, @DrawableRes int placeholderResId, ImageView.ScaleType scaleType) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(placeholderResId);
+       //imageView.setImageDrawable(context.getResources().getDrawable(placeholderResId));
         imageView.setClickable(true);
         imageView.setScaleType(scaleType);
         return imageView;

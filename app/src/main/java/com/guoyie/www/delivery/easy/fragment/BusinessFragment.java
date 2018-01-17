@@ -58,7 +58,6 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
     @Override
     public void initPresenter() {
         mPresenter.attachVM(this,mModel);
-
     }
 
     @Override
@@ -106,6 +105,8 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         //请求轮播图
         String params= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.GET_BANNER);
         mPresenter.requstBanner(params);
+
+      ///  binding.banner.setData(R.mipmap.guide01,R.mipmap.guide02,R.mipmap.guide03);
 
         binding.banner.setDelegate(new BGABanner.Delegate<CardView, String>() {
             @Override
@@ -163,7 +164,7 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
             for (Banner banner : banners) {
                 imgs.add(banner.getAdpic());
             }
-          binding.banner.setData(R.layout.item_fresco, imgs, null);
+         binding.banner.setData(R.layout.item_fresco, imgs, null);
         }else {//没有数据了
             showToast(data.getMsg());
         }
