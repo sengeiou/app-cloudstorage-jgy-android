@@ -48,7 +48,6 @@ public class StoreDetailActivity extends BaseActivity<StoreDetailPresenter,Store
         mIv_back.setImageResource(R.mipmap.left_arrow);
 
         Intent intent = getIntent();
-//        int storeId = intent.getIntExtra(Constant.STORE_ID, -1);
         String storeId = intent.getStringExtra(Constant.STORE_ID);
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_DETAIL + "&varchar="+storeId );
         mPresenter.requestStoreDetail(params);

@@ -1,8 +1,11 @@
 package com.guoyie.www.delivery.easy.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,6 +20,7 @@ import com.guoyie.www.delivery.easy.activity.UserBasicInfoActivity;
 import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.databinding.FcUsercenterBinding;
+import com.guoyie.www.delivery.easy.dialog.CustomDialog;
 import com.guoyie.www.delivery.easy.entity.UserInfo;
 import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.util.Constant;
@@ -94,18 +98,60 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 break;
             case R.id.ll_contact: //联系客服
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                Uri data = Uri.parse("tel:" + "13155833297");
+                Uri data = Uri.parse("tel:" + "400-072-7777");
                 intent.setData(data);
                 startActivity(intent);
                 break;
             case R.id.ll_login_out: //退出登录
-                try {
-                    GApp.getInstance().deleteObject(Constant.USER_INFO_CACHE);
-                    startAct(LoginActivity.class);
-                    getActivity().finish();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+//                new AlertDialog.Builder(getContext())
+//                        .setTitle("确认退出账号吗？")
+//                        .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        })
+//                        .setPositiveButton("退出登录", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        })
+//                        .create().show();
+
+//                CustomDialog dialog = new CustomDialog(getContext(), GApp.screenWidth * 3 / 4, GApp.screenHeight * 8 / 15, R.layout.login_out_dialog_layout, R.style.);
+//                TextView tvBack = dialog.findViewById(R.id.tv_back);
+//                TextView tvLoginout = dialog.findViewById(R.id.tv_login_out);
+//
+//                dialog.show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.login_out_dialog_layout, null);
+                builder.setView(view);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                TextView tvBack = view.findViewById(R.id.tv_back);
+                TextView tvLoginout = view.findViewById(R.id.tv_login_out);
+                tvBack.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                tvLoginout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            GApp.getInstance().deleteObject(Constant.USER_INFO_CACHE);
+                            startAct(LoginActivity.class);
+                            getActivity().finish();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
         }
     }
 }
