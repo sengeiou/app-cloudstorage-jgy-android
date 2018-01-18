@@ -85,13 +85,35 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
             public void onFocusChange(View v, boolean hasFocus) {
                 String telephone = mEtTelephone.getText().toString().trim();
                 if (!TextUtils.isEmpty(telephone)){
-                    String regex = "\\d{3}-\\d{3}-\\d{4}";
+                    String regex1 = "^[0][1-9]{2,3}-[0-9]{5,10}$"; //带区号的固定电话
+                    String regex2 = "^[1-9]{1}[0-9]{5,8}$"; //验证不带区号的固定电话
+
+                    Pattern pattern1 = Pattern.compile(regex1);
+                    Matcher matcher1 = pattern1.matcher(telephone);
+                    Pattern pattern2 = Pattern.compile(regex2);
+                    Matcher matcher2 = pattern2.matcher(telephone);
+                    boolean b1 = matcher1.find();
+                    boolean b2 = matcher2.find();
+                    if (!b1&&!b2){
+                        new TPrompt(RegisterActivity.this).showToast("请输入正确的固定电话");
+                    }
+                }
+            }
+        });
+
+        mEtContactway.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                String mobilePhone = mEtContactway.getText().toString().trim();
+                if (!TextUtils.isEmpty(mobilePhone)){
+                    String regex = "^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\\d{8}$";
                     Pattern pattern = Pattern.compile(regex);
-                    Matcher matcher = pattern.matcher(telephone);
+                    Matcher matcher = pattern.matcher(mobilePhone);
                     boolean b = matcher.find();
                     if (!b){
-                        new TPrompt(RegisterActivity.this).showToast("请输入此格式号码 021-666-6666");
+                        new TPrompt(RegisterActivity.this).showToast("请输入正确的11位手机号码");
                     }
+
                 }
             }
         });
@@ -188,12 +210,18 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
         String telephone = mEtTelephone.getText().toString().trim();
         //正则匹配判断固定电话格式
         if (!TextUtils.isEmpty(telephone)){
-            String regex = "\\d{3}-\\d{3}-\\d{4}";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(telephone);
-            boolean b = matcher.find();
-            if (!b){
-                new TPrompt(RegisterActivity.this).showToast("请输入此格式号码 021-666-6666");
+            //String regex = "\\d{3,4}-\\d{7,8}";
+            String regex1 = "^[0][1-9]{2,3}-[0-9]{5,10}$"; //带区号的固定电话
+            String regex2 = "^[1-9]{1}[0-9]{5,8}$"; //验证不带区号的固定电话
+
+            Pattern pattern1 = Pattern.compile(regex1);
+            Matcher matcher1 = pattern1.matcher(telephone);
+            Pattern pattern2 = Pattern.compile(regex2);
+            Matcher matcher2 = pattern2.matcher(telephone);
+            boolean b1 = matcher1.find();
+            boolean b2 = matcher2.find();
+            if (!b1&&!b2){
+                new TPrompt(RegisterActivity.this).showToast("请输入正确的固定电话");
             }
         }
 
