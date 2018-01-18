@@ -73,6 +73,9 @@ public class StoreHouseFragment extends BaseFragment<BusinessFragmentPresenter,B
 
         mRlStoreManager.setOnClickListener(this);
         mRlStoreCapacityManager.setOnClickListener(this);
+        mBinding.rlStorePandianManager.setOnClickListener(this);
+        mBinding.rlClientStoreManager.setOnClickListener(this);
+        mBinding.rlDetailTable.setOnClickListener(this);
 
         initBanner();
     }
@@ -107,6 +110,15 @@ public class StoreHouseFragment extends BaseFragment<BusinessFragmentPresenter,B
                 break;
             case R.id.rl_store_capacity_manager:
                 startAct(StoreCapacityManagerActivity.class);
+                break;
+            case R.id.rl_store_pandian_manager:
+                showToast("攻城狮正在开发中，敬请期待!");
+                break;
+            case R.id.rl_client_store_manager:
+                showToast("攻城狮正在开发中，敬请期待!");
+                break;
+            case R.id.rl_detail_table:
+                showToast("攻城狮正在开发中，敬请期待!");
                 break;
         }
     }
