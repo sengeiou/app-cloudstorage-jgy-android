@@ -45,7 +45,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
     private Button mLogin;
     private Button mRegister;
     private TextView mTvProblem;
-    private LoginOrRegisterProblemPopupWindow mProblemPopupWindow;
 
 
     @Override
