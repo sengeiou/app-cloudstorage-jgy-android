@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.guoyie.www.delivery.easy.activity.StoreDetailActivity">
+    tools:context="com.guoyie.www.delivery.easy.activity.CapacityDetailActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -87,7 +87,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="罐容"
+                android:text="空容数量"
+                android:textColor="#919191"
+                android:textSize="11sp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:id="@+id/tv_empty_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12344556"
+                android:textColor="#111111"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F1F4FE"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="#fff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="库容数量"
                 android:textColor="#919191"
                 android:textSize="11sp"
                 android:layout_marginLeft="20dp"
@@ -117,13 +147,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="储罐性质"
+                android:text="仓储价格(元/吨/月)"
                 android:textColor="#919191"
                 android:textSize="11sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView
-                android:id="@+id/tv_store_type"
+                android:id="@+id/tv_store_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12344556"
@@ -140,6 +170,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="51dp"
@@ -147,13 +178,44 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="储罐材质"
+                android:text="储罐性质"
                 android:textColor="#919191"
                 android:textSize="11sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView
-                android:id="@+id/tv_store_material"
+                android:id="@+id/tv_capacity_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12344556"
+                android:textColor="#111111"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F1F4FE"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="#fff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注"
+                android:textColor="#919191"
+                android:textSize="11sp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:id="@+id/tv_ps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12344556"

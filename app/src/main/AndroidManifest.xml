@@ -21,17 +21,17 @@
     <application
         android:name=".application.GApp"
         android:allowBackup="true"
+        android:configChanges="orientation|keyboardHidden|screenSize"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
-        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!-- 主界面 -->
@@ -56,19 +56,20 @@
         <!-- 获取进行搜索的 -->
         <activity android:name=".activity.SeachActivity" />
         <activity android:name=".activity.StoreManagerActivity" />
-        <activity android:name=".activity.StoreCapacityManagerActivity"/>
-        <activity android:name=".activity.InfoOrderDetailActivity"/>
-        <activity android:name=".activity.TransTormDetailActivity"/>
-        <activity android:name=".activity.CapacityFilterActivity"/>
-        <activity android:name=".activity.OuterDetailActivity"/>
+        <activity android:name=".activity.StoreCapacityManagerActivity" />
+        <activity android:name=".activity.InfoOrderDetailActivity" />
+        <activity android:name=".activity.TransTormDetailActivity" />
+        <activity android:name=".activity.CapacityFilterActivity" />
+        <activity android:name=".activity.OuterDetailActivity" />
         <activity android:name=".activity.CAActivity" />
-
-        <activity android:name=".activity.AboutActivity"></activity>
+        <activity android:name=".activity.AboutActivity" />
 
         <!-- 友盟统计的appkey -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a531491b27b0a6c2d0000bd"/>
+            android:value="5a531491b27b0a6c2d0000bd" />
+
+        <activity android:name=".activity.CapacityDetailActivity"></activity>
     </application>
 
 </manifest>

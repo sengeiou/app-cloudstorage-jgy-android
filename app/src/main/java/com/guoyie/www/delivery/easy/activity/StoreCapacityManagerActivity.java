@@ -31,6 +31,7 @@ import java.util.List;
  * 库容管理的Activity
  */
 public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPresenter,StoreCapacityModel> implements StoreCapacityManagerAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, NRecyclerView.OnLoadMoreListener, View.OnClickListener, StoreCapacityManagerContract.View {
+    public static final String LIST_BEAN = "listbean";
     private ImageView mLeft_back;
     private TextView mTv_title;
     private TextView mTV_right;
@@ -119,7 +120,10 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
     @Override
     public void onItemClick(View itemView, int position) {
-
+        StoreCapacityListBean.DataBean.ListBean item = mAdapter.getItem(position);
+        Intent intent = new Intent(this, CapacityDetailActivity.class);
+        intent.putExtra(LIST_BEAN, item);
+        startActivity(intent);
     }
 
     @Override

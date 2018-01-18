@@ -16,7 +16,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-       //用将app的debug版本的密钥改成线上版本的
+        //用将app的debug版本的密钥改成线上版本的
         signingConfigs {
             release {
                 storeFile file(RELEASE_STORE_FILE)
@@ -33,10 +33,10 @@ android {
             zipAlignEnabled true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-          signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
         debug {
-           signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
 
@@ -52,7 +52,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.0'
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
     compile 'io.reactivex:rxjava:1.1.6'
-   compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
     //fastgson的转换
     compile 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'

@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.entity;
 
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * data：2017/12/22
  */
 
-public class StoreCapacityListBean extends BaseResponse{
+public class StoreCapacityListBean extends BaseResponse implements Serializable{
 
     /**
      * code : 200
@@ -123,7 +124,7 @@ public class StoreCapacityListBean extends BaseResponse{
             this.list = list;
         }
 
-        public static class ListBean {
+        public static class ListBean implements Serializable{
             /**
              * id : 7
              * vendor_no : YC0000000015
