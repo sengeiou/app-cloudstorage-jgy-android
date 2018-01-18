@@ -284,7 +284,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter,RegisterMod
             showToast("服务商已入驻，等待后台处理");
             finish();
         }else {
-            showToast("请检查提交信息");
+            showToast("网络错误");
         }
     }
 
