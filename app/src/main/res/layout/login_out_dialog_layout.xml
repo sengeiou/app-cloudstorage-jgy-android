@@ -51,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_weight="80"
             android:layout_height="wrap_content"
-            android:text="退出登录"
+            android:text="确定"
             android:textSize="18sp"
             android:textColor="#529BeA"
             android:gravity="center"/>
