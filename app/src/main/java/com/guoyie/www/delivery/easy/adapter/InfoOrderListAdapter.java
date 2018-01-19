@@ -35,7 +35,7 @@ public class InfoOrderListAdapter extends NAdapter<Storage.ListBean> {
 
         //设置数据的啊
         goods_name.setText(data.getGoods_name()+" | "+data.getGoods_num()+data.getGoods_unit());//品名
-        instock_customer_no.setText("询价单号       "+data.getInquiry_no());//入库单号
+        instock_customer_no.setText("意向单号       "+data.getInquiry_no());//入库单号
         instock_date.setText("创建时间        "+data.getCreate_at());//预计入库时间
         shop_company_name.setText("企业名称     "+data.getCompany_name());//企业名称
         String status=null;

@@ -62,7 +62,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="苯乙烯"
                     android:textColor="@color/color_61"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -92,7 +91,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="100吨"
                     android:textColor="@color/color_61"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -127,7 +125,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="进行中"
                     android:textColor="@color/color_61"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -156,7 +153,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="短租"
                     android:textColor="@color/color_61"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -191,7 +187,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="柯军"
                     android:textColor="@color/color_61"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -220,7 +215,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="1101191201212"
                     android:textColor="@color/color_61"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -243,7 +237,6 @@
                 <TextView
 
                     android:id="@+id/tv_company_name "
-                    android:text="上海国烨跨境电子商务有限公司"
                     style="@style/rl_tv_content"/>
 
             </RelativeLayout>
@@ -263,7 +256,6 @@
 
                 <TextView
                     android:id="@+id/tv_inquiry_no"
-                    android:text="071958789"
                     style="@style/rl_tv_content"/>
 
             </RelativeLayout>
@@ -283,7 +275,6 @@
 
                 <TextView
                     android:id="@+id/tv_create_name1"
-                    android:text="15021114785"
                     style="@style/rl_tv_content"/>
 
             </RelativeLayout>
@@ -302,7 +293,6 @@
 
                 <TextView
                     android:id="@+id/tv_create_at_start"
-                    android:text="2017-12-30"
                     style="@style/rl_tv_content"/>
 
             </RelativeLayout>
@@ -322,7 +312,7 @@
 
                 <TextView
                     android:id="@+id/tv_apply_area"
-                    android:text="上海市虹口区吴淞路130"
+
                     style="@style/rl_tv_content"/>
 
             </RelativeLayout>
@@ -344,7 +334,6 @@
 
                 <TextView
                     android:id="@+id/tv_remark"
-                    android:text="上海国烨跨境电子商务有限公司"
                     style="@style/rl_tv_content"/>
 
             </RelativeLayout>

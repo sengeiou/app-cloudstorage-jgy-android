@@ -7,7 +7,9 @@
 
 
     <RelativeLayout
-        android:padding="16dp"
+        android:paddingTop="10dp"
+       android:paddingRight="16dp"
+       android:paddingLeft="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -42,8 +44,8 @@
 
         <!--1-->
         <LinearLayout
-            android:paddingTop="0dp"
-            style="@style/ll_interorder">
+            style="@style/ll_interorder"
+            android:paddingTop="0dp">
             <TextView
                 android:text="入库单号"
                 style="@style/tv_title_inter"/>
@@ -98,6 +100,7 @@
 
         <!-- 5-->
         <LinearLayout
+            android:paddingBottom="10dp"
             style="@style/ll_interorder">
             <TextView
                 android:text="备注"

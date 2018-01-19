@@ -124,7 +124,24 @@
                        android:text="1101191201212"/>
                </LinearLayout>
 
+
                <!-- 7-->
+               <LinearLayout
+                   android:visibility="gone"
+                   android:id="@+id/ll_finish_at"
+                   style="@style/ll_interorder">
+
+                   <TextView
+                       style="@style/tv_title_inter"
+                       android:text="完成时间"/>
+
+                   <TextView
+                       android:id="@+id/finish_at"
+                       style="@style/tv_content_inter"
+                       android:text="上海国烨跨境电子商务有限公司"/>
+               </LinearLayout>
+
+               <!-- 8-->
                <LinearLayout
                    style="@style/ll_interorder">
 
@@ -293,10 +310,12 @@
            <!--入库确认单-->
 
            <TextView
+               android:id="@+id/tv_comfig_order"
                android:text="出库确认单"
                style="@style/tv_title_itmes"/>
 
            <LinearLayout
+               android:id="@+id/ll_comfig_order"
                android:paddingRight="16dp"
                android:paddingLeft="16dp"
                android:layout_width="match_parent"
@@ -327,6 +346,35 @@
                </LinearLayout>
 
                <!-- 3-->
+
+
+               <!-- 4-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="品名"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:id="@+id/tv_goods_name"
+                       android:text="hehhe"
+                       style="@style/tv_content_inter"/>
+
+               </LinearLayout>
+
+
+               <!-- 5-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="仓库联系方式"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:id="@+id/contact_num"
+                       android:text="110"
+                       style="@style/tv_content_inter"/>
+
+               </LinearLayout>
+
                <LinearLayout
                    style="@style/ll_interorder">
                    <TextView
@@ -340,7 +388,7 @@
                </LinearLayout>
 
 
-               <!-- 4-->
+               <!-- 6-->
                <LinearLayout
                    android:id="@+id/ll_ca_confirm_viewpath"
                    style="@style/ll_interorder">
@@ -358,7 +406,7 @@
                </LinearLayout>
 
 
-               <!-- 5-->
+               <!-- 7-->
                <LinearLayout
                    style="@style/ll_interorder">
                    <TextView
@@ -410,7 +458,7 @@
                 android:id="@+id/tv_refused"
                 android:gravity="center"
                 android:text="拒绝"
-                android:background="@drawable/interstuts_bg"
+                android:background="@drawable/interstuts_blue_bg"
                 android:textSize="16sp"
                 android:textColor="@color/app_color_blue"
                 android:layout_weight="1"

@@ -46,7 +46,7 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/status"
-                            android:text="待审核"
+                            android:text=""
                             android:textColor="@color/app_color_blue"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
@@ -58,7 +58,7 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/create_at"
-                            android:text="2018/12/31"
+
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -70,7 +70,7 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/transstock_customer_no"
-                            android:text="123314566"
+
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -83,7 +83,7 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/shop_sale_company_name"
-                            android:text="上海国烨跨境电子商务有限公司"
+
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -95,7 +95,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/sale_contact_name"
-                            android:text="方庆阳"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -107,7 +106,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/sale_contact"
-                            android:text="1101191201212"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -119,7 +117,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/shop_buy_company_name"
-                            android:text="上海中烨跨境电子商务有限公司"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -132,7 +129,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/buy_contact_name"
-                            android:text="方庆阳"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -144,7 +140,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/buy_contact"
-                            android:text="1101191201212"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -174,7 +169,7 @@
                         android:textColor="#111111"
                         android:id="@+id/goods_name"
                         android:layout_width="wrap_content"
-                        android:text="丙乙烯 | 1000.00吨"
+
                         android:layout_height="wrap_content"/>
 
                     <TextView
@@ -182,7 +177,7 @@
                         android:textSize="14sp"
                         android:textColor="#111111"
                         android:layout_alignParentRight="true"
-                        android:text="内贸内销"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -192,7 +187,6 @@
                         android:layout_marginTop="12dp"
                         android:textSize="14sp"
                         android:textColor="#919191"
-                        android:text="备注 ：今天是2017年12月7日，距离项目开发时间还有一个月了"
                         android:layout_below="@+id/goods_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -220,8 +214,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/buy_freeday"
-                            android:text="2017-12-31至2018-01-01"
-
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -251,7 +243,6 @@
                             style="@style/tv_title_inter"/>
                         <TextView
                             android:id="@+id/tv_rmark"
-                            android:text="今晚打老虎，老虎在哪里"
                             style="@style/tv_content_inter"/>
                     </LinearLayout>
 
@@ -279,7 +270,7 @@
                 android:id="@+id/tv_refused"
                 android:gravity="center"
                 android:text="拒绝"
-                android:background="@drawable/interstuts_bg"
+                android:background="@drawable/interstuts_blue_bg"
                 android:textSize="16sp"
                 android:textColor="@color/app_color_blue"
                 android:layout_weight="1"

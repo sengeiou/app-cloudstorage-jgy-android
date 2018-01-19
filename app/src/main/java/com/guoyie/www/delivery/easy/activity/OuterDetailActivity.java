@@ -244,9 +244,13 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
             case 2:
                 status="待审核";
                 binding.llInterRefusedAgree.setVisibility(View.VISIBLE);//出现通过和拒绝的按钮
+                binding.tvComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
+                binding.llComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
                 break;
             case 3:
                 status="未通过";
+                binding.tvComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
+                binding.llComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
                 break;
             case 4:
                 status="入库中";
@@ -256,6 +260,9 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 break;
             case 5:
                 status="已完成";
+                //设置个完成时间的字段
+                binding.llFinishAt.setVisibility(View.VISIBLE);
+                binding.finishAt.setText(data.getFinish_at());//完成时间
                 break;
             case 6:
                 status="已结束";
@@ -294,10 +301,12 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         initcars(data.getCar());
         //处理车辆明细的数据
         initships(data.getShip());
-        //入库确认单的数据
+        //出库确认单的数据
         binding.instockType.setText(data.getOutstock_type()==1?"车出库":"船出库");//入库的方式
         binding.realQty.setText(data.getReal_qty());//入库数量
         binding.realContactName.setText(data.getReal_contact_name());//仓库联系人
+        binding.tvGoodsName.setText(data.getGoods_name());//品名
+        binding.contactNum.setText(data.getReal_contact());
         binding.llCaConfirmViewpath.setOnClickListener(this);
         binding.realReamk.setText(data.getReal_remark());//实际备注
 
@@ -333,6 +342,10 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 instock_date.setText(logBean.getOutstock_date());//
                 remark.setText(logBean.getRemark());//
                 binding.gridLayoutLogs.addView(view);
+                View line = LayoutInflater.from(mContext).inflate(R.layout.line, null, false);
+                if (i!= log.size() - 1) {
+                    binding.gridLayoutLogs.addView(line);
+                }
             }
 
         }else {
@@ -359,6 +372,10 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 shipcontact.setText(shipBean.getShipcontact());//联系方式
                 remark.setText(shipBean.getShipmark());//备注
                 binding.gridLayoutShip.addView(view);
+                View line = LayoutInflater.from(mContext).inflate(R.layout.line, null, false);
+                if (i!= ship.size() - 1) {
+                    binding.gridLayoutShip.addView(line);
+                }
             }
 
 
@@ -385,6 +402,11 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 idcard.setText(carBean.getIdcard());//身份证号
                 remark.setText(carBean.getCarmarks());//备注
                 binding.gridLayoutCar.addView(view);
+
+                View line = LayoutInflater.from(mContext).inflate(R.layout.line, null, false);
+                if (i!= car.size() - 1) {
+                    binding.gridLayoutCar.addView(line);
+                }
             }
 
         }else {

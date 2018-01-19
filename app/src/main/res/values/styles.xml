@@ -94,7 +94,7 @@
     <style name="tv_title_inter">
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">#919191</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>

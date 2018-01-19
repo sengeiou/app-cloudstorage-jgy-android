@@ -293,7 +293,7 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
 
             }
             //处理导航上数据问题
-            binding.tabLayout.getTitleView(1).setText("待审核(" + data.getData().getCount_1() + ")");
+            binding.tabLayout.getTitleView(1).setText("进行中(" + data.getData().getCount_1() + ")");
             if (IS_MORE) {
                 binding.nrecycler.stopLoadMore();
             } else{

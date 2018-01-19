@@ -60,6 +60,7 @@
 
         <!-- 5-->
         <LinearLayout
+            android:paddingBottom="10dp"
             style="@style/ll_interorder">
             <TextView
                 android:text="备注"

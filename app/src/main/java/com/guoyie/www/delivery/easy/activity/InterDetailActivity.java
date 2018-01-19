@@ -245,9 +245,13 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             case 2:
                 status="待审核";
                 binding.llInterRefusedAgree.setVisibility(View.VISIBLE);//出现通过和拒绝的按钮
+                binding.tvComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
+                binding.llComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
                 break;
             case 3:
                 status="未通过";
+                binding.tvComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
+                binding.llComfigOrder.setVisibility(View.GONE);//在待审核和未完成的时候不显示入库确定单
                 break;
             case 4:
                 status="入库中";
@@ -257,6 +261,9 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 break;
             case 5:
                 status="已完成";
+                //设置个完成时间的字段
+                binding.llFinishAt.setVisibility(View.VISIBLE);
+                binding.finishAt.setText(data.getFinish_at());//完成时间
                 break;
             case 6:
                 status="已结束";
@@ -299,6 +306,8 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         binding.instockType.setText(data.getInstock_type()==1?"车入库":"船入库");//入库的方式
         binding.realQty.setText(data.getReal_qty());//入库数量
         binding.realContactName.setText(data.getReal_contact_name());//仓库联系人
+        binding.tvGoodsName.setText(data.getGoods_name());//品名
+        binding.contactNum.setText(data.getReal_contact());
         binding.llCaConfirmViewpath.setOnClickListener(this);
         binding.realReamk.setText(data.getReal_remark());//实际备注
 
@@ -319,18 +328,19 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
             }
 
             binding.gridLayoutLogs.removeAllViews();
+
             for (int i = 0; i < log.size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.logs_items, null, false);
-                TextView  goods_name=view.findViewById(R.id.goods_name);//丙乙烯 | 1000.00吨
-                TextView  goods_nature=view.findViewById(R.id.goods_nature);//内贸内销
-                TextView  instock_detail_no=view.findViewById(R.id.instock_detail_no);//入库单号
-                TextView  jar_no=view.findViewById(R.id.jar_no);//进货罐号
-                TextView  number=view.findViewById(R.id.number);//车编号|船编号
-                TextView  instock_date=view.findViewById(R.id.instock_date);//入库时间
-                TextView  remark=view.findViewById(R.id.tv_remark);//备注
+                TextView goods_name = view.findViewById(R.id.goods_name);//丙乙烯 | 1000.00吨
+                TextView goods_nature = view.findViewById(R.id.goods_nature);//内贸内销
+                TextView instock_detail_no = view.findViewById(R.id.instock_detail_no);//入库单号
+                TextView jar_no = view.findViewById(R.id.jar_no);//进货罐号
+                TextView number = view.findViewById(R.id.number);//车编号|船编号
+                TextView instock_date = view.findViewById(R.id.instock_date);//入库时间
+                TextView remark = view.findViewById(R.id.tv_remark);//备注
                 InputOrderDetail.LogBean logBean = log.get(i);
 
-                goods_name.setText(logBean.getGoods_name()+" | "+logBean.getStock_qty()+logBean.getGoods_unit());//品名
+                goods_name.setText(logBean.getGoods_name() + " | " + logBean.getStock_qty() + logBean.getGoods_unit());//品名
                 goods_nature.setText(logBean.getGoods_nature());//货物的性质
                 instock_detail_no.setText(logBean.getInstock_detail_no());//
                 jar_no.setText(logBean.getJar_no());//
@@ -338,8 +348,11 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 instock_date.setText(logBean.getInstock_date());//
                 remark.setText(logBean.getRemark());//
                 binding.gridLayoutLogs.addView(view);
+                View line = LayoutInflater.from(mContext).inflate(R.layout.line, null, false);
+                if (i!= log.size() - 1) {
+                    binding.gridLayoutLogs.addView(line);
+                }
             }
-
         }else {
             binding.tvTitleLogs.setVisibility(View.GONE);//没有数据让头部剧再见
         }
@@ -364,6 +377,10 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 shipcontact.setText(shipBean.getShipcontact());//联系方式
                 remark.setText(shipBean.getShipmark());//备注
                 binding.gridLayoutShip.addView(view);
+                View line = LayoutInflater.from(mContext).inflate(R.layout.line, null, false);
+                if (i!= ship.size() - 1) {
+                    binding.gridLayoutShip.addView(line);
+                }
             }
 
 
@@ -391,6 +408,10 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 idcard.setText(carBean.getIdcard());//身份证号
                 remark.setText(carBean.getCarmarks());//备注
                 binding.gridLayoutCar.addView(view);
+                View line = LayoutInflater.from(mContext).inflate(R.layout.line, null, false);
+                if (i!= car.size() - 1) {
+                    binding.gridLayoutCar.addView(line);
+                }
             }
 
         }else {
