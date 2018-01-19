@@ -50,7 +50,6 @@
                    <TextView
                        android:id="@+id/status"
                        style="@style/tv_content_inter"
-                       android:text="待审核"
                        android:textColor="@color/app_color_blue"/>
                </LinearLayout>
                <!-- 2-->
@@ -64,7 +63,7 @@
                    <TextView
                        android:id="@+id/instock_date"
                        style="@style/tv_content_inter"
-                       android:text="2018/12/31"/>
+                      />
                </LinearLayout>
 
                <!-- 3-->
@@ -78,7 +77,7 @@
                    <TextView
                        android:id="@+id/instock_customer_no"
                        style="@style/tv_content_inter"
-                       android:text="123314566"/>
+                      />
                </LinearLayout>
 
 
@@ -93,7 +92,7 @@
                    <TextView
                        android:id="@+id/instock_source"
                        style="@style/tv_content_inter"
-                       android:text="交易平台"/>
+                      />
                </LinearLayout>
 
                <!-- 5-->
@@ -107,7 +106,7 @@
                    <TextView
                        android:id="@+id/contact_name"
                        style="@style/tv_content_inter"
-                       android:text="方庆阳"/>
+                      />
                </LinearLayout>
 
                <!-- 6-->
@@ -121,7 +120,7 @@
                    <TextView
                        android:id="@+id/contact"
                        style="@style/tv_content_inter"
-                       android:text="1101191201212"/>
+                       />
                </LinearLayout>
 
                <!-- 7-->
@@ -137,7 +136,7 @@
                    <TextView
                        android:id="@+id/finish_at"
                        style="@style/tv_content_inter"
-                       android:text="上海国烨跨境电子商务有限公司"/>
+                      />
                </LinearLayout>
 
                <!-- 8-->
@@ -151,7 +150,7 @@
                    <TextView
                        android:id="@+id/shop_company_name"
                        style="@style/tv_content_inter"
-                       android:text="上海国烨跨境电子商务有限公司"/>
+                      />
                </LinearLayout>
 
 
@@ -180,7 +179,6 @@
                    android:textColor="#111111"
                    android:id="@+id/goods_name"
                    android:layout_width="wrap_content"
-                   android:text="丙乙烯 | 1000.00吨"
                    android:layout_height="wrap_content"/>
 
                <TextView
@@ -188,7 +186,6 @@
                    android:textSize="14sp"
                    android:textColor="#111111"
                    android:layout_alignParentRight="true"
-                   android:text="内贸内销"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
 
@@ -198,7 +195,6 @@
                    android:layout_marginTop="12dp"
                    android:textSize="14sp"
                    android:textColor="#919191"
-                   android:text="备注 ：今天是2017年12月7日，距离项目开发时间还有一个月了"
                    android:layout_below="@+id/goods_name"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
@@ -227,7 +223,7 @@
                        android:text="交易平台订单号"
                        style="@style/tv_title_inter"/>
                    <TextView
-                       android:text="1234569877895"
+
                        android:id="@+id/shop_order_no"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
@@ -239,7 +235,6 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/create_at"
-                       android:text="2018/12/31"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
 
@@ -269,7 +264,6 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/tv_remark"
-                       android:text="今晚打老虎，老虎在哪里"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
 
@@ -322,6 +316,20 @@
                android:orientation="vertical"
                android:layout_height="wrap_content">
 
+
+
+               <!-- 4-->
+               <LinearLayout
+                   style="@style/ll_interorder">
+                   <TextView
+                       android:text="品名"
+                       style="@style/tv_title_inter"/>
+                   <TextView
+                       android:id="@+id/tv_goods_name"
+                       style="@style/tv_content_inter"/>
+
+               </LinearLayout>
+
                <!--1-->
                <LinearLayout
                    style="@style/ll_interorder">
@@ -330,7 +338,6 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/instock_type"
-                       android:text="车入库"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
                <!-- 2-->
@@ -341,7 +348,6 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/real_qty"
-                       android:text="200吨"
                        style="@style/tv_content_inter"/>
                </LinearLayout>
 
@@ -353,23 +359,11 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/real_contact_name"
-                       android:text="找师傅"
                        style="@style/tv_content_inter"/>
 
                </LinearLayout>
 
-               <!-- 4-->
-               <LinearLayout
-                   style="@style/ll_interorder">
-                   <TextView
-                       android:text="品名"
-                       style="@style/tv_title_inter"/>
-                   <TextView
-                       android:id="@+id/tv_goods_name"
-                       android:text="hehhe"
-                       style="@style/tv_content_inter"/>
 
-               </LinearLayout>
 
 
                <!-- 5-->
@@ -380,7 +374,6 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/contact_num"
-                       android:text="110"
                        style="@style/tv_content_inter"/>
 
                </LinearLayout>
@@ -412,7 +405,6 @@
                        style="@style/tv_title_inter"/>
                    <TextView
                        android:id="@+id/real_reamk"
-                       android:text="CA签章以汉办好，请等....."
                        style="@style/tv_content_inter"/>
                </LinearLayout>
 
