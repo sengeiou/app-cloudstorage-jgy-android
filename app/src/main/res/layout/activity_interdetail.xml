@@ -459,7 +459,6 @@
                 android:gravity="center"
                 android:background="@color/app_color_blue"
                 android:text="通过"
-                android:layout_marginLeft="1dp"
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
