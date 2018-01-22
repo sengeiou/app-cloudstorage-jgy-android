@@ -185,7 +185,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
         String status="";
         switch (type){
             case 1:
-                status="";
+                status="2,3,4,5";
                 break;
             case 2:
                 status="2";
