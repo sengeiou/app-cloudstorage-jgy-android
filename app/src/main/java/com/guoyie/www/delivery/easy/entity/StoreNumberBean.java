@@ -2,6 +2,7 @@ package com.guoyie.www.delivery.easy.entity;
 
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -50,7 +51,7 @@ public class StoreNumberBean extends BaseResponse{
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * jar_no : adasd2312
          */

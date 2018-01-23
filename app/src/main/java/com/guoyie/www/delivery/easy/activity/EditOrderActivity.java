@@ -285,8 +285,9 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                     T.showAnimToast(mContext,"请输入联系方式");
                 }else if(selectList.size()==0) {
                     T.showAnimToast(mContext,"请添加附件");
-                }else {
-
+                }else if (Tools.isNull(mEtRemark)){
+                    T.showAnimToast(mContext,"请填写备注");
+                }else{
                     Map<String, RequestBody> bodyMap = new HashMap<>();
                     String requstparams="";
                     if (mType==1){

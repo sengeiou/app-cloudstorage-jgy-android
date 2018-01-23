@@ -179,11 +179,12 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
     }
     //加载数据的
     private void loadData(int type, int page) {
-        //status （1.待填写,2.待仓储审核,3.仓审驳回,4.出库执行中,5.已完成,6.已取消）
+        //status （1.待填写,2.待仓储审核,3.仓审驳回,4.出库执行中,5.已完成,6.已取消）removestatus=true
+        String removestatus="";
         String status="";
         switch (type){
             case 1:
-                status="2,3,4,5";
+                removestatus="true";
                 break;
             case 2:
                 status="2";
@@ -199,8 +200,14 @@ public class OuterOrderActivity extends BaseActivity<OuterOrderPresenter,OuterOd
                 break;
         }
 
-        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no() + "&status=" + status
-                + "&pageCurrent=" + page + "&pageSize=" + 10 + "&keyword1s=" + keywords);
+        String params1 = HttpUtils.OUTER_ORDER_LIST + "&vendor_no=" + mUserInfo.getData().getInfo().getVendor_no()
+                + "&pageCurrent=" + page + "&pageSize=" + 10 + "&keyword1s=" + keywords;
+        String  params="";
+        if (type!=1){
+            params= BlowfishTools.encrypt(HttpUtils.key,params1+ "&status=" + status);
+        }else {
+            params=BlowfishTools.encrypt(HttpUtils.key,params1+ "&removestatus=" + removestatus);
+        }
         mPresenter.requstOutorderData(params);
 
     }

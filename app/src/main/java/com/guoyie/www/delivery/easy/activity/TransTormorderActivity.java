@@ -45,7 +45,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
     private String                     tabTitles[]  = new String[]{"全部", "进行中","未通过","已完成"};
     private ImageView mIv_search;
 
-    private int type = 1;//1是未读，2是已读
+    private int type = 1;//
 
     private int page1 = 1, page2 = 1,page3 = 1,page4=1;//全部, 进行中(3),已结束
     //处理五情况来记录的type，和每页的情况判断情况

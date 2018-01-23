@@ -21,9 +21,15 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.fastjson.FastJsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ *  author：柯军
+ * project：New_GuoYieAndroid
+ * package：easyfoodbatch.luck.com.rxjavaproject.api
+ * email：774169396@qq.com
+ * data：16/11/2
+ */
 public class ApiManager {
 
     //读超时长，单位：毫秒
@@ -52,7 +58,7 @@ public class ApiManager {
     /**
      * 设缓存有效期为两天
      */
-    private static final long CACHE_STALE_SEC = 60 * 60 * 24 * 2;
+    private static final long   CACHE_STALE_SEC     = 60 * 60 * 24 * 2;
     /**
      * 查询缓存的Cache-Control设置，为if-only-cache时只查询缓存而不会请求服务器，max-stale可以配合设置缓存失效时间
      * max-stale 指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可接收超出超时期指定值之内的响应消息。
@@ -62,7 +68,7 @@ public class ApiManager {
      * 查询网络的Cache-Control设置，头部Cache-Control设为max-age=0
      * (假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回)时则不会使用缓存而请求服务器
      */
-    private static final String CACHE_CONTROL_AGE = "max-age=0";
+    private static final String CACHE_CONTROL_AGE   = "max-age=0";
 
 
     public static ApiService apiService;
@@ -81,13 +87,14 @@ public class ApiManager {
                 break;
         }
 
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.BASE_HOST)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 添加Rx适配器
-               .addConverterFactory(FastJsonConverterFactory.create()) // 添加Fastjson转换器
-              //  .addConverterFactory(GsonConverterFactory.create())  //添加gson的转换器
+             //   .addConverterFactory(FastJsonConverterFactory.create()) // 添加fastGson转换器
+                  .addConverterFactory(GsonConverterFactory.create())//Gson的转化
                 .client(httpClient)
-                .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
 
         apiService = retrofit.create(ApiService.class);
@@ -133,8 +140,8 @@ public class ApiManager {
 
     public static OkHttpClient uploadOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(30 * 1000, TimeUnit.MILLISECONDS)
-                .readTimeout(30 * 1000, TimeUnit.MILLISECONDS)
+        builder.connectTimeout(20 * 1000, TimeUnit.MILLISECONDS)
+                .readTimeout(20 * 1000, TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(true);// 失败重发
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
