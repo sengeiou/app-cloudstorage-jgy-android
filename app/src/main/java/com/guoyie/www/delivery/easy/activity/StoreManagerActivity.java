@@ -82,7 +82,7 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
         mBinding.nrecycler.setOnLoadMoreListener(this);
         mBinding.nrecycler.setLoadMoreEnable(true);
         mBinding.nrecycler.setAdapter(mAdapter);
-        mBinding.nrecycler.setErrorMessage("暂无储罐信息");
+
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -172,6 +172,6 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
     @Override
     public void error(String msg) {
-        showToast(msg);
+        mBinding.nrecycler.setErrorMessage("暂无储罐信息");
     }
 }

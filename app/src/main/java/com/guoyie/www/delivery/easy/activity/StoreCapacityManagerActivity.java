@@ -84,7 +84,7 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
         mBinding.nrecycler.setOnLoadMoreListener(this);
         mBinding.nrecycler.setLoadMoreEnable(true);
         mBinding.nrecycler.setAdapter(mAdapter);
-        mBinding.nrecycler.setErrorMessage("暂无消息提醒");
+
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -172,6 +172,6 @@ public class StoreCapacityManagerActivity extends BaseActivity<StoreCapacityPres
 
     @Override
     public void error(String msg) {
-        showToast(msg);
+        mBinding.nrecycler.setErrorMessage("暂无消息提醒");
     }
 }
