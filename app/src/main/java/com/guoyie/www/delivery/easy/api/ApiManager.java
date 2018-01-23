@@ -94,7 +94,7 @@ public class ApiManager {
                 .baseUrl(ApiConstants.BASE_HOST)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 添加Rx适配器
                 .addConverterFactory(FastJsonConverterFactory.create()) // 添加fastGson转换器
-                 .addConverterFactory(GsonConverterFactory.create())//Gson的转化
+                .addConverterFactory(GsonConverterFactory.create())//Gson的转化
                 .client(httpClient)
                 .build();
 
@@ -141,7 +141,7 @@ public class ApiManager {
 
     public static OkHttpClient uploadOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(20 * 1000, TimeUnit.MILLISECONDS)
+        builder.connectTimeout(30 * 1000, TimeUnit.MILLISECONDS)
                 .readTimeout(20 * 1000, TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(true);// 失败重发
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
