@@ -38,6 +38,15 @@ public class UserInfo implements Serializable {
     private String   create_at;
     private String   update_at;
     private InfoBean info;
+    private boolean is_ca;
+
+    public void setIs_ca(boolean is_ca) {
+        this.is_ca = is_ca;
+    }
+
+    public boolean isIs_ca() {
+        return is_ca;
+    }
 
     public int getId() {
         return id;
