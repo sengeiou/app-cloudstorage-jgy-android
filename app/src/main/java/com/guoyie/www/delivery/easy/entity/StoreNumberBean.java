@@ -15,7 +15,7 @@ import java.util.List;
  * 储罐筛选，储罐号
  */
 
-public class StoreNumberBean extends BaseResponse{
+public class StoreNumberBean extends BaseResponse implements Serializable{
 
     /**
      * code : 200
