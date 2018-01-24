@@ -178,7 +178,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
                if (isok){//完成入库的接口
                    String params1 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_OUTER_HANDLE + "&id=" + mDetail.getId() + "&type=入库"
-                   +"&real_number="+mDetail.getReal_qty()+"&shop_company_id="+mDetail.getShop_company_id());
+                   +"&real_qty="+mDetail.getReal_qty()+"&shop_company_id="+mDetail.getShop_company_id());
                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params1);
                    DebugUtil.debug("heheh"+encrypt);
                    mPresenter.requstInterHandle(params1);
