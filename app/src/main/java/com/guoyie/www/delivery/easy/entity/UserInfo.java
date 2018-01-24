@@ -256,12 +256,12 @@ public class UserInfo implements Serializable {
         private Object finish_at;
         private boolean is_ca;
 
-        public void setIs_ca(boolean is_ca) {
-            this.is_ca = is_ca;
-        }
-
         public boolean isIs_ca() {
             return is_ca;
+        }
+
+        public void setIs_ca(boolean is_ca) {
+            this.is_ca = is_ca;
         }
 
         public String getId() {

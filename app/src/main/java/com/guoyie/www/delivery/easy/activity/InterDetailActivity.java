@@ -169,7 +169,6 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 dialog.dismiss();
             }
         });
@@ -230,7 +229,11 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         if (data.isOk()){
             showToast(data.getMsg());
             finish();
+        }else{
+            showToast(data.getMsg());
         }
+
+
 
     }
 

@@ -349,10 +349,14 @@ public class LoopView extends View {
      * @param position
      */
     public void setCurrentPosition(int position) {
-        if (position > 0 && position < items.size() && position != selectedItem) {
+        if (position >0 && position < items.size() && position != selectedItem) {
             initPosition = position;
             totalScrollY = 0;
             mOffset = 0;
+            invalidate();
+        } else {
+            //处理postiton为0的时候数据不对的问题
+            initPosition=position;
             invalidate();
         }
     }

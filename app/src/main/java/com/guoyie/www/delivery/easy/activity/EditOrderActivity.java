@@ -15,12 +15,14 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.FullyGridLayoutManager;
 import com.guoyie.www.delivery.easy.adapter.GridImageAdapter;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
+import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.EditOrderContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityEditorderBinding;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetail;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetail;
+import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.EditOrderModel;
 import com.guoyie.www.delivery.easy.presenter.EditOrderPresenter;
 import com.guoyie.www.delivery.easy.toast.T;
@@ -71,6 +73,7 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
     private String mContactName;
     private String mContact;
     private String mEtRemark;
+    private UserInfoData mUserInfo;
 
     @Override
     public int getLayoutId() {
@@ -89,6 +92,11 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         mLeft_back =  getView(R.id.left_back);
         recyclerView =  findViewById(R.id.recycler);
+        mUserInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
+        //有CA权限时候
+        if (mUserInfo.getData().getInfo().isIs_ca()){
+            binding.llIsCa.setVisibility(View.GONE);
+        }
 
         mLeft_back.setOnClickListener(this);
         binding.llIntertype.setOnClickListener(this);
@@ -119,8 +127,8 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                 mTv_title.setText("编辑入库确认单");//标题
                 binding.goodsName.setText(mInputOrderDetail.getGoods_name());//商品名称
                 binding.instockType.setText(mInputOrderDetail.getInstock_type()==1?"车入库":"船入库");//入库类型
-                binding.contactName.setText(mInputOrderDetail.getContact_name());//仓库联系人
-                binding.contact.setText(mInputOrderDetail.getContact());//仓库联系方式
+                binding.contactName.setText(mInputOrderDetail.getReal_contact_name());//仓库联系人
+                binding.contact.setText(mInputOrderDetail.getReal_contact());//仓库联系方式
                 //初始化选择器的数据
                 goods.add("车入库");
                 goods.add("船入库");
@@ -131,8 +139,8 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                 mTv_title.setText("编辑出库确认单");//标题
                 binding.goodsName.setText(mOuterOrderDetail.getGoods_name());//商品名称
                 binding.instockType.setText(mOuterOrderDetail.getOutstock_type()==1?"车出库":"船出库");//入库类型
-                binding.contactName.setText(mOuterOrderDetail.getContact_name());//仓库联系人
-                binding.contact.setText(mOuterOrderDetail.getContact());//仓库联系方式
+                binding.contactName.setText(mOuterOrderDetail.getReal_contact_name());//仓库联系人
+                binding.contact.setText(mOuterOrderDetail.getReal_contact());//仓库联系方式
                 //初始化选择器的数据
                 goods.add("车出库");
                 goods.add("船出库");
@@ -287,7 +295,9 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                     T.showAnimToast(mContext,"请添加附件");
                 }else if (Tools.isNull(mEtRemark)){
                     T.showAnimToast(mContext,"请填写备注");
-                }else{
+                    //如果具C
+                }else {
+
                     Map<String, RequestBody> bodyMap = new HashMap<>();
                     String requstparams="";
                     if (mType==1){

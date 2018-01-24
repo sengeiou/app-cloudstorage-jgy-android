@@ -199,7 +199,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
         binding.nrecycler.setOnLoadMoreListener(this);
         binding.nrecycler.setLoadMoreEnable(true);
         binding.nrecycler.setAdapter(adapter);
-        binding.nrecycler.setErrorMessage("暂无消息提醒");
+
 
 
     }
@@ -327,6 +327,9 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
                 binding.swipeRefresh.setRefreshing(false);
             }
 
+
+            binding.nrecycler.setErrorMessage("暂无消息提醒");
+
         }
 
     }
@@ -334,6 +337,7 @@ public class TransTormorderActivity extends BaseActivity<TranssTockPresenter,Tra
     @Override
     public void error(String msg) {
         binding.swipeRefresh.setRefreshing(false);
+        binding.nrecycler.setErrorMessage(msg);
         showToast(msg);
 
     }

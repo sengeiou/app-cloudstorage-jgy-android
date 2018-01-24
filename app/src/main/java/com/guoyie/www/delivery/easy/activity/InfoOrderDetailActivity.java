@@ -103,17 +103,10 @@ import com.guoyie.www.delivery.easy.util.Constant;
         //contract_type 合同类型:1.储罐-短约，2.储罐-长约，3.储罐-包罐容，4.储罐-包罐
         switch (info.getContract_type()){
             case 1:
-                contract_type="短约";
-                break;
-            case 2:
-                contract_type="长约";
-                break;
-            case 3:
-                contract_type="包罐容";
-                break;
-            case 4:
                 contract_type="包罐";
                 break;
+            default:
+                contract_type="零租";
         }
         binding.tvContractType.setText(contract_type);//合同类型
         binding.tvCreateName.setText(info.getCreate_name());//企业联系人

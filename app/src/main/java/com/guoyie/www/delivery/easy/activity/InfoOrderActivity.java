@@ -188,7 +188,7 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
         binding.nrecycler.setOnLoadMoreListener(this);
         binding.nrecycler.setLoadMoreEnable(true);
         binding.nrecycler.setAdapter(adapter);
-        binding.nrecycler.setErrorMessage("暂无相关信息");
+
 
 
     }
@@ -299,8 +299,11 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
             } else{
                 binding.swipeRefresh.setRefreshing(false);
             }
-
+            binding.nrecycler.setErrorMessage("暂无相关信息");
         }
+
+
+
         
 
     }
@@ -309,6 +312,7 @@ public class InfoOrderActivity extends BaseActivity<StorAgePresenter,StoreAgeMod
     public void err_or(String msg) {
         //关闭下拉的进度条
         binding.swipeRefresh.setRefreshing(false);
+        binding.nrecycler.setErrorMessage(msg);
         showToast(msg);
     }
 

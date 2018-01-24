@@ -113,7 +113,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
         binding.nrecycler.setOnLoadMoreListener(this);
         binding.nrecycler.setLoadMoreEnable(true);
         binding.nrecycler.setAdapter(adapter);
-        binding.nrecycler.setErrorMessage("暂无相关入库单");
+
 
     }
 
@@ -338,7 +338,12 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
                 binding.swipeRefresh.setRefreshing(false);
         }
 
+            binding.nrecycler.setErrorMessage("暂无相关入库单");
+
         }
+
+
+
     }
 
 
@@ -347,6 +352,7 @@ public class InterOrderActivity extends BaseActivity<InputOrderPresenter,InputOr
     @Override
     public void err_or(String data) {
         binding.swipeRefresh.setRefreshing(false);
+        binding.nrecycler.setErrorMessage(data);
         showToast(data);
 
     }
