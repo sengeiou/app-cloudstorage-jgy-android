@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="储罐号"
                 android:textColor="#919191"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="商品名称"
                 android:textColor="#919191"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="罐容"
                 android:textColor="#919191"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:text="储罐性质"
                 android:textColor="#919191"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:text="储罐材质"
                 android:textColor="#919191"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
             <TextView

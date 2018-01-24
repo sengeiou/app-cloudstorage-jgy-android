@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="商品名称"
             android:textColor="#666666"
-            android:textSize="11sp"/>
+            android:textSize="14sp"/>
         <TextView
             android:id="@+id/tv_goods_name_value"
             android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
             android:layout_toRightOf="@id/tv_goods_name"
             android:text="环氧丙烷"
             android:textColor="#666666"
-            android:textSize="11sp"
+            android:textSize="14sp"
             android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tv_weight"
@@ -66,7 +66,7 @@
             android:paddingBottom="2dp"
             android:paddingTop="2dp"
             android:layout_marginTop="10dp"
-            android:textSize="10dp"
+            android:textSize="14sp"
             android:layout_below="@id/tv_goods_name"
             android:background="@drawable/textview_bg"/>
 
@@ -80,8 +80,8 @@
             android:paddingRight="4dp"
             android:paddingBottom="2dp"
             android:paddingTop="2dp"
-            android:layout_marginTop="25dp"
-            android:textSize="10dp"
+            android:layout_marginTop="29dp"
+            android:textSize="14sp"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/tv_weight"
             android:background="@drawable/textview_bg"/>

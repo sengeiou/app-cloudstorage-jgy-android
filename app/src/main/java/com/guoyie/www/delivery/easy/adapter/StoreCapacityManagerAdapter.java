@@ -34,7 +34,7 @@ public class StoreCapacityManagerAdapter extends NAdapter<StoreCapacityListBean.
         TextView goodsName = holder.itemView.findViewById(R.id.tv_store_type);//商品名
 
         storeNumber.setText(s.getStock_no());
-        emptyCapacity.setText(s.getGoods_empty_volume());
+        emptyCapacity.setText(s.getGoods_empty_volume()+"吨");
         goodsName.setText(s.getGoods_name());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

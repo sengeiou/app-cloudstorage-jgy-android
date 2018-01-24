@@ -46,8 +46,8 @@ public class CapacityDetailActivity extends BaseActivity implements View.OnClick
 
         mBinding.tvStoreNumber.setText(listBean.getStock_no());
         mBinding.tvGoodsName.setText(listBean.getGoods_name());
-        mBinding.tvEmptyCapacity.setText(listBean.getGoods_empty_volume());
-        mBinding.tvStoreCapacity.setText(listBean.getGoods_stock());
+        mBinding.tvEmptyCapacity.setText(listBean.getGoods_empty_volume()+"吨");
+        mBinding.tvStoreCapacity.setText(listBean.getGoods_stock()+"吨");
         mBinding.tvStorePrice.setText(listBean.getGoods_storage_price());
         mBinding.tvCapacityType.setText(listBean.getGoods_nature());
         mBinding.tvPs.setText(listBean.getRemark());

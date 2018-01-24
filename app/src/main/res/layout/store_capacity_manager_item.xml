@@ -62,12 +62,10 @@
             android:layout_height="wrap_content"
             android:text="商品品名"
             android:textColor="#666666"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
             android:paddingBottom="2dp"
             android:paddingTop="2dp"
             android:layout_marginTop="10dp"
-            android:textSize="10dp"
+            android:textSize="15sp"
             android:layout_below="@id/tv_capacity" />
 
         <TextView
@@ -81,7 +79,7 @@
             android:paddingBottom="2dp"
             android:paddingTop="2dp"
             android:layout_marginTop="30.5dp"
-            android:textSize="10dp"
+            android:textSize="15sp"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/tv_goods_name" />
     </RelativeLayout>
