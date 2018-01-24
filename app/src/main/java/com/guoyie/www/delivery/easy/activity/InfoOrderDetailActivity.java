@@ -119,12 +119,6 @@ import com.guoyie.www.delivery.easy.util.Constant;
         binding.tvApplyArea.setText(info.getProvince_name()+info.getCity_name()+info.getArea_name());//区域
         binding.tvRemark.setText(info.getRemark());//备注信息
 
-
-
-
-
-
-
         /*
 inquiry_no 询价单号goods_name 商品名称vendor_no 服务商编号province_code 省编号city_code 市编号
 vendor_province_code 服务商省编号vendor_city_code 服务商市编号area_code 县/县级市
@@ -132,12 +126,13 @@ create_at_start 创建开始时间create_at_end 创建结束时间contract_type 
 goods_id 商品IDcreate_name 创建者名字(创建账号)company_id 货主(预约单发起者) 公司company_name 货主(预约单发起者) 公司
 company_contact 联系方式vendor_name 服务商名称goods_num 商品数量goods_unit 单位remark 备注
 status 询价单状态:   1 =>进行中, -1 =>已取消
-         */
+ */
 
     }
 
     @Override
     public void err_or(String msg) {
+        showToast(msg);
 
+             }
     }
-}

@@ -15,19 +15,18 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.adapter.FullyGridLayoutManager;
 import com.guoyie.www.delivery.easy.adapter.GridImageAdapter;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
-import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.base.BaseResponse;
 import com.guoyie.www.delivery.easy.contract.EditOrderContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityEditorderBinding;
 import com.guoyie.www.delivery.easy.entity.InputOrderDetail;
 import com.guoyie.www.delivery.easy.entity.OuterOrderDetail;
-import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.model.EditOrderModel;
 import com.guoyie.www.delivery.easy.presenter.EditOrderPresenter;
 import com.guoyie.www.delivery.easy.toast.T;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
+import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.PopOneHelper;
 import com.guoyie.www.delivery.easy.util.Tools;
 import com.luck.picture.lib.PictureSelector;
@@ -73,7 +72,6 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
     private String mContactName;
     private String mContact;
     private String mEtRemark;
-    private UserInfoData mUserInfo;
 
     @Override
     public int getLayoutId() {
@@ -92,11 +90,6 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         mLeft_back =  getView(R.id.left_back);
         recyclerView =  findViewById(R.id.recycler);
-        mUserInfo = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
-        //有CA权限时候
-        if (mUserInfo.getData().getInfo().isIs_ca()){
-            binding.llIsCa.setVisibility(View.GONE);
-        }
 
         mLeft_back.setOnClickListener(this);
         binding.llIntertype.setOnClickListener(this);
@@ -109,9 +102,20 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
         switch (mType){
             case 1:
                 mInputOrderDetail = (InputOrderDetail) intent.getSerializableExtra(Constant.INPUT_EDIT_ORDER);
+                //判断是否具有CA时候判断显示添加附件的按钮
+                if (mInputOrderDetail.isIs_ca()){
+                    binding.llIsCa.setVisibility(View.GONE);
+                }else {
+                    binding.tvLoadNums.setText("上传附件(已上传"+mInputOrderDetail.getFile().size()+"张)");
+                }
                 break;
             case 2:
                 mOuterOrderDetail = (OuterOrderDetail) intent.getSerializableExtra(Constant.OUTER_EDIT_ORDER);
+                if (mOuterOrderDetail.isIs_ca()){
+                    binding.llIsCa.setVisibility(View.GONE);
+                }else {
+                    binding.tvLoadNums.setText("上传附件(已上传"+mOuterOrderDetail.getFile().size()+"张)");
+                }
                 break;
         }
 
@@ -291,37 +295,38 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                     T.showAnimToast(mContext,"请输入联系人");
                 }else if (Tools.isNull(mContact)){
                     T.showAnimToast(mContext,"请输入联系方式");
-                }else if(selectList.size()==0) {
+                }else if(mType==1&&mInputOrderDetail.getFile().size()==0&&selectList.size()==0&&!mInputOrderDetail.isIs_ca()) {
                     T.showAnimToast(mContext,"请添加附件");
-                }else if (Tools.isNull(mEtRemark)){
-                    T.showAnimToast(mContext,"请填写备注");
-                    //如果具C
+                }else if (mType==2&&mOuterOrderDetail.getFile().size()==0&&selectList.size()==0&&!mOuterOrderDetail.isIs_ca()){
+                    T.showAnimToast(mContext,"请添加附件");
                 }else {
+                       switch (mType){
+                           case 1://具有 CA的直接提交表单
+                               if (mInputOrderDetail.isIs_ca()){
+                                   interForm();
+                               }else {//先上传文件在提交表单
+                                   if (selectList.size()!=0){
+                                       loadFile();
+                                   }else {
+                                       interForm();
+                                   }
 
-                    Map<String, RequestBody> bodyMap = new HashMap<>();
-                    String requstparams="";
-                    if (mType==1){
-                        requstparams="&type=实际入库"+"&type_id="+mInputOrderDetail.getId();
-                    }else {
-                        requstparams="&type=实际出库"+"&type_id="+mOuterOrderDetail.getId();
-                    }
-                    String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.UPLOAD_OBJ+requstparams);
-                    RequestBody body = RequestBody.create(MediaType.parse("text/plain"), params);
-                    bodyMap.put("params",body);
-                  /*  for (int i = 0; i < selectList.size(); i++) {
-                        File file=new File(selectList.get(i).getCompressPath());
-                        bodyMap.put("file"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image*//*"), file));
-                    }
-*/
-                    for (LocalMedia localMedia : selectList) {
-                        File file=new File(localMedia.getCompressPath());
-                        bodyMap.put("file[]"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+                               }
+                               break;
+                           case 2:
+                               if (mOuterOrderDetail.isIs_ca()){
+                                   outerFrom();
+                               }else {//先上传文件在提交表单
+                                   if (selectList.size()!=0){
+                                       loadFile();
+                                   }else {
+                                       outerFrom();
+                                   }
 
-                    }
-                    // bodyMap.put(key + "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
-                   // Map<String, RequestBody> bodyMap = UploadManage.HandleImg(params, hashMap);
-                  //  DebugUtil.i("上传图片大小::" + bodyMap.size());
-                    mPresenter.requstreturneditLoadobj(bodyMap);
+                               }
+
+                               break;
+                       }
 
                 }
 
@@ -331,6 +336,49 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
 
 
         }
+    }
+
+    private void outerFrom() {
+        String params2= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.OUTER_ORDER_UPOUTSTOCK+"&id="+mOuterOrderDetail.getId()+
+                "&real_outsock_no="+mOuterOrderDetail.getReal_outsock_no()+"&real_outstock_type="+(mInstockType.equals("车出库")?1:2)+"&real_contact_name="+mContactName
+                +"&real_contact="+mContact+"&real_remark="+mEtRemark);
+        String decrypt = BlowfishTools.decrypt(HttpUtils.key, params2);
+        DebugUtil.debug(decrypt);
+        mPresenter.requsteditouterstock(params2);
+    }
+
+    private void interForm() {
+        String params1= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INTER_ORDER_UPINSTOCK+"&id="+mInputOrderDetail.getId()+
+                "&shop_company_id="+mInputOrderDetail.getShop_company_id()+"&real_instock_type="+(mInstockType.equals("车出库")?1:2)+"&real_contact_name="+mContactName
+                +"&real_contact="+mContact+"&real_remark="+mEtRemark);
+        mPresenter.requsteditinterstock(params1);
+    }
+
+    private void loadFile() {
+        Map<String, RequestBody> bodyMap = new HashMap<>();
+        String requstparams="";
+        if (mType==1){
+            requstparams="&type=实际入库"+"&type_id="+mInputOrderDetail.getId();
+        }else {
+            requstparams="&type=实际出库"+"&type_id="+mOuterOrderDetail.getId();
+        }
+        String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.UPLOAD_OBJ+requstparams);
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"), params);
+        bodyMap.put("params",body);
+                  /*  for (int i = 0; i < selectList.size(); i++) {
+                        File file=new File(selectList.get(i).getCompressPath());
+                        bodyMap.put("file"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image*//*"), file));
+                    }
+*/
+        for (LocalMedia localMedia : selectList) {
+            File file=new File(localMedia.getCompressPath());
+            bodyMap.put("file[]"+ "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+
+        }
+        // bodyMap.put(key + "\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
+        // Map<String, RequestBody> bodyMap = UploadManage.HandleImg(params, hashMap);
+        //  DebugUtil.i("上传图片大小::" + bodyMap.size());
+        mPresenter.requstreturneditLoadobj(bodyMap);
     }
 
     @Override
@@ -364,16 +412,10 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
             //图片上传成功后在提交表单内容
             switch (mType){
                 case 1://入库编辑
-                String params1=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.INTER_ORDER_UPINSTOCK+"&id="+mInputOrderDetail.getId()+
-                "&shop_company_id="+mInputOrderDetail.getShop_company_id()+"&real_instock_type="+mInstockType+"&real_contact_name="+mContactName
-                +"&real_contact="+mContact+"&real_remark="+mEtRemark);
-                mPresenter.requsteditinterstock(params1);
+                    interForm();
                 break;
                 case 2://出库编辑
-                    String params2=BlowfishTools.encrypt(HttpUtils.key,HttpUtils.OUTER_ORDER_UPOUTSTOCK+"&id="+mOuterOrderDetail.getId()+
-                            "&real_outsock_no="+mOuterOrderDetail.getReal_outsock_no()+"&real_outstock_type ="+(mInstockType.equals("车出库")?1:2)+"&real_contact_name="+mContactName
-                            +"&real_contact="+mContact+"&real_remark="+mEtRemark);
-                    mPresenter.requsteditouterstock(params2);
+                    outerFrom();
                     break;
             }
         }

@@ -106,6 +106,24 @@ public class InputOrderDetail implements Serializable {
     private List<CarBean>       car;
     private List<ShipBean>       ship;
     private List<LogBean> log;
+    private List<FileBean> file;
+    private boolean is_ca;
+
+    public boolean isIs_ca() {
+        return is_ca;
+    }
+
+    public void setIs_ca(boolean is_ca) {
+        this.is_ca = is_ca;
+    }
+
+    public List<FileBean> getFile() {
+        return file;
+    }
+
+    public void setFile(List<FileBean> file) {
+        this.file = file;
+    }
 
     public String getId() {
         return id;
@@ -791,4 +809,81 @@ public class InputOrderDetail implements Serializable {
         }
     }
 
+    public static class FileBean implements Serializable {
+
+
+        /**
+         * id : 2
+         * type : 实际入库
+         * type_id : 1
+         * addr : http://pic.chinayie.com/vendorFile/20171227/name5a4307f0033ef.jpg
+         * status : 1
+         * create_at : 2017-12-27 10:39:24
+         * update_at : 2017-12-27 10:39:24
+         */
+
+        private String id;
+        private String type;
+        private String type_id;
+        private String addr;
+        private String status;
+        private String create_at;
+        private String update_at;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getType_id() {
+            return type_id;
+        }
+
+        public void setType_id(String type_id) {
+            this.type_id = type_id;
+        }
+
+        public String getAddr() {
+            return addr;
+        }
+
+        public void setAddr(String addr) {
+            this.addr = addr;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getCreate_at() {
+            return create_at;
+        }
+
+        public void setCreate_at(String create_at) {
+            this.create_at = create_at;
+        }
+
+        public String getUpdate_at() {
+            return update_at;
+        }
+
+        public void setUpdate_at(String update_at) {
+            this.update_at = update_at;
+        }
+    }
 }
