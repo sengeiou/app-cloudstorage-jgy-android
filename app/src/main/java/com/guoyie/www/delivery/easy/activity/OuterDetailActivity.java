@@ -174,11 +174,10 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
             public void onClick(View view) {
                 if (isok){//完成出库的接口
                     String params1 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_OUTER_HANDLE + "&id=" + mDetail.getId() + "&type=出库"
-                            +"&real_qty="+mDetail.getReal_qty()+"&shop_company_id="+mDetail.getShop_company_id());
+                            +"&real_qty="+(mDetail.getReal_qty()==null?0:mDetail.getReal_qty())+"&shop_company_id="+mDetail.getShop_company_id());
                     String encrypt = BlowfishTools.decrypt(HttpUtils.key, params1);
                     DebugUtil.debug("heheh"+encrypt);
                     mPresenter.requstouterHandle(params1);
-
                 }else {
                     //走审核通过的接口的逻辑
                     String params2 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_UPDATE+ "&id=" + mDetail.getId() + "&status=" + status);
