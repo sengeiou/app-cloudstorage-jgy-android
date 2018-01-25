@@ -71,7 +71,7 @@ public class StoreDetailActivity extends BaseActivity<StoreDetailPresenter,Store
         if (storeDetailBean.isOk()){
             mBinding.tvStoreNumber.setText(storeDetailBean.getData().getJar_no());//储罐号
             mBinding.tvGoodsName.setText(storeDetailBean.getData().getGoods_name());//商品名
-            mBinding.tvStoreCapacity.setText(storeDetailBean.getData().getStock()+"吨");//罐容
+            mBinding.tvStoreCapacity.setText(storeDetailBean.getData().getStock()+storeDetailBean.getData().getUnit());//罐容
             mBinding.tvStoreType.setText(storeDetailBean.getData().getJar_type());//储罐性质
             mBinding.tvStoreMaterial.setText(storeDetailBean.getData().getJar_material());//储罐材质
         }else {

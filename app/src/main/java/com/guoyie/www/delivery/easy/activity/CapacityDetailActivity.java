@@ -2,18 +2,15 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.databinding.ActivityCapacityDetailBinding;
 import com.guoyie.www.delivery.easy.entity.StoreCapacityListBean;
 
-import java.io.Serializable;
 
 public class CapacityDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -46,8 +43,8 @@ public class CapacityDetailActivity extends BaseActivity implements View.OnClick
 
         mBinding.tvStoreNumber.setText(listBean.getStock_no());
         mBinding.tvGoodsName.setText(listBean.getGoods_name());
-        mBinding.tvEmptyCapacity.setText(listBean.getGoods_empty_volume()+"吨");
-        mBinding.tvStoreCapacity.setText(listBean.getGoods_stock()+"吨");
+        mBinding.tvEmptyCapacity.setText(listBean.getGoods_empty_volume()+listBean.getGoods_unit());
+        mBinding.tvStoreCapacity.setText(listBean.getGoods_stock()+listBean.getGoods_unit());
         mBinding.tvStorePrice.setText(listBean.getGoods_storage_price());
         mBinding.tvCapacityType.setText(listBean.getGoods_nature());
         mBinding.tvPs.setText(listBean.getRemark());
