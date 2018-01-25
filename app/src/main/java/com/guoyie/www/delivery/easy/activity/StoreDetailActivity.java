@@ -2,14 +2,10 @@ package com.guoyie.www.delivery.easy.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apkfuns.logutils.LogUtils;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
@@ -42,8 +38,8 @@ public class StoreDetailActivity extends BaseActivity<StoreDetailPresenter,Store
     public void initView() {
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
 
-        mTv_title = (TextView) getView(R.id.tv_title);
-        mIv_back = (ImageView) getView(R.id.left_back);
+        mTv_title = getView(R.id.tv_title);
+        mIv_back =  getView(R.id.left_back);
         mTv_title.setText("储罐详情");
         mIv_back.setImageResource(R.mipmap.left_arrow);
 

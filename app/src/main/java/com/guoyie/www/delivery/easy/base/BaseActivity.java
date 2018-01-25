@@ -34,6 +34,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         return (T) findViewById(id);
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
