@@ -22,6 +22,7 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void initPresenter() {
 
+
     }
 
     @Override
@@ -43,6 +44,7 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
             case R.id.left_back:
                 finish();
                 break;
+
         }
     }
 }

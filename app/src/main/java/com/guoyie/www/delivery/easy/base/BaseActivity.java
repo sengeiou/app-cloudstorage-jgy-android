@@ -21,7 +21,7 @@ import com.guoyie.www.delivery.easy.util.TUtil;
 import com.guoyie.www.delivery.easy.widget.LightStatusBarUtils;
 import com.umeng.analytics.MobclickAgent;
 
-public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity {
     public    T                  mPresenter;
     public    E                  mModel;
     public    Context            mContext;
