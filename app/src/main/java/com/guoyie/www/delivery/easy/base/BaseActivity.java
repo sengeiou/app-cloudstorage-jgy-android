@@ -48,7 +48,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         mContext = this;
         AppUtils.init(this);
         setContentView(getLayoutId());
-        initStatusBar(false);
+        initStatusBar(true);
         manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mPresenter = TUtil.getT(this, 0);
         mModel = TUtil.getT(this, 1);
