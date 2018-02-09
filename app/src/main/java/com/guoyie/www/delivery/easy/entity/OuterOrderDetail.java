@@ -105,6 +105,15 @@ public class OuterOrderDetail implements Serializable {
     private List<ShipBean>       ship;
     private List<LogBean> log;
     private List<FileBean> file;
+    private String goods_remark;
+
+    public String getGoods_remark() {
+        return goods_remark;
+    }
+
+    public void setGoods_remark(String goods_remark) {
+        this.goods_remark = goods_remark;
+    }
 
     public List<FileBean> getFile() {
         return file;

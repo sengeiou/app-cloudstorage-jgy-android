@@ -129,6 +129,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                     showToast("附件地址不存在");
 
                 }
+
                 break;
 
             case R.id.ll_ca_confirm_viewpath:
@@ -196,7 +197,6 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
 
     @Override
     public void returnOuterDetailData(OuterOrderDetailData data) {
-        //进行数据处理
         //进行数据处理
         if (data.isOk()){
             mDetail = data.getData();
@@ -290,7 +290,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         //商品明细的数据
         binding.goodsName.setText(data.getGoods_name()+" | "+data.getOrder_qty()+data.getGoods_unit());//品名
         binding.goodsNature.setText(data.getGoods_nature());//货物的性质
-        binding.remark.setText("备注："+data.getRemark());//备注
+        binding.remark.setText("备注："+data.getGoods_remark());//备注
 
         //入库单详细信息
         binding.shopOrderNo.setText(data.getShop_order_no());//交易平台订单号
@@ -303,7 +303,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         initships(data.getShip());
         //出库确认单的数据
         binding.instockType.setText(data.getOutstock_type()==1?"车出库":"船出库");//入库的方式
-        binding.realQty.setText(data.getReal_qty());//入库数量
+        binding.realQty.setText(Tools.isNull(data.getReal_qty())?"0":data.getReal_qty());//入库数量
         binding.realContactName.setText(data.getReal_contact_name());//仓库联系人
         binding.tvGoodsName.setText(data.getGoods_name());//品名
         binding.contactNum.setText(data.getReal_contact());

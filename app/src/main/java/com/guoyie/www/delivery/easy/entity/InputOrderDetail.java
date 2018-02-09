@@ -108,6 +108,15 @@ public class InputOrderDetail implements Serializable {
     private List<LogBean> log;
     private List<FileBean> file;
     private boolean is_ca;
+    private  String  goods_remark;
+
+    public String getGoods_remark() {
+        return goods_remark;
+    }
+
+    public void setGoods_remark(String goods_remark) {
+        this.goods_remark = goods_remark;
+    }
 
     public boolean isIs_ca() {
         return is_ca;
