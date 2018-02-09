@@ -214,16 +214,16 @@
                 android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
-            <TextView
-                android:id="@+id/tv_ps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12344556"
-                android:textColor="#111111"
-                android:textSize="15sp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp" />
+            <!--<TextView-->
+                <!--android:id="@+id/tv_ps"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="12344556"-->
+                <!--android:textColor="#111111"-->
+                <!--android:textSize="15sp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="20dp" />-->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -232,5 +232,17 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_ps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="12344556"
+            android:textColor="#111111"
+            android:textSize="15sp"
+            android:background="#fff"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="20dp"/>
     </LinearLayout>
 </layout>
