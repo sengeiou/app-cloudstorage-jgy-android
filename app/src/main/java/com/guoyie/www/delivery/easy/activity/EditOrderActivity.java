@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,6 +42,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -118,6 +121,25 @@ public class EditOrderActivity extends BaseActivity<EditOrderPresenter,EditOrder
                 }
                 break;
         }
+
+        //判断是否是手机号码
+        binding.contact.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                String mobilePhone =  binding.contact.getText().toString().trim();
+                if (!TextUtils.isEmpty(mobilePhone)){
+                    String regex = "^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\\d{8}$";
+                    Pattern pattern = Pattern.compile(regex);
+                    Matcher matcher = pattern.matcher(mobilePhone);
+                    boolean b = matcher.find();
+                    if (!b){
+                       showToast("请输入正确的11位手机号码");
+                        binding.contact.setText("");
+                    }
+
+                }
+            }
+        });
 
         initData(mType);
         initRecycleView();

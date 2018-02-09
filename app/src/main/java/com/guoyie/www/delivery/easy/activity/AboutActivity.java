@@ -22,20 +22,20 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void initPresenter() {
 
-
     }
 
     @Override
     public void initView() {
 
         mBinding = DataBindingUtil.setContentView(this,getLayoutId());
+
         //处理左侧的箭头
         leftBack = (ImageView) getView(R.id.left_back);
         title = (TextView) getView(R.id.tv_title);
         title.setText("关于交割易");
 
         leftBack.setOnClickListener(this);
-        // TODO: 2018/1/8  获取版本号，点击检查更新
+        // TODO: 2018/1/8 获取版本号，点击检查更新
     }
 
     @Override

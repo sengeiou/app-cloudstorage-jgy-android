@@ -133,6 +133,7 @@
                     style="@style/tv_editdetail_title"/>
 
                 <com.guoyie.www.delivery.easy.widget.FocusEditText
+
                     android:id="@+id/contact"
                     android:background="@null"
                     android:textColor="#111111"

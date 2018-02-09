@@ -78,7 +78,6 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
     }
 
     private void initIcon() {
-
         UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
         if(userInfoData!=null){
             UserInfo data = userInfoData.getData();

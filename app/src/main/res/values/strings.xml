@@ -4,4 +4,5 @@
     <string name="no_net">网络不可用,请检查你的网络~</string>
     <string name="net_error">网络访问错误，请稍后再试</string>
     <string name="str_dot_num">%1$s/%2$s</string>
+    <string name="filter_vcode">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 </resources>

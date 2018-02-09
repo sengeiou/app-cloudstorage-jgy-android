@@ -53,6 +53,8 @@ public class AddOrderDetailActivity extends BaseActivity<AddOrderPresenter,AddOr
     //放储罐号
     private  List<String>nums=new ArrayList<>();
 
+
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_editorderdetail;

@@ -23,6 +23,7 @@ import com.guoyie.www.delivery.easy.presenter.InputOrderDetaliPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.util.DebugUtil;
+import com.guoyie.www.delivery.easy.util.Tools;
 
 import java.util.List;
 
@@ -91,7 +92,6 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
                 showUpdateDialog(3,"提示","确定拒绝本条入库单？",false);
             }else {
                 if (mDetail!=null) {
-
                     Bundle bundle = new Bundle();
                     bundle.putInt(Constant.STOCK_TYPE,1);
                     bundle.putSerializable(Constant.INPUT_EDIT_ORDER, mDetail);
@@ -122,24 +122,24 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
             case R.id.ll_ca_viewpath://CA的跳转
                     String ca_viewpath = mDetail.getCa_viewpath();
-                    if (ca_viewpath!=null) {
+                    if (!Tools.isNull(ca_viewpath)) {
                         Bundle bundle = new Bundle();
                         bundle.putString(Constant.TRANSSTOCK_CA_ID, ca_viewpath);
                         startAct(CAActivity.class, bundle);
                     }else {
-                        showToast("CA地址不存在");
+                        showToast("附件地址不存在");
 
             }
                  break;
 
             case R.id.ll_ca_confirm_viewpath://确定CA的跳转
                     String ca_confirm_viewpath = mDetail.getCa_confirm_viewpath();
-                if (ca_confirm_viewpath!=null) {
+                if (!Tools.isNull(ca_confirm_viewpath)) {
                     Bundle bundle = new Bundle();
                     bundle.putString(Constant.TRANSSTOCK_CA_ID, ca_confirm_viewpath);
                     startAct(CAActivity.class, bundle);
                 }else {
-                    showToast("CA地址不存在");
+                    showToast("附件地址不存在");
                 }
 
                 break;

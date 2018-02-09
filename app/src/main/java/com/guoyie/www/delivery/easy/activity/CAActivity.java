@@ -53,7 +53,7 @@ public class CAActivity extends BaseActivity implements View.OnClickListener {
 
         left_back = (ImageView) getView(R.id.left_back);
         tv_title = (TextView) getView(R.id.tv_title);
-        tv_title.setText("CA详情");
+        tv_title.setText("附件详情");
         left_back.setOnClickListener(this);
         String ca_viewpath = getIntent().getStringExtra(Constant.TRANSSTOCK_CA_ID);
         WebSettings settings = binding.wvAgent.getSettings();
