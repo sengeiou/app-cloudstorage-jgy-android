@@ -22,7 +22,6 @@ import com.guoyie.www.delivery.easy.model.OuterOderDetailModel;
 import com.guoyie.www.delivery.easy.presenter.OuterOrderDetailPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 import com.guoyie.www.delivery.easy.util.Constant;
-import com.guoyie.www.delivery.easy.util.DebugUtil;
 import com.guoyie.www.delivery.easy.util.Tools;
 
 import java.util.List;
@@ -101,7 +100,6 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 break;
             case R.id.tv_agree:
                 //调到订单编辑页面
-
                 //调到编辑详情页面status 4:审核通过 3:审核不通过
                 String agree = binding.tvAgree.getText().toString().trim();
                 if (agree.equals("通过")){
@@ -177,14 +175,14 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
                 if (isok){//完成出库的接口
                     String params1 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.INTER_OUTER_HANDLE + "&id=" + mDetail.getId() + "&type=出库"
                             +"&real_qty="+(mDetail.getReal_qty()==null?0:mDetail.getReal_qty())+"&shop_company_id="+mDetail.getShop_company_id());
-                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params1);
-                    DebugUtil.debug("heheh"+encrypt);
+//                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params1);
+//                    DebugUtil.debug("heheh"+encrypt);
                     mPresenter.requstouterHandle(params1);
                 }else {
                     //走审核通过的接口的逻辑
                     String params2 = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.OUTER_ORDER_UPDATE+ "&id=" + mDetail.getId() + "&status=" + status);
-                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params2);
-                    DebugUtil.debug("heheh"+encrypt);
+//                    String encrypt = BlowfishTools.decrypt(HttpUtils.key, params2);
+//                    DebugUtil.debug("heheh"+encrypt);
                     mPresenter.requstOuterDetailUpdate(params2);
                 }
 

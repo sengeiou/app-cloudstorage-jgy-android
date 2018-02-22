@@ -23,7 +23,7 @@ public class OuterOrderDetailPresenter extends OutOrderDetailContract.Presenter 
             protected void _onNext(OuterOrderDetailData outerOrderDetailData) {
                 mView.returnOuterDetailData(outerOrderDetailData);
 
-            }
+        }
 
             @Override
             protected void _onError(String message) {

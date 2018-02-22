@@ -304,7 +304,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
         //处理车辆明细的数据
         initcars(data.getCar());
         //处理车辆明细的数据
-        initships(data.getShip());
+        initShips(data.getShip());
         //入库确认单的数据
         binding.instockType.setText(data.getInstock_type()==1?"车入库":"船入库");//入库的方式
         binding.realQty.setText(Tools.isNull(data.getReal_qty())?"0":data.getReal_qty());//入库数量
@@ -363,7 +363,7 @@ public class InterDetailActivity extends BaseActivity<InputOrderDetaliPresenter,
 
     }
 
-    private void initships(List<InputOrderDetail.ShipBean> ship) {
+    private void initShips(List<InputOrderDetail.ShipBean> ship) {
         if (ship.size()>0){
             binding.gridLayoutShip.removeAllViews();
             for (int i = 0; i < ship.size(); i++) {
