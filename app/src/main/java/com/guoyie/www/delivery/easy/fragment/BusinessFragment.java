@@ -23,6 +23,7 @@ import com.guoyie.www.delivery.easy.application.GApp;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
 import com.guoyie.www.delivery.easy.databinding.FcBusinessBinding;
+import com.guoyie.www.delivery.easy.entity.AppVersionBean;
 import com.guoyie.www.delivery.easy.entity.Banner;
 import com.guoyie.www.delivery.easy.entity.BannerData;
 import com.guoyie.www.delivery.easy.entity.UserInfo;
@@ -72,6 +73,9 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         mLeft_back.setVisibility(View.GONE);
         mTv_title =  getView(R.id.tv_title);
         mTv_title.setText("我的业务");
+        //检查更新
+        String params= BlowfishTools.encrypt(HttpUtils.key,HttpUtils.GET_APPVERSION+"&type=1");
+        mPresenter.requestAppVersion(params);
         initBanner();
         initIcon();
         initBottom();
@@ -90,7 +94,7 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
                     .apply(requestOptions)
                     .into(binding.imageview);
 
-
+            binding.tvCompanyname.setText(data.getInfo().getVendor_name());//公司名称
             int type = data.getType();
             String serviceDescription = "管理员";
             if (type==0){
@@ -175,8 +179,12 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
     }
 
     @Override
+    public void returnAppVersion(AppVersionBean appVersionBean) {
+        showToast(appVersionBean.getCode());
+    }
+
+    @Override
     public void error(String data) {
         showToast(data);
-
     }
 }

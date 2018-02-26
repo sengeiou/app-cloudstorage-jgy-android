@@ -17,6 +17,7 @@ import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseFragment;
 import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
 import com.guoyie.www.delivery.easy.databinding.FcStorehouseBinding;
+import com.guoyie.www.delivery.easy.entity.AppVersionBean;
 import com.guoyie.www.delivery.easy.entity.Banner;
 import com.guoyie.www.delivery.easy.entity.BannerData;
 import com.guoyie.www.delivery.easy.model.BusinessFragmentModel;
@@ -132,6 +133,11 @@ public class StoreHouseFragment extends BaseFragment<BusinessFragmentPresenter,B
             }
             mBinding.banner.setData(R.layout.item_fresco, imgs, null);
         }
+    }
+
+    @Override
+    public void returnAppVersion(AppVersionBean appVersionBean) {
+        //这里不用检查更新，实现此方法是因为接口强制要求的
     }
 
     @Override

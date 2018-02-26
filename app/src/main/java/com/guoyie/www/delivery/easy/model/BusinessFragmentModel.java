@@ -3,6 +3,7 @@ package com.guoyie.www.delivery.easy.model;
 import com.guoyie.www.delivery.easy.api.ApiManager;
 import com.guoyie.www.delivery.easy.api.HostType;
 import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
+import com.guoyie.www.delivery.easy.entity.AppVersionBean;
 import com.guoyie.www.delivery.easy.entity.BannerData;
 import com.guoyie.www.delivery.easy.rx.RxUtil;
 
@@ -20,5 +21,12 @@ public class BusinessFragmentModel implements BusinessFragmentContract.Model {
     public Observable<BannerData> getBanner(String params) {
         return  ApiManager.getService(HostType.HTTP_ORDINARY).getBanner(params).compose(RxUtil.<BannerData>rxSchedulerHelper());
 
+    }
+
+    @Override
+    public Observable<AppVersionBean> getAppVersion(String params) {
+        return ApiManager.getService(HostType.HTTP_ORDINARY)
+                .getAppVersion(params)
+                .compose(RxUtil.<AppVersionBean>rxSchedulerHelper());
     }
 }

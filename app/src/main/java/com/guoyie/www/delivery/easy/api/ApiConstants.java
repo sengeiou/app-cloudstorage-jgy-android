@@ -23,7 +23,8 @@ public class ApiConstants {
 
  //   public static final String BASE_HOST = "http://wms.api.app.chinayie.com/";//正式服务器的地址
    // public static final String BASE_HOST = "http://app.api.yc.dev.chinayie.net/";//测试地址
-    public static final String BASE_HOST = "http://app.api.yc.sit.chinayie.net/";//测试地址
+    //public static final String BASE_HOST = "http://app.api.yc.sit.chinayie.net/";//测试地址
+    public static final String BASE_HOST = "http://app.api.yc.uat.chinayie.net/";
 
 
 

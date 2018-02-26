@@ -1,6 +1,7 @@
 package com.guoyie.www.delivery.easy.api;
 
 import com.guoyie.www.delivery.easy.base.BaseResponse;
+import com.guoyie.www.delivery.easy.entity.AppVersionBean;
 import com.guoyie.www.delivery.easy.entity.BannerData;
 import com.guoyie.www.delivery.easy.entity.CapacityGoodsNameBean;
 import com.guoyie.www.delivery.easy.entity.CapacityStoreNumberBean;
@@ -120,6 +121,9 @@ public interface ApiService {
     //完成入库的接口
     @GET("?")
     Observable<BaseResponse>getOrderHandle(@Query("params") String params);//完成入库
+    //获取版本号，检测更新
+    @GET("?")
+    Observable<AppVersionBean> getAppVersion(@Query("params") String params);
 
 
 

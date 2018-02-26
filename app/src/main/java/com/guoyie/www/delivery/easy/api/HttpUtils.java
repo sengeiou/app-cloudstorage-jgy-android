@@ -9,6 +9,8 @@ public class HttpUtils {
     public static final String USER_INFO      = "USER_INFO"; //用户名和密码 以userName+"&"+passWord格式缓存
     public static final String OUT_LOGIN      = "OUT_LOGIN";
 
+    //获取最新版本号，检查更新
+    public static final String GET_APPVERSION = "model=index&action=getversions";
 
     public static String key  = "chinayieapp";//app的秘钥
     //获取服务器时间的接口

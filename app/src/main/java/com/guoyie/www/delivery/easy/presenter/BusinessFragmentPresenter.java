@@ -1,6 +1,7 @@
 package com.guoyie.www.delivery.easy.presenter;
 
 import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
+import com.guoyie.www.delivery.easy.entity.AppVersionBean;
 import com.guoyie.www.delivery.easy.entity.BannerData;
 import com.guoyie.www.delivery.easy.rx.RxSubscriber;
 
@@ -29,5 +30,22 @@ public class BusinessFragmentPresenter extends BusinessFragmentContract.Presente
         });
         mRxManage.add(subscribe);
 
+    }
+
+    @Override
+    public void requestAppVersion(String params) {
+        Subscription subscribe = mModel.getAppVersion(params)
+                .subscribe(new RxSubscriber<AppVersionBean>(mContext, false) {
+                    @Override
+                    protected void _onNext(AppVersionBean appVersionBean) {
+                        mView.returnAppVersion(appVersionBean);
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+                        mView.error(message);
+                    }
+                });
+        mRxManage.add(subscribe);
     }
 }
