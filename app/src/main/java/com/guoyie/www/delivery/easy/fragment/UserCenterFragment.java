@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.AboutActivity;
 import com.guoyie.www.delivery.easy.activity.LoginActivity;
@@ -80,6 +81,12 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 serviceDescription = "管理员";
             }
             mBinding.tvServiceDescription.setText(serviceDescription);
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.error(R.drawable.icon);
+            Glide.with(this)
+                    .load(data.getAvatar())
+                    .apply(requestOptions)
+                    .into(mIcon);
         }
         mIcon.setOnClickListener(this);//点击头像
         mLlAbout.setOnClickListener(this);//关于交割易

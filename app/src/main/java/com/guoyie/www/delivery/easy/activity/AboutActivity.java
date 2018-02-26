@@ -42,7 +42,8 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
             mVersionCode = packageInfo.versionCode;
             mVersionName = packageInfo.versionName;
             mBinding.tvVersion.setText(mVersionName);
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException
+                e) {
             e.printStackTrace();
         }
 

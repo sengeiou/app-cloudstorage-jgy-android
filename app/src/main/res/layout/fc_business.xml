@@ -101,7 +101,6 @@
                                     android:id="@+id/imageview"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:src="@mipmap/guide01"
                                     android:scaleType="centerCrop"
                                     app:ratio="1"
                                     />

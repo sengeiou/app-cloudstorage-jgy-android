@@ -1,6 +1,7 @@
 package com.guoyie.www.delivery.easy.fragment;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.RequestOptions;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.InfoOrderActivity;
@@ -73,18 +76,19 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         initIcon();
         initBottom();
 
-
-
     }
 
     private void initIcon() {
         UserInfoData userInfoData = (UserInfoData) GApp.getInstance().readObject(Constant.USER_INFO_CACHE);
         if(userInfoData!=null){
             UserInfo data = userInfoData.getData();
-           Glide.with(mContext)
-                   .load(data.getAvatar())
-                   .into(binding.imageview);//图像
-            binding.tvCompanyname.setText(data.getInfo().getVendor_name());//公司名称
+
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.error(R.drawable.icon);
+            Glide.with(this)
+                    .load(data.getAvatar())
+                    .apply(requestOptions)
+                    .into(binding.imageview);
 
 
             int type = data.getType();
