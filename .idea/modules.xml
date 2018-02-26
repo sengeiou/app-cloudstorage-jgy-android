@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cloudstorage.iml" filepath="$PROJECT_DIR$/cloudstorage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-cloudstorage-jgy-android.iml" filepath="$PROJECT_DIR$/app-cloudstorage-jgy-android.iml" />
+      <module fileurl="file://F:\Android\project\cloudstorage\app-cloudstorage-jgy-android.iml" filepath="F:\Android\project\cloudstorage\app-cloudstorage-jgy-android.iml" />
+      <module fileurl="file://D:\Project\app-cloudstorage-jgy-android\cloudstorage.iml" filepath="D:\Project\app-cloudstorage-jgy-android\cloudstorage.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>

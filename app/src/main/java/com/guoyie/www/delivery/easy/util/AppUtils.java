@@ -29,11 +29,13 @@
 
 package com.guoyie.www.delivery.easy.util;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -120,6 +122,7 @@ public class AppUtils {
      * @param name
      * @return
      */
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static File getNewApk(Context context, String name) {
         String apkPath = context.getExternalFilesDir("apk").getAbsolutePath();
         File file = new File(apkPath, "/" + name + ".apk");

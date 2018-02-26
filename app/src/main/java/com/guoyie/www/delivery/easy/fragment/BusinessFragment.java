@@ -1,7 +1,6 @@
 package com.guoyie.www.delivery.easy.fragment;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
@@ -104,7 +102,6 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
                 serviceDescription = "管理员";
             }
             binding.tvUserName.setText(data.getLoginname()+" | "+serviceDescription);//用户名和身份
-
         }
     }
 

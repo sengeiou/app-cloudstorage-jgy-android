@@ -35,7 +35,6 @@ public interface OutOrderDetailContract {
 
 
     abstract class Presenter extends BasePresenter<View, Model> {
-
         abstract public void requstOuterDetailData(String params);
         abstract public void requstOuterDetailUpdate(String params);
         public abstract void requstouterHandle(String params);
