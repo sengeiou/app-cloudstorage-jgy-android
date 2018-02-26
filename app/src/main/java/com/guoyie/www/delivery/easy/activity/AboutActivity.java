@@ -1,5 +1,7 @@
 package com.guoyie.www.delivery.easy.activity;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +15,8 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
     private ActivityAboutBinding mBinding;
     private ImageView leftBack;
     private TextView title;
+    private int mVersionCode;
+    private String mVersionName;
 
     @Override
     public int getLayoutId() {
@@ -33,6 +37,14 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
         leftBack = (ImageView) getView(R.id.left_back);
         title = (TextView) getView(R.id.tv_title);
         title.setText("关于交割易");
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            mVersionCode = packageInfo.versionCode;
+            mVersionName = packageInfo.versionName;
+            mBinding.tvVersion.setText(mVersionName);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         leftBack.setOnClickListener(this);
         // TODO: 2018/1/8 获取版本号，点击检查更新
