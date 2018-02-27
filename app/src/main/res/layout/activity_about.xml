@@ -48,15 +48,15 @@
             android:text="        交割易是由国烨跨境电商平台为仓储服务商打造的一款智能仓储管理平台，协助仓储服务商解决仓储管理难、运营难、操作难的局面，从而达到提高效能、降低成本的根本"/>
 
         <RelativeLayout
+            android:id="@+id/tv_check_update"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff">
             <TextView
-                android:id="@+id/tv_check_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="已是最新版本"
+                android:text="检查更新"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"/>
             <ImageView

@@ -304,15 +304,16 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         };
         getContext().registerReceiver(broadcastReceiver,intentFilter);
     }
-    /*
-    * 自定义内容观察者，实时返回apk下载进度
-    *
-    * */
+
     @Override
     public void error(String data) {
         showToast(data);
     }
 
+    /*
+    * 自定义内容观察者，实时返回apk下载进度
+    *
+    * */
     class MyContentObserver extends ContentObserver {
 
         public MyContentObserver(Handler handler) {
