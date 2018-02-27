@@ -325,18 +325,20 @@
 
             <!--6-->
 
-            <RelativeLayout
+            <LinearLayout
+                android:orientation="horizontal"
                 style="@style/rl_inforder">
 
                 <TextView
-                    android:text="备注信息"
+                    android:text="备注信息 "
                     style="@style/rl_tv_title"/>
 
                 <TextView
+
                     android:id="@+id/tv_remark"
                     style="@style/rl_tv_content"/>
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </LinearLayout>

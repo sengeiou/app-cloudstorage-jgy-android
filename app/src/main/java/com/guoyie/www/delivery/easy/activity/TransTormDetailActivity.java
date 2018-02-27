@@ -182,6 +182,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
 
         //处理货转单详细信息
         binding.buyFreeday.setText(data.getBuy_freeday()+"天");//免仓期
+       // binding.tvRmark.setText(data.getGoods_remark());//备注
         binding.tvRmark.setText(data.getRemark());//备注
         //处理CA的点击后的数据
         binding.llCaViewpath.setOnClickListener(this);
@@ -190,7 +191,7 @@ public class TransTormDetailActivity extends BaseActivity<TranssTockDetailPresen
         //处理
         binding.goodsName.setText(data.getGoods_name()+" | "+data.getTrans_qty()+data.getGoods_unit());//品名
         binding.goodsNature.setText(data.getGoods_nature());//货物的性质
-        binding.remark.setText("备注："+data.getRemark());//备注
+        binding.remark.setText("备注："+data.getGoods_remark());//备注
 
     }
 

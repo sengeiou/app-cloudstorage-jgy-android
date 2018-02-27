@@ -294,7 +294,7 @@ public class OuterDetailActivity extends BaseActivity<OuterOrderDetailPresenter,
         binding.shopOrderNo.setText(data.getShop_order_no());//交易平台订单号
         binding.createAt.setText(data.getCreate_at());//创建时间
         binding.llCaViewpath.setOnClickListener(this);//设置查看附件的点击事件
-        binding.tvRemark.setText(data.getReal_remark());//备注
+        binding.tvRemark.setText(data.getRemark());//备注
         //处理车辆明细的数据
         initcars(data.getCar());
         //处理车辆明细的数据
