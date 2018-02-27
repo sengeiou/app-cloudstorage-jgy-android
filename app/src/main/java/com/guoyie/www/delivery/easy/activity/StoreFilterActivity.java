@@ -327,9 +327,20 @@ public class StoreFilterActivity extends BaseActivity<StoreFilterPresenter,Store
 
     @Override
     public void returnStoreType(StoreTypeBean storeTypeBean) {
+        //此处内容写死，内贸罐，外贸罐，保税罐,由于布局已写好，数据不从网络获取，直接自己传入死数据
         if (storeTypeBean.isOk()){
 
-            DataBeanList2.addAll(storeTypeBean.getData());
+            ArrayList arrayList = new ArrayList<StoreTypeBean.DataBean>();
+            StoreTypeBean.DataBean data1 = new StoreTypeBean.DataBean();
+            StoreTypeBean.DataBean data2 = new StoreTypeBean.DataBean();
+            StoreTypeBean.DataBean data3 = new StoreTypeBean.DataBean();
+            data1.setJar_material("内贸罐");
+            data2.setJar_material("外贸罐");
+            data3.setJar_material("保税罐");
+            arrayList.add(data1);
+            arrayList.add(data2);
+            arrayList.add(data3);
+            DataBeanList2.addAll(arrayList);
             final List<StoreTypeBean.DataBean> moreList2 = new ArrayList<>();
             moreList2.addAll(DataBeanList2);
             StoreTypeBean.DataBean dataBeanMore = new StoreTypeBean.DataBean();
@@ -403,6 +414,8 @@ public class StoreFilterActivity extends BaseActivity<StoreFilterPresenter,Store
         }else {
             showToast("网络错误");
         }
+
+
 
     }
 

@@ -5,4 +5,10 @@
             name="camera_photos"
             path="" />
     </paths>
+
+    <paths>
+        <external-path
+            name="update"
+            path=""/>
+    </paths>
 </resources>

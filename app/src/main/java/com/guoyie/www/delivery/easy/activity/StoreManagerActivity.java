@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -115,8 +116,8 @@ public class StoreManagerActivity extends BaseActivity<StoreManagerPresenter,Sto
 
     private void loadData() {
         String params = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.STORE_MANAGER_LIST + "&pageSize=" + pageSize + "&pageCurrent=" + pageCurrent
-                + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no()+"&jar_no="+mStoreNumber+"&goods_name="+mGoodsName+"&\n" +
-                "jar_material="+mStoreType);
+                + "&vendor_no=" + mUserInfoData.getData().getInfo().getVendor_no()+"&jar_no="+mStoreNumber+"&goods_name="+mGoodsName+
+                "&jar_type="+mStoreType);
             mPresenter.requestStoreManagerList(params);
 
     }

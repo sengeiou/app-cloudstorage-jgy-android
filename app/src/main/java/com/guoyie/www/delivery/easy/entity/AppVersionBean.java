@@ -1,5 +1,7 @@
 package com.guoyie.www.delivery.easy.entity;
 
+import com.guoyie.www.delivery.easy.base.BaseResponse;
+
 /**
  * author：江滔
  * project：cloudstorage
@@ -8,7 +10,7 @@ package com.guoyie.www.delivery.easy.entity;
  * data：2018/2/26
  */
 
-public class AppVersionBean {
+public class AppVersionBean extends BaseResponse{
 
     /**
      * data : {"id":"16","title":"交割易","content":"V1.0","varsion":"1","appname":"交割易","url":"http://www.chinayie.com/Android_App/guoyie.apk","package_name":"com.guoyie.www.gyapp","version_number":"1.0.0","compel":"0","status":"1","type":"1","created_at":"2018-02-26 10:14:07","updated_at":"2018-02-26 10:14:10","app_type":"2"}
@@ -17,7 +19,7 @@ public class AppVersionBean {
      */
 
     private DataBean data;
-    private String code;
+    private int code;
     private String msg;
 
     public DataBean getData() {
@@ -28,11 +30,11 @@ public class AppVersionBean {
         this.data = data;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
