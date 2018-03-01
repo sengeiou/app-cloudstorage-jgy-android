@@ -24,7 +24,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -32,7 +31,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.activity.InfoOrderActivity;
 import com.guoyie.www.delivery.easy.activity.InterOrderActivity;
-import com.guoyie.www.delivery.easy.activity.MainActivity;
 import com.guoyie.www.delivery.easy.activity.OuterOrderActivity;
 import com.guoyie.www.delivery.easy.activity.TransTormorderActivity;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
@@ -142,7 +140,7 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
         binding.banner.setDelegate(new BGABanner.Delegate<CardView, String>() {
             @Override
             public void onBannerItemClick(BGABanner banner, CardView itemView, String model, int position) {
-                Toast.makeText(banner.getContext(), "点击了第" + (position + 1) + "页", Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(banner.getContext(), "点击了第" + (position + 1) + "页", Toast.LENGTH_SHORT).show();
             }
         });
         binding.banner.setAdapter(new BGABanner.Adapter<CardView, String>() {

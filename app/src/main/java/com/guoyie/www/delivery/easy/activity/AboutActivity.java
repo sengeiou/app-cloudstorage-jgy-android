@@ -28,14 +28,10 @@ import com.guoyie.www.delivery.easy.R;
 import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
 import com.guoyie.www.delivery.easy.contract.AboutContract;
-import com.guoyie.www.delivery.easy.contract.BusinessFragmentContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityAboutBinding;
 import com.guoyie.www.delivery.easy.entity.AppVersionBean;
-import com.guoyie.www.delivery.easy.entity.BannerData;
-import com.guoyie.www.delivery.easy.fragment.BusinessFragment;
 import com.guoyie.www.delivery.easy.model.AboutModel;
 import com.guoyie.www.delivery.easy.presenter.AboutPresenter;
-import com.guoyie.www.delivery.easy.presenter.BusinessFragmentPresenter;
 import com.guoyie.www.delivery.easy.util.BlowfishTools;
 
 import java.io.File;

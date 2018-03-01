@@ -1,22 +1,16 @@
 package com.guoyie.www.delivery.easy.activity;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentTransaction;
+
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.guoyie.www.delivery.easy.R;
-import com.guoyie.www.delivery.easy.api.HttpUtils;
 import com.guoyie.www.delivery.easy.base.BaseActivity;
-import com.guoyie.www.delivery.easy.contract.MainContract;
 import com.guoyie.www.delivery.easy.databinding.ActivityMainBinding;
-import com.guoyie.www.delivery.easy.entity.GetTime;
 import com.guoyie.www.delivery.easy.entity.TabEntity;
 import com.guoyie.www.delivery.easy.fragment.BusinessFragment;
 import com.guoyie.www.delivery.easy.fragment.StoreHouseFragment;
 import com.guoyie.www.delivery.easy.fragment.UserCenterFragment;
-import com.guoyie.www.delivery.easy.model.MainModel;
-import com.guoyie.www.delivery.easy.presenter.MainPresenter;
-import com.guoyie.www.delivery.easy.retrofit.RxBus;
-import com.guoyie.www.delivery.easy.util.BlowfishTools;
 
 import java.util.ArrayList;
 
@@ -28,7 +22,7 @@ import java.util.ArrayList;
  * data：2017/11/27 
  */
 
-public class MainActivity extends BaseActivity<MainPresenter,MainModel> implements MainContract.View {
+public class MainActivity extends BaseActivity {
     private String[]  mTitles = {"我的业务", "我的仓储", "用户中心"};
     private int[]  mIconUnselectIds = {R.mipmap.business_normal,  R.mipmap.warehousing_normal, R.mipmap.mine_normal};
     private int[]  mIconSelectIds   = {R.mipmap.business_select,  R.mipmap.warehousing_select, R.mipmap.mine_select};
@@ -46,7 +40,6 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
 
     @Override
     public void initPresenter() {
-        mPresenter.attachVM(this,mModel);
 
     }
 
@@ -133,28 +126,14 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
         });
     }
 
-    @Override
-    public void returnTime(GetTime time) {
-
-    }
-
-    @Override
-    public void error(String msg) {
-
-    }
 
 
-
-    private void getTime() {
-        String getTime = BlowfishTools.encrypt(HttpUtils.key, HttpUtils.GET_TIME);
-        mPresenter.requstTime(getTime);
-    }
 
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        getTime();
+
     }
 }
