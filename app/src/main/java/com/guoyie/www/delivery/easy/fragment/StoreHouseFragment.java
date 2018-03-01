@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guoyie.www.delivery.easy.R;
@@ -88,7 +87,7 @@ public class StoreHouseFragment extends BaseFragment<BusinessFragmentPresenter,B
         mBinding.banner.setDelegate(new BGABanner.Delegate<CardView, String>() {
             @Override
             public void onBannerItemClick(BGABanner banner, CardView itemView, String model, int position) {
-                Toast.makeText(banner.getContext(), "点击了第" + (position + 1) + "页", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(banner.getContext(), "点击了第" + (position + 1) + "页", Toast.LENGTH_SHORT).show();
             }
         });
         mBinding.banner.setAdapter(new BGABanner.Adapter<CardView, String>() {
@@ -130,6 +129,10 @@ public class StoreHouseFragment extends BaseFragment<BusinessFragmentPresenter,B
             List<Banner> banners = data.getData();
             for (Banner banner : banners) {
                 imgs.add(banner.getAdpic());
+            }
+
+            if (imgs.size()<2){
+                mBinding.banner.setAutoPlayAble(false);
             }
             mBinding.banner.setData(R.layout.item_fresco, imgs, null);
         }

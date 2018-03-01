@@ -962,4 +962,6 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
     public void hideGuide(){
         mPointContainerRl.setVisibility(GONE);
     }
+
+
 }

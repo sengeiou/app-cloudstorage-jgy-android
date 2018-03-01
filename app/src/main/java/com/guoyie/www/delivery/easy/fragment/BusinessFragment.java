@@ -193,7 +193,16 @@ public class BusinessFragment extends BaseFragment<BusinessFragmentPresenter,Bus
             for (Banner banner : banners) {
                 imgs.add(banner.getAdpic());
             }
-         binding.banner.setData(R.layout.item_fresco, imgs, null);
+//            if (imgs.size()>1) {
+//                binding.banner.setData(R.layout.item_fresco, imgs, null);
+//            }else {
+//                binding.banner.setAutoPlayAble(false);
+//            }
+            if (imgs.size()<2){
+                binding.banner.setAutoPlayAble(false);
+            }
+            binding.banner.setData(R.layout.item_fresco, imgs, null);
+
         }else {//没有数据了
             showToast(data.getMsg());
         }

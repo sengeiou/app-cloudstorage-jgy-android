@@ -45,7 +45,7 @@
                         android:layout_marginLeft="25dp"
                         app:banner_contentBottomMargin="20dp"
                         app:banner_indicatorGravity="bottom|center_horizontal"
-                        app:banner_isNeedShowIndicatorOnOnlyOnePage="true"
+                        app:banner_isNeedShowIndicatorOnOnlyOnePage="false"
                         app:banner_isNumberIndicator="false"
                         app:banner_pointAutoPlayAble="true"
                         app:banner_pointContainerBackground="@android:color/transparent"
