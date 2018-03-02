@@ -71,7 +71,7 @@ public class AboutActivity extends BaseActivity<AboutPresenter,AboutModel> imple
             PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             mVersionCode = packageInfo.versionCode;
             mVersionName = packageInfo.versionName;
-            mBinding.tvVersion.setText(mVersionName);
+            mBinding.tvVersion.setText("V"+mVersionName);
         } catch (PackageManager.NameNotFoundException
                 e) {
             e.printStackTrace();
