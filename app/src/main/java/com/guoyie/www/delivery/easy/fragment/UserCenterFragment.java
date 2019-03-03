@@ -1,16 +1,12 @@
 package com.guoyie.www.delivery.easy.fragment;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -27,8 +23,6 @@ import com.guoyie.www.delivery.easy.entity.UserInfoData;
 import com.guoyie.www.delivery.easy.util.Constant;
 import com.guoyie.www.delivery.easy.widget.MyImageView;
 
-import java.io.Serializable;
-
 /**
  * author：柯军
  * project：app-cloudstorage-jgy-android
@@ -43,6 +37,7 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
     private FcUsercenterBinding mBinding;
     private MyImageView mIcon;
     private RelativeLayout mLlAbout;
+
 
     @Override
     protected int getLayoutResource() {
@@ -115,7 +110,6 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 dialog.show();
                 TextView tvBack = dialog.findViewById(R.id.tv_back);
                 TextView tvLoginout = dialog.findViewById(R.id.tv_login_out);
-
                 tvBack.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
